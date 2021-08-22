@@ -1,0 +1,45 @@
+/* Manipulation Barre de Recherche Vivante de la Page Blog
+    ****************************************************** */
+
+.search-box
+    position: absolute
+    transform: translate(-50%,-50%)
+    @include background-blue
+    height: 70px
+    left: 50%
+    z-index: 9
+    border-radius: 65px
+    padding: 25px
+    margin-top: -45px
+    
+
+.search-btn
+    color: $white-color
+    float: right
+    width: 35px
+    height: 15px
+    @include background-blue
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &:hover
+        color: $white-color
+        
+
+.search-box:hover > .search-txt
+    width: 380px
+    transition: 0.5
+
+
+.search-txt
+    @include border-none
+    background: none
+    outline: none
+    float: left
+    padding: 0px
+    color: $white-color
+    font-size: 16px
+    transition: 0.7s
+    line-height: 10px
+    width: 0px

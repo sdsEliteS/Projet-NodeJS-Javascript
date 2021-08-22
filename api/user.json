@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "pseudo": "steven",
+        "isAdmin": 1,
+        "isVerified": 1,
+        "isBan": 0
+    },
+    {
+        "id": 2,
+        "pseudo": "steven",
+        "isAdmin": 1,
+        "isVerified": 1,
+        "isBan": 0
+    },
+    {
+        "id": 3,
+        "pseudo": "steven",
+        "isAdmin": 1,
+        "isVerified": 1,
+        "isBan": 0
+    }
+]

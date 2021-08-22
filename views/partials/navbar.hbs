@@ -1,0 +1,39 @@
+{{!--
+Partials Navbar
+--}}
+
+<!-- Manipulation de la Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top bdr-b-dark">
+    <div class="container-fluid text-center">
+        <a class="navbar-brand" href="/">Boutique de Ballon de Football</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#monMenu"
+            aria-controls="monMenu" aria-expanded="false" aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="monMenu">
+            <div class="navbar-nav">
+
+                <a class="nav-link" href="/">Accueil</a>
+                <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+                <a class="nav-link" aria-current="page" href="/presentation">Presentation</a>
+                <a class="nav-link" aria-current="page" href="/admin">Admin</a>
+                <a class="nav-link" href="#Vente-de-ballons">Vente de Ballons</a>
+                <a class="nav-link" href="#Contactez-nous" tabindex="-1" aria-disabled="true">Contactez-nous</a>
+            </div>
+        </div>
+
+        <div class="navbar-collapse collapse justify-content-end" id="monMenu">
+            <div class="navbar-nav mx-5">
+                <a class="nav-link" aria-current="page" href="/profil">Profil</a> 
+                <a class="nav-link" aria-current="page" href="/login"><i
+                        class="fas fa-sign-in-alt sign-in mx-2"></i>Connexion</a>
+                <a class="nav-link" aria-current="page" href="/register"><i
+                        class="fas fa-user-plus sign-up mx-2"></i>Inscription</a>
+            </div>
+        </div>
+    </div>
+</nav>

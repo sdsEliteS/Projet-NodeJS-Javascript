@@ -1,0 +1,176 @@
+/* Page Login + Page Register 
+    ************************* */
+    
+.jaune-or
+    background-image: url(/assets/images/Terrafoot1.jpg)
+    background-position: center
+    min-height: 100vh
+    display: flex
+    align-items: center
+    justify-content: center
+
+
+.login-box
+    position: relative
+    bottom: 110px
+    top: -97px
+    padding: 80px
+    width: 747px
+    height: 597px
+    background-color: $black-color
+    box-shadow: 0 0 15px $white-color
+    border-radius: 10px
+    border: 5px $white-color solid
+
+
+.register-box
+    position: relative
+    top: 28px
+    height: 847px
+
+
+.login-box h3
+    position: relative
+    bottom: 80px
+    height: 15%
+    margin: 0 0 10px 
+    padding: 45px
+    color: $white-color
+    text-shadow: none
+    text-transform: none
+
+
+.login-box .user-box
+    position: relative
+    bottom: 55px
+
+/* L'ordre des propriétés est très important vis à vis du résultat final quannd elle est déclaré: 
+/* border: none doit être mis hiérarchiquement avant border-bottom: 1px solid $white-color pour avoir des lignes blanches. 
+/* Dans le cas contraire les lignes blanches disparaissent totalement !! */
+.login-box .user-box input
+    width: 100%
+    padding: 10px 0px
+    font-size: 18px
+    color: $white-color
+    margin-bottom: 40px
+    border: none
+    border-bottom: 1px solid $white-color 
+    outline: none
+    background-color: transparent
+
+
+.login-box .user-box label
+    position: absolute
+    top: 0
+    left: 0
+    padding: 10px 0
+    font-size: 16px
+    color: $white-color
+
+    
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label
+    top: -20px
+    left: 0
+    color: rgb(0, 217, 255)
+    font-size: 13px
+
+
+.login-box .user-box a
+    position: relative
+    bottom: 30px
+    color: $jaune-color
+    font-style: italic
+    font-size: 12.5px
+
+
+.login-box form button
+    position: relative
+    bottom: 65px
+    display: inline-block
+    padding: 35px 35px
+    background-color: black
+    color: rgb(0, 217, 255)
+    font-size: 20px
+    border: none
+    text-decoration: none
+    text-transform: uppercase
+    overflow: hidden
+    transition: 0.4s
+    margin-top: 25px
+    letter-spacing: 4px
+
+    &:hover
+        background-color: #00D8FF
+        color: white
+        border-radius: 10px
+        box-shadow: #00D8FF 0 0 20px
+        
+        
+   
+.login-box button span
+    position: absolute
+    display: block
+    
+    
+.login-box button span:nth-child(1)
+    top: 0
+    left: -100%
+    width: 100%
+    height: 1px
+    background: linear-gradient(90deg,transparent,#00D8FF)
+    animation: btn-anim-1 1s linear infinite
+
+@keyframes btn-anim-1
+    0%
+        left: -100%
+
+    50%, 100%
+        left: 100%
+
+.login-box button span:nth-child(2)
+    top: -100%
+    right: 0
+    width: 2px
+    height: 100%
+    background: linear-gradient(90deg,transparent,#00D8FF)
+    animation: btn-anim-2 1s linear infinite
+    animation-delay: 1.2s
+
+@keyframes btn-anim-2
+    0%
+        top: -100%
+        
+    50%, 100%
+        top: 100%
+         
+.login-box button span:nth-child(3)
+    bottom: 0
+    right: -100%
+    width: 100%
+    height: 2px
+    background: linear-gradient(90deg,transparent,#00D8FF)
+    animation: btn-anim-3 1s linear infinite
+    animation-delay: 1.4s
+    
+
+@keyframes btn-anim-3
+    0%
+        right: -100%
+    50%, 100%
+        right: 100%
+        
+.login-box button span:nth-child(4)
+    bottom: -100%
+    left: 0
+    width: 2px
+    height: 100%
+    background: linear-gradient(90deg,transparent,#00D8FF)
+    animation: btn-anim-4 1s linear infinite 
+    animation-delay: 1.7s
+
+@keyframes btn-anim-4
+    0%
+        bottom: -100%
+    50%, 100%
+        bottom: 100%

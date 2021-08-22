@@ -1,0 +1,148 @@
+{{!--
+Partials Cards Ballons: /
+--}}
+
+
+<!-- Manipulations des Cards -->
+    <div class="container" style="margin-top: 18vh;">
+        <div class="row">
+            <div class="card-group">
+
+                {{!-- Ouverture de la méthode Each qui permet d'exécuter une fonction sur chaque élément du tableau.
+                      ballonList est le tableau renvoyer par le controller get: blogController
+                 --}}
+                {{#each ballonList }}
+
+                <div class="col-md-4">
+                    {{!-- Element ID du tableau ballon.json --}}
+                    <a class="card" href="/ballon/{{ this.id }}">
+                        <img src="{{ this.image }}" class="card-img-top w-100" alt="Ballon-Football">
+                        <div class="card-body">
+                            <div class="bordure">
+                                {{!-- Element title du tableau ballon.json --}}
+                                <h5 class="card-title text-center titre-neon-special encadrer fs-4 mt-3"> {{ this.title }} </h5>
+                            </div>
+                             {{!-- Element description du tableau ballon.json --}}
+                            <p class="card-text text-center bordure encadrer text-white"> {{ this.description }} .</p>
+                        </div>
+                        <div class="card-footer text-end">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </a>
+                </div>
+
+                {{!-- Fermeture de la methode Each --}}
+                {{/each }}
+
+                {{!-- <div class="col-md-4">
+                    <a class="card" href="/pageID2.html">
+                        <div class="card">
+                            <img src="/assets/images/BallonL2.jpg" class="card-img-top w-100" alt="Ballon-Football">
+                            <div class="card-body">
+                                <div class="bordure">
+                                    <h5 class="card-title text-center titre-neon-special encadrer fs-4 mt-3">
+                                        Ballon-Ligue 2</h5>
+                                </div>
+                                <p class="card-text text-center bordure encadrer text-white"> " This is a wider card
+                                    with
+                                    supporting text below as a
+                                    natural lead-in to
+                                    additional content. This content is a little bit longer ".</p>
+                            </div>
+                            <div class="card-footer text-end">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a class="card" href="/pageID3.html">
+                        <div class="card">
+                            <img src="/assets/images/BallonLDC.jpg" class="card-img-top w-100" alt="ballon-Football">
+                            <div class="card-body">
+                                <div class="bordure">
+                                    <h5 class="card-title text-center titre-neon-special encadrer fs-4 mt-3">Ballon-LDC
+                                    </h5>
+                                </div>
+                                <p class="card-text text-center bordure encadrer text-white"> " This is a wider card
+                                    with
+                                    supporting text below as a
+                                    natural lead-in to
+                                    additional content. This content is a little bit longer ".</p>
+                            </div>
+                            <div class="card-footer text-end">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/assets/images/BallonL1-2019.jpg" class="card-img-top w-100" alt="...">
+                        <div class="card-body">
+                            <div class="bordure">
+                                <h5 class="card-title text-center titre-neon-special encadrer fs-4 mt-3">Card title</h5>
+                            </div>
+                            <p class="card-text text-center bordure encadrer text-white"> " This is a wider card with
+                                supporting text below as a
+                                natural lead-in to
+                                additional content. This content is a little bit longer ".</p>
+                        </div>
+                        <div class="card-footer text-end">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/assets/images/BallonL2-2019.jpg" class="card-img-top w-100" alt="...">
+                        <div class="card-body">
+                            <div class="bordure">
+                                <h5 class="card-title text-center titre-neon-special encadrer fs-4 mt-3">Card title</h5>
+                            </div>
+                            <p class="card-text text-center bordure encadrer text-white"> " This is a wider card with
+                                supporting text below as a
+                                natural lead-in to
+                                additional content. This content is a little bit longer ".</p>
+                        </div>
+                        <div class="card-footer text-end">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="/assets/images/BallonLDC-2019.jpg" class="card-img-top w-100" alt="...">
+                        <div class="card-body">
+                            <div class="bordure">
+                                <h5 class="card-title text-center titre-neon-special encadrer fs-4 mt-3">Card title</h5>
+                            </div>
+                            <p class="card-text text-center bordure encadrer text-white"> " This is a wider card with supporting text below as a
+                                natural lead-in to
+                                additional content. This content is a little bit longer ".</p>
+                        </div>
+                        <div class="card-footer text-end">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="bordure">
+                                <h5 class="card-title text-center titre-neon-special encadrer fs-4 mt-3">Card title</h5>
+                            </div>
+                            <p class="card-text text-center bordure encadrer text-white"> " This is a wider card with supporting text below as a
+                                natural lead-in to
+                                additional content. This content is a little bit longer ".</p>
+                        </div>
+                        <div class="card-footer text-end">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </div>
+                    </div>
+                </div> --}}
+
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,45 @@
+{{!--
+View Page Admin : /
+--}}
+
+<!-- Manipulation Page Admin 
+
+ (exemple : Mettre le dossier admin en 1er et son fichier qu'il contient : Handlebars
+ "administration" en 2eme -->
+
+
+<!-- Manipulation Accordion Admim -->
+<section class="container">
+    <div class="row Accordéon top-8vh">
+        <div class=col-md-12>
+
+            <!-- Accordion All (Pour tous)-->
+            <div class="accordion" id="accordionExample">
+
+                <!-- Accordeon Liste Article -->
+                {{> admin/tableauArticle }}
+                <!-- / Accordeon Liste Article -->
+
+
+                <!-- Accordeon Liste User -->
+                {{> admin/tableauUser }}
+                <!-- / Accordeon Liste User -->
+
+
+                <!-- Accordeon Liste Message -->
+                {{> admin/tableauMessage }}
+                <!-- / Accordeon Liste Message -->
+
+            </div>
+            <!-- / Accordeon All (Pour tous)-->
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+[
+    {
+        "id": 1,
+        "title": "ligue 1",
+        "description": "Ma super description 1",
+        "image": "../assets/images/BallonL1.jpg",
+
+        "slider": [ {
+            "img" : "../assets/images/Decathlon.jpg",
+            "img2" : "../assets/images/Intersport.jpg",
+            "img3" : "../assets/images/Go-Sport.jpg"
+        } ],
+        "comment": [
+            {
+                "author": "Steven",
+                "content": "Mon super commentaire 1"
+            },
+            {
+                "author": "Bruno",
+                "content": "Mon super commentaire 2"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "ligue 2",
+        "description": "Ma super description 2",
+        "image": "../assets/images/BallonL2.jpg",
+
+        "slider": [ {
+            "img" : "../assets/images/Bannière5.jpg",
+            "img2" : "../assets/images/Bannière6.jpg",
+            "img3" : "../assets/images/Bannière7.jpg"
+        } ],
+        "comment": [
+            {
+                "author": "Lucas",
+                "content": "Mon super commentaire 1"
+            },
+            {
+                "author": "Tony",
+                "content": "Mon super commentaire 2"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "LDC",
+        "description": "Ma super description 3",
+        "image": "../assets/images/BallonLDC.jpg",
+
+        "slider": [ {
+            "img" : "../assets/images/Bannière3.jpg",
+            "img2" : "../assets/images/Bannière8.jpg",
+            "img3" : "../assets/images/Bannière10.jpg"
+        } ],
+        "comment": [
+            {
+                "author": "Mika",
+                "content": "Mon super commentaire 1"
+            },
+            {
+                "author": "Laurent",
+                "content": "Mon super commentaire 2"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Monaco",
+        "description": "Ma super description 4",
+        "image": "../assets/images/BallonL1-2019.jpg",
+
+        "slider": [ {
+            "img" : "../assets/images/Terrafoot1.jpg",
+            "img2" : "../assets/images/Terrain-football.png",
+            "img3" : "../assets/images/Bannière-Portugal.png"
+        } ],
+        "comment": [
+            {
+                "author": "Mika",
+                "content": "Mon super commentaire 1"
+            },
+            {
+                "author": "Laurent",
+                "content": "Mon super commentaire 2"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Bordeaux",
+        "description": "Ma super description 5",
+        "image": "../assets/images/BallonL2-2019.jpg",
+
+        "slider": [ {
+            "img" : "../assets/images/DBZ.jpg",
+            "img2" : "../assets/images/DBZ2.jpeg",
+            "img3" : "../assets/images/DBZ3.gif"
+        } ],
+        "comment": [
+            {
+                "author": "Mika",
+                "content": "Mon super commentaire 1"
+            },
+            {
+                "author": "Laurent",
+                "content": "Mon super commentaire 2"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Marseille",
+        "description": "Ma super description 6",
+        "image": "../assets/images/BallonLDC-2019.jpg",
+        
+        "slider": [ {
+            "img" : "../assets/images/DBZ4.gif",
+            "img2" : "../assets/images/DBZ5.gif",
+            "img3" : "../assets/images/DBZ6.gif"
+        } ],
+        "comment": [
+            {
+                "author": "Mika",
+                "content": "Mon super commentaire 1"
+            },
+            {
+                "author": "Laurent",
+                "content": "Mon super commentaire 2"
+            }
+        ]
+    }
+]

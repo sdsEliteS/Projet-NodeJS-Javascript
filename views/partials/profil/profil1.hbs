@@ -1,0 +1,82 @@
+
+
+<!-- Manipulation du Profil -->
+
+    <section class="padding-profil">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="profile-card d-flex justify-content-center w-100">
+                        <div class="top-section">
+                            <div class="avatar">
+                                <img src="assets/images/DarkCode.png" class="w-100" alt="Avatar">
+                            </div>
+                            <div>
+                                <div class="name fs-1 text-white">DarkCode</div>
+                                <a href="#modalToggleLabelChangePhoto" data-bs-toggle="modal"
+                                    class="change-photo text-warning fst-italic" role="button">Change Photo Profil</a>
+                            </div>
+                            <div class="bottom-section">
+                                <div class="social-media w-100">
+                                    <a href="#modalToggleLabelNMP" data-bs-toggle="modal" role="button"><i
+                                            class="fas fa-edit edit text-dark"></i></a>
+                                    <a href="https://www.youtube.com" target="_blank" role="button"><i
+                                            class="fab fa-youtube youtube text-dark"></i></a>
+                                    <a href="pageMessagerieUser.html"><i class="fas fa-envelope envelope text-dark"></i></a>
+                                </div>
+                                <div class="commentaire text-white">33 Commentaires</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Modal Change Photo Profil -->
+
+    <div class="modal fade" id="modalToggleLabelChangePhoto" aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalToggleLabelChangePhoto">Changement d'Avatar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="message-text" class="col-form-label">Image :</label>
+                    <input type="text" class="form-control" placeholder="Image" id="recipient-name">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-or" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">Validation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Edition Nouveau Mot de Passe -->
+
+    <div class="modal fade" id="modalToggleLabelNMP" aria-hidden="true" aria-labelledby="modalToggleLabelNMP"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalToggleLabelNMP">Editer "Nouveau Mot de Passe</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="message-text" class="col-form-label">Nouveau Mot de Passe :</label>
+                    <input type="text" class="form-control" placeholder=" " id="recipient-name">
+                    <label for="message-text" class="col-form-label">Confirmation Nouveau Mot de Passe :</label>
+                    <input type="text" class="form-control" placeholder=" " id="recipient-name">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-or" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">Validation</button>
+                </div>
+            </div>
+        </div>
+    </div>

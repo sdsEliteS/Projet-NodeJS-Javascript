@@ -1,0 +1,138 @@
+<!-- Accordeon Liste Article -->
+<div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne">
+            Liste Article
+        </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+
+            {{> admin/btnCreateArticle }}
+
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-left" scope="col">#</th>
+                        <th class="text-left" scope="col">Avatar</th>
+                        <th scope="col">Article</th>
+                        <th scope="col">Verified</th>
+                        <th class="text-center" scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {{!-- Ouverture de la methode each (boucle) avec le # (Voir le Readme) --}}
+                    {{#each articles }}
+
+                    <!-- Item 1 du tableau -->
+                    <tr class="table-info">
+                        <th scope="row"> {{ this.id }} </th>
+                        <td class="pt-0 pb-0 text-left align-middle">
+                            <img class="rounded-circle" src="https://picsum.photos/35" alt="">
+                        </td>
+                        <td> {{ this.title }} </td>
+                        <td>true</td>
+                        <td>
+                            <div class="d-flex justify-content-evenly">
+
+                                <!-- Bouton Edit Open Modal Edit Validation Article -->
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal{{ this.id }}" data-bs-whatever="@mdo">
+                                    <i class="fas fa-edit"></i></button>
+
+                                <!-- Ajout début du Modal Edit Validation de l'Article dans le bouton Warning -->
+                                <div class="modal fade" id="exampleModal{{ this.id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                    Editer "Article"</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <label for="recipient-name" class="col-form-label">Titre
+                                                                :</label>
+                                                            <input type="text" class="form-control" placeholder="Titre"
+                                                                id="recipient-name" value='{{ this.title }} ' />
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label for="message-text" class="col-form-label">Image
+                                                                :</label>
+                                                            <input type="text" class="form-control" placeholder="Image"
+                                                                id="recipient-name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="recipient-name" class="col-form-label">Sujet
+                                                            :</label>
+                                                        <input type="text" class="form-control" placeholder="Sujet"
+                                                            id="recipient-name">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label for="recipient-name" class="col-form-label"></label>
+                                                        <textarea id="message" rows="5" placeholder="Description"
+                                                            class="contact-message"> {{ this.description }} </textarea>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="contact-form text-center mb-5">
+                                                            <button class="btn-or mt-3">Validation</button>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- / Fin du Modal Edit de l'Article -->
+
+                                <!-- Bouton DANGER Open Modal Delete (Suppression) Article -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#modalDeleteArticle{{ this.id }}">
+                                    <i class="far fa-times-circle"></i>
+                                </button>
+                                <!-- Ajout Début du Modal Suppression de l'Article dans le Bouton DANGER -->
+                                <div class="modal fade" id="modalDeleteArticle{{ this.id }}" tabindex="-1"
+                                    aria-labelledby="labelModalDeleteArticle" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="labelModalDeleteArticle">
+                                                    Supprimer Article: {{ this.title }}
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Etes-vous sûr de vouloir supprimer cet article ? 
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Annuler</button>
+                                                <button type="button" class="btn btn-primary">Oui</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- / Fin du Modal Suppression de l'Article -->
+                            </div>
+                        </td>
+                    </tr>
+
+                    {{!-- fermeture de la methode each (boucle) avec le slash / (Voir le Readme) --}}
+                    {{/each }}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- / Accordeon Liste Article -->

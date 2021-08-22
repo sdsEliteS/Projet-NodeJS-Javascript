@@ -1,0 +1,367 @@
+TERMINAL DE COMMANDE PROCEDURE NOUVAU PROJET
+
+┌─[arinfo3@arinfo3]─[~]
+└──╼  $ ls
+Apps    Dev        Firefox_wallpaper.png  JSON     Musique  Téléchargements
+Bureau  Documents  Images                 Modèles  Public   Vidéos
+┌─[arinfo3@arinfo3]─[~]
+└──╼  $ cd Dev
+┌─[arinfo3@arinfo3]─[~/Dev]
+└──╼  $ ls
+cours  cours-fullstack-web-master  github
+┌─[arinfo3@arinfo3]─[~/Dev]
+└──╼  $ cd github
+┌─[arinfo3@arinfo3]─[~/Dev/github]
+└──╼  $ ls
+Projet-Bootstrap-Arinfo                    Projet-Questions-Javascript
+Projet-Maquette-Bootstrap                  Projet-Sass-Arinfo
+Projet-Maquette-Bootstrap-Sass-Local-main  Webhook
+┌─[arinfo3@arinfo3]─[~/Dev/github]
+└──╼  $ git clone git@github.com:sdsEliteS/Projet-Maquette-NodeJS.git
+Clonage dans 'Projet-Maquette-NodeJS'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Réception d'objets: 100% (3/3), fait.
+┌─[arinfo3@arinfo3]─[~/Dev/github]
+└──╼  $ node -v
+v12.22.2 
+┌─[arinfo3@arinfo3]─[~/Dev/github]
+└──╼  $ npm -v
+6.14.13
+┌─[arinfo3@arinfo3]─[~/Dev/github]
+└──╼  $ cd
+┌─[arinfo3@arinfo3]─[~]
+└──╼  $ cd Bureau/
+┌─[arinfo3@arinfo3]─[~/Bureau]
+└──╼  $ mkdir base-nodejs
+┌─[arinfo3@arinfo3]─[~/Bureau]
+└──╼  $ cd base-nodejs/
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ ls
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ ll   (Voir fichiers cachés - Etape Facultatif)
+total 8
+drwxrwxr-x 2 arinfo3 arinfo3 4096 juil. 26 11:10 ./
+drwxr-xr-x 7 arinfo3 arinfo3 4096 juil. 26 11:10 ../
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm init
+This utility will walk you through creating a package.json file.
+It only covers the most common items, and tries to guess sensible defaults.
+
+See `npm help init` for definitive documentation on these fields
+and exactly what they do.
+
+Use `npm install <pkg>` afterwards to install a package and
+save it as a dependency in the package.json file.
+
+Press ^C at any time to quit.
+package name: (base-nodejs) basenodejs
+version: (1.0.0) 
+description: tuto base node js
+entry point: (index.js) server.js
+test command: 
+git repository: 
+keywords: 
+author: hsuk
+license: (ISC) 
+About to write to /home/arinfo3/Bureau/base-nodejs/package.json:
+
+{
+  "name": "basenodejs",
+  "version": "1.0.0",
+  "description": "tuto base node js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hsuk",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes) 
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ ls
+package.json
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ nano server.js
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ ls
+package.json  server.js
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ node server.js 
+Mon Projet Node JS
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ nano package.json 
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm start
+
+> basenodejs@1.0.0 start /home/arinfo3/Bureau/base-nodejs
+> node server.js
+
+Mon Projet Node JS
+
+
+   ╭────────────────────────────────────────────────────────────────╮
+   │                                                                │
+   │      New major version of npm available! 6.14.13 → 7.20.1      │
+   │   Changelog: https://github.com/npm/cli/releases/tag/v7.20.1   │
+   │               Run npm install -g npm to update!                │
+   │                                                                │
+   ╰────────────────────────────────────────────────────────────────╯
+
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ nano package.json 
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm run dev
+
+> basenodejs@1.0.0 dev /home/arinfo3/Bureau/base-nodejs
+> nodemon server.js
+
+[nodemon] 2.0.7
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+Mon Projet Node JS
+[nodemon] clean exit - waiting for changes before restart
+^C
+┌─[✗]─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ code .
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm start
+
+> basenodejs@1.0.0 start /home/arinfo3/Bureau/base-nodejs
+> node server.js
+
+Mon Projet Node JS
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm start
+
+> basenodejs@1.0.0 start /home/arinfo3/Bureau/base-nodejs
+> node server.js
+
+Mon Projet Nodssdfsdfe JS
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm run dev
+
+> basenodejs@1.0.0 dev /home/arinfo3/Bureau/base-nodejs
+> nodemon server.js
+
+[nodemon] 2.0.7
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+Mon Projet Nodssdfsdfe JS
+[nodemon] clean exit - waiting for changes before restart
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Mon Projet Node JS
+[nodemon] clean exit - waiting for changes before restart
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Mon Projedfsdffst Node JS
+[nodemon] clean exit - waiting for changes before restart
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Mon Projet Node JS
+[nodemon] clean exit - waiting for changes before restart
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Mon Projet Node JS
+internal/modules/cjs/loader.js:818
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/arinfo3/Bureau/base-nodejs/server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:815:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:667:27)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/home/arinfo3/Bureau/base-nodejs/server.js:3:17)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/home/arinfo3/Bureau/base-nodejs/server.js' ]
+}
+[nodemon] app crashed - waiting for file changes before starting...
+^C
+┌─[✗]─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm i express
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN basenodejs@1.0.0 No repository field.
+
++ express@4.17.1
+added 50 packages from 37 contributors and audited 50 packages in 2.724s
+found 0 vulnerabilities
+
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm run dev
+
+> basenodejs@1.0.0 dev /home/arinfo3/Bureau/base-nodejs
+> nodemon server.js
+
+[nodemon] 2.0.7
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+Mon Projet Node JS
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+Mon Projet Node JS
+^C
+┌─[✗]─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm run dev
+
+> basenodejs@1.0.0 dev /home/arinfo3/Bureau/base-nodejs
+> nodemon server.js
+
+[nodemon] 2.0.7
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+Mon Projet Node JS
+^C
+┌─[✗]─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm run dev
+
+> basenodejs@1.0.0 dev /home/arinfo3/Bureau/base-nodejs
+> nodemon server.js
+
+[nodemon] 2.0.7
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+Mon Projet Node JS
+internal/modules/cjs/loader.js:818
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/arinfo3/Bureau/base-nodejs/server.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:815:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:667:27)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at Object.<anonymous> (/home/arinfo3/Bureau/base-nodejs/server.js:2:17)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/home/arinfo3/Bureau/base-nodejs/server.js' ]
+}
+[nodemon] app crashed - waiting for file changes before starting...
+^C
+┌─[✗]─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm i
+npm WARN basenodejs@1.0.0 No repository field.
+
+added 50 packages from 37 contributors and audited 50 packages in 0.665s
+found 0 vulnerabilities
+
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm run dev
+
+> basenodejs@1.0.0 dev /home/arinfo3/Bureau/base-nodejs
+> nodemon server.js
+
+[nodemon] 2.0.7
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+Mon Projet Node JS
+^C
+┌─[✗]─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm uninstal express
+npm WARN basenodejs@1.0.0 No repository field.
+
+removed 50 packages in 0.567s
+found 0 vulnerabilities
+
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm i express
+npm WARN basenodejs@1.0.0 No repository field.
+
++ express@4.17.1
+added 50 packages from 37 contributors and audited 50 packages in 2.298s
+found 0 vulnerabilities
+
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm i express-handlebars
+npm WARN basenodejs@1.0.0 No repository field.
+
++ express-handlebars@5.3.2
+added 18 packages from 43 contributors and audited 68 packages in 1.834s
+
+1 package is looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+┌─[arinfo3@arinfo3]─[~/Bureau/base-nodejs]
+└──╼  $ npm run dev
+
+> basenodejs@1.0.0 dev /home/arinfo3/Bureau/base-nodejs
+> nodemon server.js
+
+[nodemon] 2.0.7
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+/home/arinfo3/Bureau/base-nodejs/server.js:7
+app.engine('hbs', hbs({
+    ^
+
+ReferenceError: hbs is not defined
+    at Object.<anonymous> (/home/arinfo3/Bureau/base-nodejs/server.js:7:5)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:60:12)
+    at internal/main/run_main_module.js:17:47
+[nodemon] app crashed - waiting for file changes before starting...
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+[nodemon] restarting due to changes...
+[nodemon] starting `node server.js`
+

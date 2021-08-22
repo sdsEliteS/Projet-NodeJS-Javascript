@@ -1,0 +1,337 @@
+/* MANIPULATION du Header 
+  * ********************** */
+
+.header
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(51, 193, 255, 0.7)), url(/assets/images/Terrafoot1.jpg)
+    height: 100vh
+    background-position: center
+    background-size: cover
+
+h1, h2, h3, h4
+    font-family: Zen Dots
+    text-transform: uppercase
+    text-align: center
+    color: black
+    text-shadow: $jaune-color 1px 0 10px
+
+h1
+    letter-spacing: -1px
+    font-weight: 600
+    word-spacing: 45px
+
+p
+    font-family: Zen Dots
+
+body
+    font-family: Zen Dots
+
+/* MANIPULATION du Titre
+ * ********************* */
+
+.home-title
+    position: absolute
+    top: 30%
+
+.home-title h1
+    font-size: 260%
+
+/* MANIPULATION du Bouton Navbar
+ * ***************************** */
+
+.navbar-toggler
+    border: 2px solid
+
+#monMenu a:hover
+    color: rgb(0, 217, 255)
+    text-shadow: 1px 2px 2px #262626, 2px 2px 1px #262626, 2px 1px 2px #262626, -1px 1px
+
+.sign-in
+    @include couleur-icon
+
+.sign-up
+    @include couleur-icon
+    
+
+/* MANIPULATION Bordure 
+ * ******************** */
+
+.bdr-b-dark
+    border-bottom: solid black 2px
+    margin-bottom: 30px
+
+.bdr-r-dark
+    border-right: solid rgb(0, 217, 255) 0.1em
+    height: 75%
+
+.login-user
+    margin-left: 750px
+
+/* MANIPULATION Vente Famille de Ballon 
+ * ****************************** */
+
+.vente-details
+    text-align: center
+    color: black
+    text-shadow: $jaune-color 1px 0 10px
+    margin-top: 35px
+
+/* MANIPULATION Formulaire de contact 
+ * ********************************** */
+
+.paragraphe-formulaire
+    text-align: center
+
+.adress
+    color: black
+    text-shadow: $jaune-color 1px 0 10px
+
+.phone
+    color: black
+    text-shadow: $jaune-color 1px 0 10px
+
+.contact-message
+    width: 100%
+
+.btn-or
+    @include bouton-design
+
+.btn-1
+    color: rgba(0, 217, 255, 0.6)
+    margin-right: 20px
+
+.btn-2
+    color: rgba(0, 217, 255, 0.6)
+    margin-right: 20px
+
+/* MANIPULATION du Footer 
+ * ********************** */
+
+.copyright
+    text-align: center
+    color: white
+    font-style: italic
+    font-size: 10px
+    margin-right: 40px
+    
+.elite
+    padding-left: 47px
+
+footer
+    display: flex
+    height: 15vh
+    width: 100%
+    align-items: center
+    text-align: center
+    justify-content: center
+    background-color: #262626
+    border: 5px rgb(0, 217, 255) solid
+    box-shadow: 0 0 15px rgb(0, 217, 255)
+
+ul
+    display: flex
+    margin-left: 10px
+
+ul li
+    position: relative
+    display: block
+    color: gray
+    font-size: 30px
+    height: 60px
+    width: 60px
+    line-height: 60px
+    background-color: black
+    border-radius: 50%
+    margin: 0 15px
+    cursor: pointer
+    transition: .3s
+
+ul li:before
+    position: absolute
+    content: ''
+    top: 0
+    left: 0
+    border: 5px rgb(0, 217, 255) solid
+    box-shadow: 0 0 15px rgb(0, 217, 255)
+    text-shadow: 0 0 15px rgb(0, 217, 255)
+    border-radius: 50%
+    height: 100%
+    width: 100%
+    transition: .3s
+    transform: scale(0.9)
+
+ul li:hover
+    transform: scale(1.2)
+    box-shadow: 0 0 15px rgb(0, 217, 255)
+
+.copyright li:hover
+    background-color: rgb(0, 217, 255)
+
+.legal-notice a
+    color: $jaune-color
+    margin-left: 40px
+    
+/* MANIPULATION Page Présentation HTML 
+    ********************************** */
+
+.top-8vh
+    margin-top: 8vh
+
+.bdr-radius
+    border-radius: 50px 50px 50px 50px
+    border: solid green 2px
+    box-shadow: 0 0 10px rgba(0, 0, 0.3)
+
+.steven-1
+    margin-top: 10px
+
+.titre-presentation
+    text-decoration: underline
+    word-spacing: 5px
+
+.btn-or-2
+    font-family: Zen Dots
+    background-color: rgb(58, 175, 0)
+    border-radius: 20px
+    border: 1px rgb(255, 0, 0) solid
+    box-shadow: 0 0 15px rgb(255, 0, 0)
+    color: rgb(255, 255, 255)
+    padding: 10px
+
+/* MANIPULATION Page Blog + ID HTML 
+    ************************ */
+
+.card
+    text-decoration: none
+    
+.card-text
+    font-style: italic
+
+.article-ballon
+    margin-top: 120px
+
+.bordure
+    background-color: #001276
+
+.titre-neon-special 
+        font-size: 30px
+        text-align: center
+        color: white
+        text-transform: uppercase
+        letter-spacing:3px
+        text-shadow: 0 0 0 transparent, 0 0 10px #2695ff, 0 0 20px rgba(38, 149, 255, 0.6), 0 0 40px #2695ff, 0 0 100px #2695ff, 0 0 200px #2695ff, 0 0 300px #2695ff, 0 0 500px #2695ff
+        -webkit-animation: buzzer 0.01s infinite alternate
+        animation: buzzer 0.01s infinite alternate
+       
+
+        @-webkit-keyframes buzzer 
+            70% 
+                opacity: 0.70
+
+
+        @keyframes buzzer 
+            70% 
+                opacity: 0.70
+
+.encadrer
+    border: #001276 solid 15px
+
+.color-commentaire
+    font-family: Zen Dots
+    text-transform: uppercase
+    color: black
+    text-shadow: $jaune-color 1px 0 10px
+    text-decoration: underline
+
+.contact-message-2
+    width: 92%
+
+.btn-3, .btn-4
+    color: #2E87FF
+    margin-right: 20px
+
+.btn-or-3
+    font-family: Zen Dots
+    background-color: $jaune-color
+    border-radius: 20px
+    border: 2px $white-color solid
+    box-shadow: 0 6px #001276
+    padding: 15px
+    width: 200px
+
+    &:active
+        box-shadow: 0 0px #001276 
+        transform: translateY(3px)
+
+/* overflow: hidden centre la map en mode responsive (Mobile) */
+
+.btn-admin
+    font-family: Zen Dots
+    background-color: $green-color
+    color: $white-color
+    border-radius: 20px
+    border: 2px $white-color solid
+    box-shadow: 0 6px $green-color
+    padding: 15px
+    width: 200px
+
+    &:active
+        box-shadow: 0 0px 
+        transform: translateY(3px)
+
+.map
+    overflow: hidden
+
+cite
+    text-decoration: underline
+
+cite img
+    position: relative
+    right: 20px
+    border-radius: 75%
+    height: 75px
+    
+.italic
+    font-style: italic
+
+.etoile
+    font-size: 30px
+    color: $jaune-color
+    letter-spacing: 15px
+    text-shadow: black 0.1em 0.1em 0.2em
+
+
+/* MANIPULATION Page Mentions Légales 
+   ********************************** */
+
+.jaune-or-2
+    background-image: url(../images/Terrafoot1.jpg)
+    background-position: center
+    background-attachment: fixed
+
+
+.login-box-2
+    position: relative
+    top: 57px
+    padding: 80px
+    background-color: $black-color
+    box-shadow: 0 0 15px $white-color
+    border-radius: 10px
+    border: 5px $white-color solid
+    opacity: 0.8
+
+.legal-notice
+    color: $white-color
+    text-shadow: none 
+
+.padding-box
+    padding-bottom: 75px
+
+.notice
+    color: $white-color
+
+.blue
+    color: $blue-color 
+    text-decoration: underline 
+    text-align: left
+    text-transform: none
+    text-shadow: none

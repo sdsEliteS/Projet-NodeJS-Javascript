@@ -1,0 +1,176 @@
+
+
+<!-- Manipulation Liste de Commentaires CLients -->
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="bordure pt-5 pb-5">
+                    <h4 class="titre-neon-special mt-3">Liste Commentaire CLients</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group">
+
+                    {{#each ballon.comment }}
+
+                    <div href="#" class="mb-1 mt-1 list-group-item text-black bg-warning">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"> {{ this.author }} (10/05/2021)</h5>
+                            <!-- Button modal -->
+                            <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                                data-bs-target="#modalDeleteButton1">
+                                Supprimer
+                            </button>
+
+                            <!-- Modal Animation -->
+                            <div class="modal fade" id="modalDeleteButton1" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteButton1Label"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalDeleteButton1Label">
+                                                Supprimer Commentaire Licorne72</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Etes-vous sûr de vouloir supprimer ce commentaire ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-primary">Oui</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-1 d-flex justify-content-start"> {{ this.content }} </p>
+                    </div>
+
+                    {{/each }}
+
+                    {{!-- <div href="#" class="mb-1 list-group-item bordure">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 text-white">Footeux72 (08/05/2021)</h5>
+                            <!-- Button modal Footeux72 -->
+                            <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                                data-bs-target="#modalDeleteButton2">
+                                Supprimer
+                            </button>
+
+                            <!-- Modal Animation Footeux72 -->
+                            <div class="modal fade" id="modalDeleteButton2" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteButton2Label"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalDeleteButton2Label">
+                                                Supprimer Commentaire Footeux72</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Etes-vous sûr de vouloir supprimer ce commentaire ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-primary">Oui</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-1 d-flex justify-content-start text-white">Ballon top niveau, je le
+                            recommande.</p>
+                    </div>
+
+                    <div href="#" class="mb-1 list-group-item text-black bg-warning">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Poivron72 (04/05/2021)</h5>
+                            <!-- Button modal Poivron72 -->
+                            <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                                data-bs-target="#modalDeleteButton3">
+                                Supprimer
+                            </button>
+
+                            <!-- Modal Animation Poivron72-->
+                            <div class="modal fade" id="modalDeleteButton3" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteButton3Label"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalDeleteButton3Label">
+                                                Supprimer
+                                                Commentaire Poivron72</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Etes-vous sûr de vouloir supprimer ce commentaire ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-primary">Oui</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-1 d-flex justify-content-start"> Ballon top niveau, je le
+                            recommande.</p>
+                    </div>
+
+                    <div href="#" class="mb-1 list-group-item bordure">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 text-white">Poney-Club72 (01/05/2021)</h5>
+                            <!-- Button modal Poney-Club72 -->
+                            <button type="button" class="btn btn-light" data-bs-toggle="modal"
+                                data-bs-target="#modalDeleteButton4">
+                                Supprimer
+                            </button>
+
+                            <!-- Modal Animation Poney-CLub72-->
+                            <div class="modal fade" id="modalDeleteButton4" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteButton4Label"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalDeleteButton4Label">
+                                                Supprimer
+                                                Commentaire Poney-Club72</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Etes-vous sûr de vouloir supprimer ce commentaire ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Annuler</button>
+                                            <button type="button" class="btn btn-primary">Oui</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-1 d-flex justify-content-start text-white">Ballon top niveau, je le
+                            recommande.</p>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

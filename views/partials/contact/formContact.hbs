@@ -1,0 +1,76 @@
+{{!-- Partials Formulaire de Contact - Page Home --}}
+
+<!-- Manipulation Formulaire de Contact Client -->
+<section id="Contactez-nous" class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="paragraphe-formulaire">
+                <h2>Contactez-nous</h2>
+                <p class="mt-5">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                    ligula eget dolor. Aenean massa.
+                    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                    mus. Donec quam felis, ultricies nec,
+                    pellentesque eu, pretium quis,Lorem ipsum dolor sit amet, consectetuer adipiscing
+                    elit. Aenean commodo ligula eget dolor. Aenean massa.
+                    Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <!-- mt-5 = margin top = marge haut de niveau 5 opèrant des espacements sur la hauteur -->
+            <div class="phone mt-5 text-center">
+                <!-- mr-3 = margin right = marge droite de niveau 3 afin de séparer l'icon et l'écris sur la largeur -->
+                <p><i class="fas fa-phone btn-1"></i><u>Téléphone : <br /><br /></u> 06.61.53.87.21</p>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="adress mt-5 text-center">
+                <p><i class="fas fa-map-marker-alt btn-2"></i><u>Adresse : <br /><br /></u> Place de la République
+                    72000 Le Mans</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulaire de Contact pour le Client (Nom + Email) -->
+    <form class="row">
+        <div class="col-md-6">
+            <div class="contact-form input-group flex-nowrap mt-3">
+                <span class="input-group-text" id="addon-wrapping">Nom</span>
+                <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="contact-form input-group flex-nowrap mt-3">
+                <span class="input-group-text" id="addon-wrapping">@</span>
+                <input type="text" class="form-control" placeholder="Ajouter un email" aria-label="Username"
+                    aria-describedby="addon-wrapping">
+            </div>
+        </div>
+
+        <!-- Service Client -->
+        <div class="col-md-12 d-flex justify-content-center mt-3">
+            <span class="input-group-text" id="addon-wrapping">Sujet</span>
+            <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+        </div>
+
+        <!-- Message du Client -->
+        <div class="col-md-12">
+            <div class="contact-form mb-4 mt-4">
+                <label>Votre message: </label>
+                <textarea id="message" rows="9" class="contact-message"></textarea>
+            </div>
+        </div>
+
+        <!-- Envoyer Button -->
+        <div class="col-md-12">
+            <div class="contact-form text-center mb-5">
+                <button class="btn-or">Envoyer</button>
+            </div>
+        </div>
+    </form>
+</section>
