@@ -7,8 +7,8 @@ const express = require('express'),
 /*
  * Import des Controllers
  * ********************** */
-const homeController  = require('./controllers/homeController'),
-    blogController  = require('./controllers/blogController'),
+const homeController = require('./controllers/homeController'),
+    blogController = require('./controllers/blogController'),
     presentationController = require('./controllers/presentationController'),
     contactController = require('./controllers/contactController'),
     loginController = require('./controllers/loginController'),
@@ -19,11 +19,11 @@ const homeController  = require('./controllers/homeController'),
     profilController = require('./controllers/profilController'),
     infoController = require('./controllers/infoController');
 
-    
+
 /*
  * Déclaration des routes 
  ************************ */
- 
+
 // Page Home
 router.route('/')
     .get(homeController.getPageHome)
@@ -60,12 +60,16 @@ router.route('/ballon/:id')
 router.route('/admin')
     .get(adminController.getPageAdmin)
 
+//Page Formulaire Article (Admin)
+router.route('/article')
+    .post(blogController.createArticle)
+
 // Page Profil
 router.route('/profil')
     .get(profilController.getPageProfil)
 
 // Page Info
-router.route ('/info')
+router.route('/info')
     .get(infoController.getPageInfo)
 
 module.exports = router

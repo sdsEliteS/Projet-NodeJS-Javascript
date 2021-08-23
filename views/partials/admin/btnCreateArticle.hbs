@@ -19,34 +19,35 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            {{!-- Methode POST --}}
+                            <form action="/article" method="POST">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="recipient-name"
                                             class="col-form-label d-flex justify-content-start">Titre
                                             :</label>
-                                        <input type="text" class="form-control" placeholder="Titre" id="recipient-name">
+                                        <input type="text" name='titre' class="form-control" placeholder="Titre" id="recipient-name">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="message-text"
                                             class="col-form-label d-flex justify-content-start">Image
                                             :</label>
-                                        <input type="text" class="form-control" placeholder="Image" id="recipient-name">
+                                        <input type="text" name="image" class="form-control" placeholder="Image" id="recipient-name">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="recipient-name"
                                         class="col-form-label d-flex justify-content-start">Sujet :</label>
-                                    <input type="text" class="form-control" placeholder="Sujet" id="recipient-name">
+                                    <input type="text" name="subject" class="form-control" placeholder="Sujet" id="recipient-name">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="recipient-name" class="col-form-label"></label>
-                                    <textarea id="message" rows="5" placeholder="Description"
+                                    <textarea id="message" rows="5" placeholder="Description" name="description"
                                         class="contact-message"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="contact-form text-center mb-5">
-                                        <button class="btn-or mt-3">Validation</button>
+                                        <button type="submit" class="btn-or mt-3">Validation</button>
                                     </div>
                                 </div>
 
