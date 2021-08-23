@@ -4,6 +4,7 @@
 
 // Renvoi au dossier tableau article.json //
 // Renvoi au dossier tableau message.json //
+// Renvoi au dossier tableau user.json //
 const articleList = require('../article.json')
 const messageList = require('../message.json')
 const userList = require('../user.json')

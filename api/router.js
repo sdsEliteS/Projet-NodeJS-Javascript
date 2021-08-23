@@ -60,7 +60,7 @@ router.route('/ballon/:id')
 router.route('/admin')
     .get(adminController.getPageAdmin)
 
-//Page Formulaire Article (Admin)
+//Page Formulaire Article (Page Admin)
 router.route('/article')
     .post(blogController.createArticle)
 
