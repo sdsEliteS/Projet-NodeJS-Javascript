@@ -6,7 +6,7 @@
 // Renvoi au dossier tableau message.json //
 const articleList = require('../article.json')
 const messageList = require('../message.json')
-const userList = require('../message.json')
+const userList = require('../user.json')
 
 exports.getPageAdmin = (req, res) => {
 
@@ -14,7 +14,7 @@ exports.getPageAdmin = (req, res) => {
     res.render('admin', {
         articles: articleList,
         messages: messageList,
-        user: userList,
+        users: userList,
         noFooter: true
     });
 }

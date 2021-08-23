@@ -20,23 +20,27 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    {{!-- Ouverture de la methode each (boucle) avec le # (Voir le Readme) --}}
+                    {{#each users }}
+
                     <!-- Item 1 du tableau -->
                     <tr class="table-info">
-                        <th>1</th>
+                        <th>{{ this.id}}</th>
                         <td class="pt-0 pb-0 text-left align-middle">
                             <img class="rounded-circle" src="https://picsum.photos/35" alt="">
                         </td>
-                        <td>Mark</td>
+                        <td>{{ this.pseudo }}</td>
                         <td>True</td>
                         <td>
                             <div class="d-flex justify-content-evenly">
                                 <!-- Bouton Edit Open Modal Edit Validation User -->
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal-2" data-bs-whatever="@mdo">
+                                    data-bs-target="#exampleModal-2{{ this.id}}" data-bs-whatever="@mdo">
                                     <i class="fas fa-edit"></i></button>
 
                                 <!-- Ajout début du Modal Edit Validation User dans le bouton Warning -->
-                                <div class="modal fade" id="exampleModal-2" tabindex="-1"
+                                <div class="modal fade" id="exampleModal-2{{ this.id}}" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -71,7 +75,7 @@
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label"></label>
                                                         <textarea id="message" rows="5" placeholder="Description"
-                                                            class="contact-message"></textarea>
+                                                            class="contact-message">{{ this.description }}</textarea>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="contact-form text-center mb-5">
@@ -88,24 +92,23 @@
 
                                 <!-- Bouton DANGER Open Modal Delete (Suppression) User -->
                                 <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                                    data-bs-target="#modalBanishUser">
+                                    data-bs-target="#modalBanishUser{{ this.id }}">
                                     <i class="fas fa-ban"></i>
                                 </button>
                                 <!-- Ajout début du Modal Suppression du Message dans le Bouton DANGER -->
-                                <div class="modal fade" id="modalBanishUser" tabindex="-1"
+                                <div class="modal fade" id="modalBanishUser{{ this.id }}" tabindex="-1"
                                     aria-labelledby="labelModalBanishUser" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="labelModalBanishUser">
-                                                    Bannir Utilisateur Mark
+                                                    {{ this.title }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Etes-vous sûr de vouloir bannir (Bloquer) cet
-                                                utilisateur ?
+                                                {{ this.message2 }}
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -119,24 +122,23 @@
 
                                 <!-- Bouton DANGER Open Modal Delete (Suppression) User -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                    data-bs-target="#modalDeleteUser">
+                                    data-bs-target="#modalDeleteUser{{ this.id }}">
                                     <i class="far fa-times-circle"></i>
                                 </button>
                                 <!-- Ajout début du Modal Suppression du Message dans le Bouton DANGER -->
-                                <div class="modal fade" id="modalDeleteUser" tabindex="-1"
+                                <div class="modal fade" id="modalDeleteUser{{ this.id }}" tabindex="-1"
                                     aria-labelledby="labelModalDeleteUser" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="labelModalDeleteUser">
-                                                    Supprimer Utilisateur Mark
+                                                    {{ this.title }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Etes-vous sûr de vouloir supprimer cet
-                                                utilisateur ?
+                                                {{ this.message }}
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -150,6 +152,9 @@
                             </div>
                         </td>
                     </tr>
+
+                    {{/each }}
+
                 </tbody>
             </table>
         </div>

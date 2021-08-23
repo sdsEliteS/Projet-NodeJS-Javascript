@@ -1,21 +1,39 @@
 [
     {
         "id": 1,
-        "pseudo": "steven",
+        "pseudo": "Steven",
+        "title": "Utilisateur 1",
+        "message": "Etes-vous sûr de vouloir supprimer cet utilisateur ?",
+        "message2": "Etes-vous sûr de vouloir bannir (Bloquer) cet utilisateur ?",
+
+       "description": "Mon super description 1",
+          
         "isAdmin": 1,
         "isVerified": 1,
         "isBan": 0
     },
     {
         "id": 2,
-        "pseudo": "steven",
+        "pseudo": "Jules",
+        "title": "Utilisateur 2",
+        "message": "Etes-vous sûr de vouloir supprimer cet utilisateur ?",
+        "message2": "Etes-vous sûr de vouloir bannir (Bloquer) cet utilisateur ?",
+       
+        "description": "Mon super description 2",
+
         "isAdmin": 1,
         "isVerified": 1,
         "isBan": 0
     },
     {
         "id": 3,
-        "pseudo": "steven",
+        "pseudo": "Marvin",
+        "title": "Utilisateur 3",
+        "message": "Etes-vous sûr de vouloir supprimer cet utilisateur ?",
+        "message2": "Etes-vous sûr de vouloir bannir (Bloquer) cet utilisateur ?",
+     
+        "description": "Mon super description 3",
+
         "isAdmin": 1,
         "isVerified": 1,
         "isBan": 0
