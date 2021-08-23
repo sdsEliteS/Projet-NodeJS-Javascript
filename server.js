@@ -25,7 +25,7 @@ app.engine('hbs', exphbs({
 // Exemple: le chemin /assets nous donnera accès au dossier public
 app.use('/assets', express.static('public'));
 
-// permet de parser les données d'un formulaire (Creation Article et Formulaire de Contact) depuis le front vers le back au format JSON
+// permet de parser les données d'un formulaire (Creation Article Admin et Formulaire de Contact) depuis le front vers le back au format JSON
 // req.body
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
