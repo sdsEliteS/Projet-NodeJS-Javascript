@@ -8,6 +8,10 @@ https://expressjs.com/fr/starter/basic-routing.html
 
 https://stackoverflow.com/questions/4062260/nodejs-redirect-url
 
+https://www.ionos.fr/digitalguide/hebergement/aspects-techniques/requete-http/   ****
+
+https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql/913099-transmettez-des-donnees-avec-les-formulaires        ****
+
 # METHODE POST (Récupération de données en rapport avec le remplissage d'un formulaire de contact ou de création d'un article)
 https://openclassrooms.com/fr/courses/6390246-passez-au-full-stack-avec-node-js-express-et-mongodb/6466326-creez-une-route-post
 
