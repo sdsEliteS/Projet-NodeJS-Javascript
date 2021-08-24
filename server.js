@@ -1,6 +1,6 @@
 /*
  * Import de module
- * ********************** */ 
+ * **************** */ 
 
 const express = require('express');
 const exphbs  = require('express-handlebars');
@@ -8,13 +8,13 @@ const port = 3000;
 const bodyParser = require('body-parser');
 
 /*
- * Config de nos modules
- * ********************* */ 
+ * Configuration de nos modules
+ * **************************** */ 
 
 // Rendre fonctionnel express
 const app = express();
 
-// Configuration handlebars
+// Configuration handlebars 
 app.set('view engine', 'hbs');
 app.engine('hbs', exphbs({
     extname: 'hbs',
