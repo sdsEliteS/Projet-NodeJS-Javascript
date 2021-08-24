@@ -16,6 +16,6 @@ exports.getPagePresentation = (req, res) => {
 exports.formContact2 = (req, res) => {
     console.log('Controller Form Contact2', req.body)
 
-    // Permet de rediriger l'Utilisateur vers l'URL /  //
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /  //
     res.redirect('/')
 }
