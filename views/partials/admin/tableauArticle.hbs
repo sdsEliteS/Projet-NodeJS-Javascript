@@ -55,39 +55,47 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form>
+
+                                                {{!-- Methode POST qui est remplacée par la Methode PUT --}}
+                                                <form action="/article/?_method=PUT" method="POST"></form>
+                                                {{!-- Methode POST qui est remplacée par la Methode PUT --}}
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label for="recipient-name" class="col-form-label">Titre
                                                                 :</label>
-                                                            <input type="text" class="form-control" placeholder="Titre"
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                                                            <input type="text" name="titre" class="form-control" placeholder="Titre"
                                                                 id="recipient-name" value='{{ this.title }} ' />
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="message-text" class="col-form-label">Image
                                                                 :</label>
-                                                            <input type="text" class="form-control" placeholder="Image"
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                                                            <input type="text" name="image" class="form-control" placeholder="Image"
                                                                 id="recipient-name">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label">Sujet
                                                             :</label>
-                                                        <input type="text" class="form-control" placeholder="Sujet"
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                                                        <input type="text" name="sujet" class="form-control" placeholder="Sujet"
                                                             id="recipient-name">
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label"></label>
-                                                        <textarea id="message" rows="5" placeholder="Description"
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                                                        <textarea id="message" name="description" rows="5" placeholder="Description"
                                                             class="contact-message"> {{ this.description }} </textarea>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="contact-form text-center mb-5">
-                                                            <button class="btn-or mt-3">Validation</button>
+                                                             {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante "form" --}}
+                                                            <button type="submit" class="btn-or mt-3">Validation</button>
                                                         </div>
                                                     </div>
-
                                                 </form>
+
                                             </div>
                                         </div>
                                     </div>

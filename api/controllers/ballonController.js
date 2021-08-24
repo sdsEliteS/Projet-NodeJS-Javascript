@@ -23,6 +23,6 @@ exports.getPageBallonID = (req, res) => {
 exports.commentaires = (req, res) => {
     console.log('Ajout de Commentaire Ballon ID', req.body)
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /  //
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon + ballonController  //
     res.redirect('/ballon/' + req.body.refId)
 }

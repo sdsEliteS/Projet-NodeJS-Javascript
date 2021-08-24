@@ -72,6 +72,10 @@ router.route('/admin')
 router.route('/article')
     .post(blogController.createArticle)
 
+//Page Formulaire Edition Article (Page Admin Formulaire Edition d'Article)
+router.route('/article/:id')
+    .put(Controller.Article)
+
 //Page Formulaire Article (Page Home Formulaire de Contact)
 router.route('/formulaire')
     .post(homeController.formContact)

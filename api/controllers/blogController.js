@@ -26,3 +26,13 @@ exports.createArticle = (req, res) => {
     // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin (Handlebars HTML + AdminController) //
     res.redirect('/admin')
 }
+
+
+// Lors du remplissage du formulaire d'édition d'article de la Page ID //
+
+exports.commentaires = (req, res) => {
+    console.log('Edition Article Page ID', req.body)
+
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon + ballonController  //
+    res.redirect('/article/:id')
+}
