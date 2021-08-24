@@ -26,6 +26,11 @@ https://www.w3schools.com/tags/att_input_type_submit.asp#:~:text=The%20%3Cinput%
 https://openclassrooms.com/forum/sujet/cours-passez-au-full-stack-avec-node-js#94041970  ****
 
 
+# METHODE PUT 
+
+https://developer.mozilla.org/fr/docs/Web/HTTP/Methods/PUT
+
+
 
 
 
