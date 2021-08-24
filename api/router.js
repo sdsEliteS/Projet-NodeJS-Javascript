@@ -34,7 +34,7 @@ const test = require('./middleware/test')
 
 // Page Home
 router.route('/')
-    .get(test, homeController.getPageHome)
+    .get(homeController.getPageHome)
 
 //Page Blog
 router.route('/blog')
@@ -75,6 +75,10 @@ router.route('/article')
 //Page Formulaire Article (Page Home Formulaire de Contact)
 router.route('/formulaire')
     .post(homeController.formContact)
+
+//Page Formulaire Article (Page Home Formulaire de Contact)
+router.route('/formulaire2')
+    .post(presentationController.formContact2)
 
 // Page Profil
 router.route('/profil')
