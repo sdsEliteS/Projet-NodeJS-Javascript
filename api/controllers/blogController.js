@@ -23,6 +23,6 @@ exports.getPageBlog = (req, res) => {
 exports.createArticle = (req, res) => {
     console.log('Controller Create Article', req.body)
 
-    // Permet de rediriger l'Utilisateur vers l'URL /admin (Handlebars HTML + Admin Controller) //
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin (Handlebars HTML + AdminController) //
     res.redirect('/admin')
 }

@@ -80,6 +80,10 @@ router.route('/formulaire')
 router.route('/formulaire2')
     .post(presentationController.formContact2)
 
+//Page Formulaire Article (Page ID Ajout de nouveau commentaire)
+router.route('/ajouter')
+    .post(ballonController.commentaires)
+
 // Page Profil
 router.route('/profil')
     .get(profilController.getPageProfil)

@@ -13,3 +13,16 @@ exports.getPageBallonID = (req, res) => {
     // Par default intégration layout main => {{{ body }}} - (Page View)
     res.render('ballon', { ballon });
 }
+
+
+
+
+
+// Lors du remplissage du formulaire d'ajout de commentaire de la page ID //
+
+exports.commentaires = (req, res) => {
+    console.log('Ajout de Commentaire Ballon ID', req.body)
+
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /  //
+    res.redirect('/ballon/' + req.body.refId)
+}
