@@ -16,3 +16,24 @@ https://www.editions-eni.fr/open/mediabook.aspx?idR=71bf4ee27bee4b2bd5949accfe4f
 
 # Ecriture de middleware utilisable dans les applications Express
 https://expressjs.com/fr/guide/writing-middleware.html#:~:text=Pr%C3%A9sentation,par%20une%20variable%20nomm%C3%A9e%20next%20.
+
+# Type SUBMIT
+
+https://www.w3schools.com/tags/att_input_type_submit.asp#:~:text=The%20%3Cinput%20type%3D%22submit,in%20the%20form's%20action%20attribute.
+
+
+
+
+
+
+
+
+
+# PROCEDURE REQUETE HTTP #
+
+1) Créer formulaire dans la page Handlebars HTML (action,methode,submit)
+NE PAS OUBLIER LES "Name" dans les input
+
+2) Créer les routes (router,methode,controller)
+
+3) Créer le Controller

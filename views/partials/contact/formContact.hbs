@@ -36,18 +36,23 @@
     </div>
 
     <!-- Formulaire de Contact pour le Client (Nom + Email) -->
-    <form class="row">
+
+     {{!-- Methode POST --}}
+    <form action="/formulaire" method="POST" class="row">
+     {{!-- Methode POST --}}
         <div class="col-md-6">
             <div class="contact-form input-group flex-nowrap mt-3">
                 <span class="input-group-text" id="addon-wrapping">Nom</span>
-                <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                <input type="text" name="nom" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
             </div>
         </div>
 
         <div class="col-md-6">
             <div class="contact-form input-group flex-nowrap mt-3">
                 <span class="input-group-text" id="addon-wrapping">@</span>
-                <input type="text" class="form-control" placeholder="Ajouter un email" aria-label="Username"
+                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                <input type="text" name="email" class="form-control" placeholder="Ajouter un email" aria-label="Username"
                     aria-describedby="addon-wrapping">
             </div>
         </div>
@@ -55,21 +60,24 @@
         <!-- Service Client -->
         <div class="col-md-12 d-flex justify-content-center mt-3">
             <span class="input-group-text" id="addon-wrapping">Sujet</span>
-            <input type="text" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
+            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+            <input type="text" name="sujet" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
         </div>
 
         <!-- Message du Client -->
         <div class="col-md-12">
             <div class="contact-form mb-4 mt-4">
                 <label>Votre message: </label>
-                <textarea id="message" rows="9" class="contact-message"></textarea>
+                {{!-- Ne pas oublier d'écrire le "name" dans le textarea en rapport avec la methode POST --}}
+                <textarea id="message" name="message" rows="9" class="contact-message"></textarea>
             </div>
         </div>
 
         <!-- Envoyer Button -->
         <div class="col-md-12">
             <div class="contact-form text-center mb-5">
-                <button class="btn-or">Envoyer</button>
+                 {{!-- Methode POST : Ne pas oublier d'écrire le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante "form" --}}
+                <button type="submit" class="btn-or">Envoyer</button>
             </div>
         </div>
     </form>

@@ -27,27 +27,32 @@
                                         <label for="recipient-name"
                                             class="col-form-label d-flex justify-content-start">Titre
                                             :</label>
-                                        <input type="text" name='titre' class="form-control" placeholder="Titre" id="recipient-name">
+                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                                        <input type="text" name="titre" class="form-control" placeholder="Titre" id="recipient-name">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="message-text"
                                             class="col-form-label d-flex justify-content-start">Image
                                             :</label>
+                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
                                         <input type="text" name="image" class="form-control" placeholder="Image" id="recipient-name">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="recipient-name"
                                         class="col-form-label d-flex justify-content-start">Sujet :</label>
+                                    {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
                                     <input type="text" name="subject" class="form-control" placeholder="Sujet" id="recipient-name">
                                 </div>
                                 <div class="col-md-12">
                                     <label for="recipient-name" class="col-form-label"></label>
+                                    {{!-- Ne pas oublier d'écrire le "name" dans le textarea en rapport avec la methode POST --}}
                                     <textarea id="message" rows="5" placeholder="Description" name="description"
                                         class="contact-message"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="contact-form text-center mb-5">
+                                        {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante "form" --}}
                                         <button type="submit" class="btn-or mt-3">Validation</button>
                                     </div>
                                 </div>

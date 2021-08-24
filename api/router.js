@@ -19,14 +19,22 @@ const homeController = require('./controllers/homeController'),
     profilController = require('./controllers/profilController'),
     infoController = require('./controllers/infoController');
 
+/*
+ * Import des Middlewares
+ * ********************** */  
+const test = require('./middleware/test')
 
 /*
  * Déclaration des routes 
  ************************ */
+    
+// Route avec le middleware 'test'
+// router.route('/')
+    // .get(test, homeController.getPageHome)
 
 // Page Home
 router.route('/')
-    .get(homeController.getPageHome)
+    .get(test, homeController.getPageHome)
 
 //Page Blog
 router.route('/blog')
@@ -60,9 +68,13 @@ router.route('/ballon/:id')
 router.route('/admin')
     .get(adminController.getPageAdmin)
 
-//Page Formulaire Article (Page Admin)
+//Page Formulaire Article (Page Admin Formulaire de Création d'Article)
 router.route('/article')
     .post(blogController.createArticle)
+
+//Page Formulaire Article (Page Home Formulaire de Contact)
+router.route('/formulaire')
+    .post(homeController.formContact)
 
 // Page Profil
 router.route('/profil')
