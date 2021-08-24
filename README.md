@@ -4,10 +4,6 @@ https://sdselites.github.io/Projet-Nodejs-Javascript/
 
 
 # Requête HTTP (GET + POST)
-https://expressjs.com/fr/starter/basic-routing.html
-
-https://stackoverflow.com/questions/4062260/nodejs-redirect-url
-
 https://www.ionos.fr/digitalguide/hebergement/aspects-techniques/requete-http/   ****
 
 https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql/913099-transmettez-des-donnees-avec-les-formulaires        ****
@@ -24,6 +20,10 @@ https://expressjs.com/fr/guide/writing-middleware.html#:~:text=Pr%C3%A9sentation
 # Type SUBMIT
 
 https://www.w3schools.com/tags/att_input_type_submit.asp#:~:text=The%20%3Cinput%20type%3D%22submit,in%20the%20form's%20action%20attribute.
+
+# Body-parser
+
+https://openclassrooms.com/forum/sujet/cours-passez-au-full-stack-avec-node-js#94041970  ****
 
 
 
