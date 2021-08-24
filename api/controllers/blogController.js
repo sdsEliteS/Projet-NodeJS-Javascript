@@ -33,6 +33,6 @@ exports.createArticle = (req, res) => {
 exports.commentaires = (req, res) => {
     console.log('Edition Article Page ID', req.body)
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon + ballonController  //
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon HTML Handlebars + ballonController  //
     res.redirect('/article/:id')
 }

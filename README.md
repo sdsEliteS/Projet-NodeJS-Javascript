@@ -31,7 +31,7 @@ https://www.w3schools.com/tags/att_input_type_submit.asp#:~:text=The%20%3Cinput%
 
 # PROCEDURE REQUETE HTTP #
 
-1) Créer formulaire dans la page Handlebars HTML (action,methode,submit)
+1) Créer formulaire dans la page Handlebars HTML (action,method,submit)
 NE PAS OUBLIER LES "Name" dans les input
 
 2) Créer les routes (router,methode,controller)

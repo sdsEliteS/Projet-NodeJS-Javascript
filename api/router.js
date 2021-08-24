@@ -74,7 +74,7 @@ router.route('/article')
 
 //Page Formulaire Edition Article (Page Admin Formulaire Edition d'Article)
 router.route('/article/:id')
-    .put(Controller.Article)
+    .put(blogController.Article)
 
 //Page Formulaire Article (Page Home Formulaire de Contact)
 router.route('/formulaire')

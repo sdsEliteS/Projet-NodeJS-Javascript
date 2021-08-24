@@ -16,6 +16,6 @@ exports.getPageHome = (req, res) => {
 exports.formContact = (req, res) => {
     console.log('Controller Form Contact', req.body)
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /  //
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) //
     res.redirect('/')
 }
