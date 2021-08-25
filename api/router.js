@@ -84,7 +84,7 @@ router.route('/editer/:id')
 
 // Page Formulaire Message d'Utilisateur (Page Admin Formulaire Message (tableauMessage))
 router.route('/message/:id')
-.delete(adminController.deleteMessage)
+    .delete(adminController.deleteMessage)
 
 //Page Formulaire Article (Page Home Formulaire de Contact)
 router.route('/form-messagehome')
@@ -105,5 +105,11 @@ router.route('/profil')
 // Page Info
 router.route('/info')
     .get(infoController.getPageInfo)
+
+// Page Connexion Login
+
+router.route('/connexion')
+    .post(profilController.connexionProfil)
+
 
 module.exports = router

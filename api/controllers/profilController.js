@@ -9,3 +9,14 @@ exports.getPageProfil = (req, res) => {
         noFooter: true
     });
 }
+
+
+
+// Lors du remplissage du formulaire de connexion de la page login //
+
+exports.connexionProfil = (req, res) => {
+    console.log('Connexion Login Steven', req.body)
+
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) //
+    res.redirect('/')
+}

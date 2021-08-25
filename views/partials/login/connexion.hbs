@@ -4,21 +4,29 @@
 <div class="jaune-or">
     <div class="login-box text-center">
         <h3>Login</h3>
-        <form>
+        {{!-- Methode POST --}}
+        <form action="/connexion" method="POST">
+            {{!-- Methode POST --}}
             <div class="user-box">
-                <input type="text" id="pseudo">
+                <input type="text" name="pseudo" id="pseudo">
                 <label for="pseudo">Pseudo</label>
             </div>
             <div class="user-box">
-                <input type="email" id="email">
+                <input type="email" name="email" id="email">
                 <label for="email">Email</label>
             </div>
+
             <div class="user-box">
-                <input type="mot de passe" id="mot de passe">
-                <label for="mot de passe">Mot de Passe</label>
+                <input type="password" name="mot_de_passe" id="motdepasse" />
+                <button type="button" id='btnViewPassword'><i class="fas fa-eye"></i></button>
+                <label for="motdepasse">Mot de Passe</label>
+            </div>
+        
+            <div class="user-box">
                 <a href="#modalLostPassword" data-bs-toggle="modal" role="button">mot de passe oublié</a>
             </div>
-            <button class="neon">
+
+            <button type="submit" class="neon">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -56,3 +64,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    const inputPassword = document.getElementById('motdepasse')
+    const btnViewPassword = document.getElementById('btnViewPassword')
+
+    btnViewPassword.addEventListener('click', () => {
+        console.log('Mon Button', inputPassword.getAttribute('type'))
+        if (inputPassword.getAttribute('type') === 'password') inputPassword.setAttribute('type', 'text')
+        else inputPassword.setAttribute('type', 'password')
+    })
+</script>
