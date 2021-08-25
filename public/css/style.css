@@ -11183,10 +11183,10 @@ cite img {
 .login-box {
   position: relative;
   bottom: 110px;
-  top: -97px;
+  top: -60px;
   padding: 80px;
   width: 747px;
-  height: 597px;
+  height: 730px;
   background-color: black;
   box-shadow: 0 0 15px white;
   border-radius: 10px;
@@ -11195,7 +11195,7 @@ cite img {
 
 .register-box {
   position: relative;
-  top: 28px;
+  top: -2px;
   height: 847px;
 }
 
@@ -11354,6 +11354,10 @@ cite img {
     bottom: 100%;
   }
 }
+#btnViewPassword {
+  margin-top: 60px;
+}
+
 /* MANIPULATION Page Profil
  *  *********************** */
 .connect {
