@@ -40,3 +40,13 @@ exports.deleteUser = (req, res) => {
     // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
     res.redirect('/admin')
 }
+
+
+// Lors du remplissage du formulaire des messages d'utilisateur de la Page Admin //
+
+exports.deleteMessage = (req, res) => {
+    console.log('Suppression Message Utilisateur', req.body, req.params)
+
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
+    res.redirect('/admin')
+}

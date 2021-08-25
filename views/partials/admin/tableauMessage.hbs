@@ -51,8 +51,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                    <p> {{ this.message }} 
-                                                        {{ this.email }} </p>
+                                                <p> {{ this.message }}<br> {{ this.email }} </p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -61,7 +60,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- / Fin du Modal Suppression du Message -->
+                                <!-- / Fin du Modal Vision du Message -->
 
                                 <!-- Bouton DANGER open modal delete message -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -85,9 +84,15 @@
                                                 message ?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Annuler</button>
-                                                <button type="button" class="btn btn-primary">Oui</button>
+                                                {{!-- Methode DELETE : Ne pas oublier le type SUBMIT qui est un
+                                                bouton d'envoi qui soumet toutes les valeurs du formulaire
+                                                lors de l'envoi à un gestionnaire de formulaire (Server)
+                                                validant la balise ouvrante fermante "form" --}}
+                                                <form action="/message/{{ this.id }}?_method=DELETE" method="POST">
+                                                    <button class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Annuler</button>
+                                                    <button type="submit" class="btn btn-primary">Oui</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

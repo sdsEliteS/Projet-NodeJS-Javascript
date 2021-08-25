@@ -106,12 +106,12 @@
                                 </div>
                                 <!-- Fin du Modal Edit User -->
 
-                                <!-- Bouton DANGER Open Modal Delete (Suppression) User -->
+                                <!-- Bouton DANGER Open Modal Delete (Bannir) User -->
                                 <button type="button" class="btn btn-dark" data-bs-toggle="modal"
                                     data-bs-target="#modalBanishUser{{ this.id }}">
                                     <i class="fas fa-ban"></i>
                                 </button>
-                                <!-- Ajout début du Modal Suppression du Message dans le Bouton DANGER -->
+                                <!-- Ajout début du Modal Bannir du Message dans le Bouton BANNIR -->
                                 <div class="modal fade" id="modalBanishUser{{ this.id }}" tabindex="-1"
                                     aria-labelledby="labelModalBanishUser" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -134,7 +134,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- / Fin du Modal Suppression User -->
+                                <!-- / Fin du Modal Bannir User -->
 
                                 <!-- Bouton DANGER Open Modal Delete (Suppression) User -->
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
@@ -157,7 +157,7 @@
                                                 {{ this.message }}
                                             </div>
                                             <div class="modal-footer">
-                                                {{!-- Methode PUT : Ne pas oublier le type SUBMIT qui est un
+                                                {{!-- Methode DELETE : Ne pas oublier le type SUBMIT qui est un
                                                 bouton d'envoi qui soumet toutes les valeurs du formulaire
                                                 lors de l'envoi à un gestionnaire de formulaire (Server)
                                                 validant la balise ouvrante fermante "form" --}}
