@@ -6,6 +6,7 @@ const express = require('express');
 const exphbs  = require('express-handlebars');
 const port = 3000;
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 /*
  * Configuration de nos modules

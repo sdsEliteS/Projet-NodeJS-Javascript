@@ -74,19 +74,19 @@ router.route('/article')
 
 //Page Formulaire Edition Article (Page Admin Formulaire Edition d'Article)
 router.route('/article/:id')
-    .put(blogController.Article)
+    .put(blogController.editArticle)
 
 //Page Formulaire Article (Page Home Formulaire de Contact)
-router.route('/formulaire')
+router.route('/form-messagehome')
     .post(homeController.formContact)
 
 //Page Formulaire Article (Page Home Formulaire de Contact Page Présentation)
-router.route('/formulaire2')
+router.route('/form-messagepresentation')
     .post(presentationController.formContact2)
 
 //Page Formulaire Article (Page ID Ajout de nouveau commentaire)
-router.route('/ajouter')
-    .post(ballonController.commentaires)
+router.route('/addcomment')
+    .post(ballonController.addComment)
 
 // Page Profil
 router.route('/profil')

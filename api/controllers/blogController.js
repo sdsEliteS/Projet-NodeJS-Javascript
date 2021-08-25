@@ -30,9 +30,9 @@ exports.createArticle = (req, res) => {
 
 // Lors du remplissage du formulaire d'édition d'article de la Page ID //
 
-exports.commentaires = (req, res) => {
+exports.editArticle = (req, res) => {
     console.log('Edition Article Page ID', req.body)
 
     // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon HTML Handlebars + ballonController  //
-    res.redirect('/article/:id')
+    res.redirect('/admin')
 }

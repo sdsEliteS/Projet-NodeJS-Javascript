@@ -20,7 +20,7 @@ exports.getPageBallonID = (req, res) => {
 
 // Lors du remplissage du formulaire d'ajout de commentaire de la page ID //
 
-exports.commentaires = (req, res) => {
+exports.addComment = (req, res) => {
     console.log('Ajout de Commentaire Ballon ID', req.body)
 
     // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon HTML Handlebars + ballonController  //
