@@ -31,6 +31,14 @@ https://openclassrooms.com/forum/sujet/cours-passez-au-full-stack-avec-node-js#9
 https://developer.mozilla.org/fr/docs/Web/HTTP/Methods/PUT
 
 
+# METHODE OVERRIDE
+https://www.npmjs.com/package/method-override
+
+
+
+
+
+
 
 
 

@@ -147,3 +147,13 @@ LIEN INTERNET
 Photo Slider Json Javascript :
 
 https://jsfiddle.net/apougher/4hGP9/
+
+
+CHECKBOX
+
+https://www.w3schools.com/tags/att_input_type_checkbox.asp
+
+
+THEME BOOTSTRAP
+
+https://startbootstrap.com/themes
