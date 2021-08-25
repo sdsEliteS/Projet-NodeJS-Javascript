@@ -28,11 +28,21 @@ exports.createArticle = (req, res) => {
 }
 
 
-// Lors du remplissage du formulaire d'édition d'article de la Page ID //
+// Lors du remplissage du formulaire d'édition d'article de la Page admin + blog //
 
 exports.editArticle = (req, res) => {
     console.log('Edition Article Page ID', req.body)
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon HTML Handlebars + ballonController  //
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
+    res.redirect('/admin')
+}
+
+
+// Lors du remplissage du formulaire de Suppression d'article de la Page admin + blog //
+
+exports.deleteArticle = (req, res) => {
+    console.log('Suppression Article Page ID', req.body, req.params)
+
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
     res.redirect('/admin')
 }

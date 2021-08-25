@@ -53,40 +53,49 @@
                                             <div class="modal-body">
                                                 {{!-- Methode PUT pour Editer Utilisateur --}}
                                                 <form action="/editer/{{ this.id }}?_method=PUT" method="POST">
-                                                {{!-- Methode PUT pour Editer Utilisateur --}}
+                                                    {{!-- Methode PUT pour Editer Utilisateur --}}
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label for="recipient-name" class="col-form-label">Pseudo
                                                                 :</label>
-                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
-                                                            <input type="text" name="pseudo" class="form-control" placeholder="Titre"
-                                                                id="recipient-name">
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                            rapport avec la methode PUT --}}
+                                                            <input type="text" name="pseudo" class="form-control"
+                                                                placeholder="Titre" id="recipient-name">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="message-text" class="col-form-label">Email
                                                                 :</label>
-                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
-                                                            <input type="text" name="email" class="form-control" placeholder="Email"
-                                                                id="recipient-name">
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                            rapport avec la methode PUT --}}
+                                                            <input type="text" name="email" class="form-control"
+                                                                placeholder="Email" id="recipient-name">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label">Avatar
                                                             :</label>
-                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
-                                                        <input type="text" name="avatar" class="form-control" placeholder="Avatar"
-                                                            id="recipient-name">
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                        rapport avec la methode PUT --}}
+                                                        <input type="text" name="avatar" class="form-control"
+                                                            placeholder="Avatar" id="recipient-name">
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label"></label>
-                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
-                                                        <textarea id="message" name="description" rows="5" placeholder="Description"
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                        rapport avec la methode PUT --}}
+                                                        <textarea id="message" name="description" rows="5"
+                                                            placeholder="Description"
                                                             class="contact-message">{{ this.description }}</textarea>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="contact-form text-center mb-5">
-                                                            {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante "form" --}}
-                                                            <button type="submit" class="btn-or mt-3">Validation</button>
+                                                            {{!-- Methode PUT : Ne pas oublier le type SUBMIT qui est un
+                                                            bouton d'envoi qui soumet toutes les valeurs du formulaire
+                                                            lors de l'envoi à un gestionnaire de formulaire (Server)
+                                                            validant la balise ouvrante fermante "form" --}}
+                                                            <button type="submit"
+                                                                class="btn-or mt-3">Validation</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -118,7 +127,7 @@
                                                 {{ this.message2 }}
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
+                                                <button class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Annuler</button>
                                                 <button type="button" class="btn btn-primary">Oui</button>
                                             </div>
@@ -148,9 +157,15 @@
                                                 {{ this.message }}
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Annuler</button>
-                                                <button type="button" class="btn btn-primary">Oui</button>
+                                                {{!-- Methode PUT : Ne pas oublier le type SUBMIT qui est un
+                                                bouton d'envoi qui soumet toutes les valeurs du formulaire
+                                                lors de l'envoi à un gestionnaire de formulaire (Server)
+                                                validant la balise ouvrante fermante "form" --}}
+                                                <form action="/editer/{{ this.id }}?_method=DELETE" method="POST">
+                                                    <button class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Annuler</button>
+                                                    <button type="submit" class="btn btn-primary">Oui</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

@@ -72,13 +72,15 @@ router.route('/admin')
 router.route('/article')
     .post(blogController.createArticle)
 
-//Page Formulaire Edition Article (Page Admin Formulaire Edition d'Article (tableauArticle))
+//Page Formulaire Edition Article (Page Admin Formulaire Edition ET Suppression d'Article (tableauArticle))
 router.route('/article/:id')
     .put(blogController.editArticle)
+    .delete(blogController.deleteArticle)
 
-// Page Formulaire Edition Utilisateur (Page Admin Formulaire Edition (tableauUser))
+// Page Formulaire Edition Utilisateur (Page Admin Formulaire Edition ET Suppression d'Utilisateur (tableauUser))
 router.route('/editer/:id')
     .put(adminController.editUser)
+    .delete(adminController.deleteUser)
 
 //Page Formulaire Article (Page Home Formulaire de Contact)
 router.route('/form-messagehome')

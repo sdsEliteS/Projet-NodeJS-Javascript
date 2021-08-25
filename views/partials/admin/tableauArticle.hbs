@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     {{!-- Ouverture de la methode each (boucle) avec le # (Voir le Readme) --}}
                     {{#each articles }}
 
@@ -58,40 +58,50 @@
 
                                                 {{!-- Methode PUT pour l'Edition d'Article --}}
                                                 <form action="/article/{{ this.id }}?_method=PUT" method="POST">
-                                                {{!-- Methode PUT pour l'Edition d'Article --}}
+                                                    {{!-- Methode PUT pour l'Edition d'Article --}}
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label for="recipient-name" class="col-form-label">Titre
                                                                 :</label>
-                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
-                                                            <input type="text" name="titre" class="form-control" placeholder="Titre"
-                                                                id="recipient-name" value='{{ this.title }}' />
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                            rapport avec la methode PUT --}}
+                                                            <input type="text" name="titre" class="form-control"
+                                                                placeholder="Titre" id="recipient-name"
+                                                                value='{{ this.title }}' />
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="message-text" class="col-form-label">Image
                                                                 :</label>
-                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
-                                                            <input type="text" name="image" class="form-control" placeholder="Image"
-                                                                id="recipient-name">
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                            rapport avec la methode PUT --}}
+                                                            <input type="text" name="image" class="form-control"
+                                                                placeholder="Image" id="recipient-name">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label">Sujet
                                                             :</label>
-                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
-                                                        <input type="text" name="sujet" class="form-control" placeholder="Sujet"
-                                                            id="recipient-name">
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                        rapport avec la methode PUT --}}
+                                                        <input type="text" name="sujet" class="form-control"
+                                                            placeholder="Sujet" id="recipient-name">
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label"></label>
-                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
-                                                        <textarea id="message" name="description" rows="5" placeholder="Description"
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                        rapport avec la methode PUT --}}
+                                                        <textarea id="message" name="description" rows="5"
+                                                            placeholder="Description"
                                                             class="contact-message"> {{ this.description }} </textarea>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="contact-form text-center mb-5">
-                                                             {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante "form" --}}
-                                                            <button type="submit" class="btn-or mt-3">Validation</button>
+                                                            {{!-- Methode PUT : Ne pas oublier le type SUBMIT qui est un
+                                                            bouton d'envoi qui soumet toutes les valeurs du formulaire
+                                                            lors de l'envoi à un gestionnaire de formulaire (Server)
+                                                            validant la balise ouvrante fermante "form" --}}
+                                                            <button type="submit"
+                                                                class="btn-or mt-3">Validation</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -108,28 +118,33 @@
                                     <i class="far fa-times-circle"></i>
                                 </button>
                                 <!-- Ajout Début du Modal Suppression de l'Article dans le Bouton DANGER -->
-                                <div class="modal fade" id="modalDeleteArticle{{ this.id }}" tabindex="-1"
-                                    aria-labelledby="labelModalDeleteArticle" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="labelModalDeleteArticle">
-                                                    Supprimer Article: {{ this.title }}
-                                                </h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Etes-vous sûr de vouloir supprimer cet article ? 
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Annuler</button>
-                                                <button type="button" class="btn btn-primary">Oui</button>
+                                    <div class="modal fade" id="modalDeleteArticle{{ this.id }}" tabindex="-1"
+                                        aria-labelledby="labelModalDeleteArticle" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="labelModalDeleteArticle">
+                                                        Supprimer Article: {{ this.title }}
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Etes-vous sûr de vouloir supprimer cet article ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    {{!-- Methode DELETE : Ne pas oublier le type SUBMIT qui est un
+                                                    bouton d'envoi qui soumet toutes les valeurs du formulaire lors de
+                                                    l'envoi à un gestionnaire de formulaire (Server) validant la balise
+                                                    ouvrante fermante "form" --}}
+                                                    <form action="/article/{{ this.id }}?_method=DELETE" method="POST">
+                                                        <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                        <button type="submit" class="btn btn-primary">Oui</button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <!-- / Fin du Modal Suppression de l'Article -->
                             </div>
                         </td>
