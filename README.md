@@ -44,9 +44,13 @@ https://www.npmjs.com/package/method-override
 
 
 
-
+1ER PARTIE DE LA MANIPULATION BACK END
 
 # PROCEDURE REQUETE HTTP #
+
+A)
+
+--> CONFIGURER le module "BodyParser" dans le SERVER.JS puis enusuite faire la manipulation suivante (POST et PUT) : 
 
 1) Créer formulaire dans la page Handlebars HTML (action,method,submit)
 NE PAS OUBLIER LES "Name" dans les input
@@ -54,3 +58,24 @@ NE PAS OUBLIER LES "Name" dans les input
 2) Créer les routes (router,methode,controller)
 
 3) Créer le Controller
+
+--------------------------------------------------------------------------------------------
+
+B)
+
+-->  Installer module Method Override :
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+-->  Configurer notre module "_method" :
+
+app.use(methodOverride('_method'));
+
+-->  Configuration du formulaire HTML avec la Methode Override en rapport avec l'Action (Mentionnant l'URL) + Method (POST, PUT, DELETE)
+
+-->  Création de la route dans le ROUTER.JS (Attention mentionner /:id dans la route pour la method PUT)
+
+--> Et pour finir Création du Controller et loger le params URL
