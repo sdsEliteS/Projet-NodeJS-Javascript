@@ -19,3 +19,14 @@ exports.getPageAdmin = (req, res) => {
         noFooter: true
     });
 }
+
+
+
+// Lors du remplissage du formulaire d'édition d'utilisateur de la Page Admin //
+
+exports.editUser = (req, res) => {
+    console.log('Edition Utilisateur', req.body)
+
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon HTML Handlebars + ballonController  //
+    res.redirect('/admin')
+}

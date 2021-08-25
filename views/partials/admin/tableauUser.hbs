@@ -51,39 +51,46 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form>
+                                                {{!-- Methode PUT pour Editer Utilisateur --}}
+                                                <form action="/editer/{{ this.id }}?_method=PUT" method="POST">
+                                                {{!-- Methode PUT pour Editer Utilisateur --}}
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label for="recipient-name" class="col-form-label">Pseudo
                                                                 :</label>
-                                                            <input type="text" class="form-control" placeholder="Titre"
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
+                                                            <input type="text" name="pseudo" class="form-control" placeholder="Titre"
                                                                 id="recipient-name">
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="message-text" class="col-form-label">Email
                                                                 :</label>
-                                                            <input type="text" class="form-control" placeholder="Email"
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
+                                                            <input type="text" name="email" class="form-control" placeholder="Email"
                                                                 id="recipient-name">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label">Avatar
                                                             :</label>
-                                                        <input type="text" class="form-control" placeholder="Avatar"
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
+                                                        <input type="text" name="avatar" class="form-control" placeholder="Avatar"
                                                             id="recipient-name">
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label"></label>
-                                                        <textarea id="message" rows="5" placeholder="Description"
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
+                                                        <textarea id="message" name="description" rows="5" placeholder="Description"
                                                             class="contact-message">{{ this.description }}</textarea>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="contact-form text-center mb-5">
-                                                            <button class="btn-or mt-3">Validation</button>
+                                                            {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante "form" --}}
+                                                            <button type="submit" class="btn-or mt-3">Validation</button>
                                                         </div>
                                                     </div>
-
                                                 </form>
+
                                             </div>
                                         </div>
                                     </div>

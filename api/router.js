@@ -68,13 +68,17 @@ router.route('/ballon/:id')
 router.route('/admin')
     .get(adminController.getPageAdmin)
 
-//Page Formulaire Article (Page Admin Formulaire de Création d'Article)
+//Page Formulaire Article (Page Admin Formulaire de Création d'Article (btnCreateArticle))
 router.route('/article')
     .post(blogController.createArticle)
 
-//Page Formulaire Edition Article (Page Admin Formulaire Edition d'Article)
+//Page Formulaire Edition Article (Page Admin Formulaire Edition d'Article (tableauArticle))
 router.route('/article/:id')
     .put(blogController.editArticle)
+
+// Page Formulaire Edition Utilisateur (Page Admin Formulaire Edition (tableauUser))
+router.route('/editer/:id')
+    .put(adminController.editUser)
 
 //Page Formulaire Article (Page Home Formulaire de Contact)
 router.route('/form-messagehome')

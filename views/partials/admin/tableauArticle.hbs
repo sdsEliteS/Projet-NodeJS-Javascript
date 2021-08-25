@@ -56,21 +56,21 @@
                                             </div>
                                             <div class="modal-body">
 
-                                                {{!-- Methode POST qui est remplacée par la Methode PUT --}}
+                                                {{!-- Methode PUT pour l'Edition d'Article --}}
                                                 <form action="/article/{{ this.id }}?_method=PUT" method="POST">
-                                                {{!-- Methode POST qui est remplacée par la Methode PUT --}}
+                                                {{!-- Methode PUT pour l'Edition d'Article --}}
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <label for="recipient-name" class="col-form-label">Titre
                                                                 :</label>
-                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
                                                             <input type="text" name="titre" class="form-control" placeholder="Titre"
                                                                 id="recipient-name" value='{{ this.title }}' />
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="message-text" class="col-form-label">Image
                                                                 :</label>
-                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
                                                             <input type="text" name="image" class="form-control" placeholder="Image"
                                                                 id="recipient-name">
                                                         </div>
@@ -78,13 +78,13 @@
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label">Sujet
                                                             :</label>
-                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
                                                         <input type="text" name="sujet" class="form-control" placeholder="Sujet"
                                                             id="recipient-name">
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label"></label>
-                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
                                                         <textarea id="message" name="description" rows="5" placeholder="Description"
                                                             class="contact-message"> {{ this.description }} </textarea>
                                                     </div>
