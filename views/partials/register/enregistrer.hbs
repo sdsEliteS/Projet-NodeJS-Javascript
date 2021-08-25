@@ -5,32 +5,43 @@
 <div class="jaune-or">
     <div class="login-box register-box text-center">
         <h3>Register</h3>
-        <form>
+
+        {{!-- Methode POST --}}
+        <form action="/registerprofil" method="POST">
+        {{!-- Methode POST --}}
             <div class="user-box">
-                <input type="text" id="pseudo">
+                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                <input type="text" name="pseudo" id="pseudo">
                 <label for="pseudo">Pseudo</label>
             </div>
             <div class="user-box">
-                <input type="adresse" id="adresse">
+                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                <input type="adresse" name="adresse" id="adresse">
                 <label for="adresse">Adresse</label>
             </div>
             <div class="user-box">
-                <input type="date de naissance" id="date de naissance">
+                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                <input type="date de naissance" name="date_de_naissance" id="date de naissance">
                 <label for="date de naissance">Date de Naissance</label>
             </div>
             <div class="user-box">
-                <input type="telephone" id="telephone">
+                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                <input type="telephone" name="telephone" id="telephone">
                 <label for="telephone">Telephone</label>
             </div>
             <div class="user-box">
-                <input type="email" id="email">
+                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                <input type="email" name="email" id="email">
                 <label for="email">Email</label>
             </div>
             <div class="user-box">
-                <input type="mot de passe" id="mot de passe">
+                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                <input type="mot de passe" name="mot_de_passe" id="mot de passe">
                 <label for="mot de passe">Mot de Passe</label>
             </div>
-            <button class="neon">
+            
+            {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante "form" --}}
+            <button type="submit" class="neon">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -38,5 +49,6 @@
                 inscription
             </button>
         </form>
+
     </div>
 </div>

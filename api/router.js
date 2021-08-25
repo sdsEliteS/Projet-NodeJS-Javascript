@@ -106,10 +106,15 @@ router.route('/profil')
 router.route('/info')
     .get(infoController.getPageInfo)
 
-// Page Connexion Login
+// Page Connexion Compte Login
 
 router.route('/connexion')
     .post(profilController.connexionProfil)
+
+// Page Connexion Register Enregistrement Profil
+
+router.route('/registerprofil')
+    .post(registerController.registerProfil)
 
 
 module.exports = router
