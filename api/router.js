@@ -107,7 +107,6 @@ router.route('/info')
     .get(infoController.getPageInfo)
 
 // Page Connexion Compte Login
-
 router.route('/connexion')
     .post(profilController.connexionProfil)
 

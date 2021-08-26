@@ -4,7 +4,10 @@ https://sdselites.github.io/Projet-Nodejs-Javascript/
 
 
 # Requête HTTP (GET + POST)
+
 https://www.ionos.fr/digitalguide/hebergement/aspects-techniques/requete-http/   ****
+
+https://www.ionos.fr/digitalguide/sites-internet/developpement-web/get-vs-post/  ****
 
 https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql/913099-transmettez-des-donnees-avec-les-formulaires        ****
 
@@ -33,6 +36,15 @@ https://developer.mozilla.org/fr/docs/Web/HTTP/Methods/PUT
 
 # METHODE OVERRIDE
 https://www.npmjs.com/package/method-override
+
+
+# req.body :
+
+https://stackoverflow.com/questions/14008346/express-js-req-body
+
+# req.params :
+
+https://sailsjs.com/documentation/reference/request-req/req-params
 
 
 
