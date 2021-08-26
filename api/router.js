@@ -111,6 +111,10 @@ router.route('/info')
 router.route('/connexion')
     .post(profilController.connexionProfil)
 
+// Page Connexion Login Mot de Passe Oublié
+router.route('/forget')
+    .post(loginController.forgetProfil)
+
 // Page Connexion Register Enregistrement Profil
 
 router.route('/registerprofil')

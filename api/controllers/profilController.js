@@ -17,6 +17,6 @@ exports.getPageProfil = (req, res) => {
 exports.connexionProfil = (req, res) => {
     console.log('Connexion Login Steven', req.body)
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) //
-    res.redirect('/')
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL de la page Handlebars HTML /profil //
+    res.redirect('/profil')
 }

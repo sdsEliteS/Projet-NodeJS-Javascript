@@ -11,3 +11,14 @@ exports.getPageLogin = (req, res) => {
         noFooter: true
     });
 }
+
+
+
+// Lors du remplissage du formulaire Mot de Passe Oublié de la Page profil //
+
+exports.forgetProfil = (req, res) => {
+    console.log('Mot de Passe Oublié', req.body, req.params)
+
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /profil HTML Handlebars //
+    res.redirect('/profil')
+}
