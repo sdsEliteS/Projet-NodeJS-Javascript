@@ -22,3 +22,5 @@ exports.forgetProfil = (req, res) => {
     // Permet de rediriger (redirect) l'Utilisateur vers l'URL /profil HTML Handlebars //
     res.redirect('/profil')
 }
+
+/////
