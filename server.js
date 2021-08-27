@@ -12,7 +12,7 @@ const methodOverride = require('method-override');
  * Configuration de nos modules
  * **************************** */ 
 
-// Rendre fonctionnel express
+// Rendre fonctionnel express (Concerne toute les méthodes GET,POST,PUT,DELETE)
 const app = express();
 
 // Configuration handlebars 
