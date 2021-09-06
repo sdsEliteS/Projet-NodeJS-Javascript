@@ -4,7 +4,6 @@
         "pseudo": "Steven",
         "title": "Utilisateur 1",
         "message": "Etes-vous sûr de vouloir supprimer cet utilisateur ?",
-        "message2": "Etes-vous sûr de vouloir bannir (Bloquer) cet utilisateur ?",
 
        "description": "Mon super description 1",
           
@@ -17,7 +16,6 @@
         "pseudo": "Jules",
         "title": "Utilisateur 2",
         "message": "Etes-vous sûr de vouloir supprimer cet utilisateur ?",
-        "message2": "Etes-vous sûr de vouloir bannir (Bloquer) cet utilisateur ?",
        
         "description": "Mon super description 2",
 
@@ -30,7 +28,6 @@
         "pseudo": "Marvin",
         "title": "Utilisateur 3",
         "message": "Etes-vous sûr de vouloir supprimer cet utilisateur ?",
-        "message2": "Etes-vous sûr de vouloir bannir (Bloquer) cet utilisateur ?",
      
         "description": "Mon super description 3",
 
