@@ -17,8 +17,22 @@ exports.getPageBlog = (req, res) => {
 exports.createArticle = (req, res) => {
     console.log('Controller Create Article', req.body)
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin (Handlebars HTML + AdminController) //
-    res.redirect('/admin')
+    let sql = `insert into Article (titre, description, subtitle, recommandation, date, categorie, image, author_id) values (?)`;
+    let values = [
+        req.body.titre,
+        req.body.description,
+        req.body.subtitle,
+        req.body.recommandation,
+        req.body.date,
+        req.body.categorie,
+        req.body.image,
+        req.body.author_id
+    ];
+    db.query(sql, [values], function (err, data, fields) {
+        if (err) throw err;
+        // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin (Handlebars HTML + AdminController) //
+        res.redirect('/admin')
+    })
 }
 
 

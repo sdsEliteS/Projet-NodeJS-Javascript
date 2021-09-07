@@ -7,6 +7,7 @@ const exphbs  = require('express-handlebars');
 const port = 3000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const mysql = require ('mysql');
 
 /*
  * Configuration de nos modules
@@ -39,6 +40,19 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride('_method'));
 
 
+// MySQL (Nom de la base de données = mydb)
+
+db = mysql.createConnection({
+    host: 'localhost',
+    user: 'steven',
+    password: 'LionelMessi30*',
+    database: 'mydb'
+});
+
+db.connect(function(err) {
+    if (err) console.error('error connecting: ' + err.stack);
+    console.log('connected as id ' + db.threadId);
+});
 
 
 /*

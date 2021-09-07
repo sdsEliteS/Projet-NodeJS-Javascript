@@ -25,3 +25,23 @@ File --> Export --> (Menu Contextuel) Foreward Engineer SQL CREATE Script --> cl
 
 
 **** Pour simplement sauvegarder un projet My SQL Workbench existant faire File --> Save Model ****
+
+
+# Installation de "npm install mysql" à chaque début de projet :
+
+https://roytuts.com/nodejs-express-mysql-rest-api-crud-example/
+
+
+
+
+
+
+
+
+
+
+
+
+# Lien PHOTO pour générer une adresse :
+
+https://www.zupimages.net/index.php?goto-form

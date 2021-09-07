@@ -11,13 +11,19 @@ const userList = require('../user.json')
 
 exports.getPageAdmin = (req, res) => {
 
-    // Par default intégration layout main => {{{ body }}} - (Page View)
-    res.render('admin', {
-        articles: articleList,
-        messages: messageList,
-        users: userList,
-        noFooter: true
-    });
+    const sql = 'select * from User'
+    db.query(sql, (err, data) => {
+        if (err) throw err
+
+        // Par default intégration layout main => {{{ body }}} - (Page View)
+        res.render('admin', {
+            articles: articleList,
+            messages: messageList,
+            users: data,
+            noFooter: true
+        });
+
+    })
 }
 
 

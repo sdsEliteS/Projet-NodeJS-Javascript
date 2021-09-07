@@ -16,8 +16,6 @@ exports.getPageBallonID = (req, res) => {
 
 
 
-
-
 // Lors du remplissage du formulaire d'ajout de commentaire de la page ID //
 
 exports.addComment = (req, res) => {
