@@ -25,7 +25,7 @@ exports.registerProfil = (req, res) => {
         req.body.telephone,
         req.body.date_de_naissance
     ];
-    db.query(sql, [values], function (err, data, fields) {
+    query(sql, [values], function (err, data, fields) {
         if (err) throw err;
         // Permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) //
         res.redirect('/')

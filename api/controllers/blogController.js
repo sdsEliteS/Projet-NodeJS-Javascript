@@ -17,9 +17,9 @@ exports.getPageBlog = (req, res) => {
 exports.createArticle = (req, res) => {
     console.log('Controller Create Article', req.body)
 
-    let sql = `insert into Article (titre, description, subtitle, recommandation, date, categorie, image, author_id) values (?)`;
+    let sql = `insert into Article (title, description, subtitle, recommandation, date, categorie, image, author_id) values (?)`;
     let values = [
-        req.body.titre,
+        req.body.title,
         req.body.description,
         req.body.subtitle,
         req.body.recommandation,
@@ -28,7 +28,7 @@ exports.createArticle = (req, res) => {
         req.body.image,
         req.body.author_id
     ];
-    db.query(sql, [values], function (err, data, fields) {
+    query(sql, [values], function (err, data, fields) {
         if (err) throw err;
         // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin (Handlebars HTML + AdminController) //
         res.redirect('/admin')

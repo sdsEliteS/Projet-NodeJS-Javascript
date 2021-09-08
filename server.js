@@ -8,6 +8,7 @@ const port = 3000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const mysql = require ('mysql');
+const util = require('util')
 
 /*
  * Configuration de nos modules
@@ -40,7 +41,7 @@ app.use(bodyParser.urlencoded({
 app.use(methodOverride('_method'));
 
 
-// MySQL (Nom de la base de données = mydb)
+// Configuration MySQL - (Nom de la base de données = mydb)
 
 db = mysql.createConnection({
     host: 'localhost',
@@ -54,6 +55,9 @@ db.connect(function(err) {
     console.log('connected as id ' + db.threadId);
 });
 
+// Rendre la variable db = base de donnée asynchrone par un systeme de promesse (util.promisify)
+const query = util.promisify(db.query).bind(db);
+global.query = query;
 
 /*
  * Router

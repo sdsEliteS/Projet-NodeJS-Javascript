@@ -16,6 +16,11 @@ https://www.w3schools.com/sql/sql_insert.asp
 # Commande SQL DROP DATABSES dans le cas ou on voudrait supprimer sa base de données : 
 https://docs.microsoft.com/fr-fr/sql/t-sql/statements/drop-database-transact-sql?view=sql-server-ver15
 
+# Supprimer une ligne dans une table :
+
+https://www.w3schools.com/sql/sql_delete.asp
+
+
 
 
 

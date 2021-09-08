@@ -9,21 +9,38 @@ const articleList = require('../article.json')
 const messageList = require('../message.json')
 const userList = require('../user.json')
 
-exports.getPageAdmin = (req, res) => {
+exports.getPageAdmin = async (req, res) => {
 
-    const sql = 'select * from User'
-    db.query(sql, (err, data) => {
-        if (err) throw err
+    // const sqlUser = 'select * from User';
+    // const sqlArticle = 'select * from Article';
 
-        // Par default intégration layout main => {{{ body }}} - (Page View)
-        res.render('admin', {
-            articles: articleList,
-            messages: messageList,
-            users: data,
-            noFooter: true
-        });
+    const dbUsers = await query('select * from User')
+    const dbArticle = await query('select * from Article')
 
-    })
+    res.render('admin', {
+        articles: dbArticle,
+        messages: messageList,
+        users: dbUsers,
+        noFooter: true
+    });
+
+    // db.query(sqlUser, (err, dataUser) => {
+    //     if (err) throw err
+    //     db.query(sqlArticle, (err, dataArticle) => {
+    //         if (err) throw err
+
+    //         // Par default intégration layout main => {{{ body }}} - (Page View) 
+    //         res.render('admin', {
+    //             articles: dataArticle,
+    //             messages: messageList,
+    //             users: dataUser,
+    //             noFooter: true
+    //         });
+
+
+    //     })
+    // })
+
 }
 
 
