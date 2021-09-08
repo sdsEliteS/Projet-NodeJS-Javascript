@@ -42,6 +42,9 @@ https://roytuts.com/nodejs-express-mysql-rest-api-crud-example/
 
 
 
+
+
+
 # Lien PHOTO pour générer une adresse :
 
 https://www.zupimages.net/index.php?goto-form
