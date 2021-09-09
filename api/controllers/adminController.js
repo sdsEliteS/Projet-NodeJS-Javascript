@@ -12,7 +12,7 @@ const userList = require('../user.json')
 exports.getPageAdmin = async (req, res) => {
 
 
-    // Requête SQL permettant de visionner nos tables dans tes tableaux dans la base de donnée MySQL //
+    // Requête SQL "SELECT * FROM" permettant de visionner nos tables dans des tableaux dans la base de donnée MySQL //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
