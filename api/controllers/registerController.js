@@ -27,6 +27,7 @@ exports.registerProfil = (req, res) => {
     ];
     query(sql, [values], function (err, data, fields) {
         if (err) throw err;
+        
         // Permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) //
         res.redirect('/')
     })

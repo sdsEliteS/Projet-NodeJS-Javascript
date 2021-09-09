@@ -1,6 +1,6 @@
 /*
  * Controller blog
- * **************** */
+ * *************** */
 // Récupération du contenu du fichier ballon.json = [] (Array = Tableau) //
 const ballonList = require('../ballon.json')
 const array = []

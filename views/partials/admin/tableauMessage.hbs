@@ -14,7 +14,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Avatar</th>
-                        <th scope="col">Pseudo</th>
+                        <th scope="col">Nom</th>
                         <th scope="col">Verified</th>
                         <th class="text-center" scope="col">Action</th>
                     </tr>
@@ -29,7 +29,7 @@
                         <td class="pt-0 pb-0 text-left align-middle">
                             <img class="rounded-circle" src="https://picsum.photos/35" alt="">
                         </td>
-                        <td>{{ this.pseudo }}</td>
+                        <td>{{ this.nom }}</td>
                         <td>true</td>
                         <td>
                             <div class="d-flex justify-content-evenly">
@@ -45,7 +45,7 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="labelModalVisionMessage">
-                                                    {{ this.title }}
+                                                    {{ this.nom }}
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>

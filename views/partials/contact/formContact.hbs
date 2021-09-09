@@ -37,6 +37,9 @@
 
     <!-- Formulaire de Contact pour le Client (Nom + Email) -->
 
+    <!-- (ATTENTION TERMINAL Error: ER_OPERAND_COLUMNS: Operand should contain 1 column(s)
+    veut dire qu'il faut vérifier le "NAME" dans le formulaire -->
+
      {{!-- Methode POST --}}
     <form action="/form-messagehome" method="POST" class="row">
      {{!-- Methode POST --}}
@@ -52,9 +55,16 @@
             <div class="contact-form input-group flex-nowrap mt-3">
                 <span class="input-group-text" id="addon-wrapping">@</span>
                 {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                <input type="text" name="email" class="form-control" placeholder="Ajouter un email" aria-label="Username"
+                <input type="email" name="email" class="form-control" placeholder="Ajouter un email" aria-label="Username"
                     aria-describedby="addon-wrapping">
             </div>
+        </div>
+
+        <!-- Date du Message -->
+        <div class="col-md-12 d-flex justify-content-center mt-3">
+            <span class="input-group-text" id="addon-wrapping">Date</span>
+            {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+            <input type="date" name="date" class="form-control" aria-label="Username" aria-describedby="addon-wrapping">
         </div>
 
         <!-- Service Client -->

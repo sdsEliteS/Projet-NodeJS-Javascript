@@ -16,10 +16,11 @@ exports.getPageAdmin = async (req, res) => {
 
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
+    const dbMessage = await query('select * from Message')
 
     res.render('admin', {
         articles: dbArticle,
-        messages: messageList,
+        messages: dbMessage,
         users: dbUsers,
         noFooter: true
     });

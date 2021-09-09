@@ -16,6 +16,18 @@ exports.getPagePresentation = (req, res) => {
 exports.formContact2 = (req, res) => {
     console.log('Controller Form Contact2', req.body)
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) //
-    res.redirect('/')
+    let sql = `insert into Message (nom, email, sujet, message, date) values (?)`;
+    let values = [
+        req.body.nom,
+        req.body.email,
+        req.body.sujet,
+        req.body.message,
+        req.body.date,
+    ];
+    query(sql, [values], function (err, data, fields) {
+        if (err) throw err;
+
+        // Permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) //
+        res.redirect('/')
+    })
 }
