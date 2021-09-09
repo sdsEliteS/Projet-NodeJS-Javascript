@@ -10959,11 +10959,10 @@ ul li:hover {
 
 .btn-or-2 {
   font-family: Zen Dots;
-  background-color: #3aaf00;
+  background-color: #ffd000;
   border-radius: 20px;
-  border: 1px red solid;
-  box-shadow: 0 0 15px red;
-  color: white;
+  border: 1px #00d9ff solid;
+  box-shadow: 0 0 15px #00d9ff;
   padding: 10px;
 }
 
