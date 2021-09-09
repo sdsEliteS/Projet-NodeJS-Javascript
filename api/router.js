@@ -84,15 +84,11 @@ router.route('/editer/:id')
 
 // Page Formulaire Message d'Utilisateur (Page Admin Formulaire Message (tableauMessage))
 router.route('/message/:id')
-    .delete(adminController.deleteMessage)
+    .delete(contactController.deleteMessage)
 
 //Page Formulaire Article (Page Home Formulaire de Contact)
-router.route('/form-messagehome')
-    .post(homeController.formContact)
-
-//Page Formulaire Article (Page Home Formulaire de Contact Page Présentation)
-router.route('/form-messagepresentation')
-    .post(presentationController.formContact2)
+router.route('/form-message')
+    .post(contactController.formContact)
 
 //Page Formulaire Article (Page ID Ajout de nouveau commentaire)
 router.route('/addcomment')
