@@ -32,10 +32,10 @@ exports.formContact = (req, res) => {
 exports.deleteMessage = async (req, res) => {
     console.log('Controller delete Message', req.body, req.params)
 
-    // Requête SQL permettant de supprimer un message de la page Admin//
+    // Requête SQL permettant de supprimer un message de la page Admin Section Liste Message//
     await query(`DELETE FROM Message WHERE id = ${ req.params.id }`)
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
+    // Permet de rediriger l'Utilisateur vers l'URL /admin HTML Handlebars + adminController - "openMessage: show" permettant lors de la Suppression de rester sur la page Admin Section Liste Message //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
