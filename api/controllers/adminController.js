@@ -41,7 +41,7 @@ exports.editUser = (req, res) => {
 
 // Lors du remplissage du formulaire de suppression d'utilisateur de la Page Admin //
 
-exports.deleteUser = (req, res) => {
+exports.deleteUser = async (req, res) => {
     console.log('Suppression Utilisateur', req.body, req.params)
 
     // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //

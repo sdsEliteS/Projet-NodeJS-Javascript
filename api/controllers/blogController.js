@@ -51,7 +51,7 @@ exports.editArticle = (req, res) => {
 exports.deleteArticle = async (req, res) => {
     console.log('Suppression Article Page ID', req.body, req.params)
 
-    // Requête SQL "DELETE FROM" permettant de supprimer un article de la page Admin Section liste d'Article //
+    // Requête SQL "DELETE FROM" permettant de supprimer un article de la page Admin Section Liste d'Article //
     await query(`DELETE FROM Article WHERE id = ${ req.params.id }`)
     
     // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
