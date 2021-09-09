@@ -46,7 +46,7 @@ exports.editArticle = (req, res) => {
 }
 
 
-// Lors du remplissage du formulaire de Suppression d'article de la Page Admin + Blog //
+// Suppression d'article du formulaire de la Page Admin Liste Article + Blog //
 
 exports.deleteArticle = async (req, res) => {
     console.log('Suppression Article Page ID', req.body, req.params)

@@ -28,7 +28,7 @@ exports.formContact = (req, res) => {
     })
 }
 
-// Lors du remplissage du formulaire de contact dans la page home + presensation de l'utilisateur vers la Page Admin //
+// Suppression Message du formulaire de contact dans la page home + presensation envoyant vers la Page Admin Section Liste Message //
 exports.deleteMessage = async (req, res) => {
     console.log('Controller delete Message', req.body, req.params)
 
