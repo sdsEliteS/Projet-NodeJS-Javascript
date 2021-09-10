@@ -32,85 +32,85 @@ const test = require('./middleware/test')
 // router.route('/')
     // .get(test, homeController.getPageHome)
 
-// Page Home
+// URL Page Home
 router.route('/')
     .get(homeController.getPageHome)
 
-//Page Blog
+// URL Page Blog
 router.route('/blog')
     .get(blogController.getPageBlog)
 
-//Page Presentation
+// URL Page Presentation
 router.route('/presentation')
     .get(presentationController.getPagePresentation)
 
-// Page Contact
+// URL Page Contact
 router.route('/contact')
     .get(contactController.getPageContact)
 
-// Page Login
+// URL Page Login
 router.route('/login')
     .get(loginController.getPageLogin)
 
-// Page Register
+// URL Page Register
 router.route('/register')
     .get(registerController.getPageRegister)
 
-// Page Legal Notice
+// URL Page Legal Notice
 router.route('/legalnotice')
     .get(legalnoticeController.getPageLegalnotice)
 
-// Page (Page ID)
+// URL Page (Page ID)
 router.route('/ballon/:id')
     .get(ballonController.getPageBallonID)
 
-// Page Admin
+// URL Page Admin
 router.route('/admin')
     .get(adminController.getPageAdmin)
 
-//Page Formulaire Article (Page Admin Formulaire de Création d'Article (btnCreateArticle))
+// URL Page Formulaire Article (Page Admin Formulaire de Création d'Article (btnCreateArticle))
 router.route('/article')
     .post(blogController.createArticle)
 
-//Page Formulaire Edition Article (Page Admin Formulaire Edition ET Suppression d'Article (tableauArticle))
+// URL Page Formulaire Edition Article (Page Admin Formulaire Edition ET Suppression d'Article (tableauArticle))
 router.route('/article/:id')
     .put(blogController.editArticle)
     .delete(blogController.deleteArticle)
 
-// Page Formulaire Edition Utilisateur (Page Admin Formulaire Edition ET Suppression d'Utilisateur (tableauUser))
+// URL Page Formulaire Edition Utilisateur (Page Admin Formulaire Edition ET Suppression d'Utilisateur (tableauUser))
 router.route('/editer/:id')
     .put(adminController.editUser)
     .delete(adminController.deleteUser)
 
-// Page Formulaire Message d'Utilisateur (Page Admin Formulaire Message (tableauMessage))
+// URL Page Formulaire Message d'Utilisateur (Page Admin Formulaire Message Vision et Suppression du Message (tableauMessage))
 router.route('/message/:id')
     .delete(contactController.deleteMessage)
 
-//Page Formulaire Article (Page Home Formulaire de Contact)
+// URL Page Formulaire Article (Page Home Formulaire de Contact)
 router.route('/form-message')
     .post(contactController.formContact)
 
-//Page Formulaire Article (Page ID Ajout de nouveau commentaire)
+// URL Page Formulaire Article (Page ID Ajout de nouveau commentaire)
 router.route('/addcomment')
     .post(ballonController.addComment)
 
-// Page Profil
+// URL Page Profil
 router.route('/profil')
     .get(profilController.getPageProfil)
 
-// Page Info
+// URL Page Info
 router.route('/info')
     .get(infoController.getPageInfo)
 
-// Page Connexion Compte Login
+// URL Page Connexion Compte Login
 router.route('/connexion')
     .post(profilController.connexionProfil)
 
-// Page Connexion Login Mot de Passe Oublié
+// URL Page Connexion Login Mot de Passe Oublié
 router.route('/forget')
     .post(loginController.forgetProfil)
 
-// Page Connexion Register Enregistrement Profil
+// URL Page Connexion Register Enregistrement Profil
 
 router.route('/registerprofil')
     .post(registerController.registerProfil)
