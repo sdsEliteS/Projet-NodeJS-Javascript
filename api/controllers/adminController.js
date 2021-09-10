@@ -17,6 +17,7 @@ exports.getPageAdmin = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
+    // res.render renvoi un fichier Handlebars 'admin' //
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,

@@ -35,7 +35,7 @@ exports.deleteMessage = async (req, res) => {
     // Requête SQL permettant de supprimer un message de la page Admin Section Liste Message//
     await query(`DELETE FROM Message WHERE id = ${ req.params.id }`)
 
-    // Permet de rediriger l'Utilisateur vers l'URL /admin HTML Handlebars + adminController - "openMessage: show" permettant lors de la Suppression de rester sur la page Admin Section Liste Message //
+    // Permet de rediriger l'Utilisateur vers le fichier handlebars /admin HTML Handlebars + adminController - "openMessage: show" permettant la Suppression afin de rester sur la page Admin Section Liste Message //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')

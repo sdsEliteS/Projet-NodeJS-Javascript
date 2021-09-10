@@ -91,3 +91,25 @@ app.use(methodOverride('_method'));
 -->  Création de la route dans le ROUTER.JS (Attention mentionner /:id dans la route pour la method PUT)
 
 --> Et pour finir Création du Controller et loger le params URL
+
+
+
+
+
+
+
+# res.redirect :
+
+res.redirect('http://google.com');
+
+https://sailsjs.com/documentation/reference/response-res/res-redirect
+
+ou
+
+Peut également mettre une URL de la sorte : res.redirect('/admin') = http://localhost:3000/admin
+
+
+# res.render :
+
+res.render renvoi un fichier handlebars 'admin'
+
