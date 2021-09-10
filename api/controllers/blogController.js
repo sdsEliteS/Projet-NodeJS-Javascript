@@ -37,7 +37,7 @@ exports.createArticle = async (req, res) => {
     else {
         query(sql, [values], function (err, data, fields) {
             if (err) throw err;
-            // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin (Handlebars HTML + AdminController) //
+            // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin Section Liste d'Article (Handlebars HTML + AdminController) //
             res.redirect('/admin')
         })
     }
