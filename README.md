@@ -113,3 +113,14 @@ Peut également mettre une URL de la sorte : res.redirect('/admin') = http://loc
 
 res.render renvoi un fichier handlebars 'admin'
 
+
+# varchar peut contenir des chiffres, des lettres jusqu'à 255 caractères.
+
+
+# UPDATE :
+
+https://www.w3schools.com/nodejs/nodejs_mysql_update.asp
+
+https://www.mysqltutorial.org/mysql-nodejs/update/
+
+https://github.com/hsukrd/api-node-mysql/blob/async/controllers/userController.js

@@ -49,7 +49,7 @@ exports.createArticle = async (req, res) => {
 
 exports.editArticle = (req, res) => {
     console.log('Edition Article Page ID', req.body)
-
+    
     // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
     res.redirect('/admin')
 }

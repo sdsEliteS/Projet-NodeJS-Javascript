@@ -30,15 +30,37 @@ exports.getPageAdmin = async (req, res) => {
 
 
 
-// Lors du remplissage du formulaire d'édition d'utilisateur de la Page Admin //
 
-exports.editUser = (req, res) => {
-    console.log('Edition Utilisateur', req.body)
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars +  adminController  //
-    res.redirect('/admin')
+// Validation du formulaire (modal) de l'édition de l'Utilisateur //
+
+exports.editUser = async (req, res) => {
+    console.log('Edition User Page ID', req.body, req.params)
+
+    // Stock la requete sql //
+    let sql = `UPDATE User
+               SET pseudo = '${req.body.pseudo}',
+                   email = '${req.body.email}',
+                   avatar = '${req.body.avatar}'
+               WHERE id = '${req.params.id}';`;
+
+    // Execution de la requete sql //
+    await query(sql)
+
+    // Permet de rediriger l'Utilisateur vers l'URL /admin HTML Handlebars + adminController - "openMessage: show" permettant lors de la Suppression de rester sur la page Admin Section Liste Message //
+    const dbUsers = await query('select * from User')
+    const dbArticle = await query('select * from Article')
+    const dbMessage = await query('select * from Message')
+
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
+    res.render('admin', {
+        articles: dbArticle,
+        messages: dbMessage,
+        users: dbUsers,
+        noFooter: true,
+        openUser: 'show'
+    })
 }
-
 
 // Lors du remplissage du formulaire de suppression d'utilisateur de la Page Admin //
 
