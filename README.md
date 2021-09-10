@@ -121,6 +121,8 @@ res.render renvoi un fichier handlebars 'admin'
 
 https://www.w3schools.com/nodejs/nodejs_mysql_update.asp
 
+https://www.w3schools.com/nodejs/nodejs_mysql_update.asp
+
 https://www.mysqltutorial.org/mysql-nodejs/update/
 
 https://github.com/hsukrd/api-node-mysql/blob/async/controllers/userController.js
