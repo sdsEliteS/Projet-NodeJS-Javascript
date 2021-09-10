@@ -28,11 +28,11 @@ exports.formContact = (req, res) => {
     })
 }
 
-// Suppression Message du formulaire de contact dans la page home + presensation envoyant vers la Page Admin Section Liste Message //
+// Suppression Message du formulaire de contact dans la Page Home + Presensation envoyant vers la Page Admin Section Liste Message //
 exports.deleteMessage = async (req, res) => {
     console.log('Controller delete Message', req.body, req.params)
 
-    // Requête SQL permettant de supprimer un message de la page Admin Section Liste Message//
+    // Requête SQL permettant de supprimer un message de la page Admin Section Liste Message //
     await query(`DELETE FROM Message WHERE id = ${ req.params.id }`)
 
     // Permet de rediriger l'Utilisateur vers le fichier handlebars /admin HTML Handlebars + adminController - "openMessage: show" permettant la Suppression afin de rester sur la page Admin Section Liste Message //
