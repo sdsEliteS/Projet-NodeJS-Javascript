@@ -30,8 +30,6 @@ exports.getPageAdmin = async (req, res) => {
 
 
 
-
-
 // Validation du formulaire (modal) de l'édition de l'Utilisateur //
 
 exports.editUser = async (req, res) => {
@@ -61,6 +59,8 @@ exports.editUser = async (req, res) => {
         openUser: 'show'
     })
 }
+
+
 
 // Lors du remplissage du formulaire de suppression d'utilisateur de la Page Admin //
 
