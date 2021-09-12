@@ -106,12 +106,12 @@ https://sailsjs.com/documentation/reference/response-res/res-redirect
 
 ou
 
-Peut également mettre une URL de la sorte : res.redirect('/admin') = http://localhost:3000/admin
+Peut également mettre une URL du projet de la sorte : res.redirect('/admin'); = http://localhost:3000/admin
 
 
 # res.render :
 
-res.render renvoi un fichier handlebars 'admin'
+res.render renvoi un fichier handlebars : res.render('admin');
 
 
 # varchar(255) peut contenir des chiffres, des lettres jusqu'à 255 caractères.
