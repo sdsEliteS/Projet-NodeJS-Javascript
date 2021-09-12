@@ -26,7 +26,7 @@ https://www.w3schools.com/sql/sql_delete.asp
 
 PROCEDURE MySQL workbench afin de générer un script de la base de donnée sous la forme d'un fichier SQL qui est fait au commencement sous la forme d'un shéma dans workbench : 
 
-File --> Export --> (Menu Contextuel) Foreward Engineer SQL CREATE Script --> clic sur le rectangle ... (Outup) --> Enregistrer le fichier en lui donnant un nom puis en le mettant dans le Projet  --> NEXT --> NEXT *Export MySQL Table Object (Afin de voir le script le fichier) --> Finish.
+File --> Export --> (Menu Contextuel) Foreward Engineer SQL CREATE Script --> clic sur le rectangle ... (Outup) --> Enregistrer le fichier en lui donnant un nom puis en le mettant dans le Projet (Message Remplacer si le fichier est déjà crée) --> NEXT (Replace ou Cancel = Prendre Replace) --> NEXT *Export MySQL Table Object (Afin de voir le script le fichier) --> Finish.
 
 
 **** Pour simplement sauvegarder un projet My SQL Workbench existant faire File --> Save Model ****
