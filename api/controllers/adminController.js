@@ -42,8 +42,7 @@ exports.editUser = async (req, res) => {
     let sql = `UPDATE User
                SET isAdmin = '${req.body.isAdmin}',
                    isVerified = '${req.body.isVerified}',
-                   isBan = '${req.body.isBan}',
-                   bannir = '${req.body.bannir}'
+                   isBan = '${req.body.isBan}'
                WHERE id = '${req.params.id}';`;
 
     // Execution de la requete sql //
