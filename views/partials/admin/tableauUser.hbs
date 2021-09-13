@@ -57,27 +57,28 @@
                                                 <form action="/editer/{{ this.id }}?_method=PUT" method="POST">
                                                     {{!-- Methode PUT pour Editer Utilisateur --}}
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <label for="recipient-name" class="col-form-label">isAdmin
                                                                 :</label>
                                                             {{!-- Ne pas oublier d'écrire le "name" dans les input en
                                                             rapport avec la methode PUT --}}
                                                             <input type="checkbox" name="isAdmin" placeholder="" id="recipient-name">
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-4">
                                                             <label for="message-text" class="col-form-label">isVerified
                                                                 :</label>
                                                             {{!-- Ne pas oublier d'écrire le "name" dans les input en
                                                             rapport avec la methode PUT --}}
                                                             <input type="checkbox" name="isVerified" placeholder="" id="recipient-name">
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <label for="recipient-name" class="col-form-label">isBan
-                                                            :</label>
-                                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en
-                                                        rapport avec la methode PUT --}}
-                                                        <input type="checkbox" name="isBan" placeholder="" id="recipient-name">
+                                                    
+                                                        <div class="col-md-4">
+                                                            <label for="recipient-name" class="col-form-label">isBan
+                                                             :</label>
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                            rapport avec la methode PUT --}}
+                                                            <input type="checkbox" name="isBan" placeholder="" id="recipient-name">
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="contact-form text-center mb-5">

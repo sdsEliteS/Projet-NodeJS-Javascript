@@ -38,15 +38,27 @@ exports.getPageAdmin = async (req, res) => {
 exports.editUser = async (req, res) => {
     console.log('Edition User Page ID', req.body, req.params)
 
+    // Bannir l'utilisateur (Pour récupérer les valeurs de la base de donnée en rapport avec une colonne étant dans une Table (exemple: isADmin ou autre) faire "req.body.isAdmin")
+    if(req.body.isAdmin === 'on') req.body.isAdmin = 1
+    else req.body.isAdmin = 0 
+
+    if(req.body.isVerified === 'on') req.body.isVerified = 1
+    else req.body.isVerified = 0 
+
+    if (req.body.isBan === 'on') req.body.isBan = 1
+    else req.body.isBan = 0
+
+
+    console.log('Mes data du formulaire', req.body)
     // Stock la requete sql //
-    let sql = `UPDATE User
-               SET isAdmin = '${req.body.isAdmin}',
-                   isVerified = '${req.body.isVerified}',
-                   isBan = '${req.body.isBan}'
-               WHERE id = '${req.params.id}';`;
+    // let sql = `UPDATE User
+    //            SET isAdmin = '${req.body.isAdmin}',
+    //                isVerified = '${req.body.isVerified}',
+    //                isBan = '${req.body.isBan}'
+    //            WHERE id = '${req.params.id}';`;
 
     // Execution de la requete sql //
-    await query(sql)
+    // await query(sql)
 
     // Permet de rediriger l'Utilisateur vers l'URL /admin HTML Handlebars + adminController - "openMessage: show" permettant lors de la Suppression de rester sur la page Admin Section Liste Message //
     const dbUsers = await query('select * from User')
