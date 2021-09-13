@@ -38,7 +38,7 @@ exports.getPageAdmin = async (req, res) => {
 exports.editUser = async (req, res) => {
     console.log('Edition User Page ID', req.body, req.params)
 
-    // Bannir (isBan) l'utilisateur, Vérification (isVerified) de l'Utilisateur,  
+    // Bannir (isBan) l'utilisateur, Vérification (isVerified) de l'Utilisateur //
     // (Pour récupérer les valeurs de la base de donnée en rapport avec une colonne étant dans une Table (exemple: isADmin ou autre) faire "req.body.isAdmin") //
     if(req.body.isAdmin === 'on') req.body.isAdmin = 1
     else req.body.isAdmin = 0 
