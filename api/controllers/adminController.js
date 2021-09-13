@@ -38,7 +38,8 @@ exports.getPageAdmin = async (req, res) => {
 exports.editUser = async (req, res) => {
     console.log('Edition User Page ID', req.body, req.params)
 
-    // Bannir l'utilisateur (Pour récupérer les valeurs de la base de donnée en rapport avec une colonne étant dans une Table (exemple: isADmin ou autre) faire "req.body.isAdmin")
+    // Bannir (isBan) l'utilisateur, Vérification (isVerified) de l'Utilisateur,  
+    // (Pour récupérer les valeurs de la base de donnée en rapport avec une colonne étant dans une Table (exemple: isADmin ou autre) faire "req.body.isAdmin") //
     if(req.body.isAdmin === 'on') req.body.isAdmin = 1
     else req.body.isAdmin = 0 
 
@@ -57,7 +58,7 @@ exports.editUser = async (req, res) => {
     //                isBan = '${req.body.isBan}'
     //            WHERE id = '${req.params.id}';`;
 
-    // Execution de la requete sql //
+    // Execution de la requete sql (elle est utilisé dans le cadre d'une méthode asynchrome = async ) //
     // await query(sql)
 
     // Permet de rediriger l'Utilisateur vers l'URL /admin HTML Handlebars + adminController - "openMessage: show" permettant lors de la Suppression de rester sur la page Admin Section Liste Message //

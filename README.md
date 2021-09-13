@@ -132,6 +132,10 @@ https://github.com/hsukrd/api-node-mysql/blob/async/controllers/userController.j
 
 https://www.guru99.com/null.html
 
-# Case Checkbox (Bannir) type booléen :
+# await (Utilisable avec une methode asynchrone)
+
+https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await
+
+# Case Checkbox (isAdmin - isVerified - isBan) type booléen :
 
 https://dev.socrata.com/docs/datatypes/checkbox.html#,
