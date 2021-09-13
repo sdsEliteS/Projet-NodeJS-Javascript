@@ -131,3 +131,7 @@ https://github.com/hsukrd/api-node-mysql/blob/async/controllers/userController.j
 # MySQL WORKBENCH : 
 
 https://www.guru99.com/null.html
+
+# Case Checkbox (Bannir) type booléen :
+
+https://dev.socrata.com/docs/datatypes/checkbox.html#,

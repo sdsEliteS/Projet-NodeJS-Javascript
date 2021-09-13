@@ -9,8 +9,10 @@ const articleList = require('../article.json')
 const messageList = require('../message.json')
 const userList = require('../user.json')
 
-exports.getPageAdmin = async (req, res) => {
 
+
+// Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
+exports.getPageAdmin = async (req, res) => {
 
     // Requête SQL "SELECT * FROM" permettant de visionner nos tables dans des tableaux dans la base de donnée MySQL //
     const dbUsers = await query('select * from User')
@@ -32,14 +34,16 @@ exports.getPageAdmin = async (req, res) => {
 
 // Validation du formulaire (modal) de l'édition de l'Utilisateur //
 
+// Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 exports.editUser = async (req, res) => {
     console.log('Edition User Page ID', req.body, req.params)
 
     // Stock la requete sql //
     let sql = `UPDATE User
-               SET pseudo = '${req.body.pseudo}',
-                   email = '${req.body.email}',
-                   avatar = '${req.body.avatar}'
+               SET isAdmin = '${req.body.isAdmin}',
+                   isVerified = '${req.body.isVerified}',
+                   isBan = '${req.body.isBan}',
+                   bannir = '${req.body.bannir}'
                WHERE id = '${req.params.id}';`;
 
     // Execution de la requete sql //
@@ -64,6 +68,7 @@ exports.editUser = async (req, res) => {
 
 // Lors du remplissage du formulaire de suppression d'utilisateur de la Page Admin //
 
+// Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 exports.deleteUser = async (req, res) => {
     console.log('Suppression Utilisateur', req.body, req.params)
 
