@@ -62,7 +62,7 @@ exports.editArticle = async (req, res) => {
                    image = '${req.body.image}'
                WHERE id = '${req.params.id}';`;
 
-    // Execution de la requete sql //
+    // Execution de la requete sql (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
     await query(sql)
 
     // Permet de rediriger l'Utilisateur vers l'URL /admin HTML Handlebars + adminController - "openMessage: show" permettant lors de la Suppression de rester sur la page Admin Section Liste Message //

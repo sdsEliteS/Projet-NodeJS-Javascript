@@ -119,7 +119,7 @@ res.render renvoi un fichier handlebars : res.render('admin');
 
 # MySQL UPDATE :
 
-https://www.w3schools.com/nodejs/nodejs_mysql_update.asp
+https://www.w3schools.com/sql/sql_update.asp
 
 https://www.w3schools.com/nodejs/nodejs_mysql_update.asp
 
@@ -132,7 +132,11 @@ https://github.com/hsukrd/api-node-mysql/blob/async/controllers/userController.j
 
 https://www.guru99.com/null.html
 
-# await (Utilisable avec une methode asynchrone)
+# Methode Asynchrone (async) :
+
+https://www.w3schools.com/js/js_async.asp
+
+# await (Toujours utilisable avec une methode Asynchrone)
 
 https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await
 
