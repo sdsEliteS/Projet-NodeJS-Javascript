@@ -39,63 +39,9 @@
                                     data-bs-target="#exampleModal-2{{ this.id }}" data-bs-whatever="@mdo">
                                     <i class="fas fa-edit"></i>
                                 </button>
-
-                                <!-- Ajout début du Modal Edit Validation User dans le bouton Warning -->
-                                <div class="modal fade" id="exampleModal-2{{ this.id}}" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">
-                                                    Editer "Utilisateur"</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                
-                                                {{!-- Methode PUT pour Editer Utilisateur --}}
-                                                <form action="/editer/{{ this.id }}?_method=PUT" method="POST">
-                                                    {{!-- Methode PUT pour Editer Utilisateur --}}
-                                                    <div class="row">
-                                                        <div class="col-md-4">
-                                                            <label for="recipient-name" class="col-form-label">isAdmin
-                                                                :</label>
-                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
-                                                            rapport avec la methode PUT --}}
-                                                            <input type="checkbox" name="isAdmin" placeholder="" id="recipient-name">
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label for="message-text" class="col-form-label">isVerified
-                                                                :</label>
-                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
-                                                            rapport avec la methode PUT --}}
-                                                            <input type="checkbox" name="isVerified" placeholder="" id="recipient-name">
-                                                        </div>
-                                                    
-                                                        <div class="col-md-4">
-                                                            <label for="recipient-name" class="col-form-label">isBan
-                                                             :</label>
-                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
-                                                            rapport avec la methode PUT --}}
-                                                            <input type="checkbox" name="isBan" placeholder="" id="recipient-name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <div class="contact-form text-center mb-5">
-                                                            {{!-- Methode PUT : Ne pas oublier le type SUBMIT qui est un
-                                                            bouton d'envoi qui soumet toutes les valeurs du formulaire
-                                                            lors de l'envoi à un gestionnaire de formulaire (Server)
-                                                            validant la balise ouvrante fermante "form" --}}
-                                                            <button type="submit"
-                                                                class="btn-or mt-3">Validation</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
+                                {{!-- Chemin pour retrouver le fichier handlebars modalEditUser qu'on exporte afin de parser le code --}}
+                                {{> modal/modalEditUser user=this }}
                             
                                 <!-- Fin du Modal Edit User -->
 

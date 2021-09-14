@@ -18,7 +18,7 @@ exports.formContact = (req, res) => {
         req.body.email,
         req.body.sujet,
         req.body.message,
-        req.body.date,
+        req.body.date
     ];
     query(sql, [values], function (err, data, fields) {
         if (err) throw err;
