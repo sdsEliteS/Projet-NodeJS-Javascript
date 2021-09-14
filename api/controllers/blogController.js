@@ -1,16 +1,17 @@
 /*
  * Controller blog
  * *************** */
-// Récupération du contenu du fichier ballon.json = [] (Array = Tableau) //
-const ballonList = require('../ballon.json')
-const array = []
 
-exports.getPageBlog = (req, res) => {
+exports.getPageBlog = async (req, res) => {
     
-    // Par default intégration layout main => {{{ body }}} - (Page View)
-    res.render('blog', { ballonList }); // === ballonList: ballonList
-}
+    const ballonList = await query('select * from Article')
 
+    console.log(ballonList)
+
+    // Par default intégration layout main => {{{ body }}} - (Page View)
+    res.render('blog', { ballonList }); 
+
+}
 
 // Création d'article dans la page admin, le nouvel article se mettra dans la page blog avec les autres produits c'est la raison pour laquelle on le met dans blog.Controller //
 
@@ -18,6 +19,7 @@ exports.getPageBlog = (req, res) => {
 exports.createArticle = async (req, res) => {
     console.log('Controller Create Article', req.body)
 
+    // insert into est une requête SQL qui insert des données dans une table (Table Article par exemple) //
     let sql = `insert into Article (title, description, subtitle, recommandation, date, categorie, image, author_id) values (?)`;
     let values = [
         req.body.title,

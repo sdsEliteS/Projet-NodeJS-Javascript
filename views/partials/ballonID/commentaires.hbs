@@ -12,29 +12,21 @@
                     <h5 class="titre-neon-special encadrer text-center mb-2 pb-3">Ajouter un commentaire
                     </h5>
                     <div class="row d-flex justify-content-center pb-3">
-                        <div class="col-md-6">
+                        <div class="col-md-11">
                             <div class="input-group flex-nowrap mt-3">
-                                <span class="input-group-text" id="addon-wrapping">Pseudo</span>
+                                <span class="input-group-text" id="addon-wrapping">Author_id</span>
                                 {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                                <input type="text" name="pseudo" class="form-control" aria-label="Username"
+                                <input type="text" name="author_id" class="form-control" aria-label="Username"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
 
-                        <div class="col-md-5">
-                            <div class="input-group flex-nowrap mt-3">
-                                <span class="input-group-text" id="addon-wrapping">Date</span>
-                                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                                <input type="text" name="date" class="form-control" placeholder="Exemple : 28/06/2021"
-                                    aria-label="Username" aria-describedby="addon-wrapping">
-                            </div>
-                        </div>
                         <div class="col-11">
                             <label class="text-white pt-4 pb-2 pr-5">Votre message: </label>
                         </div>
                         <div class="d-flex justify-content-center mb-5">
                             {{!-- Ne pas oublier d'écrire le "name" dans le textarea en rapport avec la methode POST --}}
-                            <textarea id="message" name="message" rows="9" class="contact-message-2"></textarea>
+                            <textarea id="message" name="content" rows="9" class="contact-message-2"></textarea>
                         </div>
                     </div>
                 </div>
