@@ -2,12 +2,17 @@
 
 
 <!-- Manipulation Image Article-->
+
+{{!-- Ouverture de la méthode Each qui permet d'exécuter une fonction sur chaque élément du tableau associé à this.
+ballonList est le tableau renvoyer par le controller get: ballonController --}}
+{{#each ballon }}
+
 <section>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="article-ballon text-center">
-                    <img src="{{ ballon.image }}" class="w-30" height="360px" alt="ballon de football" />
+                    <img src="{{ this.image }}" class="w-30" height="360px" alt="ballon de football" />
                 </div>
             </div>
         </div>
@@ -18,7 +23,7 @@
         <div class="row">
             <div class="col-md-12 pt-5">
                 <div class="bordure encadrer pt-4">
-                    <h2 class="titre-neon-special pt-2">{{ ballon.title }}</h2>
+                    <h2 class="titre-neon-special pt-2">{{ this.title }}</h2>
                 </div>
                 <div class="encadrer pt-3">
                     <p class="text-center">Quantitati fictis exaggerantium vel inminuta
@@ -63,3 +68,4 @@
         </div>
     </div>
 </section>
+{{/each }}

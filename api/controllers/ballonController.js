@@ -16,7 +16,7 @@ exports.getPageBallonID = async (req, res) => {
 
 
 
-// Lors du remplissage du formulaire d'ajout de commentaire de la page ID //
+// Remplissage du formulaire d'ajout de commentaire de la page ballonID //
 exports.addComment = async (req, res) => {
     console.log('Ajout de Commentaire Ballon ID', req.body)
 
@@ -33,7 +33,7 @@ exports.addComment = async (req, res) => {
     else {
         query(sql, [values], function (err, data, fields) {
             if (err) throw err;
-            // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon HTML Handlebars + ballonController  //
+            // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon HTML Handlebars //
             res.redirect('/ballon/' + req.body.refId)
         })
     }
