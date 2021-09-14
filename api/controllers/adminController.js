@@ -51,7 +51,7 @@ exports.editUser = async (req, res) => {
 
     console.log('Mes data du formulaire', req.body)
 
-    // Stock la requete sql //
+    // Stock la requete sql "UPDATE permettant de modifier si besoin l'enregistrement effectuer dans la Table User par exemple ou autre" //
     let sql = `UPDATE User
             SET isAdmin = '${req.body.isAdmin}',
                 isVerified = '${req.body.isVerified}',
