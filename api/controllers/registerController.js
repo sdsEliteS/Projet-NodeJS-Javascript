@@ -1,26 +1,29 @@
 /*
- * Controller Register
- * ******************* */
+ * Controller Page Register
+ * ************************ */
 
-// Visualisation de la page REGISTER (READ = Method GET HTTP = LIRE) //
-// export de la routes du router.js (getPageRegister) avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requete HTTP utilisateur faite au server et res = response du server //
+// Visualisation de la page REGISTER (READ/Lire = Method GET HTTP = MySQL: SELECT) //
+// Exportation de la routes du router.js dans le Controller (getPageRegister) avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageRegister = (req, res) => {
 
 
     // Par default intégration layout main => {{{ body }}} - (Page View)
-    // Renvoi à l'Utilisateur un fichier Handlebars HTML 'register' se situant dans le views //
+    // Server renvoi à l'Utilisateur un fichier Handlebars HTML 'register' se situant dans le DOSSIER views //
     res.render('register', {
+
+         // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
         noFooter: true
     });
 }
 
 
-// Remplissage du formulaire REGISTER d'enregistrement de l'Utilisateur de la page REGISTER ( CREATE = Method POST HTTP = Requête MySQL: INSERT INTO ) //
-// export de la routes du router.js (registerProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requete utilisateur faite au server et res = response du server //
+// Remplissage du formulaire d'enregistrement de l'Utilisateur de la page REGISTER ( CREATE = Method POST HTTP = Requête MySQL: INSERT INTO ) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
+// export de la routes du router.js (registerProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requete HTTP de utilisateur faite au server et res = response du server //
 exports.registerProfil = (req, res) => {
     console.log('Enregistrement Compte Steven', req.body)
 
-    // Requête SQL permettant la création de plusieurs colonnes dans un Table User - req.body permet de ressortir l'information dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du formulaire visionnant les données au moment de la validation //
+    // Requête SQL permettant la création de plusieurs colonnes dans la Table User //
+    // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du formulaire d'enregistrement du l'Utilisateur visionnant les données au moment de la validation //
     let sql = `insert into User (pseudo, email, password, address, telephone, birthday) values (?)`;
     let values = [
         req.body.pseudo,
@@ -30,12 +33,14 @@ exports.registerProfil = (req, res) => {
         req.body.telephone,
         req.body.date_de_naissance
     ];
+
+    // Valeur des colonnes de la Table User qui sont écrit dans les input //
     query(sql, [values], function (err, data, fields) {
         if (err) throw err;
         
 
         
-        // Permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) au moment de la validation du formulaire de la page REGISTER //
+        // Server permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) au moment de la validation du formulaire de la page REGISTER //
         res.redirect('/')
     })
 

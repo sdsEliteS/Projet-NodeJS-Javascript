@@ -1,9 +1,10 @@
 /*
- * Controller administration
- * ************************* */
+ * Controller administration Page ADMIN
+ * ************************************ */
 
+// (READ/Lire = Method GET HTTP = MySQL: SELECT) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
-// export de la routes du router.js (getPageAdmin) avec => une Function opérant un retour d'information en rapport avec une methode GET sur l'aspect FRONT-END (SELECT = READ = LIRE) - req = requete utilisateur faite au server et res = response du server //
+// Export de la routes du router.js (getPageAdmin) avec => une Function opérant un retour d'information en rapport avec une methode GET sur l'aspect FRONT-END (SELECT = READ = LIRE) - req = requete utilisateur faite au server et res = response du server //
 exports.getPageAdmin = async (req, res) => {
 
     // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
@@ -11,8 +12,8 @@ exports.getPageAdmin = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    // Permet de rediriger l'Utilisateur vers le fichier 'admin' HTML Handlebars //
-    // res.render est la response (res) du server renvoyant un fichier Handlebars 'admin' se situant dans le views. Ensuite dans l'objet {} on y ajoute les constantes (exemple const = dbArticle) qu'on traduit sous la forme d'un tableau (article: dbArticle) avec la requête SQL en rapport avec les tables User, Article et Message qu'ont exploitent par exemple sous la forme d'un {{#each articles }} {{/each}} + this (this + name colonne de la Table concernée) //
+    // Permet de rediriger l'Utilisateur vers le fichier 'admin' HTML Handlebars dans le DOSSIER views //
+    // Ensuite dans l'objet {} on y ajoute les constantes (exemple const = dbArticle) qu'on traduit sous la forme d'un tableau (Exemple:  article: dbArticle) avec la requête SQL en rapport avec les tables User, Article et Message qu'ont exploitent sous la forme d'un {{#each articles }} {{/each}} + this (Exemple: this.name colonne de la Table concernée) //
     // dans les fichiers Handlebars tableauArticle - tableauMessage - tableauUser se situant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner MySQL WORKBENCH //
      
     res.render('admin', {
@@ -33,8 +34,9 @@ exports.getPageAdmin = async (req, res) => {
 
 // Edition du formulaire (modal) en rapport avec l'enregistrement de l'Utilisateur (Manipulation pouvant également être effectué ultérieurement (Exemple: isBan = Bannir Utilisateur) //
 
+// (UPDATE/Modification = Method PUT HTTP = MySQL: UPDATE) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
-// export de la routes du router.js (editUser) avec => une Function opérant un retour d'information en rapport avec une methode PUT (UPDATE = EDITER Confirmation ou Modification) - req = requete utilisateur au server et res = response du server à l'utilisateur //
+// Export de la routes du router.js (editUser) avec => une Function opérant un retour d'information en rapport avec une methode PUT (UPDATE = EDITER/Modification) - req = requete utilisateur au server et res = response du server à l'utilisateur //
 exports.editUser = async (req, res) => {
     console.log('Edition User Page ID', req.body, req.params)
 
@@ -68,8 +70,8 @@ exports.editUser = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    // Permet de rediriger l'Utilisateur vers le fichier 'admin' HTML Handlebars //
-    // res.render est la response du server nous renvoyant un fichier Handlebars 'admin' se situant dans le views. Ensuite dans l'objet {} on y ajoute les constantes (const) avec la requête SQL en rapport avec les tables User, Article et Message qu'ont exploitent par exemple sous la forme d'un {{#each message }} {{/each}} + this (this + name colonne de la Table concernée)//
+    // Permet de rediriger l'Utilisateur vers le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
+    // Ensuite dans l'objet {} on y ajoute les constantes (const) avec la requête SQL en rapport avec les tables User, Article et Message qu'ont exploitent par exemple sous la forme d'un {{#each users }} {{/each}} + this (this.name colonne de la Table concernée)//
     // dans les fichiers Handlebars tableauArticle - tableauMessage - tableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner My SQL WORKBENCH //
    
     res.render('admin', {
@@ -100,8 +102,8 @@ exports.deleteUser = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    // Permet de rediriger l'Utilisateur vers le fichier 'admin' HTML Handlebars //
-    // res.render est la response du server nous renvoyant un fichier Handlebars 'admin' se situant dans le views. Ensuite dans l'objet {} on y ajoute les constantes (const) avec les requêtes SQL en rapport avec les tables User, Article et Message qu'ont exploitent par exemple sous la forme d'un {{#each users }} {{/each}} + this (this + name colonne de la Table concernée)
+    // Server renvoi l'Utilisateur vers le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
+    // Ensuite dans l'objet {} on y ajoute les constantes (const) avec les requêtes SQL en rapport avec les tables User, Article et Message qu'ont exploitent par exemple sous la forme d'un {{#each users }} {{/each}} + this (this + name colonne de la Table concernée)
     // dans les fichiers Handlebars tableauArticle - tableauMessage - tableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner MySQL WORKBENCH //
    
     res.render('admin', {
