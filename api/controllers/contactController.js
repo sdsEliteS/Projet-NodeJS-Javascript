@@ -66,7 +66,7 @@ exports.deleteMessage = async (req, res) => {
 
     // Server renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views //
     // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableau avec la requête SQL en rapport avec la Table Message qu'ont exploite sous la forme d'un {{#each Message }} {{/each}} + this (Exemple this.name colonne de la Table Message) 
-    // dans le fichier Handlebars tableauMessage étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant également les données du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à My SQL WORKBENCH //
+    // dans le fichier Handlebars tableauMessage étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant également les données du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
     // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
     // Faisant partie de l'Objet "openMessage: show" permettant la Suppression du message en restant sur la page Admin Section Liste Message en mettant dans la div <div id="collapseMessage" class="accordion-collapse collapse {{ openMessage }}" aria-labelledby="headingThree" du fichier Handlebars tableauMessage //
     res.render('admin', {

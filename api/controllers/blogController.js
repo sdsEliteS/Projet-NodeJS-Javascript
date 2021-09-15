@@ -89,15 +89,15 @@ exports.editArticle = async (req, res) => {
     // Execution de la Requête SQL permettant le changement ou la confirmation de la création d'Article (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
     await query(sql)
 
-   // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL = Fichier db.sql grâce à MySQL WORKBENCH) //
+   // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL = Fichier db.sql grâce à MySQL WORKBENCH) //
    const dbUsers = await query('select * from User')
    const dbArticle = await query('select * from Article')
    const dbMessage = await query('select * from Message')
     
 
     // Permet de rediriger l'Utilisateur vers le fichier Handlebars 'admin' Section Liste Edit Article de la page Admin se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableau avec lA requêtes SQL en rapport avec la Table Article qu'ont exploite sous la forme d'un {{#each Article }} {{/each}} + this (Exemple this.name colonne de la Table Article) 
-    // dans le fichier Handlebars tableauArticle étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant également les données du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à My SQL WORKBENCH //
+    // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableau avec la requêtes SQL en rapport avec les Table Article - User - Message qu'ont exploitent sous la forme d'un {{#each Article }} {{/each}} + this (Exemple this.name colonne de la Table concernée) 
+    // dans le fichier Handlebars tableauArticle étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant également les données du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
     // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
     // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
     res.render('admin', {

@@ -7,7 +7,7 @@
 // Export de la routes du router.js (getPageAdmin) avec => une Function opérant un retour d'information en rapport avec une methode GET sur l'aspect FRONT-END (SELECT = READ = LIRE) - req = requete utilisateur faite au server et res = response du server //
 exports.getPageAdmin = async (req, res) => {
 
-    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
+    // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
@@ -71,7 +71,7 @@ exports.editUser = async (req, res) => {
     const dbMessage = await query('select * from Message')
 
     // Permet de rediriger l'Utilisateur vers le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} on y ajoute les constantes (const) avec la requête SQL en rapport avec les tables User, Article et Message qu'ont exploitent par exemple sous la forme d'un {{#each users }} {{/each}} + this (this.name colonne de la Table concernée)//
+    // Ensuite dans l'objet {} on y ajoute les constantes (const) avec les requêtes SQL en rapport avec les tables User, Article et Message qu'ont exploitent par exemple sous la forme d'un {{#each users }} {{/each}} + this (this.name colonne de la Table concernée)//
     // dans les fichiers Handlebars tableauArticle - tableauMessage - tableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner My SQL WORKBENCH //
    
     res.render('admin', {
