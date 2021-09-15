@@ -13,15 +13,15 @@ Partials Cards Ballons: /
                 {{#each ballonList }}
 
                 <div class="col-md-4">
-                    {{!-- Element ID du tableau ballon.json --}}
+                    {{!-- Element ID du tableau (Table Article) qu'on peut voir dans l'export "createArticle" qu'on déclare sous la forme de ballonList dans l'export "getPageBlog" se situant dans blogController --}}
                     <a class="card" href="/ballon/{{ this.id }}">
                         <img src="{{ this.image }}" class="card-img-top w-100" alt="Ballon-Football">
                         <div class="card-body">
                             <div class="bordure">
-                                {{!-- Element title du tableau ballon.json --}}
+                                {{!-- Element title du tableau (Table Article) qu'on peut voir dans l'export "createArticle" qu'on déclare sous la forme de ballonList dans l'export "getPageBlog" se situant dans blogController --}}
                                 <h5 class="card-title text-center titre-neon-special encadrer fs-4 mt-3"> {{ this.title }} </h5>
                             </div>
-                             {{!-- Element description du tableau ballon.json --}}
+                             {{!-- Element Description du tableau (Table Article) qu'on peut voir dans l'export "createArticle" qu'on déclare sous la forme de ballonList dans l'export "getPageBlog" se situant dans blogController --}}
                             <p class="card-text text-center bordure encadrer text-white"> {{ this.description }} .</p>
                         </div>
                         <div class="card-footer text-end">

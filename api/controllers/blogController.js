@@ -19,7 +19,7 @@ exports.getPageBlog = async (req, res) => {
 exports.createArticle = async (req, res) => {
     console.log('Controller Create Article', req.body)
 
-    // "insert into" est une requête SQL qui insert des données dans une table (Table Article par exemple) //
+    // "insert into" est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) //
     let sql = `insert into Article (title, description, subtitle, recommandation, date, categorie, image, author_id) values (?)`;
     let values = [
         req.body.title,
@@ -36,11 +36,12 @@ exports.createArticle = async (req, res) => {
 
     console.log('User Exist', userExist)
 
+    // Condition:  Si userExist n'existe pas alors tu me renvoie l'URL '/admin' fichier Handlebars se situant dans le views. Sinon tu m'exécutes la function en rapport avec la création d'article //
     if (!userExist[0]) res.redirect('/admin')
     else {
         query(sql, [values], function (err, data, fields) {
             if (err) throw err;
-            // Permet de rediriger (redirect) l'Utilisateur vers l'URL (res.redirect) '/admin' Section Liste d'Article (Admin HTML Handlebars) //
+            // Permet de rediriger (redirect) l'Utilisateur vers l'URL (res.redirect) '/admin' Section Creation Bouton Vert et Liste d'Article (Admin HTML Handlebars) //
             res.redirect('/admin')
         })
     }
@@ -48,13 +49,13 @@ exports.createArticle = async (req, res) => {
 }
 
 
-// Validation de la création d'article (edit) de la Page admin + blog + ballonID //
+// Edition de la création d'article (CONFIRMATION) de la Page admin + blog + ballonID //
 
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 exports.editArticle = async (req, res) => {
     console.log('Edition Article Page ID', req.body)
     
-    // Stock la requete sql //
+    // Stockage de la requete sql //
     let sql = `UPDATE Article
                SET title = '${req.body.title}',
                    description = '${req.body.description}',
@@ -72,7 +73,8 @@ exports.editArticle = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    // Permet de rediriger l'Utilisateur vers le fichier Handlebars 'admin' Section Liste Edit Article de la page Admin //
+    // Permet de rediriger l'Utilisateur vers le fichier Handlebars 'admin' Section Liste Edit Article de la page Admin se situant dans le views //
+    // "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,
@@ -92,6 +94,6 @@ exports.deleteArticle = async (req, res) => {
     // Execution de la requête SQL "DELETE FROM" permettant de supprimer un article de la page Admin Section Liste d'Article - (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
     await query(`DELETE FROM Article WHERE id = ${ req.params.id }`)
     
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL res.redirect '/admin' (admin HTML Handlebars)  //
+    // Permet de rediriger (redirect) l'Utilisateur vers l'URL res.redirect '/admin' se situant dans le views (admin HTML Handlebars)  //
     res.redirect('/admin')
 }
