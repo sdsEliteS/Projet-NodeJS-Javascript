@@ -8,7 +8,7 @@ exports.getPageBlog = async (req, res) => {
 
     console.log(ballonList)
 
-    // Par default intégration layout main => {{{ body }}} - (Page View)
+    // Permet de rediriger l'Utilisateur vers le fichier 'blog' HTML Handlebars //
     res.render('blog', { ballonList }); 
 
 }

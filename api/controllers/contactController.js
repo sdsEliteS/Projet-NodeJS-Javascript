@@ -8,7 +8,7 @@ exports.getPageContact = (req, res) => {
     res.render('contact');
 }
 
-// Lors du remplissage du formulaire de contact de la page Home //
+// Remplissage du formulaire de contact de la page Home + Presentation //
 exports.formContact = (req, res) => {
     console.log('Controller Form Contact', req.body)
 
@@ -28,14 +28,14 @@ exports.formContact = (req, res) => {
     })
 }
 
-// Suppression Message du formulaire de contact dans la Page Home + Presensation envoyant vers la Page Admin Section Liste Message //
+// Suppression Message du formulaire de contact de la Page Home + Presensation envoyant vers la Page Admin Section Liste Message //
 exports.deleteMessage = async (req, res) => {
     console.log('Controller delete Message', req.body, req.params)
 
-    // Requête SQL permettant de supprimer un message de la page Admin Section Liste Message //
+    // Exécution de la requête SQL permettant de supprimer un message de la page Admin Section Liste Message //
     await query(`DELETE FROM Message WHERE id = ${ req.params.id }`)
 
-    // Permet de rediriger l'Utilisateur vers le fichier handlebars /admin HTML Handlebars + adminController - "openMessage: show" permettant la Suppression afin de rester sur la page Admin Section Liste Message //
+    // Permet de rediriger l'Utilisateur vers le fichier handlebars /admin HTML Handlebars - "openMessage: show" permettant la Suppression afin de rester sur la page Admin Section Liste Message //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')

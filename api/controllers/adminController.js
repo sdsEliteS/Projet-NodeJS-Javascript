@@ -2,15 +2,6 @@
  * Controller administration
  * ************************* */
 
-// Renvoi au dossier tableau article.json //
-// Renvoi au dossier tableau message.json //
-// Renvoi au dossier tableau user.json //
-const articleList = require('../article.json')
-const messageList = require('../message.json')
-const userList = require('../user.json')
-
-
-
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 exports.getPageAdmin = async (req, res) => {
 
@@ -59,7 +50,6 @@ exports.editUser = async (req, res) => {
             WHERE id = '${req.params.id}';`;
 
     
-
     // Execution de la requete sql (elle est utilisé dans le cadre d'une méthode asynchrome = async ) //
     await query(sql)
 
@@ -68,7 +58,7 @@ exports.editUser = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
+    // Permet de rediriger l'Utilisateur vers le fichier 'admin' HTML Handlebars //
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,
@@ -96,7 +86,7 @@ exports.deleteUser = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL /admin HTML Handlebars + adminController  //
+    // Permet de rediriger l'Utilisateur vers le fichier 'admin' HTML Handlebars //
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,
@@ -106,7 +96,7 @@ exports.deleteUser = async (req, res) => {
     })
 
     // res.redirect('/admin') redirige vers des URL et afin qu'on nous renvoi la Page Admin Section Liste Utilisateur au moment de la Suppression de l'Utilisateur,
-    // il faut renvoyer un ficher handlebars et donc la res.render permet une issue positif (res.redirect peut être modifier par un res.render) //
+    // il faut renvoyer un ficher handlebars et donc la res.render permet une issue positif (res.redirect peut être remplacé par un res.render) //
 
     // res.redirect et res.render font partie de la méthode GET //
 }

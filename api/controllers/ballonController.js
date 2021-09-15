@@ -10,7 +10,7 @@ exports.getPageBallonID = async (req, res) => {
     console.log('dbBallon', dbBallon)
     console.log('ballon', ballon[0])
 
-    // Par default intégration layout main => {{{ body }}} - (Page View)
+    // Permet de rediriger l'Utilisateur vers le fichier 'ballon' HTML Handlebars //
     res.render('ballon', { ballon });
 }
 
@@ -29,6 +29,7 @@ exports.addComment = async (req, res) => {
         req.body.refId
     ];
 
+    // Condition: s'il y a pas de req.body.content alors tu me renvoi l'URL '/ballon/' + req.body.refId sinon tu m'executes la fonction  //
     if (!req.body.content) res.redirect('/ballon/' + req.body.refId)
     else {
         query(sql, [values], function (err, data, fields) {
