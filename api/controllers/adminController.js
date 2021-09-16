@@ -6,8 +6,9 @@
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // Export de la routes du router.js (getPageAdmin) avec => une Function opérant un retour d'information en rapport avec une methode GET sur l'aspect FRONT-END (SELECT = READ = LIRE) - req = requete utilisateur faite au server et res = response du server //
 exports.getPageAdmin = async (req, res) => {
-    console.log('page admin', req.path, req, req.isAdmin)
-
+    
+    
+    
     // 1 //
 
     // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
@@ -16,7 +17,7 @@ exports.getPageAdmin = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-
+    //2 //
 
     // res.render renvoi à l'Utilisateur vers le fichier 'admin' HTML Handlebars dans le DOSSIER views //
     res.render('admin', {
