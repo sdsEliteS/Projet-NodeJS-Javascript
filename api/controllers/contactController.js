@@ -12,7 +12,7 @@ exports.getPageContact = (req, res) => {
 
 /*
  * Remplissage des formulaires de contacts à L'INTERIEUR de la Page Home + Presentation 
- ********************************************************************************************************************** */
+ *********************************************************************************************************************** */
 
 /********************************************* METHODE SYNCHRONE *********************************************************/
 
@@ -68,7 +68,7 @@ exports.deleteMessage = async (req, res) => {
 
     // Execution de la Requête SQL DELETE FROM ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     await query(`DELETE FROM Message WHERE id = ${ req.params.id }`)
-    // req.params est l'id donner en paramètre de l'URL (/Message/:id exemple: /Message/1) permettant de supprimer l'id du Message qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal de commande plus haut dans le console.log (Chaque Message à un numero d'id précis //
+    // req.params est l'id donner en paramètre de l'URL (/Message/:id exemple: /Message/1) permettant de supprimer l'id du Message qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal de commande plus haut dans le console.log (Chaque Message à un numero d'id précis) //
     
     // 2 //
 

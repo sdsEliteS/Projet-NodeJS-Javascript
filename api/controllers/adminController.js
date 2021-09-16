@@ -90,7 +90,9 @@ exports.editUser = async (req, res) => {
      // 3 //
     // Le render renvoit une page handlebars ('admin') se situant dans le DOSSIER views et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
     // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) -  ( VOIR MySQL WORKBENCH ) //
-    // RAPPEL: En JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } ) 
+    // RAPPEL: En JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } )
+    // Le fichier Handlebars tableauUser est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
+    // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) // 
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,
@@ -112,15 +114,27 @@ exports.editUser = async (req, res) => {
 
 /************************************************************* METHODE ASYNCHRONE ****************************************************************************************************************************************************************************************************************************************************************/
 
+/* ************************************************L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3)  ***********************************************************************************************************************************************************************************************************************************************/
+
+ // *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête UPDATE pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
+// 1 --> Effectuer la mise a jour (SQL DELETE) - 2 --> Charger les constantes après la mise à jour permet d'avoir les données à jour (User - Article -Message) - 3 --> Renvoyer la réponse avec les data mise à jour avec le res.render (User - Article - Message) //
+
+
 // (DELETE/Suppression = Method DELETE HTTP = MySQL: DELETE) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // export de la routes du router.js (deleteUser) avec => une Function opérant un retour d'information en rapport avec une methode DELETE (DELETE = SUPPRESSION UTILISATEUR) - req = requete utilisateur au server et res = response du server à l'utilisateur //
 exports.deleteUser = async (req, res) => {
     console.log('Suppression Utilisateur', req.body, req.params)
 
+
+    // 1 //
+
     // Exécution de la Requête SQL "DELETE FROM" permettant de supprimer un utilisateur de la Page Admin Section Liste d'Utilisateur (User) //
     // req.params est l'id donner en paramètre de l'URL (/user/:id exemple: /user/1) permettant de supprimer l'id de l'User qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal grâce au Console.log plus haut (chaque User à un numero id précis) //
     await query(`DELETE FROM User WHERE id = ${ req.params.id }`)
+
+
+    // 2 //
 
     // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
@@ -129,13 +143,17 @@ exports.deleteUser = async (req, res) => {
     const dbMessage = await query('select * from Message')
 
 
-    // Index [0] est égal à l'UTILISATEUR 1
-    // Index [2] est égal à l'UTILISATEUR 3
+    // Index Tableau [0] est égal à l'UTILISATEUR id 1
+    // Index Tableau [2] est égal à l'UTILISATEUR id 3
 
-   
+
+    // 3 //
+
     // Le render renvoit une page handlebars ('admin') se situant dans le DOSSIER views et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
     // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) -  ( VOIR MySQL WORKBENCH ) //
-    // RAPPEL: En JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } ) 
+    // RAPPEL: En JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } )
+    // Le fichier Handlebars tableauUser est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
+    // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) // 
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,
