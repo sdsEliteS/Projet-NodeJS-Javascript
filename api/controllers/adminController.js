@@ -6,7 +6,8 @@
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // Export de la routes du router.js (getPageAdmin) avec => une Function opérant un retour d'information en rapport avec une methode GET sur l'aspect FRONT-END (SELECT = READ = LIRE) - req = requete utilisateur faite au server et res = response du server //
 exports.getPageAdmin = async (req, res) => {
-    
+    console.log('page admin', req.path, req)
+
     
     
     // 1 //

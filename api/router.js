@@ -60,14 +60,16 @@ router.route('/legalnotice')
 router.route('/presentation')
     .get(presentationController.getPagePresentation)
 
-/*************************************************************************************************************************/
+/******************************************************************************************************************************/
 
 
- /*
-  * contactController
-  ******************* */
+
 
 /************************* PAGE HOME + PAGE PRESENTATION****************************************/
+
+/*
+  * contactController
+  ******************* */
 
 
 // URL Page Contact
@@ -93,7 +95,7 @@ router.route('/form-message')
  * blogController + ballonCOntroller
  *********************************** */
 
-/********* PAGE BLOG + PAGE ARTICLE qui arrive suite au clic sur la card de la page BLOG *********/
+/******************* PAGE BLOG + PAGE ARTICLE qui arrive suite au clic sur la card de la page BLOG ****************************/
 
 // URL Page Blog
 router.route('/blog')
@@ -109,10 +111,14 @@ router.route('/addcomment')
 
 
 
+
+/********************************************************** PAGE ADMIN ******************************************************* */
+
+
 /*
  * blogController + adminController + contactController
  ****************************************************** */
-/**********************PAGE ADMIN ********************* */
+
 
 // URL Page Admin
 router.route('/admin')
@@ -143,12 +149,14 @@ router.route('/message/:id')
 
 
 
+/********************************************* PAGE REGISTER + PAGE LOGIN + PAGE PROFIL ************************************** */
+    
+
 /*
  * authController + profilController
  * ********************************* */
 
-/*************** PAGE REGISTER + PAGE LOGIN + PAGE PROFIL *************/
-    
+
 // URL Page Login
 router.route('/login')
     .get(authController.getPageLogin)
@@ -165,9 +173,11 @@ router.route('/forget')
 router.route('/registerprofil')
     .post(authController.registerProfil)
 
+
 /*
  * profilController
  ****************** */
+
 
 // URL Page Formulaire Connexion Compte Login
 router.route('/connexion')
@@ -178,4 +188,8 @@ router.route('/profil')
     .get(profilController.getPageProfil)
 
 
+
+
+
+    
 module.exports = router
