@@ -15,8 +15,8 @@ const homeController = require('./controllers/homeController'),
     legalnoticeController = require('./controllers/legalnoticeController'),
     ballonController = require('./controllers/ballonController'),
     adminController = require('./controllers/adminController'),
-    profilController = require('./controllers/profilController'),
-    infoController = require('./controllers/infoController');
+    profilController = require('./controllers/profilController');
+    
 
 /*
  * Import des Middlewares
@@ -38,33 +38,9 @@ const homeController = require('./controllers/homeController'),
  * homeController
  **************** */
 
-
 // URL Page Home
 router.route('/')
     .get(homeController.getPageHome)
-
-
-/*
- * presentationController
- ************************ */
-
-// URL Page Presentation
-router.route('/presentation')
-    .get(presentationController.getPagePresentation)
-
-
-
-
-/*
- * contactController
- ******************* */
-
-/************** FORMULAIRE DE CONTACT DANS PAGE HOME + PAGE PRESENTATION ****************** */
-
-
-// URL Page Formulaire Article (Page Home Formulaire de Contact)
-router.route('/form-message')
-    .post(contactController.formContact)
 
 
 /*
@@ -77,20 +53,39 @@ router.route('/legalnotice')
 
 
 /*
+ * presentationController
+ ************************ */
+
+// URL Page Presentation
+router.route('/presentation')
+    .get(presentationController.getPagePresentation)
+
+/*************************************************************************************************************************/
+
+
+/*
  * contactController
  ******************* */
 
-/************** PAGE HOME + PAGE PRESENTATION****************** */
+/************************* PAGE HOME + PAGE PRESENTATION****************************************/
 
 
 // URL Page Contact
-router.route('/contact')
+router.route('')
     .get(contactController.getPageContact)
 
-// URL Page Formulaire Article (Page Home Formulaire de Contact)
+
+
+/************** FORMULAIRE DE CONTACT DANS LA PAGE HOME + PAGE PRESENTATION ********************/
+
+
+// URL Page Formulaire (Page Home Formulaire de Contact)
 router.route('/form-message')
     .post(contactController.formContact)
 
+
+
+/*************************************************************************************************************************** */
 
 
 

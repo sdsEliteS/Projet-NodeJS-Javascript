@@ -2,23 +2,16 @@
  * Controller Formulaire Contact (Page Home + Page Présentation)
  * ************************************************************* */
 
-
 exports.getPageContact = (req, res) => {
 
     // Par default intégration layout main => {{{ body }}} - (Page View)
-    // Renvoi à l'Utilisateur le fichier Handlebars HTML 'contact' se situant dans le DOSSIER views //
-    res.render('contact');
+    
+    res.render();
 }
 
 
-
-
-
-
-
-
 /*
- * Remplissage des formulaires de contacts à L'INTERIEUR de la Page Home + Presentation !!!!!!!!!
+ * Remplissage des formulaires de contacts à L'INTERIEUR de la Page Home + Presentation 
  ********************************************************************************************* */
 
 // ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
