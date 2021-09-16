@@ -13,7 +13,7 @@ exports.getPageAdmin = async (req, res) => {
     // 1 //
 
     // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
-    // ( "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
+    // ( Exécution de la requête "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')

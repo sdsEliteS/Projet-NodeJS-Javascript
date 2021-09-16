@@ -179,7 +179,7 @@ router.route('/registerprofil')
  ****************** */
 
 
-// URL Page Formulaire Connexion Compte Login
+// URL Page Formulaire Connexion PageLogin
 router.route('/connexion')
     .post(profilController.connexionProfil)
 
@@ -191,5 +191,5 @@ router.route('/profil')
 
 
 
-    
+
 module.exports = router
