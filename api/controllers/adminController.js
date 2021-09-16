@@ -2,13 +2,16 @@
  * Controller administration Page ADMIN
  * ************************************ */
 
+/************************************************************* METHODE ASYNCHRONE *************************************************************************************************************************************************************************************************************************************************************/
+
 // (READ/Lire = Method GET HTTP = MySQL: SELECT) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // Export de la routes du router.js (getPageAdmin) avec => une Function opérant un retour d'information en rapport avec une methode GET sur l'aspect FRONT-END (SELECT = READ = LIRE) - req = requete utilisateur faite au server et res = response du server //
 exports.getPageAdmin = async (req, res) => {
-    // console.log('page admin')
+    console.log('page admin', req.body)
 
-    
+// 1 -> Charger les constantes et Exécution de la requête permet d'avoir les données à jour (User - Article - Message) - 2 -> Renvoyer la réponse avec les data mise à jour grâce au res.render (User - Article - Message) //
+
     // 1 //
 
     // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
@@ -19,7 +22,7 @@ exports.getPageAdmin = async (req, res) => {
 
     // 2 //
 
-    // res.render renvoi à l'Utilisateur vers le fichier 'admin' HTML Handlebars dans le DOSSIER views //
+    // res.render renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,
@@ -29,10 +32,8 @@ exports.getPageAdmin = async (req, res) => {
     });
 
 }
-// "openArticle: 'show'" permettant de rester sur la page Admin Section Liste Article Principal en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
+// "openArticle: 'show'" permettant de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
 
-
- // 1 -> Charger les constantes et Exécution de la requête permet d'avoir les données à jour (User - Article - Message) - 2 -> Renvoyer la réponse avec les data mise à jour grâce au res.render (User - Article - Message) //
 
 
 
@@ -40,6 +41,7 @@ exports.getPageAdmin = async (req, res) => {
  * Edition de l'Utilisateur (modal - editUser) en rapport avec l'enregistrement de l'Utilisateur (Manipulation faite ulterieurement (Exemple: isBan = Bannir Utilisateur) 
  ************************************************************************************************************************************************************************ */
 
+/************************************************************** METHODE ASYNCHRONE ************************************************************************************************************************************************************************************************************************************************************/
 
 // (UPDATE/Modification = Method PUT HTTP = MySQL: UPDATE) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
@@ -86,9 +88,9 @@ exports.editUser = async (req, res) => {
     
 
      // 3 //
-    // res.render renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} users est un tableau  {{#each users }} {{/each}} + this (this.name colonne de la Table) on exploite alors les données du tableaux Users qu'on intègre dans Les fichiers Handlebars tableauUser se situant dans le DOSSIER Admin qui est dans le DOSSIER Partial qui est dans le DOSSIER views //
-    // Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner dans les fichiers Handlebars ( VOIR Diagramme de CLasse dans My SQL WORKBENCH ) //
+    // Le render renvoit une page handlebars ('admin') se situant dans le DOSSIER views et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
+    // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) -  ( VOIR MySQL WORKBENCH ) //
+    // RAPPEL: En JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } ) 
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,
@@ -108,6 +110,8 @@ exports.editUser = async (req, res) => {
  * Suppression de l'Utilisateur de la Page Admin dans la Section Liste User grâce au modal 
  ***************************************************************************************** */
 
+/************************************************************* METHODE ASYNCHRONE ****************************************************************************************************************************************************************************************************************************************************************/
+
 // (DELETE/Suppression = Method DELETE HTTP = MySQL: DELETE) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // export de la routes du router.js (deleteUser) avec => une Function opérant un retour d'information en rapport avec une methode DELETE (DELETE = SUPPRESSION UTILISATEUR) - req = requete utilisateur au server et res = response du server à l'utilisateur //
@@ -115,7 +119,7 @@ exports.deleteUser = async (req, res) => {
     console.log('Suppression Utilisateur', req.body, req.params)
 
     // Exécution de la Requête SQL "DELETE FROM" permettant de supprimer un utilisateur de la Page Admin Section Liste d'Utilisateur (User) //
-    // req.params est l'id donner en paramètre de l'URL (/user/:id exemple: /user/1) permettant de supprimer l'id de l'User qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal grâce au Console.log plus haut //
+    // req.params est l'id donner en paramètre de l'URL (/user/:id exemple: /user/1) permettant de supprimer l'id de l'User qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal grâce au Console.log plus haut (chaque User à un numero id précis) //
     await query(`DELETE FROM User WHERE id = ${ req.params.id }`)
 
     // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
@@ -125,11 +129,11 @@ exports.deleteUser = async (req, res) => {
     const dbMessage = await query('select * from Message')
 
 
-    // console.log('dbUsers[0]', dbUsers[0]) // Index [0] est égal à l'UTILISATEUR 1
-    // console.log('dbUsers[2]', dbUsers) // Index [2] est égal à l'UTILISATEUR 3
+    // Index [0] est égal à l'UTILISATEUR 1
+    // Index [2] est égal à l'UTILISATEUR 3
 
-    // res.render renvoi renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
-    // Le render renvoit une page handlebars ('admin') et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
+   
+    // Le render renvoit une page handlebars ('admin') se situant dans le DOSSIER views et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
     // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) -  ( VOIR MySQL WORKBENCH ) //
     // RAPPEL: En JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } ) 
     res.render('admin', {

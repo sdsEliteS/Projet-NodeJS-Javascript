@@ -87,15 +87,17 @@ router.route('/form-message')
 
 
 
-/*************************************************************************************************************************** */
+/******************************************************************************************************************************/
 
 
+
+
+
+/******************* PAGE BLOG + PAGE ARTICLE qui arrive suite au clic sur la card de la page BLOG ****************************/
 
 /*
  * blogController + ballonCOntroller
  *********************************** */
-
-/******************* PAGE BLOG + PAGE ARTICLE qui arrive suite au clic sur la card de la page BLOG ****************************/
 
 // URL Page Blog
 router.route('/blog')
