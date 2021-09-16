@@ -10,12 +10,17 @@ const methodOverride = require('method-override');
 const mysql = require ('mysql');
 const util = require('util')
 
+const morgan = require('morgan')
+
 /*
  * Configuration de nos modules
  * **************************** */ 
 
 // Rendre fonctionnel express (Concerne toute les méthodes GET,POST,PUT,DELETE)
 const app = express();
+
+// Permet de log les ressources chargé par le client (CSS, Image etc ...)
+app.use(morgan('dev'))
 
 // Configuration handlebars 
 app.set('view engine', 'hbs');
@@ -55,7 +60,7 @@ db.connect(function(err) {
     console.log('connected as id ' + db.threadId);
 });
 
-// Rendre la variable db = base de donnée asynchrone par un systeme de promesse (util.promisify)
+// Rendre la variable db = base de donnée asynchrone par un systeme de promesse  (util.promisify)
 const query = util.promisify(db.query).bind(db);
 global.query = query;
 
@@ -63,17 +68,13 @@ global.query = query;
  * Router
  * ****** */
 
-// // Ancienne Version
-// app.get('/', (req, res) => {
-//     res.render('home')
-// })
-
 const ROUTER = require('./api/router');
 app.use(ROUTER);
 
 /*
  * Ecoute de notre application
  * ***********************$*** */ 
+
 // Lancement de l'application
 app.listen(port, () => {
     console.log("le serveur tourne sur le prt: " + port);

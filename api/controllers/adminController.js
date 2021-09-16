@@ -6,6 +6,9 @@
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // Export de la routes du router.js (getPageAdmin) avec => une Function opérant un retour d'information en rapport avec une methode GET sur l'aspect FRONT-END (SELECT = READ = LIRE) - req = requete utilisateur faite au server et res = response du server //
 exports.getPageAdmin = async (req, res) => {
+    console.log('page admin', req.path, req, req.isAdmin)
+
+    // 1 //
 
     // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
     // ( "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
@@ -13,10 +16,9 @@ exports.getPageAdmin = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    // res.render revoi à l'Utilisateur vers le fichier 'admin' HTML Handlebars dans le DOSSIER views //
-    // Ensuite dans l'objet {} articles - messages - users sont des tableaux = EXEMPLE: {{#each articles }} {{/each}} + this (Exemple: this.name colonne de la Table) qu'on intègre dans Les fichiers Handlebars tableauArticle - tableauMessage - tableauUser se situant dans le DOSSIER Admin qui est dans le dossier Partial qui est dans le dossier views  //
-    // Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner dans les fichiers Handlebars concernés ( VOIR MySQL WORKBENCH ) //
-     
+
+
+    // res.render renvoi à l'Utilisateur vers le fichier 'admin' HTML Handlebars dans le DOSSIER views //
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,
@@ -29,11 +31,14 @@ exports.getPageAdmin = async (req, res) => {
 // "openArticle: 'show'" permettant de rester sur la page Admin Section Liste Article Principal en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
 
 
+ // 1 -> Charger les constantes de la mise à jour permet d'avoir les données à jour - 2 -> Renvoyer la réponse avec les data mise à jour grâce au res.render //
 
 
 
+/*
+ * Edition de l'Utilisateur (modal - editUser) en rapport avec l'enregistrement de l'Utilisateur (Manipulation faite ulterieurement (Exemple: isBan = Bannir Utilisateur) 
+ ************************************************************************************************************************************************************************ */
 
-// Edition du formulaire (modal) en rapport avec l'enregistrement de l'Utilisateur (Manipulation pouvant également être effectué ultérieurement (Exemple: isBan = Bannir Utilisateur) //
 
 // (UPDATE/Modification = Method PUT HTTP = MySQL: UPDATE) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
@@ -55,6 +60,12 @@ exports.editUser = async (req, res) => {
 
     console.log('Mes data du formulaire', req.body)
 
+    /* ************************************************L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3)  ********************************************************/
+
+     // *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête UPDATE pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
+    // 1 --> Effectuer la mise a jour (SQL UPDATE) - 2 --> Charger les constantes après la mise à jour permet d'avoir les données à jour - 3 --> Renvoyer la réponse avec les data mise a jour avec le res.render //
+
+    // 1 //
     // Stockage de la Requete SQL "UPDATE permettant de modifier si besoin l'enregistrement de l'Utilisateur effectuer dans une Table (Exemple: Table User) //
     let sql = `UPDATE User
             SET isAdmin = '${req.body.isAdmin}',
@@ -66,23 +77,15 @@ exports.editUser = async (req, res) => {
     // Execution de la Requête SQL UPDATE ( "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
     await query(sql)
 
+     // 2 //
     // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
-    // *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête UPDATE pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
-    // 1 -> Effectuer la mise a jour (SQL UPDATE) - 2 -> Charger les constantes après la mise jour à permet d'avoir les données à jour - 3 -> Renvoyer la réponse avec les data misa a jour avec le res.render //
-
-    // 1 + 2 //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    console.log('dbUsers[0]', dbUsers[0]) // Index [0] est égal à l'UTILISATEUR 1
-    console.log('dbUsers[0]', dbUsers[1]) // Index [1] est égal à l'UTILISATEUR 2
-    console.log('dbUsers[0]', dbUsers[2]) // Index [2] est égal à l'UTILISATEUR 3
-
-    // res.render est le Server qui renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} users est un tableau est {{#each users }} {{/each}} + this (this.name colonne de la Table) 
-    // Les fichiers Handlebars tableauArticle - tableauMessage - tableauUser sont dans le DOSSIER Admin qui est dans le DOSSIER Partial qui est dans le views. 
-    // Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner dans les fichiers Handlebars ( VOIR My SQL WORKBENCH ) //
+    // res.render renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
+    // Ensuite dans l'objet {} users est un tableau  {{#each users }} {{/each}} + this (this.name colonne de la Table) on exploite alors les données du tableaux Users qu'on intègre dans Les fichiers Handlebars tableauUser se situant dans le DOSSIER Admin qui est dans le DOSSIER Partial qui est dans le DOSSIER views //
+    // Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner dans les fichiers Handlebars ( VOIR Diagramme de CLasse dans My SQL WORKBENCH ) //
 
     // 3 //
     res.render('admin', {
@@ -98,7 +101,11 @@ exports.editUser = async (req, res) => {
 
 
 
-// Suppression d'Utilisateur de la Page Admin //
+
+
+/* 
+ * Suppression de l'Utilisateur de la Page Admin dans la Section Liste User grâce au modal 
+ ***************************************************************************************** */
 
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // export de la routes du router.js (deleteUser) avec => une Function opérant un retour d'information en rapport avec une methode DELETE (DELETE = SUPPRESSION UTILISATEUR) - req = requete utilisateur au server et res = response du server à l'utilisateur //
@@ -106,7 +113,7 @@ exports.deleteUser = async (req, res) => {
     console.log('Suppression Utilisateur', req.body, req.params)
 
     // Exécution de la Requête SQL "DELETE FROM" permettant de supprimer un utilisateur de la Page Admin Section Liste d'Utilisateur (User) //
-    // req.params est l'id donner en parametre de l'URL (/user/:id exemple: /user/1)
+    // req.params est l'id donner en paramètre de l'URL (/user/:id exemple: /user/1) permettant de supprimer l'id de l'User qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'id mentionner également dans le terminal grâce au Console.log plus haut //
     await query(`DELETE FROM User WHERE id = ${ req.params.id }`)
 
     // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
@@ -114,11 +121,13 @@ exports.deleteUser = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    // res.render est le Server qui renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableaux avec les tables User, Article et Message qu'ont exploitent sous la forme d'un {{#each users }} {{/each}} + this (this + name colonne de la Table concernée)
-    // dans les fichiers Handlebars tableauArticle - tableauMessage - tableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner ( VOIR MySQL WORKBENCH ) //
+
+    // console.log('dbUsers[0]', dbUsers[0]) // Index [0] est égal à l'UTILISATEUR 1
+    // console.log('dbUsers[2]', dbUsers) // Index [2] est égal à l'UTILISATEUR 3
+
+    // res.render renvoi qui renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
     // Le render renvoit une page handlebars ('admin') et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
-    // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each VALUE }} {{/each}} ))
+    // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) -  ( VOIR MySQL WORKBENCH ) //
     // RAPPEL: EN JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } ) 
     res.render('admin', {
         articles: dbArticle,
