@@ -178,14 +178,15 @@ router.route('/registerprofil')
  * profilController
  ****************** */
 
+// URL Page Profil
+router.route('/profil')
+    .get(profilController.getPageProfil)
 
 // URL Page Formulaire Connexion PageLogin
 router.route('/connexion')
     .post(profilController.connexionProfil)
 
-// URL Page Profil
-router.route('/profil')
-    .get(profilController.getPageProfil)
+
 
 
 

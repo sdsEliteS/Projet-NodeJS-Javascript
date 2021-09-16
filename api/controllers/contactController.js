@@ -6,13 +6,15 @@ exports.getPageContact = (req, res) => {
 
     // Par default intégration layout main => {{{ body }}} - (Page View)
     
-    res.render();
+    res.render('');
 }
 
 
 /*
  * Remplissage des formulaires de contacts à L'INTERIEUR de la Page Home + Presentation 
- ********************************************************************************************* */
+ ********************************************************************************************************************** */
+
+/********************************************* METHODE SYNCHRONE *******************************************************/
 
 // ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
 // Exportation de la routes du router.js (formContact) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST (Création) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
@@ -38,9 +40,14 @@ exports.formContact = (req, res) => {
     })
 }
 
+
+
+
 /* 
  * Suppression Message du formulaire de contact de la Page Home + Presensation dans la Page Admin Section Liste Message
  ********************************************************************************************************************** */
+
+/********************************************* METHODE ASYNCHRONE *******************************************************/
 
 // ( DELETE/Suppression = Method DELETE HTTP = MySQL: DELETE ) //
 //Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
