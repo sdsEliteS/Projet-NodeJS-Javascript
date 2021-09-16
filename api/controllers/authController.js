@@ -2,6 +2,10 @@
  * Page Login
  * ********** */
 
+
+
+
+/**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
 // Visualisation de la Page LOGIN ( READ/Lire = METHOD GET = MySQL: SELECT ) //
 // Exportation de la routes du router.js (getPageLogin) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP Utilisateur faite au Server et res = response du Server //
 exports.getPageLogin = (req, res) => {
@@ -18,7 +22,7 @@ exports.getPageLogin = (req, res) => {
 }
 
 
-
+/**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
 // Lors du remplissage du formulaire modal Mot de Passe Oublié de la Page LOGIN //
 // Export de la routes du router.js (forgetProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête Utilisateur interrogant le Server et res = response du Server //
 exports.forgetProfil = (req, res) => {
@@ -32,10 +36,22 @@ exports.forgetProfil = (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
 /*
  * Page Register
  * ************* */
 
+
+/**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
 // Visualisation de la page REGISTER (READ/Lire = Method GET HTTP = MySQL: SELECT) //
 // Exportation de la routes du router.js dans le Controller (getPageRegister) avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageRegister = (req, res) => {
@@ -51,6 +67,11 @@ exports.getPageRegister = (req, res) => {
 }
 
 
+
+
+
+
+/**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
 // Remplissage du formulaire d'enregistrement de l'Utilisateur de la page REGISTER ( CREATE = Method POST HTTP = Requête MySQL: INSERT INTO ) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
 // export de la routes du router.js (registerProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requete HTTP de utilisateur faite au server et res = response du server //
 exports.registerProfil = (req, res) => {
@@ -75,9 +96,4 @@ exports.registerProfil = (req, res) => {
         // Server permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) au moment de la validation du formulaire de la page REGISTER //
         res.redirect('/')
     })
-
-    // Async Synchronous version
-    // await query(sql, [values])
-    // res.redirect('/')
-
 }
