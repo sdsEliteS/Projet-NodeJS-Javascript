@@ -14,7 +14,7 @@ exports.getPageContact = (req, res) => {
  * Remplissage des formulaires de contacts à L'INTERIEUR de la Page Home + Presentation 
  ********************************************************************************************************************** */
 
-/********************************************* METHODE SYNCHRONE *******************************************************/
+/********************************************* METHODE SYNCHRONE *********************************************************/
 
 // ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
 // Exportation de la routes du router.js (formContact) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST (Création) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
@@ -47,26 +47,43 @@ exports.formContact = (req, res) => {
  * Suppression Message du formulaire de contact de la Page Home + Presensation dans la Page Admin Section Liste Message
  ********************************************************************************************************************** */
 
-/********************************************* METHODE ASYNCHRONE *******************************************************/
+/******************************************* METHODE ASYNCHRONE *********************************************************/
+
+/* **************************** L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3)  *****************************************/
+
+
+// *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête DELETE FROM pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
+// 1 --> Exécution de la requête SQL DELETE (Message) - 2 --> Charger les constantes permet d'avoir les données à jour sur un aspect general (User - Article - Message)  3 --> Renvoyer la réponse avec les data mise à jour grâce au res.render (User - Article - Message) //
+
 
 // ( DELETE/Suppression = Method DELETE HTTP = MySQL: DELETE ) //
 //Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js (deleteMessage) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode DELETE (Suppression) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.deleteMessage = async (req, res) => {
     console.log('Controller delete Message', req.body, req.params)
+    
 
-    // Execution de la Requête SQL UPDATE ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
+
+    // 1 //
+
+    // Execution de la Requête SQL DELETE FROM ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     await query(`DELETE FROM Message WHERE id = ${ req.params.id }`)
+    // req.params est l'id donner en paramètre de l'URL (/Message/:id exemple: /Message/1) permettant de supprimer l'id du Message qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal de commande plus haut dans le console.log (Chaque Message à un numero d'id précis //
+    
+    // 2 //
 
-    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL = Fichier db.sql grâce à MySQL WORKBENCH)) //
+    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH //
+    // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
 
-    // Server renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableau en rapport avec la Table Message qu'ont exploite sous la forme d'un {{#each Message }} {{/each}} + this (Exemple this.name colonne de la Table Message) 
-    // dans le fichier Handlebars tableauMessage étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant également les données du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
+    // 3 //
+
+    // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
+    // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
+    // Le fichier Handlebars tableauMessage est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
     // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
     // Faisant partie de l'Objet "openMessage: show" permettant la Suppression du message en restant sur la page Admin Section Liste Message en mettant dans la div <div id="collapseMessage" class="accordion-collapse collapse {{ openMessage }}" aria-labelledby="headingThree" du fichier Handlebars tableauMessage //
     res.render('admin', {

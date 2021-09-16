@@ -2,7 +2,9 @@
  * Controller blog
  * *************** */
 
-// Visualisation de la page Blog (READ = Method GET HTTP = LIRE) //
+/************************************************************* METHODE ASYNCHRONE **************************************************************************************************************************************************************/
+
+// ( READ/Lire = Method GET HTTP = MySQL: SELECT ) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js dans le Controller (getPageBlog) avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageBlog = async (req, res) => {
@@ -13,7 +15,7 @@ exports.getPageBlog = async (req, res) => {
 
     console.log(ballonList)
 
-    // Server renvoi à l'Utilisateur le fichier 'blog' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article//
+    // res.render renvoi à l'Utilisateur le fichier 'blog' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article//
     res.render('blog', { 
         ballonList 
     }); 
@@ -25,6 +27,8 @@ exports.getPageBlog = async (req, res) => {
 /* 
  * Remplissage du modal de la création d'Article de la Page ADMIN
  **************************************************************** */ 
+
+/************************************************************* METHODE ASYNCHRONE ************************************************************************************************************************************************************/
 
 // ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
 //Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
@@ -46,19 +50,20 @@ exports.createArticle = async (req, res) => {
         req.body.author_id
     ];
 
-    // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
-    // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article visionnant les données au moment de la validation //
+
+    // La Requête SQL "SELECT * FROM" est mise dans une constante permettant de visionner la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
+    // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const userExist = await query(`SELECT * FROM User WHERE id = ${ req.body.author_id }`)
 
     console.log('User Exist', userExist)
 
-    // Condition:  Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
+    // Condition: Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
     if (!userExist[0]) res.redirect('/admin')
     else {
-        // Valeur des colonnes de la Table Article qui sont écrit dans les input //
+        // Valeur des colonnes de la Table Article qui sont écrit dans les input par l'Utilisateur //
         query(sql, [values], function (err, data, fields) {
             if (err) throw err;
-            // Permet de rediriger (redirect) l'Utilisateur vers l'URL '/admin' Section Creation Liste d'Article Bouton Vert (Admin HTML Handlebars) //
+            // Permet de rediriger l'Utilisateur vers l'URL '/admin' Section Creation Liste d'Article Bouton Vert  //
             res.redirect('/admin')
         })
     }
@@ -75,7 +80,17 @@ exports.createArticle = async (req, res) => {
 // Exportation de la routes du router.js (editArticle) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode PUT (Création) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.editArticle = async (req, res) => {
     console.log('Edition Article Page ID', req.body)
+
+/********************************************************** METHODE ASYNCHRONE *************************************************************************************************************************************************************************************/
+
+/********************************************** L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3) *********************************************************************************************************************************************************************/
+
+// *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête UPDATE pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
+    // 1 --> Effectuer la mise a jour (SQL UPDATE) - 2 --> Charger les constantes après la mise à jour permet d'avoir les données à jour sur un aspect general - 3 --> Renvoyer la réponse avec les data mise à jour avec le res.render (User - Article - Message) //
     
+
+    // 1 //
+
     // Stockage de la Requête SQL //
     let sql = `UPDATE Article
                SET title = '${req.body.title}',
@@ -86,18 +101,25 @@ exports.editArticle = async (req, res) => {
                    image = '${req.body.image}'
                WHERE id = '${req.params.id}';`;
 
-    // Execution de la Requête SQL permettant le changement ou la confirmation de la création d'Article (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
+    // Execution de la Requête SQL UPDATE permettant le changement de la création d'Article (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
     await query(sql)
 
-   // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL = Fichier db.sql grâce à MySQL WORKBENCH) //
+
+    // 2 //
+
+   // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH //
+   // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
    const dbUsers = await query('select * from User')
    const dbArticle = await query('select * from Article')
    const dbMessage = await query('select * from Message')
     
 
-    // Permet de rediriger l'Utilisateur vers le fichier Handlebars 'admin' Section Liste Edit Article de la page Admin se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableaux en rapport avec les Table Article - User - Message qu'ont exploitent sous la forme d'un {{#each Article }} {{/each}} + this (Exemple this.name colonne de la Table concernée) 
-    // dans le fichier Handlebars tableauArticle - tableauMessage - TableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant également les données du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
+
+    // 3 //
+
+    // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
+    // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
+    // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
     // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
     // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
     res.render('admin', {
@@ -114,15 +136,19 @@ exports.editArticle = async (req, res) => {
  * Suppression d'article du formulaire de la Page Admin Liste Article + Blog + ballonID
  ************************************************************************************** */ 
 
+/*********************************** METHODE ASYNCHRONE *********************************/
+
 // (DELETE/Suppression = Method DELETE HTTP = MySQL: DELETE) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js (deleteArticle) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode DELETE (Suppression) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.deleteArticle = async (req, res) => {
     console.log('Suppression Article Page ID', req.body, req.params)
+    
 
     // Execution de la requête SQL "DELETE FROM" permettant de supprimer un article de la page Admin Section Liste d'Article - (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
     await query(`DELETE FROM Article WHERE id = ${ req.params.id }`)
+    // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant de supprimer l'id du Message qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal de commande plus haut dans le console.log (Chaque Article à un numero d'id précis //
     
-    // Permet de rediriger (redirect) l'Utilisateur vers l'URL res.redirect '/admin' //
+    // res.redirect permet de rediriger l'Utilisateur vers l'URL '/admin' //
     res.redirect('/admin')
 }

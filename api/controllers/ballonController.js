@@ -2,7 +2,11 @@
  * Controller Page ID (ballon)
  * *************************** */
 
+/************************************************************* METHODE ASYNCHRONE **************************************************************************************************/
+
+// ( READ/Lire = Method GET HTTP = MySQL: SELECT ) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
+// Exportation de la routes du router.js (getPageBallonID) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageBallonID = async (req, res) => {
     console.log('Controller Ballon ID', req.params.id)
 
@@ -25,7 +29,13 @@ exports.getPageBallonID = async (req, res) => {
 
 
 
+/************************************************************* METHODE ASYNCHRONE *****************************************************************************************************/
+
 // Remplissage du formulaire d'ajout de commentaire de la page ballonID //
+
+// ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO)
+// Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
+// Exportation de la routes du router.js (getPageBallonID) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête de Utilisateur faite au Server et res = response du Server //
 exports.addComment = async (req, res) => {
     console.log('Ajout de Commentaire Ballon ID', req.body)
 
@@ -43,7 +53,7 @@ exports.addComment = async (req, res) => {
     else {
         query(sql, [values], function (err, data, fields) {
             if (err) throw err;
-            // Permet de rediriger (redirect) l'Utilisateur vers l'URL /ballon HTML Handlebars //
+            // Permet de rediriger l'Utilisateur vers l'URL '/ballon/' + req.body.refId HTML Handlebars //
             res.redirect('/ballon/' + req.body.refId)
         })
     }

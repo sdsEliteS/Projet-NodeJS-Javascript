@@ -17,7 +17,7 @@ exports.getPageAdmin = async (req, res) => {
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
 
-    //2 //
+    // 2 //
 
     // res.render renvoi à l'Utilisateur vers le fichier 'admin' HTML Handlebars dans le DOSSIER views //
     res.render('admin', {
@@ -58,7 +58,7 @@ exports.editUser = async (req, res) => {
     if (req.body.isBan === 'on') req.body.isBan = 1
     else req.body.isBan = 0
 
-    console.log('Mes data du formulaire', req.body)
+    console.log('Mes data du formulaire modal', req.body)
 
     /* ************************************************L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3)  ********************************************************/
 
@@ -131,7 +131,7 @@ exports.deleteUser = async (req, res) => {
     // res.render renvoi renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
     // Le render renvoit une page handlebars ('admin') et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
     // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) -  ( VOIR MySQL WORKBENCH ) //
-    // RAPPEL: EN JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } ) 
+    // RAPPEL: En JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } ) 
     res.render('admin', {
         articles: dbArticle,
         messages: dbMessage,
