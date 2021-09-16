@@ -96,8 +96,8 @@ exports.editArticle = async (req, res) => {
     
 
     // Permet de rediriger l'Utilisateur vers le fichier Handlebars 'admin' Section Liste Edit Article de la page Admin se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableau avec la requêtes SQL en rapport avec les Table Article - User - Message qu'ont exploitent sous la forme d'un {{#each Article }} {{/each}} + this (Exemple this.name colonne de la Table concernée) 
-    // dans le fichier Handlebars tableauArticle étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant également les données du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
+    // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableaux en rapport avec les Table Article - User - Message qu'ont exploitent sous la forme d'un {{#each Article }} {{/each}} + this (Exemple this.name colonne de la Table concernée) 
+    // dans le fichier Handlebars tableauArticle - tableauMessage - TableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant également les données du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
     // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
     // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
     res.render('admin', {

@@ -71,8 +71,8 @@ exports.editUser = async (req, res) => {
     const dbMessage = await query('select * from Message')
 
     // Permet de rediriger l'Utilisateur vers le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} on y ajoute les constantes (const) avec les requêtes SQL en rapport avec les tables User, Article et Message qu'ont exploitent par exemple sous la forme d'un {{#each users }} {{/each}} + this (this.name colonne de la Table concernée)//
-    // dans les fichiers Handlebars tableauArticle - tableauMessage - tableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner My SQL WORKBENCH //
+    // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableaux en rapport avec les tables User, Article et Message qu'ont exploitent sous la forme d'un {{#each users }} {{/each}} + this (this.name colonne de la Table concernée) 
+    // dans les fichiers Handlebars tableauArticle - tableauMessage - tableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner ( VOIR My SQL WORKBENCH ) //
    
     res.render('admin', {
         articles: dbArticle,
@@ -103,8 +103,8 @@ exports.deleteUser = async (req, res) => {
     const dbMessage = await query('select * from Message')
 
     // Server renvoi l'Utilisateur vers le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
-    // Ensuite dans l'objet {} on y ajoute les constantes (const) avec les requêtes SQL en rapport avec les tables User, Article et Message qu'ont exploitent par exemple sous la forme d'un {{#each users }} {{/each}} + this (this + name colonne de la Table concernée)
-    // dans les fichiers Handlebars tableauArticle - tableauMessage - tableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner MySQL WORKBENCH //
+    // Ensuite dans l'objet {} on y ajoute les constantes (const) convertit en tableaux avec les tables User, Article et Message qu'ont exploitent sous la forme d'un {{#each users }} {{/each}} + this (this + name colonne de la Table concernée)
+    // dans les fichiers Handlebars tableauArticle - tableauMessage - tableauUser étant dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END exportant les données du tableau concerner ( VOIR MySQL WORKBENCH ) //
    
     res.render('admin', {
         articles: dbArticle,
