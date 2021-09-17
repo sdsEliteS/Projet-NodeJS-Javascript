@@ -62,7 +62,7 @@ exports.deleteMessage = async (req, res) => {
     
     // 2 //
 
-    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH //
+    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')

@@ -14,7 +14,7 @@ exports.getPageAdmin = async (req, res) => {
 
     // 1 //
 
-    // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
+    // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
@@ -81,7 +81,7 @@ exports.editUser = async (req, res) => {
     await query(sql)
 
      // 2 //
-    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
+    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
@@ -137,7 +137,7 @@ exports.deleteUser = async (req, res) => {
 
     // 2 //
 
-    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL = Fichier db.sql) //
+    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
