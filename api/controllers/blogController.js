@@ -37,7 +37,7 @@ exports.createArticle = async (req, res) => {
     console.log('Controller Create Article', req.body)
 
     // "insert into" est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
-    // req.body permet de nous ressortir les données du modal dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article visionnant les données au moment de la validation //
+    // req.body permet de nous ressortir les données du modal dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article de la Page ADMIN visionnant les données des colonnes du tableau au moment de la validation //
     let sql = `insert into Article (title, description, subtitle, recommandation, date, categorie, image, author_id) values (?)`;
     let values = [
         req.body.title,
@@ -100,6 +100,7 @@ exports.editArticle = async (req, res) => {
                    date = '${req.body.date}',
                    image = '${req.body.image}'
                WHERE id = '${req.params.id}';`;
+    // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
     // Execution de la Requête SQL UPDATE permettant le changement de la création d'Article (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
     await query(sql)
@@ -119,7 +120,7 @@ exports.editArticle = async (req, res) => {
 
     // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
     // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
-    // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
+    // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis //  Construire le diagramme de classe avec les colonnes grâce à MySQL WORKBENCH //
     // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
     // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
     res.render('admin', {

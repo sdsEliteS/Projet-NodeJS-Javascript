@@ -64,21 +64,7 @@ router.route('/presentation')
 
 
 
-
-/************************* PAGE HOME + PAGE PRESENTATION****************************************/
-
-/*
-  * contactController
-  ******************* */
-
-
-// URL Page Contact
-router.route('')
-    .get(contactController.getPageContact)
-
-
-
-/************** FORMULAIRE DE CONTACT DANS LA PAGE HOME + PAGE PRESENTATION ********************/
+/************************** FORMULAIRE DE CONTACT DANS LA PAGE HOME + PAGE PRESENTATION ***************************************/
 
 
 // URL Page Formulaire (Page Home Formulaire de Contact)
@@ -88,8 +74,6 @@ router.route('/form-message')
 
 
 /******************************************************************************************************************************/
-
-
 
 
 

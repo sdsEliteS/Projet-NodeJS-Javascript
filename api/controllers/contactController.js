@@ -1,16 +1,4 @@
 /*
- * Controller Formulaire Contact (Page Home + Page Présentation)
- * ************************************************************* */
-
-exports.getPageContact = (req, res) => {
-
-    // Par default intégration layout main => {{{ body }}} - (Page View)
-    
-    res.render('');
-}
-
-
-/*
  * Remplissage des formulaires de contacts à L'INTERIEUR de la Page Home + Presentation 
  *********************************************************************************************************************** */
 
@@ -22,7 +10,7 @@ exports.formContact = (req, res) => {
     console.log('Controller Form Contact', req.body)
 
     // La Requête SQL insert into permet la création de plusieurs colonnes dans la Table Message pouvant accueillir des données lors du remplissage des formulaires de contacts // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
-    // req.body permet de nous ressortir les données des colonnes dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage des formulaires de contact visionnant les données au moment de la validation //
+    // req.body permet de nous ressortir les données des colonnes dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage des formulaires de contact visionnant les données de la page HOME et PRESENTATION au moment de la validation //
     let sql = `insert into Message (nom, email, sujet, message, date) values (?)`;
     let values = [
         req.body.nom,
@@ -31,6 +19,8 @@ exports.formContact = (req, res) => {
         req.body.message,
         req.body.date
     ];
+    
+
     // Valeur des colonnes de la Table Message qui sont écrit dans les input //
     query(sql, [values], function (err, data, fields) {
         if (err) throw err;
@@ -83,7 +73,7 @@ exports.deleteMessage = async (req, res) => {
 
     // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
     // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
-    // Le fichier Handlebars tableauMessage est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
+    // Le fichier Handlebars tableauMessage est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis // Construire le diagramme de classe avec les colonnes grâce à MySQL WORKBENCH //
     // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
     // Faisant partie de l'Objet "openMessage: show" permettant la Suppression du message en restant sur la page Admin Section Liste Message en mettant dans la div <div id="collapseMessage" class="accordion-collapse collapse {{ openMessage }}" aria-labelledby="headingThree" du fichier Handlebars tableauMessage //
     res.render('admin', {
