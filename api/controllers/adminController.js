@@ -62,7 +62,7 @@ exports.editUser = async (req, res) => {
 
     console.log('Mes data du formulaire modal', req.body)
 
-    /* ************************************************L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3)  ********************************************************/
+    /* ************************************************L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3)  ********************************************************************/
 
      // *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête UPDATE pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
     // 1 --> Effectuer la mise a jour (SQL UPDATE) - 2 --> Charger les constantes après la mise à jour permet d'avoir les données à jour - 3 --> Renvoyer la réponse avec les data mise à jour avec le res.render (//
