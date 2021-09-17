@@ -71,6 +71,41 @@ global.query = query;
 const ROUTER = require('./api/router');
 app.use(ROUTER);
 
+
+
+
+
+
+
+
+
+// Exemple différence fonction synchrone et asynchrone
+// app.get('/', async (req, res) => {
+
+//     // 2 fonction synchrones de suite
+//     query(sql, (err, data) => {
+//         if (err) console.log(err)
+//         query(sql2, (errr, data) => {
+//             if (errr) console.log(errr)
+
+//         })
+//     })
+
+//     // fonction async en même temp
+//     await query(sql)
+//     await query(sql2)
+
+
+// })
+
+
+
+
+
+
+
+
+
 /*
  * Ecoute de notre application
  * ***********************$*** */ 
