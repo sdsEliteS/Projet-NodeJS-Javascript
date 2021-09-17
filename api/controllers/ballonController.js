@@ -21,7 +21,7 @@ exports.getPageBallonID = async (req, res) => {
     // ballon.length === longueur totale de notre tableau
     console.log('ballon {}', ballon[0])
 
-    // res.render renvoi à l'Utilisateur le fichier 'ballon' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article//
+    // res.render renvoi à l'Utilisateur le fichier 'ballon' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article //
     res.render('ballon', { 
         ballon: ballon[0]
     });
