@@ -74,7 +74,8 @@ exports.editUser = async (req, res) => {
                 isVerified = '${req.body.isVerified}',
                 isBan = '${req.body.isBan}'
             WHERE id = '${req.params.id}';`;
-
+    // req.params est l'id donner en paramètre de l'URL (/user/:id exemple: /user/1) permettant d'edit l'id de l'User qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la l'édition de l'id mentionner également dans le terminal grâce au Console.log plus haut (chaque User à un numero id précis) //
+    // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de l'édition du User visionnant les données des colonnes du tableau au moment de la validation //   
     
     // Execution de la Requête SQL UPDATE ( "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
     await query(sql)

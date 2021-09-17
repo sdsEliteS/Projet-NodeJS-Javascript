@@ -24,6 +24,10 @@ exports.getPageBlog = async (req, res) => {
 
 // Création d'article dans la page ADMIN, le nouvel article se mettra dans la page blog avec les autres produits c'est la raison pour laquelle on le met dans blog.Controller //
 
+
+
+
+
 /* 
  * Remplissage du modal de la création d'Article de la Page ADMIN
  **************************************************************** */ 
@@ -69,6 +73,11 @@ exports.createArticle = async (req, res) => {
     }
 
 }
+
+
+
+
+
 
 
 /*
@@ -131,6 +140,10 @@ exports.editArticle = async (req, res) => {
         openArticle: 'show'
     })
 }
+
+
+
+
 
 
 /* 
