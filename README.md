@@ -132,13 +132,29 @@ https://github.com/hsukrd/api-node-mysql/blob/async/controllers/userController.j
 
 https://www.guru99.com/null.html
 
-# Methode Asynchrone (async) :
+
+
+
+
+
+# Methode Asynchrone (async) : lancement de requête en même temps peu importe le nombre !
 
 https://www.w3schools.com/js/js_async.asp
 
 # await (Toujours utilisable avec une methode Asynchrone)
 
 https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await
+
+
+
+
+
+# Methode Synchrone : Le lancement d'une requête va entrainer une autre requête !
+
+
+
+
+
 
 # Case Checkbox (isAdmin - isVerified - isBan) type booléen :
 
