@@ -153,7 +153,9 @@ https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await
 
 
 
+# Cours Jointure SQL :
 
+https://aymeric-auberton.fr/academie/mysql/jointure
 
 
 # Case Checkbox (isAdmin - isVerified - isBan) type booléen :
