@@ -42,11 +42,10 @@ exports.createArticle = async (req, res) => {
 
     // "insert into" est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
     // req.body permet de nous ressortir les données du modal dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article de la Page ADMIN visionnant les données des colonnes du tableau au moment de la validation //
-    let sql = `insert into Article (title, description, subtitle, recommandation, date, categorie, image, author_id) values (?)`;
+    let sql = `insert into Article (title, description, recommandation, date, categorie, image, author_id) values (?)`;
     let values = [
         req.body.title,
         req.body.description,
-        req.body.subtitle,
         req.body.recommandation,
         req.body.date,
         req.body.categorie,
@@ -104,7 +103,6 @@ exports.editArticle = async (req, res) => {
     let sql = `UPDATE Article
                SET title = '${req.body.title}',
                    description = '${req.body.description}',
-                   subtitle = '${req.body.subtitle}',
                    recommandation = '${req.body.recommandation}',
                    date = '${req.body.date}',
                    image = '${req.body.image}'
