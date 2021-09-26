@@ -27,6 +27,8 @@ exports.getPageBallonID = async (req, res) => {
     });
 }
 
+/* On récupère les data de la table Article pour les mettre dans la constante "ballon" qui devient la clé {{ KEY = ballon }} {{ VALUE =  ballon[0] }} sans utiliser la boucle {{#each }} {{/each }} rentrant pas dans le cadre d'une répétition afin de faire fonctionner au niveau visuel la Page ID LORS DE LA CREATION DE L'ARTICLE */
+
 
 /************************************************************* METHODE ASYNCHRONE *****************************************************************************************************/
 
