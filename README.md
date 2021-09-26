@@ -157,6 +157,8 @@ https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await
 
 https://aymeric-auberton.fr/academie/mysql/jointure
 
+https://datascientest.com/tout-comprendre-des-jointures-sql
+
 
 # Case Checkbox (isAdmin - isVerified - isBan) type booléen :
 
