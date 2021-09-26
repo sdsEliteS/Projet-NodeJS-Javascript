@@ -42,15 +42,14 @@ exports.createArticle = async (req, res) => {
 
     // "insert into" est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
     // req.body permet de nous ressortir les données du modal dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article de la Page ADMIN visionnant les données des colonnes du tableau au moment de la validation //
-    let sql = `insert into Article (title, description, recommandation, date, categorie, image, sous_desciption, author_id) values (?)`;
+    let sql = `insert into Article (title, description, recommandation, date, image, subdescription, author_id) values (?)`;
     let values = [
         req.body.title,
         req.body.description,
         req.body.recommandation,
         req.body.date,
-        req.body.categorie,
         req.body.image,
-        req.body.sous_description,
+        req.body.subdescription,
         req.body.author_id
     ];
 
@@ -107,7 +106,7 @@ exports.editArticle = async (req, res) => {
                    recommandation = '${req.body.recommandation}',
                    date = '${req.body.date}',
                    image = '${req.body.image}',
-                   sous_description = '${req.body.sous_description}'
+                   subdescription = '${req.body.subdescription}'
                WHERE id = '${req.params.id}';`;
     // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
