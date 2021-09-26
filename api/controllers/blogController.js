@@ -21,6 +21,7 @@ exports.getPageBlog = async (req, res) => {
     }); 
 }
 
+/* On récupère les data de la table Article pour les mettre dans la constante "ballon" qui devient la clé {{#each KEY = ballonList }} {{/each}} afin de faire fonctionner la Page Blog */
 
 // Création d'article dans la page ADMIN, le nouvel article se mettra dans la page blog avec les autres produits c'est la raison pour laquelle on le met dans blog.Controller //
 
