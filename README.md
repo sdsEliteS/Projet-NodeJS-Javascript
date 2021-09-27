@@ -167,7 +167,15 @@ https://dev.socrata.com/docs/datatypes/checkbox.html#,
 
 
 
-Base de donnée BACKUP :
+
+
+
+
+
+
+
+
+Base de donnée BACKUP (Voir PHOTO PORTABLE) :
 
 https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/mysqldump-sql-format.html
 
