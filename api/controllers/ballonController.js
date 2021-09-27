@@ -18,6 +18,7 @@ exports.getPageBallonID = async (req, res) => {
                                    from Comment
                                    left outer join User on Comment.author_id = User.id
                                    where Comment.ref_id = ${ req.params.id };`) // La jointure fait qu'on fusionne en faisant un select avec la table : Comment join table : User (author comment) by en rapport avec Article.id (req.params.id)
+                                   /* SELECT * FROM = récupération de toute les data de la base de donnée OU dans l'autre cas ci-dessus cela signifie qu'il est selectif */
 
     // ballon + comments sont des Tableaux = Array --> résultat de la requête SQL 
     console.log('comments []', comments)
@@ -48,7 +49,7 @@ exports.getPageBallonID = async (req, res) => {
 exports.addComment = async (req, res) => {
     console.log('Ajout de Commentaire Ballon ID', req.body)
 
-    // insert into est une requête SQL qui insert des données dans la Table Comment //
+    // insert into est une requête SQL qui crée des données dans la Table Comment (Création de Commentaire) //
     let sql = `insert into Comment (author_id, content, date, ref_id) values (?)`;
     let values = [
         req.body.author_id,
@@ -58,7 +59,6 @@ exports.addComment = async (req, res) => {
     ];
     // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création de commentaire d'Article visionnant les données des colonnes du tableau au moment de la validation //   
 
-    
 
     // Condition: s'il y a pas de req.body.content alors tu me renvoi l'URL '/ballon/' + req.body.refId sinon tu m'executes la fonction  //
     if (!req.body.content) res.redirect('/ballon/' + req.body.refId)
