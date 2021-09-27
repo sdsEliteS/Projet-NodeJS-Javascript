@@ -60,13 +60,13 @@
                                                 {{!-- Methode PUT pour l'Edition d'Article --}}
                                                 <form action="/article/{{ this.id }}?_method=PUT" method="POST">
                                                     <div class="col-md-12">
-                                                        <label for="recipient-name" class="col-form-label">Date
-                                                            :</label>
+                                                        {{!-- <label for="recipient-name" class="col-form-label">Date
+                                                            :</label> --}}
                                                         {{!-- Ne pas oublier d'écrire le "name" dans les input en
                                                         rapport avec la methode PUT --}}
-                                                        <input type="date" name="date" class="form-control"
+                                                        {{!-- <input type="date" name="date" class="form-control"
                                                             placeholder="" id="recipient-name"
-                                                            value='{{ this.date }}' />
+                                                            value='{{ this.date }}' /> --}}
                                                     </div>
                                                     {{!-- Methode PUT pour l'Edition d'Article --}}
                                                     <div class="row">
@@ -99,13 +99,13 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name"
-                                                            class="col-form-label d-flex justify-content-start">Subtitle
+                                                            class="col-form-label d-flex justify-content-start">subdescription
                                                             :</label>
                                                         {{!-- Ne pas oublier d'écrire le "name" dans les input en
                                                         rapport avec la methode POST --}}
-                                                        <input type="text" name="subtitle" class="form-control"
+                                                        <input type="text" name="subdescription" class="form-control"
                                                             placeholder="Recommandation" id="recipient-name"
-                                                            value='{{ this.subtitle }}' />
+                                                            value='{{ this.subdescription }}' />
                                                     </div>
                                                     <div class="col-md-12">
                                                         <label for="recipient-name" class="col-form-label"></label>

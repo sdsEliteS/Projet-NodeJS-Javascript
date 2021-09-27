@@ -2,6 +2,9 @@
  * Controller blog
  * *************** */
 
+/* Import Module */
+const moment = require('moment') // gestion des date
+
 /************************************************************* METHODE ASYNCHRONE **************************************************************************************************************************************************************/
 
 // ( READ/Lire = Method GET HTTP = MySQL: SELECT ) //
@@ -43,12 +46,13 @@ exports.createArticle = async (req, res) => {
 
     // "insert into" est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
     // req.body permet de nous ressortir les données du modal dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article de la Page ADMIN visionnant les données des colonnes du tableau au moment de la validation //
-    let sql = `insert into Article (title, description, recommandation, date, image, subdescription, author_id) values (?)`;
+    let sql = `insert into Article (title, description, recommandation, date, dateEdit, image, subdescription, author_id) values (?)`;
     let values = [
         req.body.title,
         req.body.description,
         req.body.recommandation,
-        req.body.date,
+        new Date(Date.now()),
+        new Date(Date.now()),
         req.body.image,
         req.body.subdescription,
         req.body.author_id
@@ -102,17 +106,17 @@ exports.editArticle = async (req, res) => {
 
     // Stockage de la Requête SQL - `` = Ctrl + (ALT GR + 7 È ,) //
     let sql = `UPDATE Article
-               SET title = '${req.body.title}',
-                   description = '${req.body.description}',
-                   recommandation = '${req.body.recommandation}',
-                   date = '${req.body.date}',
-                   image = '${req.body.image}',
-                   subdescription = '${req.body.subdescription}'
-               WHERE id = '${req.params.id}';`;
+               SET title = '${ req.body.title }',
+                   description = '${ req.body.description }',
+                   recommandation = '${ req.body.recommandation }',
+                   dateEdit = '${ moment().format('YYYY-MM-DD') }',
+                   image = '${ req.body.image }',
+                   subdescription = '${ req.body.subdescription }'
+               WHERE id = '${ req.params.id }';`;
     // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
     // Execution de la Requête SQL UPDATE permettant le changement de la création d'Article (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
-    await query(sql)
+    await query( sql )
 
 
     // 2 //
