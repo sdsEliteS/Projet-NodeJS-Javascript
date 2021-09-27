@@ -70,7 +70,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Comment` (
   `author_id` INT NOT NULL,
   `content` VARCHAR(255) NOT NULL,
   `date` DATE NOT NULL,
-  `avatar` VARCHAR(255) NOT NULL,
   `ref_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_Comments_User_idx` (`author_id` ASC) VISIBLE,
@@ -87,7 +86,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Comment` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Message`
@@ -110,4 +108,4 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 insert into User (pseudo, email, password, address, telephone, birthday)
-values ('Steven', 'dossantos.steven72190@gmail.com', '123456', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-28')
+values ('Steven', 'dossantos.steven72190@gmail.com', '123456', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-28');

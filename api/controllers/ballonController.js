@@ -10,10 +10,17 @@
 exports.getPageBallonID = async (req, res) => {
     console.log('Controller Ballon ID', req.params.id)
 
+
     // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
-    // Déclaration de la constante ballon qu'on mettra dans un {{#each ballon }} {{/each }} + this (Exemple this.name colonne de la Table Article) //
-    const ballon = await query (`select * from Article where id = ${ req.params.id}`)
-    // ballon est un Tableau = Array --> résultat de la requête SQL 
+    // Déclaration de la constante ballon qu'on mettra dans un {{#each ballon }} {{/each }} + this (Exemple this.name colonne de la Table Article) rentrant dans le cadre d'une récupération des data de la base de donnée = mydb pour les visibles dans le Front //
+    const ballon = await query (`select * from Article where id = ${ req.params.id}`) // select Article by id
+    const comments = await query (`select Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
+                                   from Comment
+                                   left outer join User on Comment.author_id = User.id
+                                   where Comment.ref_id = ${ req.params.id };`) // La jointure fait qu'on fusionne en faisant un select avec la table : Comment join table : User (author comment) by en rapport avec Article.id (req.params.id)
+
+    // ballon + comments sont des Tableaux = Array --> résultat de la requête SQL 
+    console.log('comments []', comments)
     console.log('ballon []', ballon)
     
     // ballon est un Objet --> Index numéro 0 du Tableau ballon
@@ -23,7 +30,8 @@ exports.getPageBallonID = async (req, res) => {
 
     // res.render renvoi à l'Utilisateur le fichier 'ballon' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article //
     res.render('ballon', { 
-        ballon: ballon[0]
+        ballon: ballon[0],
+        comments
     });
 }
 
@@ -45,11 +53,12 @@ exports.addComment = async (req, res) => {
     let values = [
         req.body.author_id,
         req.body.content,
-        new Date(),
+        new Date(Date.now()),
         req.body.refId
     ];
     // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création de commentaire d'Article visionnant les données des colonnes du tableau au moment de la validation //   
 
+    
 
     // Condition: s'il y a pas de req.body.content alors tu me renvoi l'URL '/ballon/' + req.body.refId sinon tu m'executes la fonction  //
     if (!req.body.content) res.redirect('/ballon/' + req.body.refId)
