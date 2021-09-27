@@ -161,9 +161,11 @@ https://datascientest.com/tout-comprendre-des-jointures-sql
 
 # Vérification de la creation de commentaire grace au jointure : 
 
-mysql> select * from Article left outer join Comment on Article.id = Comment.ref_id where Article.id = 1;      (EXEMPLE ATTENTION ID PEUT CHANGER)
+mysql> select * from Article left outer join Comment on Article.id = Comment.ref_id where Article.id = 1;      
+(EXEMPLE ATTENTION ID de l'article PEUT CHANGER)
 
-mysql> select * from Article left outer join Comment on Article.id = Comment.ref_id where Article.id = 2;      (EXEMPLE ATTENTION ID PEUT CHANGER)
+mysql> select * from Article left outer join Comment on Article.id = Comment.ref_id where Article.id = 2;      
+(EXEMPLE ATTENTION ID de l'article PEUT CHANGER)
 
 
 
