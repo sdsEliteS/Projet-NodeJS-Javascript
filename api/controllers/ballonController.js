@@ -18,7 +18,7 @@ exports.getPageBallonID = async (req, res) => {
                                    from Comment
                                    left outer join User on Comment.author_id = User.id
                                    where Comment.ref_id = ${ req.params.id };`) // La jointure fait qu'on fusionne en faisant un select avec la table : Comment join table : User (author comment) by en rapport avec Article.id (req.params.id)
-                                   /* SELECT * FROM = récupération de toute les data de la base de donnée OU dans l'autre cas ci-dessus cela signifie qu'il est selectif */
+                                   /* SELECT * FROM = récupération de toute les data de la base de donnée OU dans l'autre cas ci-dessus ce commentaire au niveau de la constante comments cela signifie qu'il est selectif */
 
     // ballon + comments sont des Tableaux = Array --> résultat de la requête SQL 
     console.log('comments []', comments)
