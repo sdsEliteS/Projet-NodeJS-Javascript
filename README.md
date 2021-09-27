@@ -167,10 +167,12 @@ https://dev.socrata.com/docs/datatypes/checkbox.html#,
 
 
 
+Base de donnée BACKUP :
 
+https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/mysqldump-sql-format.html
 
 
 # Mettre à la fin de la base de donnée afin d'autogénérer un Utilisateur :
 
 insert into User (pseudo, email, password, address, telephone, birthday)
-values ('Steven', 'dossantos.steven72190@gmail.com', '123456', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-')
+values ('Steven', 'dossantos.steven72190@gmail.com', '123456', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-28')
