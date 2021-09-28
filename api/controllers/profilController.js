@@ -8,8 +8,8 @@
 // Exportation de la routes du router.js (getPagePresentation) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageProfil = async (req, res) => {
 
+        // JOINTURE //
         /* Requête SQL permet de filtrer les commentaires de l'Utilisateur 1 et de calculer le nombre de ligne dans une table Comment (Connaitre le nombre de commentaire qu'a écrit l'utilisateur 1 par exemple */
-        // const nbCommentaire = await query(`SELECT COUNT (*) FROM Comment`)
         const nbCommentaire = await query(`SELECT * FROM Comment WHERE author_id = 1`)
         const nbCommentaire2 = await query(`SELECT COUNT (*) FROM Comment WHERE author_id = 1`)
 
