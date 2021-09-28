@@ -163,6 +163,10 @@ https://aymeric-auberton.fr/academie/mysql/jointure
 
 https://datascientest.com/tout-comprendre-des-jointures-sql
 
+https://webdevdesigner.com/q/sql-join-and-different-types-of-joins-64895/
+
+https://sql.sh/cours/jointures/inner-join
+
 # Vérification de la creation de commentaire grace au jointure : 
 
 mysql> select * from Article left outer join Comment on Article.id = Comment.ref_id where Article.id = 1;      
@@ -171,6 +175,13 @@ mysql> select * from Article left outer join Comment on Article.id = Comment.ref
 mysql> select * from Article left outer join Comment on Article.id = Comment.ref_id where Article.id = 2;      
 (EXEMPLE ATTENTION ID de l'article PEUT CHANGER)
 
+
+Autre Manipulation : Par exemple : Dans mon projet comment récupérer que les Articles de l'Utilisateur 1 ou 2 :
+
+mysql> select * from Article where author_id = 1;
+
+
+mysql> select * from Article where author_id = 2;
 
 
 

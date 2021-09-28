@@ -2,19 +2,29 @@
  * Controller Page Profil
  * ********************** */
 
-/**************************************************************** METHODE SYNCHRONE *******************************************************************************************************************************************************************/
+/**************************************************************** METHODE ASYNCHRONE *******************************************************************************************************************************************************************/
 
 // COMPTE page PROFIL UTILISATEUR ( READ/lire = Method GET HTTP = MySQL: SELECT ) //
 // Exportation de la routes du router.js (getPagePresentation) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
-exports.getPageProfil = (req, res) => {
+exports.getPageProfil = async (req, res) => {
 
+        /* Requête SQL permet de filtrer les commentaires de l'Utilisateur 1 et de calculer le nombre de ligne dans une table Comment (Connaitre le nombre de commentaire qu'a écrit l'utilisateur 1 par exemple */
+        // const nbCommentaire = await query(`SELECT COUNT (*) FROM Comment`)
+        const nbCommentaire = await query(`SELECT * FROM Comment WHERE author_id = 1`)
+        const nbCommentaire2 = await query(`SELECT COUNT (*) FROM Comment WHERE author_id = 1`)
+
+        console.log('nbCommentaire []', nbCommentaire)
+        console.log('nbCommentaire2 []', nbCommentaire2)
+        
 
        // Par default intégration layout main => {{{ body }}} - (Page View)
        // res.render renvoi à l'Utilisateur un fichier Handlebars HTML 'profil' se situant dans le DOSSIER views //
        res.render('profil', {
 
          // Objet un BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-        noFooter: true
+        noFooter: true, 
+        nbCommentaire,
+        nbCommentaire2: nbCommentaire2[0]
     });
 }
 
