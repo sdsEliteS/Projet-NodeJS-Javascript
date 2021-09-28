@@ -107,3 +107,7 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+insert into User (pseudo, email, password, address, telephone, birthday)
+values ('Steven', 'dossantos.steven72190@gmail.com', '123456', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-28');
