@@ -11,7 +11,8 @@ exports.getPageBallonID = async (req, res) => {
     console.log('Controller Ballon ID', req.params.id)
 
 
-    // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
+    // JOINTURE //
+    // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) // 
     // Déclaration de la constante ballon qu'on mettra dans un {{#each ballon }} {{/each }} + this (Exemple this.name colonne de la Table Article) rentrant dans le cadre d'une récupération des data de la base de donnée = mydb pour les visibles dans le Front //
     const ballon = await query (`select * from Article where id = ${ req.params.id}`) // select Article by id
     const comments = await query (`select Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
