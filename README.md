@@ -183,7 +183,7 @@ mysql> select * from Article left outer join Comment on Article.id = Comment.ref
 
 
 
-Base de donnée BACKUP (Voir PHOTO PORTABLE) :
+Manipulation Base de donnée BACKUP (Voir PHOTO PORTABLE pour ne pas partir de 0) :
 
 https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/mysqldump-sql-format.html
 
