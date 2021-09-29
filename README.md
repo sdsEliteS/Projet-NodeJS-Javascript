@@ -165,9 +165,10 @@ https://datascientest.com/tout-comprendre-des-jointures-sql
 
 https://webdevdesigner.com/q/sql-join-and-different-types-of-joins-64895/
 
-https://sql.sh/cours/jointures/inner-join
 
-# Vérification de la creation de commentaire grace au jointure : 
+# Vérification de la creation de commentaire en rapport avec l'auteur de l'article concerné grace au jointure : 
+
+COMMANDE DANS LA BASE DE DONNE MYSQL 
 
 mysql> select * from Article left outer join Comment on Article.id = Comment.ref_id where Article.id = 1;      
 (EXEMPLE ATTENTION ID de l'article PEUT CHANGER)
@@ -184,7 +185,9 @@ mysql> select * from Article where author_id = 1;
 mysql> select * from Article where author_id = 2;
 
 
+Autre Manipulation : Par exemple : Dans mon projet requête SQL pour fusionner en liant les commentaires 1 de mes articles 1
 
+mysql> SELECT * FROM Article LEFT JOIN Comment ON Article.id = Comment.ref_id WHERE Article.author_id = 1;
 
 
 

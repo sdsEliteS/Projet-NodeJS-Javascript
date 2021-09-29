@@ -14,12 +14,12 @@ exports.getPageBallonID = async (req, res) => {
     // JOINTURE //
     // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) // 
     // Déclaration de la constante ballon qu'on mettra dans un {{#each ballon }} {{/each }} + this (Exemple this.name colonne de la Table Article) rentrant dans le cadre d'une récupération des data de la base de donnée = mydb pour les visibles dans le Front //
-    const ballon = await query (`select * from Article where id = ${ req.params.id}`) // select Article by id
-    const comments = await query (`select Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
-                                   from Comment
-                                   left outer join User on Comment.author_id = User.id
-                                   where Comment.ref_id = ${ req.params.id };`) // La jointure fait qu'on fusionne en faisant un select avec la table : Comment join table : User (author comment) by en rapport avec Article.id (req.params.id)
-                                   /* SELECT * FROM = récupération de toute les data de la base de donnée OU dans l'autre cas ci-dessus ce commentaire au niveau de la constante comments cela signifie qu'il est selectif */
+    const ballon = await query (`SELECT * FROM Article WHERE id = ${ req.params.id}`) // select Article by id
+    const comments = await query (`SELECT Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
+                                   FROM Comment
+                                   LEFT OUTER JOIN User ON Comment.author_id = User.id
+                                   WHERE Comment.ref_id = ${ req.params.id };`) // La jointure fait qu'on fusionne en faisant un select avec la table : Comment join table : User (author comment) by en rapport avec Article.id (req.params.id)
+                                   /* JOINTURE SELECT * FROM etc... = Met en relation la table Article et Comment et procède à la récupération de toute les data de la base de donnée commentaire (Table Comment) pour le rendre visible dans le Front en rapport avec l'Article concerné (Selectif)*/
 
     // ballon + comments sont des Tableaux = Array --> résultat de la requête SQL 
     console.log('comments []', comments)
@@ -51,7 +51,7 @@ exports.addComment = async (req, res) => {
     console.log('Ajout de Commentaire Ballon ID', req.body)
 
     // insert into est une requête SQL qui crée des données dans la Table Comment (Création de Commentaire) //
-    let sql = `insert into Comment (author_id, content, date, ref_id) values (?)`;
+    let sql = `INSERT INTO Comment (author_id, content, date, ref_id) values (?)`;
     let values = [
         req.body.author_id,
         req.body.content,

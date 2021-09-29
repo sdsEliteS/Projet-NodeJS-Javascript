@@ -21,7 +21,11 @@
                                     <a href="https://www.youtube.com" target="_blank" role="button"><i
                                             class="fab fa-youtube youtube text-dark"></i></a>
                                 </div>
-                                <div class="commentaire text-white"> {{ nbCommentaire2 }} Commentaires</div>
+
+        {{!-- Permet calculer le nombre le nombre de commentaire dans un tableau (Comment) qu'a écrit l'utilisateur 1 par exemple grâce à .length qui peut être mis dans le code HTML - Handlebars // --}}
+                                <div class="commentaire text-white">
+                                    {{ recupArticle.length }} Articles - {{ nbCommentaire.length }} Commentaires
+                                </div>
                             </div>
                         </div>
                     </div>
