@@ -8,7 +8,7 @@ values("steven1", "dossantos1.steven72190@gmail.com", "123456", 1, 1, 0, 'https:
 
 /* Ne pas mentionner l'ID dans la commande SQL "insert into" car il s'auto-increment donc pas besoin de le mettre */ 
 
--- Script pour creer 2 article
+-- Script pour creer 4 articles
 INSERT INTO `Article`
 VALUES 
 (1,'Nantes','artciel 1','artticleerfpqgj 1','2021-09-27','2021-09-27','https://www.zupimages.net/up/21/36/o2ie.jpg','article 1',1),
