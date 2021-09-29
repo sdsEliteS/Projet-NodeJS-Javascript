@@ -9,14 +9,14 @@
 exports.getPageProfil = async (req, res) => {
 
         
-        /* Requête SQL permet de filtrer les commentaires de l'Utilisateur = (WHERE Author_id = 1) et de calculer le nombre de commentaire dans une table (Connaitre le nombre de commentaire qu'a écrit l'utilisateur 1 par exemple grâce à length dans le code HTML */
-        // const nbCommentaire = await query(`SELECT * FROM Comment WHERE author_id = 1`)
+        /* Requête SQL permet de filtrer les commentaires de l'Utilisateur = (WHERE Author_id = 1 (Utilisateur 1)) et de calculer le nombre de commentaire dans une table (Exemple : Connaitre le nombre de commentaire qu'a écrit l'utilisateur 1 par exemple grâce à length dans le code HTML lorsqu'il est sur sa page profil ayant un compte */
+        // (`SELECT * FROM Comment WHERE author_id = 1`) Requête sur un aspect GENERAL // 
         const nbCommentaire = await query(`SELECT Comment.content, Comment.date, User.pseudo FROM Comment lEFT JOIN User on Comment.author_id = User.id WHERE author_id = 1`)
         console.log('nbCommentaire []', nbCommentaire)
 
-
-        // const recupArticle = await query(`SELECT * FROM Article WHERE author_id = 1`)
-        const recupArticle = await query(`SELECT Article.title, Article.description, Article.date, User.pseudo FROM Article left join User on Article.author_id = User.id WHERE author_id = 1;`)
+        /* Requête SQL permet de filter les articles de l'utilisateur (Exemple: Permet de mentionner que les articles crée par l'utilisateur 1) */
+        // (`SELECT * FROM Article WHERE author_id = 1`) Requête sur un aspect GENERAL //
+        const recupArticle = await query(`SELECT Article.title, Article.description, Article.date, User.pseudo FROM Article LEFT JOIN User ON Article.author_id = User.id WHERE author_id = 1;`)
         console.log ('recupArticle []', recupArticle)
         
         
