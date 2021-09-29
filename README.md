@@ -163,7 +163,9 @@ https://aymeric-auberton.fr/academie/mysql/jointure
 
 https://datascientest.com/tout-comprendre-des-jointures-sql
 
-https://webdevdesigner.com/q/sql-join-and-different-types-of-joins-64895/
+https://www.ionos.fr/digitalguide/hebergement/aspects-techniques/sql-outer-join/
+
+https://sql.sh/ressources/cours-sql-sh-.pdf
 
 
 # Vérification de la creation de commentaire en rapport avec l'auteur de l'article concerné grace au jointure : 
