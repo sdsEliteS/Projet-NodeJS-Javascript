@@ -160,7 +160,7 @@ https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await
 // Exemple différence fonction synchrone et asynchrone
 // app.get('/', async (req, res) => {
 
-//     // 2 fonction synchrones de suite
+//     // 1 fonction synchrones déclenche 1 autre function synchrones
 //     query(sql, (err, data) => {
 //         if (err) console.log(err)
 //         query(sql2, (errr, data) => {
