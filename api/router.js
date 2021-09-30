@@ -159,6 +159,10 @@ router.route('/forget')
 router.route('/registerprofil')
     .post(authController.registerProfil)
 
+// URL Page Formulaire Connexion PageLogin
+router.route('/connexion')
+    .post(authController.connexionProfil)
+    
 
 /*
  * profilController
@@ -167,10 +171,6 @@ router.route('/registerprofil')
 // URL Page Profil
 router.route('/profil')
     .get(profilController.getPageProfil)
-
-// URL Page Formulaire Connexion PageLogin
-router.route('/connexion')
-    .post(profilController.connexionProfil)
 
 
 

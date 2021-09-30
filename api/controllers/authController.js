@@ -5,11 +5,10 @@
 
 
 
-/**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
+/**************************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************/
 // Visualisation de la Page LOGIN ( READ/Lire = METHOD GET = MySQL: SELECT ) //
 // Exportation de la routes du router.js (getPageLogin) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP Utilisateur faite au Server et res = response du Server //
-exports.getPageLogin = (req, res) => {
-    
+exports.getPageLogin = async (req, res) => {
 
     // Par default intégration layout main => {{{ body }}} - (Page View)
     // Server renvoi à l'Utilisateur le fichier Handlebars HTML 'login' se situant dans le DOSSIER views //
@@ -17,9 +16,76 @@ exports.getPageLogin = (req, res) => {
 
 
         // OBJET: BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-        noFooter: true
+        noFooter: true,
     });
+
+
+
 }
+
+
+
+
+
+
+
+
+/*
+ * Connexion sur son Compte Profil grâce à la Page Login
+ ******************************************************* */
+
+/**************************************************************** METHODE ASYNCHRONE ******************************************************************************************************************************************************************/
+
+// Remplissage du formulaire de connexion de la page lOGIN ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
+// Exportation de la routes du router.js (getPagePresentation) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST (Création) - req = requête de Utilisateur faite au Server et res = response du Server //
+exports.connexionProfil = async (req, res) => {
+    console.log('Connexion Login Steven', req.body)
+
+
+    /* EXPRESS SESSION PROCEDURE */
+
+
+    /* Requête SQL permettant de cibler le formulaire Login en rapport avec 1'Utilisateur précis ! (pseudo) */
+    const user = await query(`SELECT pseudo, email, password FROM User WHERE pseudo = '${req.body.pseudo}'`)
+    console.log('user', user)
+
+
+    /* Si user ne correspond à aucun email dans la DB au moment du remplissage du formulaire login alors tu renvoi la page login = res.render login */
+    if (!user) {
+        console.log("PAS DANS LA DB");
+
+
+    } else {
+        /*  Sinon si user est bien un mail qui existe dans la DB, alors tu executes la fonction */
+        console.log("Existe DANS LA DB");
+
+    }
+
+
+    // Par default intégration layout main => {{{ body }}} - (Page View)
+    // Server renvoi à l'Utilisateur le fichier Handlebars HTML 'login' se situant dans le DOSSIER views //
+    res.render('profil', {
+
+
+        // OBJET: BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+        noFooter: true,
+
+        // Tableau "users" en rapport avec la requête SQL de la table User dans mydb (Base de Donnée - Fichier db.sql) //
+        user 
+    });
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 /**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
@@ -61,7 +127,7 @@ exports.getPageRegister = (req, res) => {
     // Server renvoi à l'Utilisateur un fichier Handlebars HTML 'register' se situant dans le DOSSIER views //
     res.render('register', {
 
-         // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+        // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
         noFooter: true
     });
 }
@@ -79,7 +145,7 @@ exports.registerProfil = (req, res) => {
 
     // Requête SQL permettant la création de plusieurs colonnes dans la Table User //
     // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du formulaire d'enregistrement du l'Utilisateur visionnant les données au moment de la validation //
-    let sql = `insert into User (pseudo, email, password, address, telephone, birthday) values (?)`;
+    let sql = `INSERT INTO User (pseudo, email, password, address, telephone, birthday) values (?)`;
     let values = [
         req.body.pseudo,
         req.body.email,

@@ -12,11 +12,6 @@
                 <input type="text" name="pseudo" id="pseudo">
                 <label for="pseudo">Pseudo</label>
             </div>
-            <div class="user-box">
-                {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                <input type="email" name="email" id="email">
-                <label for="email">Email</label>
-            </div>
 
             <div class="user-box">
                 {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
@@ -56,20 +51,22 @@
 
             {{!-- Methode POST --}}
             <form action="/forget" method="POST">
-            {{!-- Methode POST --}}
+                {{!-- Methode POST --}}
                 <div class="modal-body">
                     <div class="contact-form input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">@</span>
-                         {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                        <input type="text" name="email" class="form-control" placeholder="Taper votre email" aria-label="Username"
-                            aria-describedby="addon-wrapping">
+                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
+                        <input type="text" name="email" class="form-control" placeholder="Taper votre email"
+                            aria-label="Username" aria-describedby="addon-wrapping">
                     </div>
                     <div class="modal-header pb-1 text-center">
                         <p>Si votre email est dans la base de donné, vous allez recevoir un email de confirmation avec
                             votre mot de passe</p>
                     </div>
                     <div class="pt-4 d-flex justify-content-center">
-                        {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante "form" --}}
+                        {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes
+                        les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la
+                        balise ouvrante fermante "form" --}}
                         <button type="submit" class="btn-or">Envoyer</button>
                     </div>
             </form>

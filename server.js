@@ -8,7 +8,9 @@ const port = 3000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const mysql = require ('mysql');
-const util = require('util')
+const util = require('util');
+const expressSession = require('express-session')
+
 
 const morgan = require('morgan')
 
@@ -64,46 +66,32 @@ db.connect(function(err) {
 const query = util.promisify(db.query).bind(db);
 global.query = query;
 
+
+
+
+
+
+
+
+// // Express-session (MODULE NODEJS - Framework coté serveur HTTP utilisé pour créer et gérer un MIDDLEWARE de session - )
+// app.use(expressSession({
+//     secret: 'keyboard cat',
+//     saveUninitialized: true,
+//     resave: false,
+//     cookie: { secure: true }
+// }));
+
+
+
+
+
+
 /*
  * Router
  * ****** */
 
 const ROUTER = require('./api/router');
 app.use(ROUTER);
-
-
-
-
-
-
-
-
-
-// Exemple différence fonction synchrone et asynchrone
-// app.get('/', async (req, res) => {
-
-//     // 2 fonction synchrones de suite
-//     query(sql, (err, data) => {
-//         if (err) console.log(err)
-//         query(sql2, (errr, data) => {
-//             if (errr) console.log(errr)
-
-//         })
-//     })
-
-//     // fonction async en même temp
-//     await query(sql)
-//     await query(sql2)
-
-
-// })
-
-
-
-
-
-
-
 
 
 /*

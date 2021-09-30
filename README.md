@@ -157,6 +157,31 @@ https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/await
 
 
 
+// Exemple différence fonction synchrone et asynchrone
+// app.get('/', async (req, res) => {
+
+//     // 2 fonction synchrones de suite
+//     query(sql, (err, data) => {
+//         if (err) console.log(err)
+//         query(sql2, (errr, data) => {
+//             if (errr) console.log(errr)
+
+//         })
+//     })
+
+//     // fonction async en même temp
+//     await query(sql)
+//     await query(sql2)
+
+
+// })
+
+
+
+
+
+
+
 # Cours Jointure SQL :
 
 https://aymeric-auberton.fr/academie/mysql/jointure
@@ -179,6 +204,7 @@ mysql> select * from Article left outer join Comment on Article.id = Comment.ref
 (EXEMPLE ATTENTION ID de l'article PEUT CHANGER)
 
 
+
 Autre Manipulation : Par exemple : Dans mon projet comment récupérer que les Articles de l'Utilisateur 1 ou 2 :
 
 mysql> select * from Article where author_id = 1;
@@ -187,9 +213,40 @@ mysql> select * from Article where author_id = 1;
 mysql> select * from Article where author_id = 2;
 
 
+
 Autre Manipulation : Par exemple : Dans mon projet requête SQL pour fusionner en liant les commentaires 1 de mes articles 1
 
 mysql> SELECT * FROM Article LEFT JOIN Comment ON Article.id = Comment.ref_id WHERE Article.author_id = 1;
+
+
+
+Autre Manipulation : Requête pour retrouver le pseudo dans la table User (1) + Un Utilisateur précis avec ses données
+
+(1)
+mysql> select pseudo from User;
+
++---------+
+| pseudo  |
++---------+
+| Steven  |
+| steven1 |
++---------+
+
+(2)
+mysql> SELECT pseudo, email, password FROM User WHERE pseudo = 'Steven';
+
++--------+---------------------------------+----------+
+| pseudo | email                           | password |
++--------+---------------------------------+----------+
+| Steven | dossantos.steven72190@gmail.com | 123456   |
++--------+---------------------------------+----------+
+
+
+# Manipulation pour la SESSION
+
+https://fr.wikibooks.org/wiki/Les_bases_de_donn%C3%A9es/Les_requ%C3%AAtes_en_SQL
+
+https://sql.sh/cours/where
 
 
 
@@ -208,29 +265,3 @@ https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/mysqldump-sql-format.html
 
 insert into User (pseudo, email, password, address, telephone, birthday)
 values ('Steven', 'dossantos.steven72190@gmail.com', '123456', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-28');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Jointure MangoDB :
-
-//    Comment.findByOne({ ref_id: req.params.id }).populate('author') // Avec MongoDB
