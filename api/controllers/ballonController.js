@@ -61,7 +61,7 @@ exports.addComment = async (req, res) => {
     // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création de commentaire d'Article visionnant les données des colonnes du tableau au moment de la validation //   
 
 
-    // Condition: s'il y a pas de req.body.content alors tu me renvoi l'URL '/ballon/' + req.body.refId sinon tu m'executes la fonction  //
+    // Condition: s'il y a pas de req.body.content (INPUT COmmentaire Article) alors tu me renvoi l'URL '/ballon/' + req.body.refId sinon tu m'executes la fonction  //
     if (!req.body.content) res.redirect('/ballon/' + req.body.refId)
     else {
         query(sql, [values], function (err, data, fields) {
