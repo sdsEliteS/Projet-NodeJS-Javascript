@@ -33,7 +33,7 @@ Partials Navbar
                 {{!-- S'il y a user alors il sera mentionnée dans la navbar et donc les boutons Connexion et Inscription vont disparaitre --}}
                 {{#if user }}
                 <a class="nav-link" aria-current="page" href="/profil">Profil de: {{ user.pseudo }}</a>
-                <a class="nav-link" aria-current="page" href="/kakawait"> Deconnexion</a>
+                <a class="nav-link" aria-current="page" href="/logout"> Deconnexion</a>
 
                 {{!-- Sinon Les boutons login et regiter seront affichés ! --}}
                 {{else }}
