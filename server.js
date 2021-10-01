@@ -85,7 +85,7 @@ app.use('*', (req, res, next) => {
     // On definit nos variable locals pour pouvoir les utiliser dans notre HBS (Handlebars)
     res.locals.user = req.session.user
     if (req.session.isAdmin) res.locals.isAdmin = req.session.isAdmin
-     console.log('SESSION', req.session)
+    console.log('SESSION', req.session)
     next()
 })
 
