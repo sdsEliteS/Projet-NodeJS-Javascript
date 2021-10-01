@@ -48,6 +48,8 @@ const query = util.promisify(db.query).bind(db);
 global.query = query;
 
 
+
+// Port connexion entre la SESSION de l'Utilisateur et de MYSQL //
 options.port = 3306
 // Express-session (MODULE NODEJS )
 // création du cookie session
@@ -56,7 +58,7 @@ app.use(expressSession({
     name: 'petitgateau',
     saveUninitialized: true,
 	store: new MySQLStore(options),
-    resave: false
+    resave: false,
 }));
 
 // Configuration handlebars 
@@ -78,12 +80,12 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-
+// SESSION CONNEXION //
 app.use('*', (req, res, next) => {
-    // On definit nos variable locals pour pouvoir les utiliser dans notre HBS
+    // On definit nos variable locals pour pouvoir les utiliser dans notre HBS (Handlebars)
     res.locals.user = req.session.user
     if (req.session.isAdmin) res.locals.isAdmin = req.session.isAdmin
-    console.log(req.session)
+    // console.log('SESSION', req.session)
     next()
 })
 

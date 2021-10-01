@@ -177,6 +177,19 @@ router.route('/profil')
 
 
 
+/************************************************** DESTROY DECONNEXION ******************************************************** */
+
+/*
+ * authController
+ **************** */ 
+
+
+// URL Deconnexion de la Session de l'Utilisateur
+router.route('/kakawait')
+    .get(authController.getDeconnexionProfil)
+
+
+
 
 
 module.exports = router

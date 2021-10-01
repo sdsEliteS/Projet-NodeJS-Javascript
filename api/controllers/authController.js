@@ -41,7 +41,7 @@ exports.connexionProfil = async (req, res) => {
     console.log('user', user)
 
 
-    /* Si user ne correspond pas au pseudo dans la DB (Base de donnée) au moment du remplissage du formulaire login alors tu renvoi la page login = res.render login */
+    /* Si user ne correspond pas au pseudo dans la DB (Base de donnée) au moment du remplissage du formulaire login alors tu renvoi la page register = res.render register */
     if (!user[0]) {
         console.log("PAS DANS LA DB");
         res.render('register', {
@@ -49,17 +49,17 @@ exports.connexionProfil = async (req, res) => {
         })
 
     } else {
-        /*  Sinon si user est bien un mail qui existe dans la DB, alors tu executes la fonction */
+        /*  Sinon si user existe bien dans la DB, alors tu executes la fonction */
         console.log("Existe DANS LA DB");
 
         if (user[0].password !== req.body.mot_de_passe) {
-            console.log('Mot de pass error')
+            console.log('Mot de passe error')
             res.render('login', {
                 error: 'Le mot de passe est erroné !'
             })
 
         } else if (user[0] && user[0].password === req.body.mot_de_passe) {
-            console.log('Mot de pass OK')
+            console.log('Mot de passe OK')
 
             req.session.user = {
                 pseudo: user[0].pseudo,
@@ -77,7 +77,7 @@ exports.connexionProfil = async (req, res) => {
                 // Tableau "users" en rapport avec la requête SQL de la table User dans mydb (Base de Donnée - Fichier db.sql) //
                 user: user[0],
 
-                success: 'Bienvenu ' + user[0].pseudo
+                success: 'Bienvenue ' + user[0].pseudo
             });
 
         } else {
@@ -141,7 +141,7 @@ exports.registerProfil = async (req, res) => {
 
     } else if (!userExist[0] && req.body.mot_de_passe.length < 6) {
         res.render('register', {
-            error: 'Le mot de passe contien moins de 8 charactèrs'
+            error: 'Le mot de passe contient moins de 6 caractères'
         })
 
     } else {
@@ -170,5 +170,20 @@ exports.registerProfil = async (req, res) => {
         })
 
     }
+
+}
+
+
+exports.getDeconnexionProfil = (req, res) => {
+    console.log('Deconnexion Session Profil', req.body)
+
+
+    req.session.destroy(function () {
+        req.session = null;
+
+        res.clearCookie('petitgateau', { path: '/' });
+        res.redirect('/');
+
+    });
 
 }
