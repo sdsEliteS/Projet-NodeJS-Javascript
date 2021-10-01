@@ -20,19 +20,25 @@ Partials Navbar
                 <a class="nav-link" href="/">Accueil</a>
                 <a class="nav-link" aria-current="page" href="/blog">Blog</a>
                 <a class="nav-link" aria-current="page" href="/presentation">Presentation</a>
-                <a class="nav-link" aria-current="page" href="/admin">Admin</a>
                 <a class="nav-link" href="#Ballons">Ballons</a>
-                <a class="nav-link" href="#Contactez-nous" tabindex="-1" aria-disabled="true">Contactez-nous</a>
+                <a class="nav-link" href="#Contactez-nous" tabindex="-1" aria-disabled="true">Contact</a>
             </div>
         </div>
 
         <div class="navbar-collapse collapse justify-content-end" id="monMenu">
             <div class="navbar-nav mx-5">
-                <a class="nav-link" aria-current="page" href="/profil">Profil</a> 
+                {{#if isAdmin }} <a class="nav-link" aria-current="page" href="/admin">Admin</a> {{/if }}
+                {{#if user }}
+                <a class="nav-link" aria-current="page" href="/profil">Profil de: {{ user.pseudo }}</a>
+
+                {{else }}
+
                 <a class="nav-link" aria-current="page" href="/login"><i
                         class="fas fa-sign-in-alt sign-in mx-2"></i>Connexion</a>
                 <a class="nav-link" aria-current="page" href="/register"><i
                         class="fas fa-user-plus sign-up mx-2"></i>Inscription</a>
+
+                {{/if }}
             </div>
         </div>
     </div>

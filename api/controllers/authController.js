@@ -37,14 +37,14 @@ exports.connexionProfil = async (req, res) => {
 
 
     /* Requête SQL permettant de cibler le formulaire Login en rapport avec 1'Utilisateur précis ! (pseudo) */
-    const user = await query(`SELECT pseudo, email, password FROM User WHERE pseudo = '${req.body.pseudo}'`)
+    const user = await query(`SELECT pseudo, email, password, isAdmin FROM User WHERE pseudo = '${req.body.pseudo}'`)
     console.log('user', user)
 
 
-    /* Si user ne correspond à aucun email dans la DB au moment du remplissage du formulaire login alors tu renvoi la page login = res.render login */
+    /* Si user ne correspond pas au pseudo dans la DB (Base de donnée) au moment du remplissage du formulaire login alors tu renvoi la page login = res.render login */
     if (!user[0]) {
         console.log("PAS DANS LA DB");
-        res.render('profil', {
+        res.render('register', {
             error: 'Nous ne connaisons pas ce pseudo !'
         })
 
@@ -60,6 +60,13 @@ exports.connexionProfil = async (req, res) => {
 
         } else if (user[0] && user[0].password === req.body.mot_de_passe) {
             console.log('Mot de pass OK')
+
+            req.session.user = {
+                pseudo: user[0].pseudo,
+                email: user[0].email
+            }
+
+            if (user[0].isAdmin === 1) req.session.isAdmin = true
             // Par default intégration layout main => {{{ body }}} - (Page View)
             // Server renvoi à l'Utilisateur le fichier Handlebars HTML 'login' se situant dans le DOSSIER views //
             res.render('profil', {

@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 const mysql = require ('mysql');
 const util = require('util');
 const expressSession = require('express-session')
-
+const MySQLStore = require('express-mysql-session')(expressSession);
 
 const morgan = require('morgan')
 
@@ -23,6 +23,41 @@ const app = express();
 
 // Permet de log les ressources chargé par le client (CSS, Image etc ...)
 app.use(morgan('dev'))
+
+// Configuration du module Methode Overrride permettant d'utiliser les méthodes PUT et DELETE en remplacement de la Methode POST //
+app.use(methodOverride('_method'));
+
+
+// Configuration MySQL - (Nom de la base de données = mydb)
+const options = {
+    host: 'localhost',
+    user: 'steven',
+    password: 'LionelMessi30*',
+    database: 'mydb'
+};
+
+db = mysql.createConnection(options);
+
+db.connect(function(err) {
+    if (err) console.error('error connecting: ' + err.stack);
+    console.log('connected as id ' + db.threadId);
+});
+
+// Rendre la variable db = base de donnée asynchrone par un systeme de promesse  (util.promisify)
+const query = util.promisify(db.query).bind(db);
+global.query = query;
+
+
+options.port = 3306
+// Express-session (MODULE NODEJS )
+// création du cookie session
+app.use(expressSession({
+    secret: 'petitgateau',
+    name: 'petitgateau',
+    saveUninitialized: true,
+	store: new MySQLStore(options),
+    resave: false
+}));
 
 // Configuration handlebars 
 app.set('view engine', 'hbs');
@@ -44,46 +79,13 @@ app.use(bodyParser.urlencoded({
 
 
 
-// Configuration du module Methode Overrride permettant d'utiliser les méthodes PUT et DELETE en remplacement de la Methode POST //
-app.use(methodOverride('_method'));
-
-
-// Configuration MySQL - (Nom de la base de données = mydb)
-
-db = mysql.createConnection({
-    host: 'localhost',
-    user: 'steven',
-    password: 'LionelMessi30*',
-    database: 'mydb'
-});
-
-db.connect(function(err) {
-    if (err) console.error('error connecting: ' + err.stack);
-    console.log('connected as id ' + db.threadId);
-});
-
-// Rendre la variable db = base de donnée asynchrone par un systeme de promesse  (util.promisify)
-const query = util.promisify(db.query).bind(db);
-global.query = query;
-
-
-
-
-
-
-
-
-// // Express-session (MODULE NODEJS - Framework coté serveur HTTP utilisé pour créer et gérer un MIDDLEWARE de session - )
-// app.use(expressSession({
-//     secret: 'keyboard cat',
-//     saveUninitialized: true,
-//     resave: false,
-//     cookie: { secure: true }
-// }));
-
-
-
-
+app.use('*', (req, res, next) => {
+    // On definit nos variable locals pour pouvoir les utiliser dans notre HBS
+    res.locals.user = req.session.user
+    if (req.session.isAdmin) res.locals.isAdmin = req.session.isAdmin
+    console.log(req.session)
+    next()
+})
 
 
 /*
