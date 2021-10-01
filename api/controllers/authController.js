@@ -21,13 +21,6 @@ exports.getPageLogin = async (req, res) => {
 
 }
 
-
-
-
-
-
-
-
 /*
  * Connexion sur son Compte Profil grâce à la Page Login
  ******************************************************* */
@@ -49,42 +42,47 @@ exports.connexionProfil = async (req, res) => {
 
 
     /* Si user ne correspond à aucun email dans la DB au moment du remplissage du formulaire login alors tu renvoi la page login = res.render login */
-    if (!user) {
+    if (!user[0]) {
         console.log("PAS DANS LA DB");
-
+        res.render('profil', {
+            error: 'Nous ne connaisons pas ce pseudo !'
+        })
 
     } else {
         /*  Sinon si user est bien un mail qui existe dans la DB, alors tu executes la fonction */
         console.log("Existe DANS LA DB");
 
+        if (user[0].password !== req.body.mot_de_passe) {
+            console.log('Mot de pass error')
+            res.render('login', {
+                error: 'Le mot de passe est erroné !'
+            })
+
+        } else if (user[0] && user[0].password === req.body.mot_de_passe) {
+            console.log('Mot de pass OK')
+            // Par default intégration layout main => {{{ body }}} - (Page View)
+            // Server renvoi à l'Utilisateur le fichier Handlebars HTML 'login' se situant dans le DOSSIER views //
+            res.render('profil', {
+
+                // OBJET: BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+                noFooter: true,
+
+                // Tableau "users" en rapport avec la requête SQL de la table User dans mydb (Base de Donnée - Fichier db.sql) //
+                user: user[0],
+
+                success: 'Bienvenu ' + user[0].pseudo
+            });
+
+        } else {
+            res.render('login', {
+                error: 'Une erreur est survenu !'
+            })
+
+        }
+
     }
 
-
-    // Par default intégration layout main => {{{ body }}} - (Page View)
-    // Server renvoi à l'Utilisateur le fichier Handlebars HTML 'login' se situant dans le DOSSIER views //
-    res.render('profil', {
-
-
-        // OBJET: BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-        noFooter: true,
-
-        // Tableau "users" en rapport avec la requête SQL de la table User dans mydb (Base de Donnée - Fichier db.sql) //
-        user
-    });
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
 
 /**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
 // Lors du remplissage du formulaire modal Mot de Passe Oublié de la Page LOGIN //
@@ -95,20 +93,6 @@ exports.forgetProfil = (req, res) => {
     // Server permet de rediriger (redirect) l'Utilisateur vers l'URL /profil HTML Handlebars juste après le remplissage du modal "MOT DE PASSE OUBLIE" //
     res.redirect('/profil')
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
  * Page Register
@@ -129,30 +113,26 @@ exports.getPageRegister = (req, res) => {
     });
 }
 
-
-
-
-
-
 /**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
 // Remplissage du formulaire d'enregistrement de l'Utilisateur de la page REGISTER ( CREATE = Method POST HTTP = Requête MySQL: INSERT INTO ) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
 // export de la routes du router.js (registerProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requete HTTP de utilisateur faite au server et res = response du server //
 exports.registerProfil = async (req, res) => {
     console.log('Enregistrement Compte Steven', req.body)
 
-    const userExist = await query(`SELECT * FROM User where pseudo = '${ req.body.pseudo }'`)
+    const userExist = await query(`SELECT * FROM User WHERE pseudo = '${ req.body.pseudo }'`)
 
 
     console.log('UserExist', userExist)
 
+    // Condition : Si le Pseudo STEVEN est crée et qu'un autre pseudo steven est crée alors il y aura un message d'erreur disant que ce pseudo existe déjà //
     if (userExist.length > 0) {
-        if (userExist[0].pseudo.toLowerCase() === req.body.pseudo.toLowerCase() ) {
+        if (userExist[0].pseudo.toLowerCase() === req.body.pseudo.toLowerCase()) {
             res.render('register', {
                 error: 'Ce pseudo est déja pris !'
             })
         }
-        
-    } else if (!userExist[0] && req.body.mot_de_passe.length < 8) {
+
+    } else if (!userExist[0] && req.body.mot_de_passe.length < 6) {
         res.render('register', {
             error: 'Le mot de passe contien moins de 8 charactèrs'
         })
