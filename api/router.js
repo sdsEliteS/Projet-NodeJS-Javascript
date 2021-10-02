@@ -185,7 +185,7 @@ router.route('/profil')
 
 
 // URL Deconnexion de la Session de l'Utilisateur
-router.route('/kakawait')
+router.route('/logout')
     .get(authController.getDeconnexionProfil)
 
 
