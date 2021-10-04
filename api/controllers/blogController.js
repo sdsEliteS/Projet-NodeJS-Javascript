@@ -12,7 +12,7 @@ const moment = require('moment') // gestion des dates //
 // Exportation de la routes du router.js dans le Controller (getPageBlog) avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageBlog = async (req, res) => {
     
-    // La Requête SQL "SELECT * FROM" est mise dans une constante permettant de visionner la table dans la base de donnée MySQL = Fichier db.sql) //
+    // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner la table dans la base de donnée MySQL = Fichier db.sql //
     // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const ballonList = await query('select * from Article')
 
@@ -24,7 +24,7 @@ exports.getPageBlog = async (req, res) => {
     }); 
 }
 
-/* On récupère les data de la table Article pour les mettre dans la constante "ballonListe" en utilisant une bouche {{#each ballonList }} {{/each }} afin de faire fonctionner la Page Blog */
+/* On récupère les data de la table Article pour les mettre dans la constante "ballonList" en utilisant une bouche {{#each ballonList }} {{/each }} afin de faire fonctionner la Page Blog */
 
 // Création d'article dans la page ADMIN, le nouvel article se mettra dans la page blog avec les autres produits c'est la raison pour laquelle on le met dans blog.Controller //
 
@@ -44,7 +44,7 @@ exports.getPageBlog = async (req, res) => {
 exports.createArticle = async (req, res) => {
     console.log('Controller Create Article', req.body)
 
-    // "insert into" est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
+    // "insert into" (CREATION) est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
     // req.body permet de nous ressortir les données du modal dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article de la Page ADMIN visionnant les données des colonnes du tableau au moment de la validation //
     let sql = `insert into Article (title, description, recommandation, date, dateEdit, image, subdescription, author_id) values (?)`;
     let values = [
@@ -59,16 +59,17 @@ exports.createArticle = async (req, res) => {
     ];
 
 
-    // La Requête SQL "SELECT * FROM" est mise dans une constante permettant de visionner la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
+    // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
     // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const userExist = await query(`SELECT * FROM User WHERE id = ${ req.body.author_id }`)
+    
 
     console.log('User Exist', userExist)
 
     // Condition: Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
     if (!userExist[0]) res.redirect('/admin')
     else {
-        // Valeur des colonnes de la Table Article qui sont écrit dans les input par l'Utilisateur //
+        // Valeur des colonnes de la Table Article qui sont écrit dans les input du modal par l'Utilisateur //
         query(sql, [values], function (err, data, fields) {
             if (err) throw err;
             // Permet de rediriger l'Utilisateur vers l'URL '/admin' Section Creation Liste d'Article Bouton Vert  //
@@ -115,7 +116,7 @@ exports.editArticle = async (req, res) => {
                WHERE id = '${ req.params.id }';`;
     // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
-    // Execution de la Requête SQL UPDATE permettant le changement de la création d'Article (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
+    // Execution de la Requête SQL UPDATE permettant le changement de la création d'Article ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
     await query( sql )
 
 
@@ -163,7 +164,7 @@ exports.deleteArticle = async (req, res) => {
     console.log('Suppression Article Page ID', req.body, req.params)
     
 
-    // Execution de la requête SQL "DELETE FROM" permettant de supprimer un article de la page Admin Section Liste d'Article - (Le await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
+    // Execution de la requête SQL "DELETE FROM" permettant de supprimer un article de la page Admin Section Liste d'Article - ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
     await query(`DELETE FROM Article WHERE id = ${ req.params.id }`)
     // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant de supprimer l'id du Message qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal de commande plus haut dans le console.log (Chaque Article à un numero d'id précis //
     

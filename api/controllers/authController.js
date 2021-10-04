@@ -120,7 +120,8 @@ exports.getPageRegister = (req, res) => {
     });
 }
 
-/**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
+/**************************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************/
+
 // Remplissage du formulaire d'enregistrement de l'Utilisateur de la page REGISTER ( CREATE = Method POST HTTP = Requête MySQL: INSERT INTO ) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
 // export de la routes du router.js (registerProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requete HTTP de utilisateur faite au server et res = response du server //
 exports.registerProfil = async (req, res) => {
@@ -131,7 +132,7 @@ exports.registerProfil = async (req, res) => {
 
     console.log('UserExist', userExist)
 
-    // Condition : Si le Pseudo STEVEN est crée et qu'un autre pseudo steven est crée alors il y aura un message d'erreur disant que ce pseudo existe déjà //
+    // Condition : Si le Pseudo "STEVEN" est crée et qu'un autre pseudo "steven" est crée en minuscule alors il y aura un message d'erreur disant que ce pseudo existe déjà //
     if (userExist.length > 0) {
         if (userExist[0].pseudo.toLowerCase() === req.body.pseudo.toLowerCase()) {
             res.render('register', {

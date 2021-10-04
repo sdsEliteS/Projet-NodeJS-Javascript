@@ -30,12 +30,12 @@ Partials Navbar
                 {{#if isAdmin }} <a class="nav-link" aria-current="page" href="/admin">Admin</a> {{/if }}
                 
                 {{!-- CONDITON --}}
-                {{!-- S'il y a user alors il sera mentionnée dans la navbar et donc les boutons Connexion et Inscription vont disparaitre --}}
+                {{!-- if = S'il y a user = pseudo alors il sera mentionnée dans la navbar à droite et donc les boutons Connexion et Inscription vont disparaitre --}}
                 {{#if user }}
                 <a class="nav-link" aria-current="page" href="/profil">Profil de: {{ user.pseudo }}</a>
                 <a class="nav-link" aria-current="page" href="/logout"> Deconnexion</a>
 
-                {{!-- Sinon Les boutons login et regiter seront affichés ! --}}
+                {{!-- else = Sinon Les boutons login et regiter seront affichés sur la droite ! --}}
                 {{else }}
                 <a class="nav-link" aria-current="page" href="/login"><i
                         class="fas fa-sign-in-alt sign-in mx-2"></i>Connexion</a>

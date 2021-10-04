@@ -11,15 +11,18 @@ exports.getPageBallonID = async (req, res) => {
     console.log('Controller Ballon ID', req.params.id)
 
 
-    // JOINTURE //
     // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) // 
-    // Déclaration de la constante ballon qu'on mettra dans un {{#each ballon }} {{/each }} + this (Exemple this.name colonne de la Table Article) rentrant dans le cadre d'une récupération des data de la base de donnée = mydb pour les visibles dans le Front //
-    const ballon = await query (`SELECT * FROM Article WHERE id = ${ req.params.id}`) // select Article by id
+    // Déclaration de la constante ballon suivi de l'invocation de sa fonction "Méthode Asynchrone" rentrant dans le cadre d'une récupération des data de la base de donnée = mydb pour les rendre visibles dans le Front-End //
+    const ballon = await query (`SELECT * FROM Article WHERE id = ${ req.params.id}`) // Selection d'un Article précis (req.params.id) //
+
+
+    /************************************************************ JOINTURE *********************************************************************************************************/
+    // La jointure fait qu'on fusionne plusieurs tables dans cet exemple (Comment + User) afin d'identifier l'auteur du commentaire unique (Comment.ref_id = req.params.id) de l'Article //
+    /* JOINTURE SELECT rentre dans le cadre de la récupération de toute les data de la base de donnée sous d'un " { KEY (comments): VALUE (comments) } " pour le rendre visible dans le Front-End en le mettant dans le Handlebars/HTML */
     const comments = await query (`SELECT Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
                                    FROM Comment
                                    LEFT OUTER JOIN User ON Comment.author_id = User.id
-                                   WHERE Comment.ref_id = ${ req.params.id };`) // La jointure fait qu'on fusionne en faisant un select avec la table : Comment join table : User (author comment) by en rapport avec Article.id (req.params.id)
-                                   /* JOINTURE SELECT * FROM etc... = Met en relation la table Article et Comment et procède à la récupération de toute les data de la base de donnée commentaire (Table Comment) pour le rendre visible dans le Front en rapport avec l'Article concerné (Selectif)*/
+                                   WHERE Comment.ref_id = ${ req.params.id };`) 
 
     // ballon + comments sont des Tableaux = Array --> résultat de la requête SQL 
     console.log('comments []', comments)

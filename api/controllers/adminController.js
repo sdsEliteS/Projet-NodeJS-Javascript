@@ -14,11 +14,12 @@ exports.getPageAdmin = async (req, res) => {
 
     // 1 //
 
-    // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
+    // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
+    
 
     // 2 //
 
@@ -81,11 +82,12 @@ exports.editUser = async (req, res) => {
     await query(sql)
 
      // 2 //
-    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
+    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
+
     
 
      // 3 //
@@ -133,19 +135,16 @@ exports.deleteUser = async (req, res) => {
     // Exécution de la Requête SQL "DELETE FROM" permettant de supprimer un utilisateur de la Page Admin Section Liste d'Utilisateur (User) //
     // req.params est l'id donner en paramètre de l'URL (/user/:id exemple: /user/1) permettant de supprimer l'id de l'User qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal grâce au Console.log plus haut (chaque User à un numero id précis) //
     await query(`DELETE FROM User WHERE id = ${ req.params.id }`)
+    /********************************************** await est toujours associé à une methode async * *********************************************************************************************************************************************************************************************************************************************/
 
 
     // 2 //
 
-    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
+    // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
     const dbUsers = await query('select * from User')
     const dbArticle = await query('select * from Article')
     const dbMessage = await query('select * from Message')
-
-
-    // Index Tableau [0] est égal à l'UTILISATEUR id 1
-    // Index Tableau [2] est égal à l'UTILISATEUR id 3
 
 
     // 3 //
@@ -169,4 +168,13 @@ exports.deleteUser = async (req, res) => {
     // il faut renvoyer un ficher handlebars et donc la res.render permet une issue positif (res.redirect peut être remplacé par un res.render) //
 
     // res.redirect et res.render font partie de la méthode GET (FRONT-END) //
+
+
+
+
+
+
+
+    // Index Tableau [0] est égal à l'UTILISATEUR id 1
+    // Index Tableau [2] est égal à l'UTILISATEUR id 3
 }

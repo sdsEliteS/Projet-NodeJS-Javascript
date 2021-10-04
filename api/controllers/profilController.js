@@ -8,7 +8,7 @@
 // Exportation de la routes du router.js (getPagePresentation) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageProfil = async (req, res) => {
 
-        // JOINTURE //
+        /*********************************************************** JOINTURE *************************************************************************************************************************************************************************/
         /* Requête SQL permet de filtrer les commentaires de l'Utilisateur = (WHERE Author_id = 1 (Utilisateur 1)) et de calculer le nombre de commentaire dans une table (Exemple : Connaitre le nombre de commentaire qu'a écrit l'utilisateur 1 par exemple grâce à length dans le code HTML lorsqu'il est sur sa page profil ayant un compte */
         // (`SELECT * FROM Comment WHERE author_id = 1`) Requête sur un aspect GENERAL // 
         const nbCommentaire = await query(`SELECT Comment.content, Comment.date, User.pseudo FROM Comment lEFT JOIN User ON Comment.author_id = User.id WHERE author_id = 1`)
@@ -28,8 +28,10 @@ exports.getPageProfil = async (req, res) => {
        // res.render renvoi à l'Utilisateur un fichier Handlebars HTML 'profil' se situant dans le DOSSIER views //
        res.render('profil', {
 
-         // Objet un BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+         // Objet un BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE ou FALSE) //
         noFooter: true, 
+
+        // KEY = nbCommentaire dans le fichier Handlebars/HTML "profil1" //
         nbCommentaire,
         recupArticle
     });
