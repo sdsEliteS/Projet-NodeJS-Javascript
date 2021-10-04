@@ -18,7 +18,7 @@ exports.getPageBallonID = async (req, res) => {
 
     /************************************************************ JOINTURE *********************************************************************************************************/
     // La jointure fait qu'on fusionne plusieurs tables dans cet exemple (Comment + User) afin d'identifier l'auteur du commentaire unique (Comment.ref_id = req.params.id) de l'Article //
-    /* JOINTURE SELECT rentre dans le cadre de la récupération de toute les data de la base de donnée sous d'un " { KEY (comments): VALUE (comments) } " pour le rendre visible dans le Front-End en le mettant dans le Handlebars/HTML */
+    /* JOINTURE SELECT rentre dans le cadre de la récupération de toute les data de la base de donnée sous la forme d'une " { KEY (comments): VALUE (comments) } " pour le rendre visible dans le Front-End en le mettant dans le fichier Handlebars/HTML */
     const comments = await query (`SELECT Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
                                    FROM Comment
                                    LEFT OUTER JOIN User ON Comment.author_id = User.id

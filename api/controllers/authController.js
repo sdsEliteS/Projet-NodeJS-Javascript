@@ -1,5 +1,5 @@
 /*
- * Page Login
+ * Visuel Page Login
  * ********** */
 
 
@@ -13,7 +13,7 @@ exports.getPageLogin = async (req, res) => {
     res.render('login', {
 
 
-        // OBJET: BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+        // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
         noFooter: true,
     });
 
@@ -25,7 +25,7 @@ exports.getPageLogin = async (req, res) => {
  * Connexion sur son Compte Profil grâce à la Page Login
  ******************************************************* */
 
-/**************************************************************** METHODE ASYNCHRONE ******************************************************************************************************************************************************************/
+/**************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************************/
 
 // Remplissage du formulaire de connexion de la page lOGIN ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
 // Exportation de la routes du router.js (getPagePresentation) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST (Création) - req = requête de Utilisateur faite au Server et res = response du Server //
@@ -33,14 +33,16 @@ exports.connexionProfil = async (req, res) => {
     console.log('Connexion Login Steven', req.body)
 
 
-    /* EXPRESS SESSION PROCEDURE */
+    /********************************************************* EXPRESS SESSION PROCEDURE *********************************************************************************************************************************************************************/
 
 
-    /* Requête SQL permettant de cibler le formulaire Login en rapport avec 1'Utilisateur précis ! (pseudo) */
+    /* Requête SQL permettant de cibler le formulaire Login en rapport avec 1 Utilisateur précis ! (pseudo) */
     const user = await query(`SELECT pseudo, email, password, isAdmin FROM User WHERE pseudo = '${req.body.pseudo}'`)
+    /********************************************** await est toujours associé à une methode async (Asynchrone) * ********************************************************************************************************************************************/
     console.log('user', user)
 
 
+    /********************************************************** CONDITION OUVERTURE SESSION ******************************************************************************************************************************************************************/
     /* Si user ne correspond pas au pseudo dans la DB (Base de donnée) au moment du remplissage du formulaire login alors tu renvoi la page register = res.render register */
     if (!user[0]) {
         console.log("PAS DANS LA DB");
@@ -58,6 +60,7 @@ exports.connexionProfil = async (req, res) => {
                 error: 'Le mot de passe est erroné !'
             })
 
+          // password = MySQL Workbench, mot_de_passe = Fichier Handlears/HTML 'Connexion' dans le name //
         } else if (user[0] && user[0].password === req.body.mot_de_passe) {
             console.log('Mot de passe OK')
 
@@ -68,13 +71,13 @@ exports.connexionProfil = async (req, res) => {
 
             if (user[0].isAdmin === 1) req.session.isAdmin = true
             // Par default intégration layout main => {{{ body }}} - (Page View)
-            // Server renvoi à l'Utilisateur le fichier Handlebars HTML 'login' se situant dans le DOSSIER views //
+            // res.render renvoi à l'Utilisateur le fichier Handlebars HTML 'login' se situant dans le DOSSIER views //
             res.render('profil', {
 
-                // OBJET: BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+                // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
                 noFooter: true,
 
-                // Tableau "users" en rapport avec la requête SQL de la table User dans mydb (Base de Donnée - Fichier db.sql) //
+                // Tableau "user" en rapport avec la requête SQL de la table User dans mydb (Base de Donnée - Fichier db.sql) //
                 user: user[0],
 
                 success: 'Bienvenue ' + user[0].pseudo
@@ -97,7 +100,7 @@ exports.connexionProfil = async (req, res) => {
 exports.forgetProfil = (req, res) => {
     console.log('Mot de Passe Oublié Page LOGIN', req.body, req.params)
 
-    // Server permet de rediriger (redirect) l'Utilisateur vers l'URL /profil HTML Handlebars juste après le remplissage du modal "MOT DE PASSE OUBLIE" //
+    // res.redirect permet de rediriger l'Utilisateur vers l'URL /profil HTML Handlebars juste après le remplissage du modal "MOT DE PASSE OUBLIE" //
     res.redirect('/profil')
 }
 
@@ -112,7 +115,7 @@ exports.forgetProfil = (req, res) => {
 exports.getPageRegister = (req, res) => {
 
     // Par default intégration layout main => {{{ body }}} - (Page View)
-    // Server renvoi à l'Utilisateur un fichier Handlebars HTML 'register' se situant dans le DOSSIER views //
+    // res.render renvoi à l'Utilisateur un fichier Handlebars HTML 'register' se situant dans le DOSSIER views //
     res.render('register', {
 
         // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
@@ -164,7 +167,7 @@ exports.registerProfil = async (req, res) => {
         // Valeur des colonnes de la Table User qui sont écrit dans les input - Method Synchrone  //
         query(sql, [values], function (err, data, fields) {
             if (err) throw err;
-            // Server permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) au moment de la validation du formulaire de la page REGISTER //
+            // res.render permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) au moment de la validation du formulaire de la page REGISTER //
             res.render('register', {
                 success: 'Votre compte à bien été créé !'
             })
@@ -175,6 +178,9 @@ exports.registerProfil = async (req, res) => {
 }
 
 
+
+
+/***************************************************** Procédure rentrant dans le cadre d'une fermeture de SESSION ************************************************************************************************************************************************/
 exports.getDeconnexionProfil = (req, res) => {
     console.log('Deconnexion Session Profil', req.body)
 

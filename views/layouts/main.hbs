@@ -32,7 +32,7 @@ Template principal de notre site
     {{> navbar }}
 
 
-    {{!-- Flash Bannière ROUGE Error après remplissage du formulaire register --}}
+    {{!-- Flash Bannière ROUGE Error après le remplissage du formulaire de la page Login --}}
     {{#if error }}
     <div id='flash' class="position-relative" style="z-index: 1000; top: 80px">
         <div class="position-absolute top-0 start-50 translate-middle alert alert-danger mt-5" role="alert">
@@ -48,7 +48,7 @@ Template principal de notre site
     </script>
     {{/if }}
 
-    {{!-- Flash Bannière VERT Validation du compte après remplissage du formulaire d'inscription --}}  
+    {{!-- Flash Bannière VERT Validation du compte après remplissage du formulaire de la page Login --}}  
     {{#if success }}
     <div id='flash' class="position-relative" style="z-index: 1000; top: 80px">
         <div class="position-absolute top-0 start-50 translate-middle alert alert-success mt-5" role="alert">

@@ -49,7 +49,7 @@ global.query = query;
 
 
 
-// Port connexion entre la SESSION de l'Utilisateur et de MYSQL //
+// Port connexion entre la SESSION de l'Utilisateur et MYSQL //
 options.port = 3306
 // Express-session (MODULE NODEJS )
 // création du cookie session

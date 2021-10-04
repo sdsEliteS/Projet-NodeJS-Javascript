@@ -23,17 +23,21 @@ exports.getPageAdmin = async (req, res) => {
 
     // 2 //
 
-    // res.render renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views //
+    // Cette procédure rentre dans le cadre d'une récupération des data des tables et des colonnes en les exportant dans le FRONT-END en intervenant dans les pages Handlebars/HTML //
+    // res.render renvoi à l'Utilisateur le fichier 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } ) - Exemple qui peut être utiliser pour "messages et users" //
+    // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) -  ( VOIR MySQL WORKBENCH ) //
     res.render('admin', {
+        // articles, messages, users sont des clé (KEY) mise dans un objet {} permettant d'utiliser les data des colonnes des tables (Exemple: this.name) //
         articles: dbArticle,
         messages: dbMessage,
         users: dbUsers,
+        // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
         noFooter: true,
+        // "openArticle: 'show'" permettant de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
         openArticle: 'show'
     });
 
 }
-// "openArticle: 'show'" permettant de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
 
 
 
@@ -91,20 +95,22 @@ exports.editUser = async (req, res) => {
     
 
      // 3 //
-    // Le render renvoit une page handlebars ('admin') se situant dans le DOSSIER views et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
+    // Le render renvoit une page handlebars ('admin') se situant dans le DOSSIER views et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } ) - Exemple qui peut être utiliser pour "messages et users" //
     // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) -  ( VOIR MySQL WORKBENCH ) //
     // RAPPEL: En JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } ) //
     // Le fichier Handlebars tableauUser est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
     // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) // 
     res.render('admin', {
+        // articles, messages, users sont des clé (KEY) mise dans un objet {} permettant d'utiliser les data des colonnes des tables (Exemple: this.name) //
         articles: dbArticle,
         messages: dbMessage,
         users: dbUsers,
+        // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
         noFooter: true,
+        // "openUser: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste User en mettant un "openUser" dans la div div id="collapseTwo" class="accordion-collapse collapse {{ openUser }}" aria-labelledby="headingTwo" du fichier Handlebars tableauUser //
         openUser: 'show'
     })
 }
- // "openUser: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste User en mettant un "openUser" dans la div div id="collapseTwo" class="accordion-collapse collapse {{ openUser }}" aria-labelledby="headingTwo" du fichier Handlebars tableauUser //
 
 
 
@@ -135,7 +141,7 @@ exports.deleteUser = async (req, res) => {
     // Exécution de la Requête SQL "DELETE FROM" permettant de supprimer un utilisateur de la Page Admin Section Liste d'Utilisateur (User) //
     // req.params est l'id donner en paramètre de l'URL (/user/:id exemple: /user/1) permettant de supprimer l'id de l'User qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal grâce au Console.log plus haut (chaque User à un numero id précis) //
     await query(`DELETE FROM User WHERE id = ${ req.params.id }`)
-    /********************************************** await est toujours associé à une methode async * *********************************************************************************************************************************************************************************************************************************************/
+    /********************************************** await est toujours associé à une methode async ***********************************************************************************************************************************************************************************************************************************************/
 
 
     // 2 //
@@ -149,19 +155,21 @@ exports.deleteUser = async (req, res) => {
 
     // 3 //
 
-    // Le render renvoit une page handlebars ('admin') se situant dans le DOSSIER views et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
+    // Le render renvoit une page handlebars ('admin') se situant dans le DOSSIER views et un Object JSON au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { articles: dbArticle } )
     // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) -  ( VOIR MySQL WORKBENCH ) //
     // RAPPEL: En JAVASCRIPT une value peu s'auto-assigner sa propre clef (key)  (exemple: { dbArticle: dbArticle } aura la même valeur que { dbArticle } )
     // Le fichier Handlebars tableauUser est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis grâce à MySQL WORKBENCH //
     // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) // 
     res.render('admin', {
+        // articles, messages, users sont des clé (KEY) mise dans un objet {} permettant d'utiliser les data des colonnes des tables (Exemple: this.name) //
         articles: dbArticle,
         messages: dbMessage,
         users: dbUsers,
+        // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
         noFooter: true,
+        // "openUser: 'show'" permettant lors de la Suppression des utilisateurs de rester sur la page Admin Section Liste User en mettant un "openUser" dans la div div id="collapseTwo" class="accordion-collapse collapse {{ openUser }}" aria-labelledby="headingTwo" du fichier Handlebars tableauUser //
         openUser: 'show'
     })
-     // "openUser: 'show'" permettant lors de la Suppression des utilisateurs de rester sur la page Admin Section Liste User en mettant un "openUser" dans la div div id="collapseTwo" class="accordion-collapse collapse {{ openUser }}" aria-labelledby="headingTwo" du fichier Handlebars tableauUser //
 
      
     // res.redirect('/admin') redirige vers des URL du projet ou URL internet (HTTP GOOGLE) et afin qu'on nous renvoi la Page Admin Section Liste Utilisateur au moment de la Suppression de l'Utilisateur,

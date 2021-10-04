@@ -66,7 +66,8 @@ exports.createArticle = async (req, res) => {
 
     console.log('User Exist', userExist)
 
-    // Condition: Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
+    /***************************************************************** CONDITION **************************************************************************************************************************************************************************************/
+    // Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
     if (!userExist[0]) res.redirect('/admin')
     else {
         // Valeur des colonnes de la Table Article qui sont écrit dans les input du modal par l'Utilisateur //
