@@ -43,7 +43,7 @@ exports.connexionProfil = async (req, res) => {
 
 
     /********************************************************** CONDITION OUVERTURE SESSION ******************************************************************************************************************************************************************/
-    /* Si user ne correspond pas au pseudo dans la DB (Base de donnée) au moment du remplissage du formulaire login alors tu renvoi la page register = res.render register */
+    /* Si (else) user ne correspond pas au pseudo dans la DB (Base de donnée) au moment du remplissage du formulaire login alors tu renvoi la page register = res.render register */
     if (!user[0]) {
         console.log("PAS DANS LA DB");
         res.render('register', {
@@ -51,15 +51,17 @@ exports.connexionProfil = async (req, res) => {
         })
 
     } else {
-        /*  Sinon si user existe bien dans la DB, alors tu executes la fonction */
+        /*  Sinon (else) si user existe bien dans la DB */
         console.log("Existe DANS LA DB");
 
+        /* Dans le cas où, Si (if) l'Utilisateur à crée un compte donc si le mot de passe de la page login user[0].password = MySQL Workbench n'est pas strictement égal (!==) à req.body.mot_de_passe = Fichier Handlebars/HTML 'Connexion' se situant dans le name alors tu me dis Mot de passe error me renvoyant sur la page login */ 
         if (user[0].password !== req.body.mot_de_passe) {
             console.log('Mot de passe error')
             res.render('login', {
                 error: 'Le mot de passe est erroné !'
             })
 
+          // Sinon (else) s'il user.password est strictement égal(===) à req.body.mot_de_passe alors tu m'ouvres la SESSION de l'Utilisateur sur sa page profil  //
           // password = MySQL Workbench, mot_de_passe = Fichier Handlears/HTML 'Connexion' dans le name //
         } else if (user[0] && user[0].password === req.body.mot_de_passe) {
             console.log('Mot de passe OK')
@@ -71,7 +73,7 @@ exports.connexionProfil = async (req, res) => {
 
             if (user[0].isAdmin === 1) req.session.isAdmin = true
             // Par default intégration layout main => {{{ body }}} - (Page View)
-            // res.render renvoi à l'Utilisateur le fichier Handlebars HTML 'login' se situant dans le DOSSIER views //
+            // res.render renvoi à l'Utilisateur le fichier Handlebars HTML 'profil' SESSION Utilisateur se situant dans le DOSSIER views //
             res.render('profil', {
 
                 // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
@@ -80,7 +82,7 @@ exports.connexionProfil = async (req, res) => {
                 // Tableau "user" en rapport avec la requête SQL de la table User dans mydb (Base de Donnée - Fichier db.sql) //
                 user: user[0],
 
-                success: 'Bienvenue ' + user[0].pseudo
+                success: 'Bienvenue' + user[0].pseudo
             });
 
         } else {
@@ -130,19 +132,22 @@ exports.getPageRegister = (req, res) => {
 exports.registerProfil = async (req, res) => {
     console.log('Enregistrement Compte Steven', req.body)
 
+    /* Déclaration de la Constante et Exécution de la fonction via une méthode Asynchrone (await) ciblant le pseudo de l'Utilisateur lors de son inscription sur le formulaire d'inscription register */ 
     const userExist = await query(`SELECT * FROM User WHERE pseudo = '${ req.body.pseudo }'`)
 
 
     console.log('UserExist', userExist)
 
-    // Condition : Si le Pseudo "STEVEN" est crée et qu'un autre pseudo "steven" est crée en minuscule alors il y aura un message d'erreur disant que ce pseudo existe déjà //
+    // Condition : lors de la création d'un profil sur le formulaire d'inscription register, Si (if) le Pseudo "STEVEN" est crée et qu'un autre pseudo "steven" est crée en minuscule alors il y aura un message d'erreur disant que ce pseudo existe déjà (toLowerCase) renvoyant sur la page du formulaire register //
     if (userExist.length > 0) {
+        // Si (if) le pseudo de la base de donnée est strictement égal à la valeur de l'input req.body.pseudo //
         if (userExist[0].pseudo.toLowerCase() === req.body.pseudo.toLowerCase()) {
             res.render('register', {
                 error: 'Ce pseudo est déja pris !'
             })
         }
 
+    // Sinon si (else if) userExist n'existe pas avec un mot de passe contenant moins de 6 caractères (.length < 6) alors il y aura un message d'erreur //
     } else if (!userExist[0] && req.body.mot_de_passe.length < 6) {
         res.render('register', {
             error: 'Le mot de passe contient moins de 6 caractères'
@@ -163,11 +168,10 @@ exports.registerProfil = async (req, res) => {
             req.body.date_de_naissance
         ];
 
-        // Synchronous version
-        // Valeur des colonnes de la Table User qui sont écrit dans les input - Method Synchrone  //
+        // Valeur des colonnes de la Table User qui sont écrit dans les input du formulaire d'inscription register - Method Asynchrone  //
         query(sql, [values], function (err, data, fields) {
             if (err) throw err;
-            // res.render permet de rediriger (redirect) l'Utilisateur vers l'URL / (home) au moment de la validation du formulaire de la page REGISTER //
+            // res.render renvoi l'Utilisateur vers le fichier Handlebars/HTML 'register' au moment de la validation du formulaire d'inscription mentionnant sur le compte à bien été crée //
             res.render('register', {
                 success: 'Votre compte à bien été créé !'
             })
@@ -180,7 +184,7 @@ exports.registerProfil = async (req, res) => {
 
 
 
-/***************************************************** Procédure rentrant dans le cadre d'une fermeture de SESSION ************************************************************************************************************************************************/
+/***************************************************** Procédure rentrant dans le cadre d'une fermeture de SESSION Utilisateur **************************************************************************************************************************************/
 exports.getDeconnexionProfil = (req, res) => {
     console.log('Deconnexion Session Profil', req.body)
 

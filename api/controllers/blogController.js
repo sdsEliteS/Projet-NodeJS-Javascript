@@ -20,15 +20,12 @@ exports.getPageBlog = async (req, res) => {
 
     // res.render renvoi à l'Utilisateur le fichier 'blog' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article//
     res.render('blog', { 
+        /* Rentrant dans le cadre d'une répétition avec la page Blog regroupant les différents Articles, on récupère les data de la table Article pour les mettre dans la constante "ballonList" = KEY en utilisant également une bouche {{#each ballonList }} {{/each }} afin de faire fonctionner la Page Blog */
         ballonList 
     }); 
 }
 
-/* On récupère les data de la table Article pour les mettre dans la constante "ballonList" en utilisant une bouche {{#each ballonList }} {{/each }} afin de faire fonctionner la Page Blog */
-
 // Création d'article dans la page ADMIN, le nouvel article se mettra dans la page blog avec les autres produits c'est la raison pour laquelle on le met dans blog.Controller //
-
-
 
 
 
@@ -36,7 +33,7 @@ exports.getPageBlog = async (req, res) => {
  * Remplissage du modal de la création d'Article de la Page ADMIN
  **************************************************************** */ 
 
-/************************************************************* METHODE ASYNCHRONE ************************************************************************************************************************************************************/
+/************************************************************* METHODE ASYNCHRONE **********************************************************************************************************************************************************************************************************************/
 
 // ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
 //Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
@@ -45,7 +42,7 @@ exports.createArticle = async (req, res) => {
     console.log('Controller Create Article', req.body)
 
     // "insert into" (CREATION) est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
-    // req.body permet de nous ressortir les données du modal dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article de la Page ADMIN visionnant les données des colonnes du tableau au moment de la validation //
+    // req.body est la valeur de l'input qui permet de nous ressortir les données du modal dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article de la Page ADMIN visionnant les données des colonnes du tableau au moment de la validation //
     let sql = `insert into Article (title, description, recommandation, date, dateEdit, image, subdescription, author_id) values (?)`;
     let values = [
         req.body.title,
@@ -66,7 +63,7 @@ exports.createArticle = async (req, res) => {
 
     console.log('User Exist', userExist)
 
-    /***************************************************************** CONDITION **************************************************************************************************************************************************************************************/
+    /***************************************************************** CONDITION ***********************************************************************************************************************************************************************************************************************/
     // Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
     if (!userExist[0]) res.redirect('/admin')
     else {
