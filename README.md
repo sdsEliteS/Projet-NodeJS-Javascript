@@ -248,7 +248,13 @@ https://www.npmjs.com/package/express-session
 
 https://www.npmjs.com/package/express-mysql-session
 
+https://github.com/hsukrd/architecture-nodejs-base/blob/session/server.js
+
+https://github.com/hsukrd/architecture-nodejs-base/blob/session/api/controllers/authController.js
+
 https://living-sun.com/fr/nodejs/588996-working-with-sessions-in-expressjs-nodejs-session-express.html
+
+https://askcodez.com/noeud-express-comment-faire-pour-effacer-les-cookies-apres-la-deconnexion.html
 
 https://fr.wikibooks.org/wiki/Les_bases_de_donn%C3%A9es/Les_requ%C3%AAtes_en_SQL
 
