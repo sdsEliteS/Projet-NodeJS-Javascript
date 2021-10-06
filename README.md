@@ -244,6 +244,12 @@ mysql> SELECT pseudo, email, password FROM User WHERE pseudo = 'Steven';
 
 # Manipulation pour la SESSION
 
+https://www.npmjs.com/package/express-session
+
+https://www.npmjs.com/package/express-mysql-session
+
+https://living-sun.com/fr/nodejs/588996-working-with-sessions-in-expressjs-nodejs-session-express.html
+
 https://fr.wikibooks.org/wiki/Les_bases_de_donn%C3%A9es/Les_requ%C3%AAtes_en_SQL
 
 https://sql.sh/cours/where
