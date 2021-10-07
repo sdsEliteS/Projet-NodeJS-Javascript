@@ -33,16 +33,17 @@ exports.getPageBlog = async (req, res) => {
  * Remplissage du modal de la création d'Article de la Page ADMIN
  **************************************************************** */ 
 
-/************************************************************* METHODE ASYNCHRONE **********************************************************************************************************************************************************************************************************************/
+/************************************************************* METHODE ASYNCHRONE *******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
 // ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
 //Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js dans le Controller (createArticle) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête de Utilisateur faite au Server et res = response du Server //
 exports.createArticle = async (req, res) => {
+
     console.log('Controller Create Article', req.body)
+    // Le req.body du console.log se situant dans l'objet {} est importante afin de rendre visible la réponse du server dans le terminal de commande pour tester de la bonne fiabilité de l'application (Method POST = Remplissage des input en y mettant la valeur qui nous permet ensuite de ressortir les données des colonnes de la table Article dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du modal de la création d'article visionnant les données de la page ADMIN au moment de la validation //
 
     // "insert into" (CREATION) est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
-    // req.body est la valeur de l'input qui permet de nous ressortir les données du modal dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors de la création d'Article de la Page ADMIN visionnant les données des colonnes du tableau au moment de la validation //
     let sql = `insert into Article (title, description, recommandation, date, dateEdit, image, subdescription, author_id) values (?)`;
     let values = [
         req.body.title,
@@ -63,7 +64,7 @@ exports.createArticle = async (req, res) => {
 
     console.log('User Exist', userExist)
 
-    /***************************************************************** CONDITION ***********************************************************************************************************************************************************************************************************************/
+    /***************************************************************** CONDITION **********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
     // Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
     if (!userExist[0]) res.redirect('/admin')
     else {
@@ -93,9 +94,9 @@ exports.createArticle = async (req, res) => {
 exports.editArticle = async (req, res) => {
     console.log('Edition Article Page ID', req.body)
 
-/********************************************************** METHODE ASYNCHRONE *************************************************************************************************************************************************************************************/
+/********************************************************** METHODE ASYNCHRONE ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
-/********************************************** L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3) *********************************************************************************************************************************************************************/
+/********************************************** L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3) ***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
 // *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête UPDATE pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
     // 1 --> Effectuer la mise a jour (SQL UPDATE) - 2 --> Charger les constantes après la mise à jour permet d'avoir les données à jour sur un aspect general - 3 --> Renvoyer la réponse avec les data mise à jour avec le res.render (User - Article - Message) //

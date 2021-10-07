@@ -1,16 +1,16 @@
 /*
  * Remplissage des formulaires de contacts à L'INTERIEUR de la Page Home + Presentation 
- ******************************************************************************************************************************************************************************************************************************************************************************************************************/
+ *************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
-/********************************************* METHODE SYNCHRONE **************************************************************************************************************************************************************************************************************************************************/
+/********************************************* METHODE SYNCHRONE *********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
 // ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
 // Exportation de la routes du router.js (formContact) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST (Création) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.formContact = (req, res) => {
     console.log('Controller Form Contact', req.body)
+    // Le req.body du console.log se situant dans l'objet {} est importante afin de rendre visible la réponse du server dans le terminal de commande pour tester de la bonne fiabilité de l'application (Method POST = Remplissage des input en y mettant la valeur qui nous permet ensuite de ressortir les données des colonnes de la table Message dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage des formulaires de contact visionnant les données de la page HOME et PRESENTATION au moment de la validation //
 
     // La Requête SQL insert into permet la création de plusieurs colonnes dans la Table Message pouvant accueillir des données lors du remplissage des formulaires de contacts // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
-    // req.body est la valeur de l'input qui permet de nous ressortir les données des colonnes dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage des formulaires de contact visionnant les données de la page HOME et PRESENTATION au moment de la validation //
     let sql = `insert into Message (nom, email, sujet, message, date) values (?)`;
     let values = [
         req.body.nom,
@@ -21,7 +21,7 @@ exports.formContact = (req, res) => {
     ];
     
 
-    // Valeur des colonnes de la Table Message qui sont écrit dans les input //
+    // Valeur des colonnes de la Table Message qui sont écrit dans les input du formulaire de contact //
     query(sql, [values], function (err, data, fields) {
         if (err) throw err;
 
@@ -37,9 +37,9 @@ exports.formContact = (req, res) => {
  * Suppression Message du formulaire de contact de la Page Home + Presensation dans la Page Admin Section Liste Message
  ********************************************************************************************************************** */
 
-/******************************************* METHODE ASYNCHRONE ******************************************************************************************************************************************************************************************************************************************************/
+/******************************************* METHODE ASYNCHRONE *********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
-/* **************************** L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3)  **************************************************************************************************************************************************************************************************************************************/
+/* **************************** L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3)  *****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
 
 // *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête DELETE FROM pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
