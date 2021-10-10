@@ -3,8 +3,44 @@
 <!-- Manipulation Section Barre de Recherche -->
 
 <div class="search-box d-flex align-items-center">
-    <input class="search-txt" type="text" name="" placeholder="Barre de Recherche">
+    <input id="mySearch" onkeyup="filterBar()" class="search-txt" type="search" name="" placeholder="Barre de Recherche">
     <a class="search-btn" href="#">
         <i class="fas fa-search"></i>
     </a>
 </div>
+
+
+<!-- Manipulation Filtrage de la Search Bar (Barre de Recherche) -->
+
+<script>
+
+    function filterBar() {
+        // On déclare nos variables //
+        let input, filter, div1, div2, h5, i, txtValue;
+        // Notre variable récupère l'id "mySearch" dans la balise input //
+        input = document.getElementsById("mySearch");
+        // filter récupère la valeur de la saisie de l'utilisateur dans l'input et le converti en majuscule //
+        filter = input.Value.toUpperCase();
+        // div1 récupère la class card-group qui comprend toute les cards du fichier Handlebars/HTML "cards.hbs" //
+        div1 = document.getElementsByClassName("card-group");
+        // div2 (Enfant de div1) récupère toute les balises div du fichier Handlebars/HTML "cards.hbs" //
+        div2 = div1.getElementsByTagName("div");
+
+        // On dit que i = 0 qui comprends l'élément du tableau 1 (Exemple: index 0 = card 1, index 1 = card 2) donc si i est inférieur à div2 alors il s'incrémente //
+        for (i = 0; i < div2.length; i++) {
+            // h5 récupère le 1er des enfants avec le tag name h5 //
+            h5 = div2[i].getElementsByTagName("h5")[0];
+            console.log('INFO H5 :', h5)
+            // txtValue récupère le contenu du h5 //
+            txtValue = h5.textContent || h5.innerText;
+            console.log('TXTVALUE :', txtValue)
+
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                div2[i].style.display = "";
+            } else {
+                div2[i].style.display = "none";
+            }
+        }
+    }
+
+</script>

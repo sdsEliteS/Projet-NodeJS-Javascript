@@ -21,7 +21,7 @@ exports.getPageBlog = async (req, res) => {
     // res.render renvoi à l'Utilisateur le fichier 'blog' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article//
     res.render('blog', { 
         /* Rentrant dans le cadre d'une répétition avec la page Blog regroupant les différents Articles, on récupère les data de la table Article pour les mettre dans la constante "ballonList" = KEY en utilisant également une bouche {{#each ballonList }} {{/each }} afin de faire fonctionner la Page Blog */
-        ballonList 
+        ballonList
     }); 
 }
 
