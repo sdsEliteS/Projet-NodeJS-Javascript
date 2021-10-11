@@ -12,6 +12,7 @@ const util = require('util');
 const expressSession = require('express-session')
 const MySQLStore = require('express-mysql-session')(expressSession);
 
+
 const morgan = require('morgan')
 
 /*
@@ -88,7 +89,6 @@ app.use('*', (req, res, next) => {
     console.log('SESSION', req.session)
     next()
 })
-
 
 /*
  * Router

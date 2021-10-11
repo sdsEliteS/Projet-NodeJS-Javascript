@@ -3,28 +3,67 @@
 <!-- Manipulation Section Barre de Recherche -->
 
 <div class="search-box d-flex align-items-center">
-    <input id="mySearch" onkeyup="filterBar()" class="search-txt" type="search" name="" placeholder="Barre de Recherche">
+    <input id="mySearch" onkeyup="filterBar()" class="search-txt" placeholder="Barre de Recherche">
     <a class="search-btn" href="#">
         <i class="fas fa-search"></i>
     </a>
 </div>
 
+<!-- Manipulations des Cards -->
+<div class="container" style="margin-top: 18vh;">
+    <div class="row">
+        {{!-- card-group comprend toute les cards --}}
+        <div id="card-list" class="card-group">
+
+            {{!-- Ouverture de la methode each (boucle) avec le # (Voir le Readme) exploitant les données de mydb en
+            rapport avec les colonnes de la Table Article évitant la répétition des cards --}}
+            {{#each ballonList }}
+
+                {{!-- Colonne ID du tableau (Table Article) qu'on peut voir dans l'export "createArticle" qu'on déclare
+                sous la forme de ballonList dans l'export "getPageBlog" se situant dans blogController --}}
+                <a class="card" href="/ballon/{{ this.id }}">
+                    <img src="{{ this.image }}" class="card-img-top w-100" alt="Ballon-Football">
+                    <div class="card-body">
+                        <div class="bordure">
+                            {{!-- Colonne title du tableau (Table Article) qu'on peut voir dans l'export "createArticle"
+                            qu'on déclare sous la forme de ballonList dans l'export "getPageBlog" se situant dans
+                            blogController --}}
+                            <h5 class="card-title text-center titre-neon-special encadrer fs-4 mt-3"> {{ this.title }}
+                            </h5>
+                        </div>
+                        {{!-- Colonne Description du tableau (Table Article) qu'on peut voir dans l'export
+                        "createArticle" qu'on déclare sous la forme de ballonList dans l'export "getPageBlog" se situant
+                        dans blogController --}}
+                        <p class="card-text text-center bordure encadrer text-white"> {{ this.subdescription }} </p>
+                    </div>
+                    <div class="card-footer text-end">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                </a>
+
+            {{!-- Fermeture de la boucle Each --}}
+            {{/each }}
+
+        </div>
+    </div>
+</div>
 
 <!-- Manipulation Filtrage de la Search Bar (Barre de Recherche) -->
-
 <script>
 
     function filterBar() {
         // On déclare nos variables //
         let input, filter, div1, div2, h5, i, txtValue;
         // Notre variable récupère l'id "mySearch" dans la balise input //
-        input = document.getElementsById("mySearch");
+        input = document.getElementById("mySearch");
         // filter récupère la valeur de la saisie de l'utilisateur dans l'input et le converti en majuscule //
-        filter = input.Value.toUpperCase();
+        filter = input.value.toUpperCase();
         // div1 récupère la class card-group qui comprend toute les cards du fichier Handlebars/HTML "cards.hbs" //
-        div1 = document.getElementsByClassName("card-group");
+        div1 = document.getElementById('card-list');
         // div2 (Enfant de div1) récupère toute les balises div du fichier Handlebars/HTML "cards.hbs" //
-        div2 = div1.getElementsByTagName("div");
+        div2 = div1.getElementsByTagName("a");
+
+        console.log('ferfer', filter)
 
         // On dit que i = 0 qui comprends l'élément du tableau 1 (Exemple: index 0 = card 1, index 1 = card 2) donc si i est inférieur à div2 alors il s'incrémente //
         for (i = 0; i < div2.length; i++) {
@@ -33,7 +72,7 @@
             console.log('INFO H5 :', h5)
             // txtValue récupère le contenu du h5 //
             txtValue = h5.textContent || h5.innerText;
-            console.log('TXTVALUE :', txtValue)
+            // console.log('TXTVALUE :', txtValue)
 
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 div2[i].style.display = "";

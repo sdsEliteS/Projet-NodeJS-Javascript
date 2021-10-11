@@ -1,7 +1,7 @@
 /*
  * Visuel Page Login
  * ********** */
-
+const bcrypt = require('bcrypt')
 
 /**************************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************/
 // Visualisation de la Page LOGIN ( READ/Lire = METHOD GET = MySQL: SELECT ) //
@@ -38,11 +38,21 @@ exports.connexionProfil = async (req, res) => {
 
     /* Requête SQL permettant de cibler le formulaire Login en rapport avec 1 Utilisateur précis ! (pseudo) */
     const user = await query(`SELECT pseudo, email, password, isAdmin FROM User WHERE pseudo = '${req.body.pseudo}'`)
-    /********************************************** await est toujours associé à une methode async (Asynchrone) * ********************************************************************************************************************************************/
     console.log('user', user)
+
+    /********************************************** await est toujours associé à une methode async (Asynchrone) * ********************************************************************************************************************************************/
+    
+
 
 
     /********************************************************** CONDITION OUVERTURE SESSION ******************************************************************************************************************************************************************/
+    // bcrypt.compare (req.body.mot_de_passe, hash).then => {
+    //     if (error) console.log (error)
+    // });
+
+    // bcrypt.compare (req.body.password, hash)
+
+
     /* Si (else) user ne correspond pas au pseudo dans la DB (Base de donnée) au moment du remplissage du formulaire login alors tu renvoi la page register = res.render register */
     if (!user[0]) {
         console.log("PAS DANS LA DB");
@@ -54,8 +64,11 @@ exports.connexionProfil = async (req, res) => {
         /*  Sinon (else) si user existe bien dans la DB */
         console.log("Existe DANS LA DB");
 
+        const match = await bcrypt.compare(req.body.mot_de_passe, user[0].password)
+        console.log('match', match)
+
         /* Dans le cas où, Si (if) l'Utilisateur à crée un compte donc si le mot de passe de la page login user[0].password = MySQL Workbench n'est pas strictement égal (!==) à req.body.mot_de_passe = Fichier Handlebars/HTML 'Connexion' se situant dans le name alors tu me dis Mot de passe error me renvoyant sur la page login */ 
-        if (user[0].password !== req.body.mot_de_passe) {
+        if (!match) {
             console.log('Mot de passe error')
             res.render('login', {
                 error: 'Le mot de passe est erroné !'
@@ -63,7 +76,7 @@ exports.connexionProfil = async (req, res) => {
 
           // Sinon (else) s'il user.password est strictement égal(===) à req.body.mot_de_passe alors tu m'ouvres la SESSION de l'Utilisateur sur sa page profil  //
           // password = MySQL Workbench, mot_de_passe = Fichier Handlears/HTML 'Connexion' dans le name //
-        } else if (user[0] && user[0].password === req.body.mot_de_passe) {
+        } else if (user[0] && match) {
             console.log('Mot de passe OK')
 
             req.session.user = {
@@ -134,8 +147,6 @@ exports.registerProfil = async (req, res) => {
 
     /* Déclaration de la Constante et Exécution de la fonction via une méthode Asynchrone (await) ciblant le pseudo de l'Utilisateur lors de son inscription sur le formulaire d'inscription register */ 
     const userExist = await query(`SELECT * FROM User WHERE pseudo = '${ req.body.pseudo }'`)
-
-
     console.log('UserExist', userExist)
 
     // Condition : lors de la création d'un profil sur le formulaire d'inscription register, Si (if) le Pseudo "STEVEN" est crée et qu'un autre pseudo "steven" est crée en minuscule alors il y aura un message d'erreur disant que ce pseudo existe déjà (toLowerCase) renvoyant sur la page du formulaire register //
@@ -154,6 +165,10 @@ exports.registerProfil = async (req, res) => {
         })
 
     } else {
+        /* Bcrypt - Hash afin de chiffrer le mot de passe de l'Utilisateur */ 
+        const hash = await bcrypt.hash(req.body.mot_de_passe, 10)
+        console.log('hashMDP', hash)
+    
         console.log('UserNotExist')
 
         // Requête SQL permettant la création de plusieurs colonnes dans la Table User //
@@ -162,7 +177,7 @@ exports.registerProfil = async (req, res) => {
         let values = [
             req.body.pseudo,
             req.body.email,
-            req.body.mot_de_passe,
+            hash,
             req.body.adresse,
             req.body.telephone,
             req.body.date_de_naissance
