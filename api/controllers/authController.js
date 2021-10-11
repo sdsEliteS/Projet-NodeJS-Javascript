@@ -1,6 +1,7 @@
 /*
  * Visuel Page Login
- * ********** */
+ * ***************** */
+
 const bcrypt = require('bcrypt')
 
 /**************************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************/
@@ -61,20 +62,21 @@ exports.connexionProfil = async (req, res) => {
         })
 
     } else {
-        /*  Sinon (else) si user existe bien dans la DB */
+        //  Sinon (else) si user existe bien dans la DB //
         console.log("Existe DANS LA DB");
 
+        /* Hash on compare le mot de passe crypté de la base de donnée avec le mot de passe crypté après connexion sur la page Login */
         const match = await bcrypt.compare(req.body.mot_de_passe, user[0].password)
         console.log('match', match)
 
-        /* Dans le cas où, Si (if) l'Utilisateur à crée un compte donc si le mot de passe de la page login user[0].password = MySQL Workbench n'est pas strictement égal (!==) à req.body.mot_de_passe = Fichier Handlebars/HTML 'Connexion' se situant dans le name alors tu me dis Mot de passe error me renvoyant sur la page login */ 
+        /* Dans le cas où, Si (if) l'Utilisateur à crée un compte, si le mot de passe de la page login - user[0].password = MySQL Workbench DB n'est pas strictement égal (!==) à req.body.mot_de_passe = Fichier Handlebars/HTML 'Connexion' se situant dans le name (comparaison mot de passe bcrypt (cryptage)) alors tu me dis Mot de passe error me renvoyant sur la page login */ 
         if (!match) {
             console.log('Mot de passe error')
             res.render('login', {
                 error: 'Le mot de passe est erroné !'
             })
 
-          // Sinon (else) s'il user.password est strictement égal(===) à req.body.mot_de_passe alors tu m'ouvres la SESSION de l'Utilisateur sur sa page profil  //
+          // Sinon si (else if) user.password est strictement égal(===) à req.body.mot_de_passe (bcrypt cryptage) alors tu m'ouvres la SESSION de l'Utilisateur sur sa page profil  //
           // password = MySQL Workbench, mot_de_passe = Fichier Handlears/HTML 'Connexion' dans le name //
         } else if (user[0] && match) {
             console.log('Mot de passe OK')
@@ -145,7 +147,7 @@ exports.getPageRegister = (req, res) => {
 exports.registerProfil = async (req, res) => {
     console.log('Enregistrement Compte Steven', req.body)
 
-    /* Déclaration de la Constante et Exécution de la fonction via une méthode Asynchrone (await) ciblant le pseudo de l'Utilisateur lors de son inscription sur le formulaire d'inscription register */ 
+    // Déclaration de la Constante et Exécution de la fonction via une méthode Asynchrone (await) ciblant le pseudo de l'Utilisateur lors de son inscription sur le formulaire d'inscription register // 
     const userExist = await query(`SELECT * FROM User WHERE pseudo = '${ req.body.pseudo }'`)
     console.log('UserExist', userExist)
 
@@ -165,14 +167,14 @@ exports.registerProfil = async (req, res) => {
         })
 
     } else {
-        /* Bcrypt - Hash afin de chiffrer le mot de passe de l'Utilisateur */ 
+        /* Bcrypt - Hash afin de crypté protégeant le mot de passe de l'Utilisateur lors de la connexion remplissant le formulaire de la page login*/ 
         const hash = await bcrypt.hash(req.body.mot_de_passe, 10)
         console.log('hashMDP', hash)
     
         console.log('UserNotExist')
 
         // Requête SQL permettant la création de plusieurs colonnes dans la Table User //
-        // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du formulaire d'enregistrement du l'Utilisateur visionnant les données au moment de la validation //
+        // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du formulaire register d'enregistrement de l'Utilisateur visionnant les données au moment de la validation //
         let sql = `INSERT INTO User (pseudo, email, password, address, telephone, birthday) values (?)`;
         let values = [
             req.body.pseudo,
@@ -182,6 +184,8 @@ exports.registerProfil = async (req, res) => {
             req.body.telephone,
             req.body.date_de_naissance
         ];
+        // invocation de la constante hash dans la let values à la place de mot_de_passe afin de protéger le mot de passe lors de l'inscription de l'Utilisateur //
+
 
         // Valeur des colonnes de la Table User qui sont écrit dans les input du formulaire d'inscription register - Method Asynchrone  //
         query(sql, [values], function (err, data, fields) {
