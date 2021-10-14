@@ -277,3 +277,15 @@ https://dev.mysql.com/doc/mysql-backup-excerpt/5.7/en/mysqldump-sql-format.html
 
 insert into User (pseudo, email, password, address, telephone, birthday)
 values ('Steven', 'dossantos.steven72190@gmail.com', '123456', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-28');
+
+
+
+
+
+# MULTER :
+
+https://www.youtube.com/watch?v=-rJOt4hoVak
+
+https://www.youtube.com/watch?v=wIOpe8S2Mk8
+
+https://github.com/hsukrd/architecture-nodejs-base/tree/image
