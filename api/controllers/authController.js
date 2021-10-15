@@ -39,7 +39,7 @@ exports.connexionProfil = async (req, res) => {
 
 
     /* Requête SQL permettant de cibler le formulaire Login en rapport avec 1 Utilisateur précis ! (pseudo) */
-    const user = await query(`SELECT pseudo, email, password, isAdmin FROM User WHERE pseudo = '${req.body.pseudo}'`)
+    const user = await query(`SELECT id, pseudo, email, password, isAdmin FROM User WHERE pseudo = '${req.body.pseudo}'`)
     console.log('user', user)
 
     /********************************************** await est toujours associé à une methode async (Asynchrone) * ********************************************************************************************************************************************/
@@ -80,9 +80,10 @@ exports.connexionProfil = async (req, res) => {
           // Sinon si (else if) user.password est strictement égal(===) à req.body.mot_de_passe (bcrypt cryptage) alors tu m'ouvres la SESSION de l'Utilisateur sur sa page profil  //
           // password = MySQL Workbench, mot_de_passe = Fichier Handlears/HTML 'Connexion' dans le name //
         } else if (user[0] && match) {
-            console.log('Mot de passe OK')
+            console.log('Mot de passe OK', user[0])
 
             req.session.user = {
+                id: user[0].id,
                 pseudo: user[0].pseudo,
                 email: user[0].email
             }

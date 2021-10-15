@@ -13,6 +13,7 @@ const expressSession = require('express-session')
 const MySQLStore = require('express-mysql-session')(expressSession);
 
 
+
 const morgan = require('morgan')
 
 /*
@@ -100,7 +101,7 @@ app.use(ROUTER);
 
 /*
  * Ecoute de notre application
- * ***********************$*** */ 
+ * *************************** */ 
 
 // Lancement de l'application
 app.listen(port, () => {

@@ -21,60 +21,76 @@
                         <div class="modal-body">
 
                             {{!-- Methode POST --}}
-                            <form action="/article" method="POST">
-                            {{!-- Methode POST --}}
+                            <form action="/UploadArticle" enctype="multipart/form-data" method="POST">
+                                {{!-- Methode POST --}}
                                 <div class="col-md-12">
-                                    {{!-- <label for="recipient-name" class="col-form-label d-flex justify-content-start">Date :</label> --}}
-                                    {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                                    {{!-- <input type="date" name="date" class="form-control" placeholder="07-09-2021" id="recipient-name"> --}}
+                                    {{!-- <label for="recipient-name"
+                                        class="col-form-label d-flex justify-content-start">Date :</label> --}}
+                                    {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode
+                                    POST --}}
+                                    {{!-- <input type="date" name="date" class="form-control" placeholder="07-09-2021"
+                                        id="recipient-name"> --}}
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="recipient-name"
                                             class="col-form-label d-flex justify-content-start">Title :</label>
-                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                                        <input type="text" name="title" class="form-control" placeholder="" id="recipient-name">
+                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la
+                                        methode POST --}}
+                                        <input type="text" name="title" class="form-control" placeholder=""
+                                            id="recipient-name">
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-6"> 
                                         <label for="message-text"
                                             class="col-form-label d-flex justify-content-start">Image
                                             :</label>
-                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                                        <input type="text" name="image" class="form-control" placeholder="" id="recipient-name">
+                                        <input type="file" class="form-control-file" name="imgArticle">
+                                        {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la
+                                        methode POST --}}
+
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="recipient-name"
                                         class="col-form-label d-flex justify-content-start">Subdescription :</label>
-                                    {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                                    <input type="text" name="subdescription" class="form-control" placeholder="" id="recipient-name">
+                                    {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode
+                                    POST --}}
+                                    <input type="text" name="subdescription" class="form-control" placeholder=""
+                                        id="recipient-name">
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="recipient-name" class="col-form-label d-flex justify-content-start">Description</label>
-                                    {{!-- Ne pas oublier d'écrire le "name" dans le textarea en rapport avec la methode POST --}}
+                                    <label for="recipient-name"
+                                        class="col-form-label d-flex justify-content-start">Description</label>
+                                    {{!-- Ne pas oublier d'écrire le "name" dans le textarea en rapport avec la methode
+                                    POST --}}
                                     <textarea id="message" type="text" rows="5" placeholder="" name="description"
                                         class="contact-message"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="recipient-name" class="col-form-label"></label>
-                                    {{!-- Ne pas oublier d'écrire le "name" dans le textarea en rapport avec la methode POST --}}
+                                    {{!-- Ne pas oublier d'écrire le "name" dans le textarea en rapport avec la methode
+                                    POST --}}
                                     <textarea id="message" rows="5" placeholder="Recommandation" name="recommandation"
                                         class="contact-message"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="recipient-name"
                                         class="col-form-label d-flex justify-content-start">Author_id :</label>
-                                    {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
-                                    <input type="text" name="author_id" class="form-control" placeholder="" id="recipient-name">
-                                </div>  
+                                    {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode
+                                    POST --}}
+                                    <input type="text" name="author_id" class="form-control" placeholder=""
+                                        id="recipient-name" value="{{ user.id }}">
+                                </div>
                                 <div class="col-md-12">
                                     <div class="contact-form text-center mb-5">
-                                        {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante "form" --}}
+                                        {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui
+                                        soumet toutes les valeurs du formulaire lors de l'envoi à un gestionnaire de
+                                        formulaire (Server) validant la balise ouvrante fermante "form" --}}
                                         <button type="submit" class="btn-or mt-3">Validation</button>
                                     </div>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>

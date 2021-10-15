@@ -4,6 +4,10 @@
 const express = require('express'),
     router = express.Router();
 
+const upload = require('../config/multer')
+
+
+
 /*
  * Import des Controllers
  * ********************** */
@@ -15,19 +19,19 @@ const homeController = require('./controllers/homeController'),
     legalnoticeController = require('./controllers/legalnoticeController'),
     ballonController = require('./controllers/ballonController'),
     adminController = require('./controllers/adminController'),
-    profilController = require('./controllers/profilController');
-    
+    profilController = require('./controllers/profilController')
+
 
 /*
  * Import des Middlewares
- * ********************** */  
+ * ********************** */
 
 // const test = require('./middleware/test')
 // const isAdmin = require('./middleware/isAdmin')
 
 // Route avec le middleware 'test'
 // router.route('/')
-    // .get(test, homeController.getPageHome)
+// .get(test, homeController.getPageHome)
 
 
 /*
@@ -112,8 +116,8 @@ router.route('/admin')
 
 
 // URL Page Formulaire Article (Page Admin Formulaire de Création d'Article (btnCreateArticle))
-router.route('/article')
-    .post(blogController.createArticle)
+router.route('/UploadArticle')
+    .post(upload.single('imgArticle'),blogController.createArticle)
 
 
 // URL Page Formulaire Edition Article (Page Admin Formulaire Edition ET Suppression d'Article (tableauArticle))
@@ -136,7 +140,7 @@ router.route('/message/:id')
 
 
 /********************************************* PAGE REGISTER + PAGE LOGIN + PAGE PROFIL ************************************** */
-    
+
 
 /*
  * authController + profilController
@@ -162,7 +166,7 @@ router.route('/registerprofil')
 // URL Page Formulaire Connexion PageLogin
 router.route('/connexion')
     .post(authController.connexionProfil)
-    
+
 
 /*
  * profilController
@@ -181,15 +185,12 @@ router.route('/profil')
 
 /*
  * authController
- **************** */ 
+ **************** */
 
 
 // URL Deconnexion de la Session de l'Utilisateur
 router.route('/logout')
     .get(authController.getDeconnexionProfil)
-
-
-
 
 
 module.exports = router

@@ -4,6 +4,8 @@
 
 /* Import Module */
 const moment = require('moment') // gestion des dates //
+const path = require('path')
+const fs = require('fs')
 
 /************************************************************* METHODE ASYNCHRONE **************************************************************************************************************************************************************/
 
@@ -11,7 +13,7 @@ const moment = require('moment') // gestion des dates //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js dans le Controller (getPageBlog) avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageBlog = async (req, res) => {
-    
+
     // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner la table dans la base de donnée MySQL = Fichier db.sql //
     // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const ballonList = await query('select * from Article')
@@ -19,10 +21,10 @@ exports.getPageBlog = async (req, res) => {
     console.log(ballonList)
 
     // res.render renvoi à l'Utilisateur le fichier 'blog' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article//
-    res.render('blog', { 
+    res.render('blog', {
         /* Rentrant dans le cadre d'une répétition avec la page Blog regroupant les différents Articles, on récupère les data de la table Article pour les mettre dans la constante "ballonList" = KEY en utilisant également une bouche {{#each ballonList }} {{/each }} afin de faire fonctionner la Page Blog */
         ballonList
-    }); 
+    });
 }
 
 // Création d'article dans la page ADMIN, le nouvel article se mettra dans la page blog avec les autres produits c'est la raison pour laquelle on le met dans blog.Controller //
@@ -31,7 +33,7 @@ exports.getPageBlog = async (req, res) => {
 
 /* 
  * Remplissage du modal de la création d'Article de la Page ADMIN
- **************************************************************** */ 
+ **************************************************************** */
 
 /************************************************************* METHODE ASYNCHRONE *******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
@@ -40,7 +42,7 @@ exports.getPageBlog = async (req, res) => {
 // Exportation de la routes du router.js dans le Controller (createArticle) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête de Utilisateur faite au Server et res = response du Server //
 exports.createArticle = async (req, res) => {
 
-    console.log('Controller Create Article', req.body)
+    console.log('Controller Create Article', req.body, req.file)
     // Le req.body du console.log se situant dans l'objet {} est importante afin de rendre visible la réponse du server dans le terminal de commande pour tester de la bonne fiabilité de l'application (Method POST = Remplissage des input en y mettant la valeur qui nous permet ensuite de ressortir les données des colonnes de la table Article dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du modal de la création d'article visionnant les données de la page ADMIN au moment de la validation //
 
     // "insert into" (CREATION) est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
@@ -51,7 +53,7 @@ exports.createArticle = async (req, res) => {
         req.body.recommandation,
         new Date(Date.now()),
         new Date(Date.now()),
-        req.body.image,
+        req.file.nomComplet,
         req.body.subdescription,
         req.body.author_id
     ];
@@ -60,7 +62,7 @@ exports.createArticle = async (req, res) => {
     // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
     // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const userExist = await query(`SELECT * FROM User WHERE id = ${ req.body.author_id }`)
-    
+
 
     console.log('User Exist', userExist)
 
@@ -94,13 +96,13 @@ exports.createArticle = async (req, res) => {
 exports.editArticle = async (req, res) => {
     console.log('Edition Article Page ID', req.body)
 
-/********************************************************** METHODE ASYNCHRONE ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+    /********************************************************** METHODE ASYNCHRONE ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
-/********************************************** L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3) ***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+    /********************************************** L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3) ***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
-// *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête UPDATE pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
+    // *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête UPDATE pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
     // 1 --> Effectuer la mise a jour (SQL UPDATE) - 2 --> Charger les constantes après la mise à jour permet d'avoir les données à jour sur un aspect general - 3 --> Renvoyer la réponse avec les data mise à jour avec le res.render (User - Article - Message) //
-    
+
 
     // 1 //
 
@@ -116,17 +118,17 @@ exports.editArticle = async (req, res) => {
     // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
     // Execution de la Requête SQL UPDATE permettant le changement de la création d'Article ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
-    await query( sql )
+    await query(sql)
 
 
     // 2 //
 
-   // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL (SELECT Récupération de donnée (data)) - Voir également Fichier db.sql Fichier db.sql grâce à MySQL WORKBENCH //
-   // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
-   const dbUsers = await query('select * from User')
-   const dbArticle = await query('select * from Article')
-   const dbMessage = await query('select * from Message')
-    
+    // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL (SELECT Récupération de donnée (data)) - Voir également Fichier db.sql Fichier db.sql grâce à MySQL WORKBENCH //
+    // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
+    const dbUsers = await query('select * from User')
+    const dbArticle = await query('select * from Article')
+    const dbMessage = await query('select * from Message')
+
 
 
     // 3 //
@@ -152,7 +154,7 @@ exports.editArticle = async (req, res) => {
 
 /* 
  * Suppression d'article du formulaire de la Page Admin Liste Article + Blog + ballonID
- ************************************************************************************** */ 
+ ************************************************************************************** */
 
 /*********************************** METHODE ASYNCHRONE *********************************/
 
@@ -161,12 +163,29 @@ exports.editArticle = async (req, res) => {
 // Exportation de la routes du router.js (deleteArticle) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode DELETE (Suppression) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.deleteArticle = async (req, res) => {
     console.log('Suppression Article Page ID', req.body, req.params)
-    
 
-    // Execution de la requête SQL "DELETE FROM" permettant de supprimer un article de la page Admin Section Liste d'Article - ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
-    await query(`DELETE FROM Article WHERE id = ${ req.params.id }`)
-    // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant de supprimer l'id du Message qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal de commande plus haut dans le console.log (Chaque Article à un numero d'id précis //
-    
-    // res.redirect permet de rediriger l'Utilisateur vers l'URL '/admin' //
-    res.redirect('/admin')
+    const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`),
+        pathImg = path.resolve("public/images/" + article[0].imgArticle)
+
+    //  doc: https://stackoverflow.com/questions/5315138/node-js-remove-file
+    // https://github.com/hsukrd/architecture-nodejs-base/blob/a0dd4d57b25a6c3a0d42c3c6594b7158c9e4435c/api/controllers/articleController.js#L93
+    // https://nodejs.org/api/fs.html
+
+        // Suppression de l'image
+    fs.unlink(pathImg, (err) => {
+        if (err) console.log(err)
+        else {
+
+            // Execution de la requête SQL "DELETE FROM" permettant de supprimer un article de la page Admin Section Liste d'Article - ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
+            await query(`DELETE FROM Article WHERE id = ${ req.params.id }`)
+            // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant de supprimer l'id du Message qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur la suppression de l'id mentionner également dans le terminal de commande plus haut dans le console.log (Chaque Article à un numero d'id précis //
+
+            // res.redirect permet de rediriger l'Utilisateur vers l'URL '/admin' //
+            res.redirect('/admin')
+        }
+    })
+
+
+
+
 }
