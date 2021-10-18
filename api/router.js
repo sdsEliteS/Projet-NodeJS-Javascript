@@ -103,7 +103,7 @@ router.route('/admin')
     .get(adminController.getPageAdmin)
 
 
-// URL Page Formulaire Article (Page Admin Formulaire de Création d'Article (btnCreateArticle))
+// URL Page Formulaire Article (Page Admin Formulaire de Création d'Article + Upload Image (btnCreateArticle))
 router.route('/UploadArticle')
     .post(upload.single('imgArticle'),blogController.createArticle)
 
