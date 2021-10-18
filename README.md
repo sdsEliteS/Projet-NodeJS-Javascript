@@ -282,10 +282,18 @@ values ('Steven', 'dossantos.steven72190@gmail.com', '123456', '327 Route de Bea
 
 
 
-# MULTER :
+# MULTER : Ajouter une photo dans le modal de la création d'article et dans le dossier Images du Projet
 
 https://www.youtube.com/watch?v=-rJOt4hoVak
 
 https://www.youtube.com/watch?v=wIOpe8S2Mk8
 
 https://github.com/hsukrd/architecture-nodejs-base/tree/image
+
+
+# MULTER : Supprimer une photo d'un article crée et dans le dossier Images du projet
+
+https://github.com/hsukrd/architecture-nodejs-base/blob/a0dd4d57b25a6c3a0d42c3c6594b7158c9e4435c/api/controllers/articleController.js#L93
+
+https://practicalprogramming.fr/how-to-use-node-fs
+

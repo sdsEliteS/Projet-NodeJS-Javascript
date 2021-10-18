@@ -50,11 +50,5 @@ const upload = multer({
     }
 })
 
-
-// app.post('/uploadArticle', upload.single('imgArticle'), function (req, res, next) {
-// //    Fichier Image 
-//   })
-
-
 // Exportation de upload afin de pouvoir l'appeler dans notre router.js //
 module.exports = upload

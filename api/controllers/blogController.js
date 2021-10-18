@@ -3,9 +3,9 @@
  * *************** */
 
 /* Import Module */
-const moment = require('moment') // gestion des dates //
+const moment = require('moment') // Gestion des dates //
 const path = require('path')
-const fs = require('fs')
+const fs = require('fs') // Rentrant dans le cadre d'une suppression de fichier Image //
 
 /************************************************************* METHODE ASYNCHRONE **************************************************************************************************************************************************************/
 
@@ -165,14 +165,12 @@ exports.deleteArticle = async (req, res) => {
     console.log('Suppression Article Page ID', req.body, req.params)
 
     const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`),
-        pathImg = path.resolve("public/images/" + article[0].imgArticle)
+     // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image un dossier//
+        pathImg = path.resolve("public/images/" + article[0].image)
 
-    //  doc: https://stackoverflow.com/questions/5315138/node-js-remove-file
-    // https://github.com/hsukrd/architecture-nodejs-base/blob/a0dd4d57b25a6c3a0d42c3c6594b7158c9e4435c/api/controllers/articleController.js#L93
-    // https://nodejs.org/api/fs.html
-
-        // Suppression de l'image
-    fs.unlink(pathImg, (err) => {
+    // Suppression de l'image dans la liste d'article de la page Admin et dans le dossier Image avec une method Asynchrone //
+    fs.unlink(pathImg, async (err) => {
+        // Condition si (if) il y a une erreur sinon (else) tu m'excutes la fonction asynchrones //
         if (err) console.log(err)
         else {
 
@@ -184,8 +182,5 @@ exports.deleteArticle = async (req, res) => {
             res.redirect('/admin')
         }
     })
-
-
-
 
 }

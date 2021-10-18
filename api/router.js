@@ -23,18 +23,6 @@ const homeController = require('./controllers/homeController'),
 
 
 /*
- * Import des Middlewares
- * ********************** */
-
-// const test = require('./middleware/test')
-// const isAdmin = require('./middleware/isAdmin')
-
-// Route avec le middleware 'test'
-// router.route('/')
-// .get(test, homeController.getPageHome)
-
-
-/*
  * Déclaration des routes 
  ************************ */
 
