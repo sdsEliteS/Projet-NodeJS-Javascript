@@ -11194,13 +11194,13 @@ cite img {
 
 .register-box {
   position: relative;
-  top: 30px;
+  top: 23px;
   height: 847px;
 }
 
 .login-box h3, .login-box .h3 {
   position: relative;
-  bottom: 80px;
+  bottom: 50px;
   height: 15%;
   margin: 0 0 10px;
   padding: 45px;
@@ -11211,7 +11211,7 @@ cite img {
 
 .login-box .user-box {
   position: relative;
-  bottom: 15px;
+  bottom: 35px;
 }
 
 /* L'ordre des propriétés est très important vis à vis du résultat final quannd elle est déclaré:  */
@@ -11256,7 +11256,7 @@ cite img {
 
 .login-box form button {
   position: relative;
-  bottom: 45px;
+  bottom: 75px;
   display: inline-block;
   padding: 35px 35px;
   background-color: black;
