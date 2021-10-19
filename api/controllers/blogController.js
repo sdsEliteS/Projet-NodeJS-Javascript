@@ -66,7 +66,7 @@ exports.createArticle = async (req, res) => {
 
     console.log('User Exist', userExist)
 
-    /***************************************************************** CONDITION **********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+    /***************************************************************** CONDITION *****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
     // Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
     if (!userExist[0]) res.redirect('/admin')
     else {
@@ -94,7 +94,7 @@ exports.createArticle = async (req, res) => {
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js (editArticle) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode PUT (Création) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.editArticle = async (req, res) => {
-    console.log('Edition Article Page ID', req.body)
+    console.log('Edition Article Page ID', req.body, req.file)
 
     /********************************************************** METHODE ASYNCHRONE ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
@@ -112,7 +112,7 @@ exports.editArticle = async (req, res) => {
                    description = '${ req.body.description }',
                    recommandation = '${ req.body.recommandation }',
                    dateEdit = '${ moment().format('YYYY-MM-DD') }',
-                   image = '${ req.body.image }',
+                   image = '${  req.file.nomComplet }',
                    subdescription = '${ req.body.subdescription }'
                WHERE id = '${ req.params.id }';`;
     // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
@@ -156,7 +156,7 @@ exports.editArticle = async (req, res) => {
  * Suppression d'article du formulaire de la Page Admin Liste Article + Blog + ballonID
  ************************************************************************************** */
 
-/*********************************** METHODE ASYNCHRONE *********************************/
+/*********************************** METHODE ASYNCHRONE *********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
 // (DELETE/Suppression = Method DELETE HTTP = MySQL: DELETE) //
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //

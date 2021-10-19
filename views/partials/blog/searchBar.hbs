@@ -19,6 +19,7 @@
             rapport avec les colonnes de la Table Article évitant la répétition des cards --}}
             {{#each ballonList }}
 
+            <div class="col-md-4">
                 {{!-- Colonne ID du tableau (Table Article) qu'on peut voir dans l'export "createArticle" qu'on déclare
                 sous la forme de ballonList dans l'export "getPageBlog" se situant dans blogController --}}
                 <a class="card" href="/ballon/{{ this.id }}">
@@ -39,7 +40,7 @@
                         <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
                 </a>
-
+            </div>      
             {{!-- Fermeture de la boucle Each --}}
             {{/each }}
 

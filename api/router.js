@@ -103,14 +103,14 @@ router.route('/admin')
     .get(adminController.getPageAdmin)
 
 
-// URL Page Formulaire Article (Page Admin Formulaire de Création d'Article + Upload Image (btnCreateArticle))
+// URL Page Formulaire Article (Page Admin Formulaire de Création d'Article + Upload Dossier Image Article (btnCreateArticle))
 router.route('/UploadArticle')
     .post(upload.single('imgArticle'),blogController.createArticle)
 
 
-// URL Page Formulaire Edition Article (Page Admin Formulaire Edition ET Suppression d'Article (tableauArticle))
-router.route('/article/:id')
-    .put(blogController.editArticle)
+// URL Page Formulaire Edition Article (Page Admin Formulaire Edition + Upload Image Dossier Image ET Suppression d'Article (tableauArticle))
+router.route('/UploadArticle2/:id')
+    .put(upload.single('imgArticle'),blogController.editArticle)
     .delete(blogController.deleteArticle)
 
 
