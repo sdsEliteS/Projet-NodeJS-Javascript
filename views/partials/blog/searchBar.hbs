@@ -23,7 +23,7 @@
                 {{!-- Colonne ID du tableau (Table Article) qu'on peut voir dans l'export "createArticle" qu'on déclare
                 sous la forme de ballonList dans l'export "getPageBlog" se situant dans blogController --}}
                 <a class="card" href="/ballon/{{ this.id }}">
-                    <img src="/assets/images/{{ this.image }}" class="card-img-top w-100" alt="Ballon-Football">
+                    <img src="/assets/images/{{ this.image }}" class="card-img-top rounded mx-auto d-block w-75" height="330px" alt="ballon de football">
                     <div class="card-body">
                         <div class="bordure">
                             {{!-- Colonne title du tableau (Table Article) qu'on peut voir dans l'export "createArticle"
@@ -37,7 +37,7 @@
                         <p class="card-text text-center bordure encadrer text-white"> {{ this.subdescription }} </p>
                     </div>
                     <div class="card-footer text-end">
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                        <div class="text-muted text-center"> Article - Steven DOS SANTOS PINTO </div>
                     </div>
                 </a>
             </div>      
@@ -58,12 +58,12 @@
         input = document.getElementById("mySearch");
         // filter récupère la valeur de la saisie de l'utilisateur dans l'input et le converti en majuscule //
         filter = input.value.toUpperCase();
-        // div1 récupère la class card-group qui comprend toute les cards du fichier Handlebars/HTML "cards.hbs" //
+        // div1 récupère la class card-group qui comprend toute les cards du fichier Handlebars/HTML //
         div1 = document.getElementById('card-list');
-        // div2 (Enfant de div1) récupère toute les balises div du fichier Handlebars/HTML "cards.hbs" //
+        // div2 (Enfant de div1) récupère toute les balises div enfant du parent balise a du fichier Handlebars/HTML //
         div2 = div1.getElementsByTagName("a");
 
-        console.log('ferfer', filter)
+        console.log('filtrage', filter)
 
         // On dit que i = 0 qui comprends l'élément du tableau 1 (Exemple: index 0 = card 1, index 1 = card 2) donc si i est inférieur à div2 alors il s'incrémente //
         for (i = 0; i < div2.length; i++) {
