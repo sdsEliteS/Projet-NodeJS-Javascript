@@ -10967,7 +10967,7 @@ ul li:hover {
 }
 
 /* MANIPULATION Page Blog + ID HTML 
- *  ************************ */
+ *  ******************************* */
 .card {
   text-decoration: none;
 }
@@ -11474,12 +11474,6 @@ cite img {
 .envelope {
   position: relative;
   left: 2px;
-}
-
-/* Video Arrière Plan MP4 */
-#myVideo {
-  position: fixed;
-  background-size: cover;
 }
 
 /* MANIPULATION Page Messagerie Utilisateur */
