@@ -10968,6 +10968,12 @@ ul li:hover {
 
 /* MANIPULATION Page Blog + ID HTML 
  *  ******************************* */
+/* Filtrage de mes Cards */
+.flex {
+  display: flex;
+}
+
+/* Filtrage de mes Cards */
 .card {
   text-decoration: none;
 }

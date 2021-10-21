@@ -19,7 +19,7 @@
             rapport avec les colonnes de la Table Article évitant la répétition des cards --}}
             {{#each ballonList }}
 
-            <div class="col-md-4">
+            <div class="flex justify-content-center">
                 {{!-- Colonne ID du tableau (Table Article) qu'on peut voir dans l'export "createArticle" qu'on déclare
                 sous la forme de ballonList dans l'export "getPageBlog" se situant dans blogController --}}
                 <a class="card" href="/ballon/{{ this.id }}">
@@ -43,7 +43,7 @@
             </div>      
             {{!-- Fermeture de la boucle Each --}}
             {{/each }}
-
+            
         </div>
     </div>
 </div>
@@ -72,7 +72,7 @@
             console.log('INFO H5 :', h5)
             // txtValue récupère le contenu du h5 //
             txtValue = h5.textContent || h5.innerText;
-            // console.log('TXTVALUE :', txtValue)
+            console.log('TXTVALUE :', txtValue)
 
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 div2[i].style.display = "";
