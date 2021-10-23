@@ -117,34 +117,46 @@ exports.editArticle = async (req, res) => {
                WHERE id = '${ req.params.id }';`;
     // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
-    // Execution de la Requête SQL UPDATE permettant le changement de la création d'Article ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
-    await query(sql)
+
+    const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`),
+     // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image un dossier //
+        pathImg = path.resolve("images"),
+        image = (article[0].image)
+
+    fs.writeFile(pathImg, image, async (err) => {
+        if (err) console.log(err)
+        else {
+            // Execution de la Requête SQL UPDATE permettant le changement de la création d'Article ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
+            await query(sql)
 
 
-    // 2 //
+            // 2 //
 
-    // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL (SELECT Récupération de donnée (data)) - Voir également Fichier db.sql Fichier db.sql grâce à MySQL WORKBENCH //
-    // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
-    const dbUsers = await query('select * from User')
-    const dbArticle = await query('select * from Article')
-    const dbMessage = await query('select * from Message')
+            // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL (SELECT Récupération de donnée (data)) - Voir également Fichier db.sql Fichier db.sql grâce à MySQL WORKBENCH //
+            // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
+            const dbUsers = await query('select * from User')
+            const dbArticle = await query('select * from Article')
+            const dbMessage = await query('select * from Message')
 
+            
+            // 3 //
 
+            // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
+            // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
+            // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis //  Construire le diagramme de classe avec les colonnes grâce à MySQL WORKBENCH //
+            res.render('admin', {
+            articles: dbArticle,
+            message: dbMessage,
+            users: dbUsers,
+            // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+            noFooter: true,
+            // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
+            openArticle: 'show'
 
-    // 3 //
-
-    // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
-    // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
-    // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis //  Construire le diagramme de classe avec les colonnes grâce à MySQL WORKBENCH //
-    // + BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-    // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
-    res.render('admin', {
-        articles: dbArticle,
-        message: dbMessage,
-        users: dbUsers,
-        noFooter: true,
-        openArticle: 'show'
+            })
+        }
     })
+    
 }
 
 
@@ -165,7 +177,7 @@ exports.deleteArticle = async (req, res) => {
     console.log('Suppression Article Page ID', req.body, req.params)
 
     const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`),
-     // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image un dossier//
+     // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image un dossier //
         pathImg = path.resolve("public/images/" + article[0].image)
 
     // Suppression de l'image dans la liste d'article de la page Admin et dans le dossier Image avec une method Asynchrone //
