@@ -16,9 +16,9 @@ exports.getPageAdmin = async (req, res) => {
 
     // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
-    const dbUsers = await query('select * from User')
-    const dbArticle = await query('select * from Article')
-    const dbMessage = await query('select * from Message')
+    const dbUsers = await query('SELECT * FROM User')
+    const dbArticle = await query('SELECT * FROM Article')
+    const dbMessage = await query('SELECT * FROM Message')
     
 
     // 2 //
@@ -88,9 +88,9 @@ exports.editUser = async (req, res) => {
      // 2 //
     // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
-    const dbUsers = await query('select * from User')
-    const dbArticle = await query('select * from Article')
-    const dbMessage = await query('select * from Message')
+    const dbUsers = await query('SELECT * FROM User')
+    const dbArticle = await query('SELECT * FROM Article')
+    const dbMessage = await query('SELECT * FROM Message')
 
     
 
@@ -148,9 +148,9 @@ exports.deleteUser = async (req, res) => {
 
     // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner nos différentes tables de la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // ( Exécution de la requête SELECT "await" mot-clé peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone) ) //
-    const dbUsers = await query('select * from User')
-    const dbArticle = await query('select * from Article')
-    const dbMessage = await query('select * from Message')
+    const dbUsers = await query('SELECT * FROM User')
+    const dbArticle = await query('SELECT * FROM Article')
+    const dbMessage = await query('SELECT * FROM Message')
 
 
     // 3 //

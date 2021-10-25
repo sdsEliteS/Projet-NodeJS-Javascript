@@ -11,7 +11,7 @@ exports.formContact = (req, res) => {
     // Le req.body du console.log se situant dans l'objet {} est importante afin de rendre visible la réponse du server dans le terminal de commande pour tester de la bonne fiabilité de l'application (Method POST = Remplissage des input en y mettant la valeur qui nous permet ensuite de ressortir les données des colonnes de la table Message dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage des formulaires de contact visionnant les données de la page HOME et PRESENTATION au moment de la validation //
 
     // La Requête SQL insert into permet la création de plusieurs colonnes dans la Table Message pouvant accueillir des données lors du remplissage des formulaires de contacts // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
-    let sql = `insert into Message (nom, email, sujet, message, date) values (?)`;
+    let sql = `INSERT INTO Message (nom, email, sujet, message, date) values (?)`;
     let values = [
         req.body.nom,
         req.body.email,
@@ -64,9 +64,9 @@ exports.deleteMessage = async (req, res) => {
 
     // Les Requêtes SQL "SELECT * FROM" sont mise dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL (Requête SELECT Récupération de donnée (data)) - Voir également Fichier db.sql grâce à MySQL WORKBENCH //
     // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
-    const dbUsers = await query('select * from User')
-    const dbArticle = await query('select * from Article')
-    const dbMessage = await query('select * from Message')
+    const dbUsers = await query('SELECT * FROM User')
+    const dbArticle = await query('SELECT * FROM Article')
+    const dbMessage = await query('SELECT * FROM Message')
 
 
     // 3 //

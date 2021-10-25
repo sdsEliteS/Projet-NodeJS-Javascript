@@ -291,7 +291,7 @@ https://www.youtube.com/watch?v=wIOpe8S2Mk8
 https://github.com/hsukrd/architecture-nodejs-base/tree/image
 
 
-# MULTER : Supprimer une photo d'un article crée et dans le dossier Images du projet
+# MULTER : Supprimer et Editer une photo d'un article crée et dans le dossier Images du projet
 
 https://github.com/hsukrd/architecture-nodejs-base/blob/a0dd4d57b25a6c3a0d42c3c6594b7158c9e4435c/api/controllers/articleController.js#L93
 

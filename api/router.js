@@ -164,12 +164,11 @@ router.route('/connexion')
 router.route('/profil')
     .get(profilController.getPageProfil)
 
+router.route('/UploadAvatar/:id')
+    .post(upload.single('imgArticle'),profilController.createAvatar)
 
 
-
-
-
-/************************************************** DESTROY DECONNEXION SESSION***************************************************** */
+/************************************************** DESTROY DECONNEXION SESSION ***************************************************** */
 
 /*
  * authController

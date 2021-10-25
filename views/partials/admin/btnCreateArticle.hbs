@@ -49,6 +49,7 @@
                                     <input type="text" name="subdescription" class="form-control" placeholder=""
                                         id="recipient-name">
                                 </div>
+
                                 <div class="col-md-12">
                                     <label for="recipient-name"
                                         class="col-form-label d-flex justify-content-start">Description</label>
@@ -57,6 +58,7 @@
                                     <textarea id="message" type="text" rows="5" placeholder="" name="description"
                                         class="contact-message"></textarea>
                                 </div>
+
                                 <div class="col-md-12">
                                     <label for="recipient-name" class="col-form-label"></label>
                                     {{!-- Ne pas oublier d'écrire le "name" dans le textarea en rapport avec la methode
@@ -64,6 +66,7 @@
                                     <textarea id="message" rows="5" placeholder="Recommandation" name="recommandation"
                                         class="contact-message"></textarea>
                                 </div>
+
                                 <div class="col-md-12">
                                     <label for="recipient-name"
                                         class="col-form-label d-flex justify-content-start">Author_id :</label>
@@ -72,6 +75,7 @@
                                     <input type="text" name="author_id" class="form-control" placeholder=""
                                         id="recipient-name" value="{{ user.id }}">
                                 </div>
+                                
                                 <div class="col-md-12">
                                     <div class="contact-form text-center mb-5">
                                         {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui

@@ -1,9 +1,6 @@
 // Import de Multer //
 const multer = require('multer');
 
-// Permet de travailler avec des chemins de fichiers //
-const path = require('path');
-
 // Configuration de stockage de Multer
 const storage = multer.diskStorage({
 
@@ -40,7 +37,7 @@ const upload = multer({
             file.mimetype === "image/png" ||
             file.mimetype === "image/jpg" ||
             file.mimetype === "image/gif" ||
-            file.mimetype === "image/jpeg"
+            file.mimetype === "image/jpeg" 
         ) {
             callback(null, true)
         } else {

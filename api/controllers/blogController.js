@@ -46,7 +46,7 @@ exports.createArticle = async (req, res) => {
     // Le req.body du console.log se situant dans l'objet {} est importante afin de rendre visible la réponse du server dans le terminal de commande pour tester de la bonne fiabilité de l'application (Method POST = Remplissage des input en y mettant la valeur qui nous permet ensuite de ressortir les données des colonnes de la table Article dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du modal de la création d'article visionnant les données de la page ADMIN au moment de la validation //
 
     // "insert into" (CREATION) est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
-    let sql = `insert into Article (title, description, recommandation, date, dateEdit, image, subdescription, author_id) values (?)`;
+    let sql = `INSERT INTO Article (title, description, recommandation, date, dateEdit, image, subdescription, author_id) values (?)`;
     let values = [
         req.body.title,
         req.body.description,
@@ -112,15 +112,19 @@ exports.editArticle = async (req, res) => {
                    description = '${ req.body.description }',
                    recommandation = '${ req.body.recommandation }',
                    dateEdit = '${ moment().format('YYYY-MM-DD') }',
-                   image = '${  req.file.nomComplet }',
+                   image = '${ req.file.nomComplet }',
                    subdescription = '${ req.body.subdescription }'
-               WHERE id = '${ req.params.id }';`;
+               WHERE id = '${ req.params.id }';`
     // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
 
-    const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`),
-     // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image un dossier //
-        pathImg = path.resolve("images"),
+     // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner avec olus de précision nos différentes tables dans la base de donnée MySQL grâce à WHERE //
+      // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
+    const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`)
+
+     // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image dans un dossier "image" //
+        pathImg = path.resolve("images")
+    // image qui est lié à une article précis //
         image = (article[0].image)
 
     fs.writeFile(pathImg, image, async (err) => {
@@ -134,9 +138,9 @@ exports.editArticle = async (req, res) => {
 
             // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner nos différentes tables dans la base de donnée MySQL (SELECT Récupération de donnée (data)) - Voir également Fichier db.sql Fichier db.sql grâce à MySQL WORKBENCH //
             // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
-            const dbUsers = await query('select * from User')
-            const dbArticle = await query('select * from Article')
-            const dbMessage = await query('select * from Message')
+            const dbUsers = await query('SELECT * FROM User')
+            const dbArticle = await query('SELECT * FROM Article')
+            const dbMessage = await query('SELECT * FROM Message')
 
             
             // 3 //
