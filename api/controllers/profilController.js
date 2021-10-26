@@ -43,10 +43,10 @@ exports.getPageProfil = async (req, res) => {
 
 
 exports.createAvatar = async (req, res) => {
-
+  
   console.log('Controller Create Avatar', req.body, req.file)
 
-  let avatar = `INSERT INTO User (avatar) values (?)`;
+  let image = `INSERT INTO User (avatar) values (?)`;
   let values = [
     req.file.nomComplet
   ];
@@ -54,7 +54,7 @@ exports.createAvatar = async (req, res) => {
   // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
   // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
   const userAvatar = await query(`SELECT User.id, User.pseudo, User.avatar FROM User WHERE id = ${ req.params.id }`)
-  console.log('USER AVATAR', userAvatar)
+  console.log('User Avatar', userAvatar)
 
 
   // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image dans un dossier "image" //
@@ -64,17 +64,20 @@ exports.createAvatar = async (req, res) => {
 
   fs.appendFile(pathImg, image, async (err) => {
 
+    if (err) throw err;
+    console.log(image, 'image')
     /***************************************************************** CONDITION **********************************************************************************************************************************************************************************************************************************************************************/
-    // Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
-    if (!userAvatar[0]) res.render('profil')
+    // Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/profil' se situant dans le view. Sinon tu m'exécutes la function en rapport avec la création d'Article //
+    if (!userAvatar[0]) res.render('/profil')
     else {
         // Valeur des colonnes de la Table Article qui sont écrit dans les input du modal par l'Utilisateur //
-        query(avatar, [values], function (err, data, fields) {
+        query(image, [values], function (err, data, fields) {
             if (err) throw err;
-            // Permet de rediriger l'Utilisateur vers l'URL '/admin' Section Creation Liste d'Article Bouton Vert  //
-            res.render('profil')
+            // Permet de rediriger l'Utilisateur vers l'URL '/profil' se situant dans le view //
+            res.render('/profil')
         })
     }
+
   })
   
 }
