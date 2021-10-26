@@ -60,18 +60,18 @@ exports.createAvatar = async (req, res) => {
   // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image dans un dossier "image" //
   pathImg = path.resolve("images")
   // image qui est lié à une article précis //
-  image = (userAvatar[0].avatar)
+  image2 = (userAvatar[0].avatar)
 
   fs.appendFile(pathImg, image, async (err) => {
 
     if (err) throw err;
-    console.log(image, 'image')
+    console.log(image2, 'image2')
     /***************************************************************** CONDITION **********************************************************************************************************************************************************************************************************************************************************************/
     // Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/profil' se situant dans le view. Sinon tu m'exécutes la function en rapport avec la création d'Article //
     if (!userAvatar[0]) res.render('/profil')
     else {
         // Valeur des colonnes de la Table Article qui sont écrit dans les input du modal par l'Utilisateur //
-        query(image, [values], function (err, data, fields) {
+        query(image2, [values], function (err, data, fields) {
             if (err) throw err;
             // Permet de rediriger l'Utilisateur vers l'URL '/profil' se situant dans le view //
             res.render('/profil')
