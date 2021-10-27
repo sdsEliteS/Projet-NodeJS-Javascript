@@ -7,7 +7,7 @@
                 <div class="profile-card d-flex justify-content-center w-100">
                     <div class="top-section">
                         <div class="avatar">
-                            <img src="{{ user.avatar }}" class="w-100" alt="Avatar">
+                            <img src="/assets/images/{{ user.avatar }}" class="w-100" alt="Avatar">
                         </div>
                         <div>
                             <div class="name fs-1 text-white"> {{ user.pseudo }} </div>
@@ -55,8 +55,7 @@
                     {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode POST --}}
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn-or" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal"
-                        data-bs-dismiss="modal">Validation</button>
+                    <button type="submit" class="btn-or">Validation</button>
                 </div>
             </form>
         </div>

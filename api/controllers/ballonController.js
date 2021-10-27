@@ -8,7 +8,7 @@
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js (getPageBallonID) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageBallonID = async (req, res) => {
-    console.log('Controller Ballon ID', req.params.id)
+    // console.log('Controller Ballon ID', req.params.id)
 
 
     // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) // 
@@ -25,13 +25,13 @@ exports.getPageBallonID = async (req, res) => {
                                    WHERE Comment.ref_id = ${ req.params.id };`) 
 
     // ballon + comments sont des Tableaux = Array --> résultat de la requête SQL 
-    console.log('comments []', comments)
-    console.log('ballon []', ballon)
+    // console.log('comments []', comments)
+    // console.log('ballon []', ballon)
     
     // ballon est un Objet --> Index numéro 0 du Tableau ballon
     // RAPPEL: On peut selectionner n'importe quelle index du tableau (exemple: ballon[4])
     // ballon.length === longueur totale de notre tableau
-    console.log('ballon {}', ballon[0])
+    // console.log('ballon {}', ballon[0])
 
     // res.render renvoi à l'Utilisateur le fichier 'ballon' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article //
     res.render('ballon', { 
@@ -52,7 +52,7 @@ exports.getPageBallonID = async (req, res) => {
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js (getPageBallonID) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête de Utilisateur faite au Server et res = response du Server //
 exports.addComment = async (req, res) => {
-    console.log('Ajout de Commentaire Ballon ID', req.body)
+    // console.log('Ajout de Commentaire Ballon ID', req.body)
 
     // insert into est une requête SQL qui crée des données dans la Table Comment (Création de Commentaire) //
     let sql = `INSERT INTO Comment (author_id, content, date, ref_id) values (?)`;

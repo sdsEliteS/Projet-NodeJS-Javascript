@@ -32,15 +32,15 @@ exports.getPageLogin = async (req, res) => {
 // Remplissage du formulaire de connexion de la page lOGIN ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
 // Exportation de la routes du router.js (getPagePresentation) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST (Création) - req = requête de Utilisateur faite au Server et res = response du Server //
 exports.connexionProfil = async (req, res) => {
-    console.log('Connexion Login Steven', req.body)
+    // console.log('Connexion Login Steven', req.body)
 
 
     /********************************************************* EXPRESS SESSION PROCEDURE *********************************************************************************************************************************************************************/
 
 
     /* Requête SQL permettant de cibler le formulaire Login en rapport avec 1 Utilisateur précis ! (pseudo) */
-    const user = await query(`SELECT id, pseudo, email, password, isAdmin FROM User WHERE pseudo = '${req.body.pseudo}'`)
-    console.log('user', user)
+    const user = await query(`SELECT id, pseudo, email, password, isAdmin, avatar FROM User WHERE pseudo = '${req.body.pseudo}'`)
+    // console.log('user', user)
 
     /********************************************** await est toujours associé à une methode async (Asynchrone) * ********************************************************************************************************************************************/
     
@@ -57,22 +57,22 @@ exports.connexionProfil = async (req, res) => {
 
     /* Si (else) user ne correspond pas au pseudo dans la DB (Base de donnée) au moment du remplissage du formulaire login alors tu renvoi la page register = res.render register */
     if (!user[0]) {
-        console.log("PAS DANS LA DB");
+        // console.log("PAS DANS LA DB");
         res.render('register', {
             error: 'Nous ne connaisons pas ce pseudo !'
         })
 
     } else {
         //  Sinon (else) si user existe bien dans la DB //
-        console.log("Existe DANS LA DB");
+        // console.log("Existe DANS LA DB");
 
         /* Hash on compare le mot de passe crypté de la base de donnée avec le mot de passe crypté après connexion sur la page Login */
         const match = await bcrypt.compare(req.body.mot_de_passe, user[0].password)
-        console.log('match', match)
+        // console.log('match', match)
 
         /* Dans le cas où, Si (if) l'Utilisateur à crée un compte, si le mot de passe de la page login - user[0].password = MySQL Workbench DB n'est pas strictement égal (!==) à req.body.mot_de_passe = Fichier Handlebars/HTML 'Connexion' se situant dans le name (comparaison mot de passe bcrypt (cryptage)) alors tu me dis Mot de passe error me renvoyant sur la page login */ 
         if (!match) {
-            console.log('Mot de passe error')
+            // console.log('Mot de passe error')
             res.render('login', {
                 error: 'Le mot de passe est erroné !'
             })
@@ -80,12 +80,13 @@ exports.connexionProfil = async (req, res) => {
           // Sinon si (else if) user.password est strictement égal(===) à req.body.mot_de_passe (bcrypt cryptage) alors tu m'ouvres la SESSION de l'Utilisateur sur sa page profil  //
           // password = MySQL Workbench, mot_de_passe = Fichier Handlears/HTML 'Connexion' dans le name //
         } else if (user[0] && match) {
-            console.log('Mot de passe OK', user[0])
+            // console.log('Mot de passe OK', user[0])
 
             req.session.user = {
                 id: user[0].id,
                 pseudo: user[0].pseudo,
-                email: user[0].email
+                email: user[0].email,
+                avatar: user[0].avatar
             }
 
             if (user[0].isAdmin === 1) req.session.isAdmin = true
@@ -117,7 +118,7 @@ exports.connexionProfil = async (req, res) => {
 // Lors du remplissage du formulaire modal Mot de Passe Oublié de la Page LOGIN //
 // Export de la routes du router.js (forgetProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête Utilisateur interrogant le Server et res = response du Server //
 exports.forgetProfil = (req, res) => {
-    console.log('Mot de Passe Oublié Page LOGIN', req.body, req.params)
+    // console.log('Mot de Passe Oublié Page LOGIN', req.body, req.params)
 
     // res.redirect permet de rediriger l'Utilisateur vers l'URL /profil HTML Handlebars juste après le remplissage du modal "MOT DE PASSE OUBLIE" //
     res.redirect('/profil')
@@ -147,11 +148,11 @@ exports.getPageRegister = (req, res) => {
 // Remplissage du formulaire d'enregistrement de l'Utilisateur de la page REGISTER ( CREATE = Method POST HTTP = Requête MySQL: INSERT INTO ) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
 // export de la routes du router.js (registerProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requete HTTP de utilisateur faite au server et res = response du server //
 exports.registerProfil = async (req, res) => {
-    console.log('Enregistrement Compte Steven', req.body)
+    // console.log('Enregistrement Compte Steven', req.body)
 
     // Déclaration de la Constante et Exécution de la fonction via une méthode Asynchrone (await) ciblant le pseudo de l'Utilisateur lors de son inscription sur le formulaire d'inscription register // 
     const userExist = await query(`SELECT * FROM User WHERE pseudo = '${ req.body.pseudo }'`)
-    console.log('UserExist', userExist)
+    // console.log('UserExist', userExist)
 
     // Condition : lors de la création d'un profil sur le formulaire d'inscription register, Si (if) le Pseudo "STEVEN" est crée et qu'un autre pseudo "steven" est crée en minuscule alors il y aura un message d'erreur disant que ce pseudo existe déjà (toLowerCase) renvoyant sur la page du formulaire register //
     if (userExist.length > 0) {
@@ -171,9 +172,9 @@ exports.registerProfil = async (req, res) => {
     } else {
         /* Bcrypt - Hash afin de crypté protégeant le mot de passe de l'Utilisateur lors de la connexion remplissant le formulaire de la page login*/ 
         const hash = await bcrypt.hash(req.body.mot_de_passe, 10)
-        console.log('hashMDP', hash)
+        // console.log('hashMDP', hash)
     
-        console.log('UserNotExist')
+        // console.log('UserNotExist')
 
         // Requête SQL permettant la création de plusieurs colonnes dans la Table User //
         // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du formulaire register d'enregistrement de l'Utilisateur visionnant les données au moment de la validation //
@@ -207,7 +208,7 @@ exports.registerProfil = async (req, res) => {
 
 /***************************************************** Procédure rentrant dans le cadre d'une fermeture de SESSION Utilisateur **************************************************************************************************************************************/
 exports.getDeconnexionProfil = (req, res) => {
-    console.log('Deconnexion Session Profil', req.body)
+    // console.log('Deconnexion Session Profil', req.body)
 
 
     req.session.destroy(function () {

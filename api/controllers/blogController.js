@@ -18,7 +18,7 @@ exports.getPageBlog = async (req, res) => {
     // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const ballonList = await query('select * from Article')
 
-    console.log(ballonList)
+    // console.log(ballonList)
 
     // res.render renvoi à l'Utilisateur le fichier 'blog' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article//
     res.render('blog', {
@@ -42,7 +42,7 @@ exports.getPageBlog = async (req, res) => {
 // Exportation de la routes du router.js dans le Controller (createArticle) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête de Utilisateur faite au Server et res = response du Server //
 exports.createArticle = async (req, res) => {
 
-    console.log('Controller Create Article', req.body, req.file)
+    // console.log('Controller Create Article', req.body, req.file)
     // Le req.body du console.log se situant dans l'objet {} est importante afin de rendre visible la réponse du server dans le terminal de commande pour tester de la bonne fiabilité de l'application (Method POST = Remplissage des input en y mettant la valeur qui nous permet ensuite de ressortir les données des colonnes de la table Article dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du modal de la création d'article visionnant les données de la page ADMIN au moment de la validation //
 
     // "insert into" (CREATION) est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
@@ -64,7 +64,7 @@ exports.createArticle = async (req, res) => {
     const userExist = await query(`SELECT * FROM User WHERE id = ${ req.body.author_id }`)
 
 
-    console.log('User Exist', userExist)
+    // console.log('User Exist', userExist)
 
     /***************************************************************** CONDITION *****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
     // Si userExist n'existe pas (Erreur) alors tu me renvoie l'URL '/admin' de la Page ADMIN (Pas de Création d'Article). Sinon tu m'exécutes la function en rapport avec la création d'Article //
@@ -94,7 +94,7 @@ exports.createArticle = async (req, res) => {
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js (editArticle) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode PUT (Création) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.editArticle = async (req, res) => {
-    console.log('Edition Article Page ID', req.body, req.file)
+    // console.log('Edition Article Page ID', req.body, req.file)
 
     /********************************************************** METHODE ASYNCHRONE ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
@@ -149,13 +149,13 @@ exports.editArticle = async (req, res) => {
             // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
             // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis //  Construire le diagramme de classe avec les colonnes grâce à MySQL WORKBENCH //
             res.render('admin', {
-            articles: dbArticle,
-            message: dbMessage,
-            users: dbUsers,
-            // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-            noFooter: true,
-            // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
-            openArticle: 'show'
+                articles: dbArticle,
+                message: dbMessage,
+                users: dbUsers,
+                // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+                noFooter: true,
+                // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
+                openArticle: 'show'
 
             })
         }
@@ -178,7 +178,7 @@ exports.editArticle = async (req, res) => {
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js (deleteArticle) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode DELETE (Suppression) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.deleteArticle = async (req, res) => {
-    console.log('Suppression Article Page ID', req.body, req.params)
+    // console.log('Suppression Article Page ID', req.body, req.params)
 
     const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`),
      // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image un dossier //

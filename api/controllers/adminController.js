@@ -8,7 +8,7 @@
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // Export de la routes du router.js (getPageAdmin) avec => une Function opérant un retour d'information en rapport avec une methode GET sur l'aspect FRONT-END (SELECT = READ = LIRE) - req = requete utilisateur faite au server et res = response du server //
 exports.getPageAdmin = async (req, res) => {
-    console.log('page admin', req.body)
+    // console.log('page admin', req.body)
 
 // 1 -> Charger les constantes et Exécution de la requête permet d'avoir les données à jour (User - Article - Message) - 2 -> Renvoyer la réponse avec les data mise à jour grâce au res.render (User - Article - Message) //
 
@@ -52,7 +52,7 @@ exports.getPageAdmin = async (req, res) => {
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // Export de la routes du router.js (editUser) avec => une Function opérant un retour d'information en rapport avec une methode PUT (UPDATE = EDITER/Modification) - req = requete utilisateur au server et res = response du server à l'utilisateur //
 exports.editUser = async (req, res) => {
-    console.log('Edition User Page ID', req.body, req.params)
+    // console.log('Edition User Page ID', req.body, req.params)
 
     // (Pour récupérer les valeurs rentrer dans la base de donnée avec le terminal de commande afin de valider du bon fonctionnement de l'applis en rapport avec les colonnes names (par exemple: voir Diagramme de Classe MySQL Workbench = isAdmin - isVerified - isBan) qui sont dans une Table User faire "req.body.isAdmin" par exemple //
     // Condition: Si (if) req.body.isAdmin est strictement égal (===) à 'on' alors req.body mentionnera "1" dans la base de donnée de la table User de "mydb" = base de donnée" sinon (else) s'il est pas coché cela mentionnera "0" dans la table User de mydb (mydb = base de donnée).
@@ -65,7 +65,7 @@ exports.editUser = async (req, res) => {
     if (req.body.isBan === 'on') req.body.isBan = 1
     else req.body.isBan = 0
 
-    console.log('Mes data du formulaire modal', req.body)
+    // console.log('Mes data du formulaire modal', req.body)
 
     /* ************************************************L'ORDRE DE LA PROCEDURE EST IMPORTANTE (1-2-3)  ********************************************************************/
 
@@ -133,7 +133,7 @@ exports.editUser = async (req, res) => {
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports) //
 // export de la routes du router.js (deleteUser) avec => une Function opérant un retour d'information en rapport avec une methode DELETE (DELETE = SUPPRESSION UTILISATEUR) - req = requete utilisateur au server et res = response du server à l'utilisateur //
 exports.deleteUser = async (req, res) => {
-    console.log('Suppression Utilisateur', req.body, req.params)
+    // console.log('Suppression Utilisateur', req.body, req.params)
 
 
     // 1 //
