@@ -88,7 +88,8 @@ exports.connexionProfil = async (req, res) => {
                 id: user[0].id,
                 pseudo: user[0].pseudo,
                 email: user[0].email,
-                avatar: user[0].avatar
+                avatar: user[0].avatar,
+                password: user[0].password
             }
 
             if (user[0].isAdmin === 1) req.session.isAdmin = true
