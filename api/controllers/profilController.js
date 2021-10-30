@@ -37,6 +37,8 @@ exports.getPageProfil = async (req, res) => {
 }
 
 
+
+
 // Photo du compte Profil //
 exports.createAvatar = async (req, res) => {
 
@@ -73,6 +75,8 @@ exports.createAvatar = async (req, res) => {
 }
 
 
+
+
 exports.newPassword = async (req, res) => {
 
 
@@ -81,5 +85,5 @@ exports.newPassword = async (req, res) => {
 
 
 
-  
+
 }
