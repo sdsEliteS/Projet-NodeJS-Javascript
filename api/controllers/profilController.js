@@ -2,7 +2,6 @@
  * Controller Page Profil
  * ********************** */
 
-const fs = require('fs') // Rentrant dans le cadre d'une suppression de fichier Image //
 
 /**************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************************************************************************************************************/
 
@@ -68,7 +67,7 @@ exports.createAvatar = async (req, res) => {
     // Permet de rediriger l'Utilisateur vers l'URL '/profil' se situant dans le view //
     res.render('profil', {
       // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-      noFooter: true
+      noFooter: true,
     })
   }
 
