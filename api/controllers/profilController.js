@@ -2,6 +2,8 @@
  * Controller Page Profil
  * ********************** */
 
+const path = require('path')
+const fs = require('fs') // Rentrant dans le cadre d'une suppression de fichier Image //
 
 /**************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************************************************************************************************************/
 
@@ -53,6 +55,7 @@ exports.createAvatar = async (req, res) => {
   // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
   const userAvatar = await query(`SELECT id, pseudo, avatar FROM User WHERE id = ${ req.params.id }`)
   // console.log('User Avatar', userAvatar)
+
 
   /***************************************************************** CONDITION **********************************************************************************************************************************************************************************************************************************************************************/
   // Si userAvatar n'existe pas (Erreur) alors tu me renvoie l'URL '/profil' se situant dans le view. Sinon tu m'exécutes la function en rapport avec la changement d'image du compte profil //
