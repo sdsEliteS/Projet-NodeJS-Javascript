@@ -72,6 +72,7 @@
                 <h5 class="modal-title" id="modalToggleLabelNMP">Editer "Nouveau Mot de Passe</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            {{!-- Methode PUT Formulaire Modal Edit du nouveau Mot de Passe User dans la balise form --}}
             <form action="/NewPassword/{{ this.id }}?_method=PUT" method="POST">
                 <div class="modal-body">
                     <label for="message-text" class="col-form-label">Nouveau Password :</label>
