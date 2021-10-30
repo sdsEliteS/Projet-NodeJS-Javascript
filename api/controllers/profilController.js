@@ -2,7 +2,14 @@
  * Controller Page Profil
  * ********************** */
 
+/* Import Module */
+
+/* Déclaration Constante Bcrypt (protection cryptage du mot de passe) */
+const bcrypt = require('bcrypt')
+
+/* Le module Path fournit un moyen de travailler avec des répertoires et des chemins de fichiers */ 
 const path = require('path')
+
 const fs = require('fs') // Rentrant dans le cadre d'une suppression de fichier Image //
 
 /**************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************************************************************************************************************/
@@ -79,9 +86,15 @@ exports.createAvatar = async (req, res) => {
 
 exports.newPassword = async (req, res) => {
 
+const hash = await bcrypt.hash
+
+// Requête SQL UPDATE Modification Mot de Passe //
+let sql = `UPDATE User
+    SET password = '${ hash }'
+    WHERE id = ${ req.params.id };`
 
 
-
+const NewPassword = await query(`SELECT password FROM User WHERE id = ${ req.params.id }`)
 
 
 

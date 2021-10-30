@@ -74,8 +74,9 @@
             </div>
             <form action="/NewPassword/{{ this.id }}?_method=PUT" method="POST">
                 <div class="modal-body">
-                    <label for="message-text" class="col-form-label">Nouveau Mot de Passe :</label>
-                    <input type="text" class="form-control" placeholder=" " id="recipient-name">
+                    <label for="message-text" class="col-form-label">Nouveau Password :</label>
+                    <input type="text" class="form-control" placeholder=" " id="recipient-name" name="nouveau-password">
+                    {{!-- Ne pas oublier d'écrire le "name" dans les input en rapport avec la methode PUT --}}
                 </div>
             </form>
             <div class="modal-footer">

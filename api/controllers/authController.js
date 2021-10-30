@@ -2,6 +2,8 @@
  * Visuel Page Login
  * ***************** */
 
+/* Import Module */
+
 /* Déclaration Constante Bcrypt (protection cryptage du mot de passe) */
 const bcrypt = require('bcrypt')
 
