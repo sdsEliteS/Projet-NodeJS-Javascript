@@ -64,7 +64,7 @@ exports.createAvatar = async (req, res) => {
     // Valeur de la colonne de la Table User en rapport avec l'Upload Image de la page profil //
     await query(sql)
 
-    // Mettre en relation l'Image de profil avec la session de l'Utilisateur //
+    // Mettre en relation l'Image du compte profil avec la session de l'Utilisateur //
     req.session.user.avatar = req.file.nomComplet
 
     // Permet de rediriger l'Utilisateur vers l'URL '/profil' se situant dans le view //
@@ -73,5 +73,5 @@ exports.createAvatar = async (req, res) => {
       noFooter: true,
     })
   }
-
+  
 }
