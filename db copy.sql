@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`User` (
   `isAdmin` TINYINT NOT NULL DEFAULT 0,
   `isVerified` TINYINT NOT NULL DEFAULT 0,
   `isBan` TINYINT NOT NULL DEFAULT 0,
-  `avatar` VARCHAR(255) NOT NULL DEFAULT 'https://zupimages.net/up/21/36/cul3.jpg',
+  `avatar` VARCHAR(255) NOT NULL DEFAULT './default-profil.png',
   `address` VARCHAR(255) NOT NULL,
   `telephone` VARCHAR(255) NOT NULL,
   `birthday` DATE NOT NULL,
@@ -53,12 +53,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Article` (
   `author_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  INDEX `fk_Article_User1_idx` (`author_id` ASC) VISIBLE,
-  CONSTRAINT `fk_Article_User1`
-    FOREIGN KEY (`author_id`)
-    REFERENCES `mydb`.`User` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_Article_User1_idx` (`author_id` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -109,5 +104,5 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 /* Autogénérer un Utilisateur */
-insert into User (pseudo, email, password, address, telephone, birthday)
-values ('Steven', 'dossantos.steven72190@gmail.com', '123456', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-28');
+insert into User (pseudo, email, password, address, telephone, birthday, isAdmin, isVerified)
+values ('Steven', 'dossantos.steven72190@gmail.com', '$2b$10$/rnslB/l8JC01uGtEuCc5.9LpLxzaru.68nB2z84ilvF4OqDJCpBu', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-28', 1, 1);
