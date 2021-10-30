@@ -45,6 +45,7 @@ exports.createAvatar = async (req, res) => {
 
   console.log('Controller Create Avatar', req.body, req.file, req.params)
 
+  // Requête SQL UPDATE = MODIFICATION //
   let sql = `UPDATE User
     SET avatar = '${ req.file.nomComplet }'
     WHERE id = ${ req.params.id };`
@@ -55,16 +56,20 @@ exports.createAvatar = async (req, res) => {
   // console.log('User Avatar', userAvatar)
 
   /***************************************************************** CONDITION **********************************************************************************************************************************************************************************************************************************************************************/
-  // Si userAvatar n'existe pas (Erreur) alors tu me renvoie l'URL '/profil' se situant dans le view. Sinon tu m'exécutes la function en rapport avec la création d'Article //
+  // Si userAvatar n'existe pas (Erreur) alors tu me renvoie l'URL '/profil' se situant dans le view. Sinon tu m'exécutes la function en rapport avec la changement d'image du compte profil //
   if (!userAvatar[0]) res.render('profil')
   else {
-    // Valeur de la colonne de la Table User en rapport avec le Upload Image de la page profil //
+    // Valeur de la colonne de la Table User en rapport avec l'Upload Image de la page profil //
     await query(sql)
 
+    // Mettre en relation l'Image de profil avec la session de l'Utilisateur //
     req.session.user.avatar = req.file.nomComplet
 
     // Permet de rediriger l'Utilisateur vers l'URL '/profil' se situant dans le view //
-    res.render('profil')
+    res.render('profil', {
+      // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+      noFooter: true
+    })
   }
 
 }
