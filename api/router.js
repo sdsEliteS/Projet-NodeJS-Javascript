@@ -164,8 +164,13 @@ router.route('/connexion')
 router.route('/profil')
     .get(profilController.getPageProfil)
 
+// URL Image Profil (ATTENTION: avec un .post on peut faire un methode PUT)
 router.route('/UploadAvatar/:id')
     .post(upload.single('imgArticle'),profilController.createAvatar)
+
+// URL New Mot de Passe
+router.route('/NewPassword/:id')
+    .put(profilController.newPassword)
 
 
 /************************************************** DESTROY DECONNEXION SESSION ***************************************************** */
