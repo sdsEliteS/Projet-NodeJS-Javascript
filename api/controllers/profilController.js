@@ -54,7 +54,7 @@ exports.createAvatar = async (req, res) => {
 
   console.log('Controller Create Avatar', req.body, req.file, req.params)
 
-  // Requête SQL UPDATE = MODIFICATION = EDITION D'IMAGE //
+  // Requête SQL UPDATE = MODIFICATION = EDITION D'IMAGE (Table User - Colonne Avatar - D'une personne précise id) //
   let sql = `UPDATE User
   SET avatar = '${ req.file.nomComplet }'
   WHERE id = ${ req.params.id };`
@@ -92,9 +92,13 @@ exports.newPassword = async (req, res) => {
 
   const newPassword = await query(`SELECT id, pseudo, password FROM User WHERE id = ${ req.params.id }`)
 
-  if (!newPassword[0]) res.render('profil')
-  else {
-    const hash = await bcrypt.hash(newPassword[0].password === req.body.nouveau_password, 10)
+  if (!newPassword[0] && req.body.nouveau_password < 6) {
+    res.render('profil', {
+      error: 'Le mot de passe contient moins de 6 caractères'
+    })
+    
+  } else {
+    const hash = await bcrypt.hash(req.body.nouveau_password, 10)
 
     // Requête SQL UPDATE Modification Mot de Passe //
     let sql = `UPDATE User
