@@ -2,12 +2,7 @@
  * Visuel Page Login
  * ***************** */
 
-/* Import Module */
-
-/* Déclaration Constante Bcrypt (protection cryptage du mot de passe) */
-const bcrypt = require('bcrypt')
-
-/**************************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************/
+/**************************************************************************** METHODE ASYNCHRONE *************************************************************************************************************************************************************************************************************************************************************************************/
 // Visualisation de la Page LOGIN ( READ/Lire = METHOD GET = MySQL: SELECT ) //
 // Exportation de la routes du router.js (getPageLogin) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP Utilisateur faite au Server et res = response du Server //
 exports.getPageLogin = async (req, res) => {
@@ -29,7 +24,7 @@ exports.getPageLogin = async (req, res) => {
  * Connexion sur son Compte Profil grâce à la Page Login
  ******************************************************* */
 
-/**************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************************/
+/**************************************************************** METHODE ASYNCHRONE ***********************************************************************************************************************************************************************************************************************************************************************************************/
 
 // Remplissage du formulaire de connexion de la page lOGIN ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO ) //
 // Exportation de la routes du router.js (getPagePresentation) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST (Création) - req = requête de Utilisateur faite au Server et res = response du Server //
@@ -37,24 +32,18 @@ exports.connexionProfil = async (req, res) => {
     // console.log('Connexion Login Steven', req.body)
 
 
-    /********************************************************* EXPRESS SESSION PROCEDURE *********************************************************************************************************************************************************************/
+    /********************************************************* EXPRESS SESSION PROCEDURE ********************************************************************************************************************************************************************************************************************************************************************************************/
 
 
     /* Requête SQL permettant de cibler le formulaire Login en rapport avec 1 Utilisateur précis ! (pseudo) */
     const user = await query(`SELECT id, pseudo, email, password, isAdmin, avatar FROM User WHERE pseudo = '${req.body.pseudo}'`)
     // console.log('user', user)
 
-    /********************************************** await est toujours associé à une methode async (Asynchrone) * ********************************************************************************************************************************************/
+    /********************************************** await est toujours associé à une methode async (Asynchrone) * ********************************************************************************************************************************************************************************************************************************************************************/
     
 
 
-
-    /********************************************************** CONDITION OUVERTURE SESSION ******************************************************************************************************************************************************************/
-    // bcrypt.compare (req.body.mot_de_passe, hash).then => {
-    //     if (error) console.log (error)
-    // });
-
-    // bcrypt.compare (req.body.password, hash)
+    /********************************************************** CONDITION OUVERTURE SESSION ******************************************************************************************************************************************************************************************************************************************************************************************/
 
 
     /* Si (else) user ne correspond pas au pseudo dans la DB (Base de donnée) au moment du remplissage du formulaire login alors tu renvoi la page register = res.render register */
@@ -68,7 +57,7 @@ exports.connexionProfil = async (req, res) => {
         //  Sinon (else) si user existe bien dans la DB //
         // console.log("Existe DANS LA DB");
 
-        /* Hash on compare le mot de passe crypté de la base de donnée avec le mot de passe crypté après connexion sur la page Login */
+        /* Bcrypt.compare compare le mot de passe crypté de la base de donnée avec le mot de passe après connexion sur la page Login */
         const match = await bcrypt.compare(req.body.mot_de_passe, user[0].password)
         // console.log('match', match)
 
@@ -117,7 +106,7 @@ exports.connexionProfil = async (req, res) => {
 
 }
 
-/**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
+/**************************************************************************** METHODE SYNCHRONE ***************************************************************************************************************************************************************************************************************************************************************************************/
 // Lors du remplissage du formulaire modal Mot de Passe Oublié de la Page LOGIN //
 // Export de la routes du router.js (forgetProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête Utilisateur interrogant le Server et res = response du Server //
 exports.forgetProfil = (req, res) => {
@@ -132,7 +121,7 @@ exports.forgetProfil = (req, res) => {
  * ************* */
 
 
-/**************************************************************************** METHODE SYNCHRONE **************************************************************************************************************************************************************/
+/**************************************************************************** METHODE SYNCHRONE ***************************************************************************************************************************************************************************************************************************************************************************************/
 // Visualisation de la page REGISTER (READ/Lire = Method GET HTTP = MySQL: SELECT) //
 // Exportation de la routes du router.js dans le Controller (getPageRegister) avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP de Utilisateur faite au Server et res = response du Server //
 exports.getPageRegister = (req, res) => {
@@ -146,7 +135,7 @@ exports.getPageRegister = (req, res) => {
     });
 }
 
-/**************************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************/
+/**************************************************************************** METHODE ASYNCHRONE ***************************************************************************************************************************************************************************************************************************************************************************************/
 
 // Remplissage du formulaire d'enregistrement de l'Utilisateur de la page REGISTER ( CREATE = Method POST HTTP = Requête MySQL: INSERT INTO ) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
 // export de la routes du router.js (registerProfil) avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requete HTTP de utilisateur faite au server et res = response du server //
@@ -177,7 +166,6 @@ exports.registerProfil = async (req, res) => {
         const hash = await bcrypt.hash(req.body.mot_de_passe, 10)
         // console.log('hashMDP', hash)
     
-        // console.log('UserNotExist')
 
         // Requête SQL permettant la création de plusieurs colonnes dans la Table User //
         // req.body permet de nous ressortir les données dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du formulaire register d'enregistrement de l'Utilisateur visionnant les données au moment de la validation //
@@ -209,7 +197,7 @@ exports.registerProfil = async (req, res) => {
 
 
 
-/***************************************************** Procédure rentrant dans le cadre d'une fermeture de SESSION Utilisateur **************************************************************************************************************************************/
+/***************************************************** Procédure rentrant dans le cadre d'une fermeture de SESSION Utilisateur ***********************************************************************************************************************************************************************************************************************************************************/
 exports.getDeconnexionProfil = (req, res) => {
     // console.log('Deconnexion Session Profil', req.body)
 

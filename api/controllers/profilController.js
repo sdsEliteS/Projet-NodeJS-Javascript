@@ -4,13 +4,14 @@
 
 /* Import Module */
 
-/* Déclaration Constante Bcrypt (protection cryptage du mot de passe) */
+/* le module Bcrypt est un gage de protection cryptage du mot de passe */
 const bcrypt = require('bcrypt')
 
-/* Le module Path fournit un moyen de travailler avec des répertoires et des chemins de fichiers */ 
+/* Le module Path fournit un moyen de travailler avec des répertoires et des chemins de fichiers */
 const path = require('path')
 
-const fs = require('fs') // Rentrant dans le cadre d'une suppression de fichier Image //
+const fs = require('fs') // Rentrant dans le cadre par exemple d'une suppression de fichier Image //
+
 
 
 /**************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************************************************************************************************************/
@@ -52,7 +53,7 @@ exports.createAvatar = async (req, res) => {
 
   console.log('Controller Create Avatar', req.body, req.file, req.params)
 
-  // Requête SQL UPDATE = MODIFICATION = EDITION //
+  // Requête SQL UPDATE = MODIFICATION = EDITION D'IMAGE //
   let sql = `UPDATE User
     SET avatar = '${ req.file.nomComplet }'
     WHERE id = ${ req.params.id };`
@@ -76,10 +77,10 @@ exports.createAvatar = async (req, res) => {
     // Permet de rediriger l'Utilisateur vers l'URL '/profil' se situant dans le view //
     res.render('profil', {
       // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-      noFooter: true,
+      noFooter: true
     })
   }
-  
+
 }
 
 
@@ -91,30 +92,27 @@ exports.newPassword = async (req, res) => {
 
   const newPassword = await query(`SELECT id, pseudo, password FROM User WHERE id = ${ req.params.id }`)
 
-  if (!newPassword[0] && req.body.nouveau_password < 6) {
-    res.render('profil', {
-      error: 'Le mot de passe contient moins de 6 caractères'
+  if (!newPassword[0] && req.body.nouveau_password === newPassword[0].password < 6)
+    res.render('home', {
+      error: 'Le mot de passe contient moins de 6 caratères'
     })
-
-  } else {
-
-    const hash = await bcrypt.hash(req.body.nouveau_password === newPassword[0].password, 10)
-    console.log(hash, 'HASH')
+  else {
+    const hash = await bcrypt.hash(newPassword[0].password, 10)
 
     // Requête SQL UPDATE Modification Mot de Passe //
     let sql = `UPDATE User
-      SET password = '${ hash }'
-      WHERE id = ${ req.params.id };`
+    SET password = '${ hash }'
+    WHERE id = ${ req.params.id };`
     // invocation de la constante hash dans la let sql à la place de nouveau_password afin de protéger le mot de passe lors de l'edit du nouveau mot de passe de l'Utilisateur //
 
-    // Valeur des colonnes de la Table User qui sont écrit dans les input du formulaire dans le modal du nouveau mot de passe - Method Asynchrone  //
+    // Valeur des colonnes de la Table User qui sont écrit dans les input du formulaire d'inscription register - Method Asynchrone  //
     query(sql, [values], function (err, data, fields) {
       if (err) throw err;
-      // res.render renvoi l'Utilisateur vers le fichier Handlebars/HTML 'profil' au moment de la validation du formulaire dans le modal d'edition du nouveau mot de passe //
+      // res.render renvoi l'Utilisateur vers le fichier Handlebars/HTML 'register' au moment de la validation du formulaire d'inscription mentionnant sur le compte à bien été crée //
       res.render('profil', {
-        sucess: 'Votre mot de passe a bien été modifié'
+        success: 'Votre mot de passe à bien été modifié !'
       })
-          
+      
     })
 
   }
