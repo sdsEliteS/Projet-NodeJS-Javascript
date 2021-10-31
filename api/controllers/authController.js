@@ -2,6 +2,12 @@
  * Visuel Page Login
  * ***************** */
 
+/* Import Module */
+
+/* le module Bcrypt est un gage de protection cryptage du mot de passe */
+const bcrypt = require('bcrypt')
+
+
 /**************************************************************************** METHODE ASYNCHRONE *************************************************************************************************************************************************************************************************************************************************************************************/
 // Visualisation de la Page LOGIN ( READ/Lire = METHOD GET = MySQL: SELECT ) //
 // Exportation de la routes du router.js (getPageLogin) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode GET - req = requête HTTP Utilisateur faite au Server et res = response du Server //

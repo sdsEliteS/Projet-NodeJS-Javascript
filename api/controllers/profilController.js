@@ -56,8 +56,8 @@ exports.createAvatar = async (req, res) => {
 
   // Requête SQL UPDATE = MODIFICATION = EDITION D'IMAGE //
   let sql = `UPDATE User
-    SET avatar = '${ req.file.nomComplet }'
-    WHERE id = ${ req.params.id };`
+  SET avatar = '${ req.file.nomComplet }'
+  WHERE id = ${ req.params.id };`
 
   // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
   // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
@@ -88,15 +88,30 @@ exports.createAvatar = async (req, res) => {
 
 exports.newPassword = async (req, res) => {
 
+  console.log('Controller Create New Mot de Passe', req.body, req.params)
 
+  const newPassword = await query(`SELECT id, pseudo, password FROM User WHERE id = ${ req.params.id }`)
 
+  if (!newPassword[0]) res.render('profil')
+  else {
+    const hash = await bcrypt.hash(newPassword[0].password === req.body.nouveau_password, 10)
 
+    // Requête SQL UPDATE Modification Mot de Passe //
+    let sql = `UPDATE User
+    SET password = '${ hash }'
+    WHERE id = ${ req.params.id };`
+    // invocation de la constante hash dans la let sql à la place de nouveau_password afin de protéger le mot de passe lors de l'edit du nouveau mot de passe de l'Utilisateur //
 
+    // Valeur des colonnes de la Table User qui sont écrit dans l'input du modal de changement de mot de passe du compte profil de l'Utilisateur - Method Asynchrone  //
+    await query(sql, [values], function (err, data, fields) {
+      if (err) throw err;
+      // res.render renvoi l'Utilisateur vers le fichier Handlebars/HTML 'profil' au moment de la validation du modal de changement de mot de passe du compte Utilisateur //
+      res.render('profil', {
+        success: 'Votre mot de passe à bien été modifié !'
+      })
 
+    })
 
-
-
-
-
+  }
 
 }
