@@ -14,6 +14,7 @@ const fs = require('fs') // Rentrant dans le cadre par exemple d'une suppression
 
 
 
+
 /**************************************************************** METHODE ASYNCHRONE **************************************************************************************************************************************************************************************************************************************************************/
 
 // COMPTE page PROFIL UTILISATEUR ( READ/lire = Method GET HTTP = MySQL: SELECT ) //
@@ -85,36 +86,17 @@ exports.createAvatar = async (req, res) => {
 
 
 
-
 exports.newPassword = async (req, res) => {
 
-  console.log('Controller Create New Mot de Passe', req.body, req.params)
 
-  const newPassword = await query(`SELECT id, pseudo, password FROM User WHERE id = ${ req.params.id }`)
 
-  if (!newPassword[0] && req.body.nouveau_password === newPassword[0].password < 6)
-    res.render('home', {
-      error: 'Le mot de passe contient moins de 6 caratères'
-    })
-  else {
-    const hash = await bcrypt.hash(newPassword[0].password, 10)
 
-    // Requête SQL UPDATE Modification Mot de Passe //
-    let sql = `UPDATE User
-    SET password = '${ hash }'
-    WHERE id = ${ req.params.id };`
-    // invocation de la constante hash dans la let sql à la place de nouveau_password afin de protéger le mot de passe lors de l'edit du nouveau mot de passe de l'Utilisateur //
 
-    // Valeur des colonnes de la Table User qui sont écrit dans les input du formulaire d'inscription register - Method Asynchrone  //
-    query(sql, [values], function (err, data, fields) {
-      if (err) throw err;
-      // res.render renvoi l'Utilisateur vers le fichier Handlebars/HTML 'register' au moment de la validation du formulaire d'inscription mentionnant sur le compte à bien été crée //
-      res.render('profil', {
-        success: 'Votre mot de passe à bien été modifié !'
-      })
-      
-    })
 
-  }
+
+
+
+
+
 
 }

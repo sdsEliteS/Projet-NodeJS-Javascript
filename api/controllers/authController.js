@@ -57,7 +57,7 @@ exports.connexionProfil = async (req, res) => {
         //  Sinon (else) si user existe bien dans la DB //
         // console.log("Existe DANS LA DB");
 
-        /* Bcrypt.compare compare le mot de passe crypté de la base de donnée avec le mot de passe après connexion sur la page Login */
+        /* Bcrypt.compare compare le mot de passe crypté de la base de donnée avec le mot de passe après connexion remplissant le formulaire de la page Login */
         const match = await bcrypt.compare(req.body.mot_de_passe, user[0].password)
         // console.log('match', match)
 
