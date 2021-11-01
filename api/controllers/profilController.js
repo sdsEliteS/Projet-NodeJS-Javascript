@@ -10,7 +10,8 @@ const bcrypt = require('bcrypt')
 /* Le module Path fournit un moyen de travailler avec des répertoires et des chemins de fichiers */
 const path = require('path')
 
-const fs = require('fs') // Rentrant dans le cadre par exemple d'une suppression de fichier Image //
+/* Rentrant dans le cadre par exemple d'une suppression de fichier Image */
+const fs = require('fs')
 
 
 
@@ -85,7 +86,7 @@ exports.createAvatar = async (req, res) => {
 }
 
 
-
+// COMPTE page PROFIL UTILISATEUR ( UPDATE/MODIFICATION = Method PUT HTTP = MySQL: UPDATE ) //
 exports.newPassword = async (req, res) => {
 
   console.log('Controller Create New Mot de Passe', req.body, req.params)
@@ -98,21 +99,24 @@ exports.newPassword = async (req, res) => {
     })
     
   } else {
+    /* Bcrypt - Hash afin de crypté protégeant le mot de passe de l'Utilisateur en rapport avec le modal remplissant le formulaire de la modification du mot de passe */
     const hash = await bcrypt.hash(req.body.nouveau_password, 10)
 
-    // Requête SQL UPDATE Modification Mot de Passe //
+    // Requête SQL UPDATE Modification Mot de Passe (Table USER - Colonne Password - Personne précise id) //
     let sql = `UPDATE User
     SET password = '${ hash }'
     WHERE id = ${ req.params.id };`
-    // invocation de la constante hash dans la let sql à la place de nouveau_password afin de protéger le mot de passe lors de l'edit du nouveau mot de passe de l'Utilisateur //
+    // invocation de la constante hash dans la let sql à la place de nouveau_password afin de protéger le mot de passe lors de l'edit du nouveau mot de passe du compte de l'Utilisateur //
 
-    // Valeur des colonnes de la Table User qui sont écrit dans l'input du modal de changement de mot de passe du compte profil de l'Utilisateur - Method Asynchrone  //
+    // Valeur de la colonne de la Table User qui est écrit dans l'input front du modal de changement de mot de passe du compte profil de l'Utilisateur - Method Asynchrone  //
     await query(sql, function (err, data, fields) {
       if (err) throw err;
       // res.render renvoi l'Utilisateur vers le fichier Handlebars/HTML 'profil' au moment de la validation du modal de changement de mot de passe du compte Utilisateur //
       res.render('profil', {
+
+        // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
         noFooter:true,
-        
+
         success: 'Votre mot de passe à bien été modifié !'
       })
 

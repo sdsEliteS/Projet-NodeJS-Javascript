@@ -4,12 +4,14 @@
 
 /* Import Module */
 
-const moment = require('moment') // Gestion des dates //
+/* Gestion des dates */
+const moment = require('moment') 
 
 /* Le module Path fournit un moyen de travailler avec des répertoires et des chemins de fichiers */
 const path = require('path')
 
-const fs = require('fs') // Rentrant dans le cadre d'une suppression de fichier Image //
+/* Rentrant dans le cadre d'une suppression de fichier Image */
+const fs = require('fs') 
 
 /************************************************************* METHODE ASYNCHRONE **************************************************************************************************************************************************************/
 
