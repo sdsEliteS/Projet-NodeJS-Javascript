@@ -91,8 +91,16 @@ exports.newPassword = async (req, res) => {
 
   console.log('Controller Create New Mot de Passe', req.body, req.params)
 
+
+
   const newPassword = await query(`SELECT id, pseudo, password FROM User WHERE id = ${ req.params.id }`)
 
+
+
+
+  /* ************************************************************** CONDITION **************************************************************************************************************************************************************************************************************************************************************************/
+
+  // si (if) n'existe pas et si la modification du mot de passe fait moins de 6 caractères alors un message d'erreur sera envoyé //
   if (!newPassword[0] && req.body.nouveau_password < 6) {
     res.render('profil', {
       error: 'Le mot de passe contient moins de 6 caractères'
@@ -117,6 +125,7 @@ exports.newPassword = async (req, res) => {
         // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
         noFooter:true,
 
+        // Message validant la manipulation //
         success: 'Votre mot de passe à bien été modifié !'
       })
 
