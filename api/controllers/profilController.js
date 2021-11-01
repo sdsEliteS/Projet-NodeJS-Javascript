@@ -107,10 +107,12 @@ exports.newPassword = async (req, res) => {
     // invocation de la constante hash dans la let sql à la place de nouveau_password afin de protéger le mot de passe lors de l'edit du nouveau mot de passe de l'Utilisateur //
 
     // Valeur des colonnes de la Table User qui sont écrit dans l'input du modal de changement de mot de passe du compte profil de l'Utilisateur - Method Asynchrone  //
-    await query(sql, [values], function (err, data, fields) {
+    await query(sql, function (err, data, fields) {
       if (err) throw err;
       // res.render renvoi l'Utilisateur vers le fichier Handlebars/HTML 'profil' au moment de la validation du modal de changement de mot de passe du compte Utilisateur //
       res.render('profil', {
+        noFooter:true,
+        
         success: 'Votre mot de passe à bien été modifié !'
       })
 

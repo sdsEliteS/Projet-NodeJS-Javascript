@@ -5,5 +5,5 @@ values("steven", "dossantos.steven72190@gmail.com", "$2b$10$/rnslB/l8JC01uGtEuCc
 
 insert into User (pseudo, email, password, isAdmin, isVerified, isBan, avatar, address, telephone, birthday)
 values("steven1", "dossantos1.steven72190@gmail.com", "$2b$10$/rnslB/l8JC01uGtEuCc5.9LpLxzaru.68nB2z84ilvF4OqDJCpBu", 1, 1, 0, 'https://www.zupimages.net/up/21/36/o2ie.jpg', "327 route de beauchêne la bellangerie", "06.61.53.87.18", "1966-06-28");
--- $2b$10$/rnslB/l8JC01uGtEuCc5.9LpLxzaru.68nB2z84ilvF4OqDJCpBu === 123456
+-- $2b$10$/rnslB/l8JC01uGtEuCc5.9LpLxzaru.68nB2z84ilvF4OqDJCpBu === 123456 (modification : steven72191)
 /* Ne pas mentionner l'id dans la commande SQL "insert into" car il s'auto-increment comme mentionné sur MySQL Workbench donc pas besoin de le mettre */

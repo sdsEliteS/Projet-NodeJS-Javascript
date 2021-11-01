@@ -73,7 +73,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             {{!-- Methode PUT Formulaire Modal Edit du nouveau Mot de Passe User dans la balise ouvrante et fermante form --}}
-            <form action="/NewPassword/{{ this.id }}?_method=PUT" method="POST">
+            <form action="/NewPassword/{{ user.id }}?_method=PUT" method="POST">
                 <div class="modal-body">
                     <label for="message-text" class="col-form-label">Nouveau Password :</label>
                     <input type="text" class="form-control" id="recipient-name" name="nouveau_password">
