@@ -74,9 +74,12 @@
             txtValue = h5.textContent || h5.innerText;
             console.log('TXTVALUE :', txtValue)
 
+            // Si textValue est en minuscule alors il sera converti en majuscule en rapport avec les écrits du Visiteur ou Utilisateur dans le Search Bar //
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                // On le laisse à l'écran //
                 div2[i].style.display = "";
             } else {
+                // On le cache //
                 div2[i].style.display = "none";
             }
         }
