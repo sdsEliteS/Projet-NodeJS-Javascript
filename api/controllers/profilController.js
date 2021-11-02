@@ -86,16 +86,22 @@ exports.createAvatar = async (req, res) => {
 }
 
 
+
+
+
+
+
+
+
+
+
 // COMPTE page PROFIL UTILISATEUR ( UPDATE/MODIFICATION = Method PUT HTTP = MySQL: UPDATE ) //
 exports.newPassword = async (req, res) => {
 
   console.log('Controller Create New Mot de Passe', req.body, req.params)
 
 
-
   const newPassword = await query(`SELECT id, pseudo, password FROM User WHERE id = ${ req.params.id }`)
-
-
 
 
   /* ************************************************************** CONDITION **************************************************************************************************************************************************************************************************************************************************************************/

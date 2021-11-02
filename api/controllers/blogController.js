@@ -109,7 +109,6 @@ exports.editArticle = async (req, res) => {
     // *** RAPPEL IMPORTANT: Effectuer les modifs de part la requête UPDATE pour ensuite recharger les contantes avec les nouvelles données mise à jour *** //
     // 1 --> Effectuer la mise a jour (SQL UPDATE) - 2 --> Charger les constantes après la mise à jour permet d'avoir les données à jour sur un aspect general - 3 --> Renvoyer la réponse avec les data mise à jour avec le res.render (User - Article - Message) //
 
-
     // 1 //
 
     // Stockage de la Requête SQL - `` = Ctrl + (ALT GR + 7 È ,) //
