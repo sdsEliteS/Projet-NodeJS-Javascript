@@ -66,6 +66,7 @@ exports.createAvatar = async (req, res) => {
   // console.log('User Avatar', userAvatar)
 
   const pathImg2 = path.resolve("public/images/" + userAvatar[0].avatar)
+  
 
   /***************************************************************** CONDITION **********************************************************************************************************************************************************************************************************************************************************************/
   // Si userAvatar n'existe pas (Erreur) alors tu me renvoie l'URL '/profil' se situant dans le view. Sinon tu m'exécutes la function en rapport avec la changement d'image du compte profil //
@@ -79,9 +80,6 @@ exports.createAvatar = async (req, res) => {
 
     fs.unlink(pathImg2, (err) => {
       if (err) console.log(err)
-
-      
-      else res.redirect('/profil')
     })
 
     // Permet de rediriger l'Utilisateur vers l'URL '/profil' se situant dans le view //
