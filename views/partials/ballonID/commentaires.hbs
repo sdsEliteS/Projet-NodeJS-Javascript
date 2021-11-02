@@ -2,10 +2,10 @@
 
 <!-- Manipulation Ajouter un Commentaire -->
 
-{{!-- Ouverture de la condition noCommentaire avec le croisillon # et Fermeture de la Condition Footer avec le slash / --}}
-{{#if noCommentaire }}
+{{!-- Ouverture de la condition avec le croisillon # et Fermeture de la Condition Footer avec le slash / --}}
+{{!-- Si (if) l'Utilisation à une session ce dernier pourra ajouter un Commentaire, sinon (else) n'aura pas accès à l'ajout de Commentaire qui sera alors effacé --}}
 
-{{else }}
+{{#if user }}
 {{!-- Methode POST --}}
 <form action="/addcomment" method="POST">
 {{!-- Methode POST --}}
