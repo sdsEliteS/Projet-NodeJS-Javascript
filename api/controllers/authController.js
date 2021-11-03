@@ -40,7 +40,8 @@ exports.connexionProfil = async (req, res) => {
 
     /********************************************************* EXPRESS SESSION PROCEDURE ********************************************************************************************************************************************************************************************************************************************************************************************/
 
-
+     // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner les colonnes et la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
+    // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     /* Requête SQL permettant de cibler le formulaire Login en rapport avec 1 Utilisateur précis ! (pseudo) */
     const user = await query(`SELECT id, pseudo, email, password, isAdmin, avatar FROM User WHERE pseudo = '${req.body.pseudo}'`)
     // console.log('user', user)

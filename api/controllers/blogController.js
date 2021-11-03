@@ -230,6 +230,9 @@ exports.editArticle = async (req, res) => {
 exports.deleteArticle = async (req, res) => {
     // console.log('Suppression Article Page ID', req.body, req.params)
 
+
+    // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
+    // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`),
         // Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image un dossier //
         pathImg = path.resolve("public/images/" + article[0].image)
