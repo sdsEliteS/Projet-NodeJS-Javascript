@@ -21,20 +21,25 @@
 
 
                     <div href="#" class="mb-1 mt-1 list-group-item text-black bg-warning pl-5">
-                        <div class="d-flex w-100 d-flex bd-highlight mb-3 d-flex justify-content-between">
+                        <div class="d-flex w-100 d-flex bd-highlight mb-3 d-flex justify-content-start">
                             <img src="/assets/images/{{ this.avatar }}" style="height: 50px; widht: 50px">
                             <h5 class="mb-1 align-self-center"> <u> {{ this.pseudo }} </u>
                                 [ 22-25-22 ]</h5>
 
                             {{!-- CONDITION - Dans le cas contraire oû si (if) l'Utilisateur n'a pas de session alors le
                             Bouton Supprimer va disparaitre !. Sinon si l'Utilisateur à une session alors il pourra voir
-                            le Boutton Supprimer du Commentaire afin de Supprimer possiblement son Commentaire ! --}}
+                            le Boutton Supprimer du Commentaire afin de Supprimer possiblement son Commentaire !.
+                            ATTENTION !!! pour sortir de la bouche #each comments faire if ../user pour faire fonctionner la condition --}}
 
+                            {{!-- {{#if this.pseudo === ../user.pseudo}} --}}
+
+                            {{#if ../user }}
                             <!-- Button modal -->
                             <button type="button" class="btn btn-light" data-bs-toggle="modal"
                                 data-bs-target="#modalDeleteButton1">
                                 Supprimer
                             </button>
+                            {{/if}}
 
                             <!-- Modal Animation -->
                             <div class="modal fade" id="modalDeleteButton1" data-bs-backdrop="static"

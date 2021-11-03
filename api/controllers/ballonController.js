@@ -2,6 +2,17 @@
  * Controller Page ID (ballon)
  * *************************** */
 
+
+/* Import Module */
+
+/* Le module Path fournit un moyen de travailler avec des répertoires et des chemins de fichiers */
+const path = require('path')
+
+/* Rentrant dans le cadre d'une suppression de fichier Image */
+const fs = require('fs')
+
+
+
 /************************************************************* METHODE ASYNCHRONE *******************************************************************************************************************************************************************************************************************************************************/
 
 // ( READ/Lire = Method GET HTTP = MySQL: SELECT ) //
@@ -48,7 +59,7 @@ exports.getPageBallonID = async (req, res) => {
 
 // Remplissage du formulaire d'ajout de commentaire de la page ballonID //
 
-// ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO)
+// ( CREATE/Création = Method POST HTTP = MySQL: INSERT INTO )
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js (getPageBallonID) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête de Utilisateur faite au Server et res = response du Server //
 exports.addComment = async (req, res) => {
@@ -80,15 +91,37 @@ exports.addComment = async (req, res) => {
 
 
 
-
-
-
-// ( DELETE/Supression = Method DELETE HTTP = MySQL: DELETE)
+// ( DELETE/Supression = Method DELETE HTTP = MySQL: DELETE )
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 exports.deleteComment = async(req, res) => {
 
 
 
+
+  // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner les colonnes et les tables dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
+  // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
+    const deleteComment = await query (`SELECT Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
+                                            FROM Comment
+                                            LEFT OUTER JOIN User ON Comment.author_id = User.id
+                                        WHERE Comment.ref_id = ${ req.params.id};`)
+
+    // Chemin de l'image conduisant à l'image de profil de l'Utilisateur //
+    const pathImg = path.resolve("public/images/" + deleteComment[0].avatar)
+
+    
+    fs.unlink(pathImg, async (err) => {
+
+        if (err) console(err)
+        else{
+
+            await query(`SELECT Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
+                            FROM Comment
+                            LEFT OUTER JOIN User ON Comment.author_id = User.id
+                        WHERE Comment.ref_id = ${ req.params.id};`)
+
+            res.redirect('/ballon')
+        }
+    })
 
 
 

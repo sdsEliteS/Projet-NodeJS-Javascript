@@ -101,7 +101,8 @@ exports.newPassword = async (req, res) => {
 
   console.log('Controller Create New Mot de Passe', req.body, req.params)
 
-
+  // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner les colonnes et les tables dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
+  // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
   const newPassword = await query(`SELECT id, pseudo, password FROM User WHERE id = ${ req.params.id }`)
 
 
