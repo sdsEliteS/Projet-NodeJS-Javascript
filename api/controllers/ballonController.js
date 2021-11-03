@@ -114,7 +114,7 @@ exports.deleteComment = async(req, res) => {
         if (err) console(err)
         else{
 
-            await query(`SELECT Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
+            await query(`DELETE Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
                             FROM Comment
                             LEFT OUTER JOIN User ON Comment.author_id = User.id
                         WHERE Comment.ref_id = ${ req.params.id};`)
