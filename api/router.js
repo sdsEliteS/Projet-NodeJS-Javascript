@@ -72,7 +72,7 @@ router.route('/form-message')
 /******************* PAGE BLOG + PAGE ARTICLE qui arrive suite au clic sur la card de la page BLOG ****************************/
 
 /*
- * blogController + ballonCOntroller
+ * blogController + ballonController
  *********************************** */
 
 // URL Page Blog
@@ -87,10 +87,12 @@ router.route('/ballon/:id')
 router.route('/addcomment')
     .post(ballonController.addComment)
 
+// URL Suppression de Commentaire
+router.route('/delcomment')
+    .delete(ballonController.deleteComment)
 
 
-
-/********************************************************** PAGE ADMIN ******************************************************* */
+/********************************************************** PAGE ADMIN **********************************************************/
 
 
 /*

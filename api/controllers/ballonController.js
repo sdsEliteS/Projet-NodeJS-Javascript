@@ -77,3 +77,22 @@ exports.addComment = async (req, res) => {
     }
 
 }
+
+
+
+
+
+
+// ( DELETE/Supression = Method DELETE HTTP = MySQL: DELETE)
+// Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
+exports.deleteComment = async(req, res) => {
+
+
+
+
+
+
+
+
+
+}
