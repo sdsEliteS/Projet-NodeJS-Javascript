@@ -106,10 +106,10 @@ exports.deleteComment = async(req, res) => {
                                         WHERE Comment.ref_id = ${ req.params.id};`)
 
     // Chemin de l'image conduisant à l'image de profil de l'Utilisateur //
-    const pathImg = path.resolve("public/images/" + deleteComment[0].avatar)
+    const pathImg3 = path.resolve("public/images/" + deleteComment[0].avatar)
 
     
-    fs.unlink(pathImg, async (err) => {
+    fs.unlink(pathImg3, async (err) => {
 
         if (err) console(err)
         else{
@@ -119,7 +119,7 @@ exports.deleteComment = async(req, res) => {
                             LEFT OUTER JOIN User ON Comment.author_id = User.id
                         WHERE Comment.ref_id = ${ req.params.id};`)
 
-            res.redirect('/ballon')
+            res.redirect('/ballon/' + req.body.refId)
         }
     })
 
