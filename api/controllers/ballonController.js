@@ -95,9 +95,6 @@ exports.addComment = async (req, res) => {
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 exports.deleteComment = async(req, res) => {
 
-
-
-
   // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner les colonnes et les tables dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
   // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const deleteComment = await query (`SELECT Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
