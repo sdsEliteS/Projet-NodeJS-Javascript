@@ -101,9 +101,12 @@ exports.deleteComment = async(req, res) => {
                                             FROM Comment
                                             LEFT OUTER JOIN User ON Comment.author_id = User.id
                                         WHERE Comment.ref_id = ${ req.params.id};`)
+    console.log(deleteComment,'DELETE COMMENT')
 
     // Chemin de l'image conduisant à l'image de profil de l'Utilisateur //
     const pathImg3 = path.resolve("public/images/" + deleteComment[0].avatar)
+
+    console.log(pathImg3,'PATHIMG3')
 
     
     fs.unlink(pathImg3, async (err) => {

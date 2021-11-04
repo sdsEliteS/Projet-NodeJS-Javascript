@@ -87,7 +87,7 @@ router.route('/ballon/:id')
 router.route('/addcomment')
     .post(ballonController.addComment)
 
-// URL Suppression de Commentaire
+// URL Suppression de Commentaire par l'Utilisateur
 router.route('/delcomment')
     .delete(ballonController.deleteComment)
 
