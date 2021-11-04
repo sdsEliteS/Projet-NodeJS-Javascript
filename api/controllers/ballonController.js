@@ -24,28 +24,30 @@ exports.getPageBallonID = async (req, res) => {
 
     // Execution de la Requête SQL SELECT ("await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) // 
     // Déclaration de la constante ballon suivi de l'invocation de sa fonction "Méthode Asynchrone" rentrant dans le cadre d'une récupération des data de la base de donnée = mydb pour les rendre visibles dans le Front-End //
-    const ballon = await query (`SELECT * FROM Article WHERE id = ${ req.params.id}`) // Selection d'un Article précis (req.params.id) //
+    const ballon = await query(`SELECT * FROM Article WHERE id = ${ req.params.id}`) // Selection d'un Article précis (req.params.id) //
 
 
     /************************************************************ JOINTURE **************************************************************************************************************************************************************************************************************************************************************/
     // La jointure fait qu'on fusionne plusieurs tables dans cet exemple (Comment + User) afin d'identifier l'auteur du commentaire unique (Comment.ref_id = req.params.id) de l'Article //
     /* JOINTURE SELECT rentre dans le cadre de la récupération de toute les data de la base de donnée sous la forme d'une " { KEY (comments): VALUE (comments) } " pour le rendre visible dans le Front-End en le mettant dans le fichier Handlebars/HTML */
-    const comments = await query (`SELECT Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
+    const comments = await query(`SELECT Comment.author_id, Comment.content, Comment.date, Comment.id, User.pseudo, User.avatar
                                    FROM Comment
                                    LEFT OUTER JOIN User ON Comment.author_id = User.id
-                                   WHERE Comment.ref_id = ${ req.params.id };`) 
+                                   WHERE Comment.ref_id = ${ req.params.id };`)
+
+    console.log('blog ID', comments)
 
     // ballon + comments sont des Tableaux = Array --> résultat de la requête SQL 
     // console.log('comments []', comments)
     // console.log('ballon []', ballon)
-    
+
     // ballon est un Objet --> Index numéro 0 du Tableau ballon
     // RAPPEL: On peut selectionner n'importe quelle index du tableau (exemple: ballon[4])
     // ballon.length === longueur totale de notre tableau
     // console.log('ballon {}', ballon[0])
 
     // res.render renvoi à l'Utilisateur le fichier 'ballon' HTML Handlebars se situant dans le DOSSIER views accompagner d'un Objet contenant un tableau de la Table Article //
-    res.render('ballon', { 
+    res.render('ballon', {
         // ballon et comments sont des clés (KEY) important les data de la base de donnée MySQL dans les fichiers Handlebars/HTML "ballon et liste" (Clé ballon prenant les data de la table Article afin d'animer le Front-End et Clé comments qui lui va unir l'auteur et le commentaire pour que chaque commentaire est un auteur)
         ballon: ballon[0],
         comments
@@ -89,43 +91,21 @@ exports.addComment = async (req, res) => {
 
 }
 
-
-
 // ( DELETE/Supression = Method DELETE HTTP = MySQL: DELETE )
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
-exports.deleteComment = async(req, res) => {
-
-  // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner les colonnes et les tables dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
-  // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
-    const deleteComment = await query (`SELECT Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
-                                            FROM Comment
-                                            LEFT OUTER JOIN User ON Comment.author_id = User.id
-                                        WHERE Comment.ref_id = ${ req.params.id};`)
-    console.log(deleteComment,'DELETE COMMENT')
-
-    // Chemin de l'image conduisant à l'image de profil de l'Utilisateur //
-    const pathImg3 = path.resolve("public/images/" + deleteComment[0].avatar)
-
-    console.log(pathImg3,'PATHIMG3')
-
-    
-    fs.unlink(pathImg3, async (err) => {
-
-        if (err) console(err)
-        else{
-
-            await query(`DELETE Comment.author_id, Comment.content, Comment.date, User.pseudo, User.avatar
-                            FROM Comment
-                            LEFT OUTER JOIN User ON Comment.author_id = User.id
-                        WHERE Comment.ref_id = ${ req.params.id};`)
-
-            res.redirect('/ballon/' + req.body.refId)
-        }
-    })
+exports.deleteComment = async (req, res) => {
+    console.log('Delete Comment ', req.params.id)
 
 
+    const deleteComment = await query(`SELECT ref_id FROM Comment WHERE id = ${ req.params.id }`)
 
 
+    console.log('DELETE COMMENT', deleteComment)
+    await query(`DELETE FROM Comment WHERE id = ${ req.params.id};`)
 
+    // ref_id est en lien avec le numéro de l'Article (id) afin de supprimer le commentaire d'un article précis //
+    res.redirect('/ballon/' + deleteComment[0].ref_id)
 
 }
+
+// ref_id est en lien avec le numéro de l'Article //
