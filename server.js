@@ -1,24 +1,22 @@
 /*
  * Import de module
- * **************** */ 
+ * **************** */
 
 const express = require('express');
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const port = 3000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const mysql = require ('mysql');
+const mysql = require('mysql');
 const util = require('util');
 const expressSession = require('express-session')
 const MySQLStore = require('express-mysql-session')(expressSession);
-
-
 
 const morgan = require('morgan')
 
 /*
  * Configuration de nos modules
- * **************************** */ 
+ * **************************** */
 
 // Rendre fonctionnel express (Concerne toute les méthodes GET,POST,PUT,DELETE)
 const app = express();
@@ -40,7 +38,7 @@ const options = {
 
 db = mysql.createConnection(options);
 
-db.connect(function(err) {
+db.connect(function (err) {
     if (err) console.error('error connecting: ' + err.stack);
     console.log('connected as id ' + db.threadId);
 });
@@ -59,13 +57,25 @@ app.use(expressSession({
     secret: 'petitgateau',
     name: 'petitgateau',
     saveUninitialized: true,
-	store: new MySQLStore(options),
+    store: new MySQLStore(options),
     resave: false,
 }));
+
+
+// Import de nos Register Helpers (handlebars) - ('./api/helpers/hbs') = chemin dossier //
+const {
+    inc
+} = require('./api/helpers/hbs')
+
 
 // Configuration handlebars 
 app.set('view engine', 'hbs');
 app.engine('hbs', exphbs({
+    // Initialisation de nos Helpers //
+    helpers: {
+        inc
+    },
+
     extname: 'hbs',
     defaultLayout: 'main'
 }));
@@ -101,8 +111,8 @@ app.use(ROUTER);
 
 /*
  * Ecoute de notre application
- * *************************** */ 
-  
+ * *************************** */
+
 // Lancement de l'application
 app.listen(port, () => {
     console.log("le serveur tourne sur le prt: " + port);

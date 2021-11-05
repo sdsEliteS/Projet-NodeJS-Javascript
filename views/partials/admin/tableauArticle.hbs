@@ -32,7 +32,9 @@
 
                     <!-- Item 1 du tableau -->
                     <tr class="table-info">
-                        <th scope="row"> {{ this.id }} </th>
+                        {{!-- <th scope="row"> {{ this.id }} </th> --}}
+                        {{!-- Incrémentation Tableau Helpers --}}
+                        <th scope="row">{{inc @index}} : {{ this.id }}</th>
                         <td class="pt-0 pb-0 text-left align-middle">
                             <img class="rounded-circle" style="height: 43px;" src="/assets/images/{{ this.image }}" alt="">
                         </td>

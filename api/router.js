@@ -4,9 +4,6 @@
 const express = require('express'),
     router = express.Router();
 
-const upload = require('../config/multer')
-
-
 
 /*
  * Import des Controllers
@@ -21,10 +18,16 @@ const homeController = require('./controllers/homeController'),
     adminController = require('./controllers/adminController'),
     profilController = require('./controllers/profilController')
 
+/*
+ * Middleware
+ * ********** */
+const upload = require('../config/multer')
+
 
 /*
  * Déclaration des routes 
  ************************ */
+
 
 /*
  * homeController

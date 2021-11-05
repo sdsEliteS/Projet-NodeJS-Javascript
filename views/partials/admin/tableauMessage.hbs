@@ -25,7 +25,9 @@
                     {{#each messages }}
 
                     <tr class="table-info">
-                        <th scope="row">{{ this.id }}</th>
+                        {{!-- <th scope="row">{{ this.id }}</th> --}}
+                        {{!-- Incrémentation Tableau Helpers --}}
+                        <th scope="row">{{inc @index}} : {{ this.id }}</th>
                         <td class="pt-0 pb-0 text-left align-middle">
                             <img class="rounded-circle" src="https://picsum.photos/35" alt="">
                         </td>
