@@ -140,6 +140,10 @@ https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Ar
 
 https://www.it-swarm-fr.com/fr/node.js/comment-desinstaller-les-modules-npm-dans-le-noeud-js/1068769608/
 
+# Installation NodeJS
+
+https://github.com/nodesource/distributions
+
 
 
 
