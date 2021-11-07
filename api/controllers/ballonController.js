@@ -96,11 +96,13 @@ exports.addComment = async (req, res) => {
 exports.deleteComment = async (req, res) => {
     console.log('Delete Comment ', req.params.id)
 
-
+    // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
+    // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const deleteComment = await query(`SELECT ref_id FROM Comment WHERE id = ${ req.params.id }`)
 
 
     console.log('DELETE COMMENT', deleteComment)
+    // Exécution de la requête SQL rentrant dans le cadre de la suppression de Commentaire //
     await query(`DELETE FROM Comment WHERE id = ${ req.params.id};`)
 
     // ref_id est en lien avec le numéro de l'Article (id) afin de supprimer le commentaire d'un article précis //
