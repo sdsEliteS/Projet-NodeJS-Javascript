@@ -135,7 +135,10 @@ Méthode Each (Boucle) : La méthode Each permet d'exécuter une fonction donné
 https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 
 
+# Désinstallation de module NodeJS : npm uninstall moment -- save 
+("moment" est un des noms des modules NodeJS se situant dans le dependencies)
 
+https://www.it-swarm-fr.com/fr/node.js/comment-desinstaller-les-modules-npm-dans-le-noeud-js/1068769608/
 
 
 
@@ -157,3 +160,5 @@ https://www.w3schools.com/tags/att_input_type_checkbox.asp
 THEME BOOTSTRAP
 
 https://startbootstrap.com/themes
+
+
