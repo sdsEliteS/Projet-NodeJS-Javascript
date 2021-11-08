@@ -24,23 +24,26 @@
                         <div class="d-flex w-100 d-flex bd-highlight mb-3 d-flex justify-content-start">
                             <img src="/assets/images/{{ this.avatar }}" style="height: 50px; widht: 50px">
                             <h5 class="mb-1 align-self-center"> <u> {{ this.pseudo }} </u>
-                                [ 22-25-22 ]</h5>
+                                {{ this.date}} </h5>
 
 
                             {{!-- CONDITION - Dans le cas contraire oû si (if) l'Utilisateur n'a pas de session alors le
                             Bouton Supprimer va disparaitre !. Sinon si l'Utilisateur à une session alors il pourra voir
                             le Boutton Supprimer du Commentaire afin de Supprimer possiblement son Commentaire !.
-                            ATTENTION !!! pour sortir de la bouche #each comments faire if ../user pour faire fonctionner la condition --}}
+                            ATTENTION !!! pour sortir de la bouche #each comments faire if ../user pour faire
+                            fonctionner la condition --}}
 
                             {{!-- {{#if this.pseudo === ../user.pseudo}} --}}
 
-                            {{#if ../user }}
+                            {{!-- <p> session {{ ../user.pseudo }} author: {{ this.pseudo }} </p> --}}
+
+                            {{#ifCond ../user.pseudo this.pseudo }}
                             <!-- Button modal -->
                             <button type="button" class="btn btn-light" data-bs-toggle="modal"
                                 data-bs-target="#modalDeleteButton1">
                                 Supprimer
                             </button>
-                            {{/if}}
+                            {{/ifCond }}
 
                             <!-- Modal Animation -->
                             <div class="modal fade" id="modalDeleteButton1" data-bs-backdrop="static"
@@ -67,6 +70,7 @@
                                                     data-bs-dismiss="modal">Annuler</button>
                                                 <button type="submit" class="btn btn-primary">Oui</button>
                                             </form>
+
                                         </div>
                                     </div>
                                 </div>

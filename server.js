@@ -63,9 +63,7 @@ app.use(expressSession({
 
 
 // Import de nos Register Helpers (handlebars) - ('./api/helpers/hbs') = chemin dossier //
-const {
-    inc
-} = require('./api/helpers/hbs')
+const { inc, ifCond } = require('./api/helpers/hbs')
 
 
 // Configuration handlebars 
@@ -73,7 +71,8 @@ app.set('view engine', 'hbs');
 app.engine('hbs', exphbs({
     // Initialisation de nos Helpers //
     helpers: {
-        inc
+        inc,
+        ifCond
     },
 
     extname: 'hbs',
@@ -94,6 +93,7 @@ app.use(bodyParser.urlencoded({
 
 // SESSION CONNEXION //
 app.use('*', (req, res, next) => {
+    console.log('middleware', res.session)
     // On definit nos variable locals pour pouvoir les utiliser dans notre HBS (Handlebars)
     res.locals.user = req.session.user
     if (req.session.isAdmin) res.locals.isAdmin = req.session.isAdmin

@@ -12,7 +12,6 @@ const path = require('path')
 const fs = require('fs')
 
 
-
 /************************************************************* METHODE ASYNCHRONE *******************************************************************************************************************************************************************************************************************************************************/
 
 // ( READ/Lire = Method GET HTTP = MySQL: SELECT ) //
@@ -101,6 +100,7 @@ exports.deleteComment = async (req, res) => {
     const deleteComment = await query(`SELECT ref_id FROM Comment WHERE id = ${ req.params.id }`)
     console.log('DELETE COMMENT', deleteComment)
     
+
     // Exécution de la requête SQL rentrant dans le cadre de la suppression de Commentaire //
     await query(`DELETE FROM Comment WHERE id = ${ req.params.id};`)
 
@@ -109,4 +109,5 @@ exports.deleteComment = async (req, res) => {
 
 }
 
-// ref_id est en lien avec le numéro de l'Article //
+// ref_id est en lien avec le numéro de l'Article (Article 1, Article 2) //
+

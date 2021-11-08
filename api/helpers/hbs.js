@@ -13,6 +13,7 @@ module.exports = {
     },
     // Pour les commentaires //
     ifCond: (v1, v2, options) => {
+        console.log('ifcond', v1, v2, options)
         if (v1 === v2) {
             return options.fn(this);
         }

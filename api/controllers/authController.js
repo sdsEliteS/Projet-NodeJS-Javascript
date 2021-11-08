@@ -192,7 +192,7 @@ exports.registerProfil = async (req, res) => {
         query(sql, [values], function (err, data, fields) {
             if (err) throw err;
             // res.render renvoi l'Utilisateur vers le fichier Handlebars/HTML 'register' au moment de la validation du formulaire d'inscription mentionnant sur le compte à bien été crée //
-            res.render('register', {
+            res.render('login', {
                 success: 'Votre compte à bien été créé !'
             })
         })
