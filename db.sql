@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`User` (
   `isAdmin` TINYINT NOT NULL DEFAULT 0,
   `isVerified` TINYINT NOT NULL DEFAULT 0,
   `isBan` TINYINT NOT NULL DEFAULT 0,
-  `avatar` VARCHAR(255) NOT NULL DEFAULT,
+  `avatar` VARCHAR(255) NOT NULL DEFAULT './default-profil.png',
   `address` VARCHAR(255) NOT NULL,
   `telephone` VARCHAR(255) NOT NULL,
   `birthday` DATE NOT NULL,
