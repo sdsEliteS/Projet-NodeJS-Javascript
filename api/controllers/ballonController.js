@@ -3,15 +3,6 @@
  * *************************** */
 
 
-/* Import Module */
-
-/* Le module Path fournit un moyen de travailler avec des répertoires et des chemins de fichiers */
-const path = require('path')
-
-/* Rentrant dans le cadre d'une suppression de fichier Image */
-const fs = require('fs')
-
-
 /************************************************************* METHODE ASYNCHRONE *******************************************************************************************************************************************************************************************************************************************************/
 
 // ( READ/Lire = Method GET HTTP = MySQL: SELECT ) //

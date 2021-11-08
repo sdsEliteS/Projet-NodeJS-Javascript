@@ -1,14 +1,7 @@
 module.exports = {
 
-    // On définit notre fonction //
-    limitArray: function (arr, limit) {
-        if (!Array.isArray(arr)) {
-            return [];
-        }
-        return arr.slice(0, limit);
-    },
-      // Incrémentation Tableau  //
-      inc: (value, option) => {
+    // Incrémentation Tableau Article - User - Message  //
+    inc: (value, option) => {
         return parseInt(value) + 1
     },
     // Pour les commentaires //
@@ -19,8 +12,8 @@ module.exports = {
         }
         return options.inverse(this);
     },
-     // Dates Commentaire //
-     formatDate: function (date, format) {
+    // Dates Commentaire //
+    formatDate: function (date, format) {
         return moment(date).utc().format(format)
     }
 
