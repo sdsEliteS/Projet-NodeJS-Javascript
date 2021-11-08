@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const mysql = require('mysql');
 const util = require('util');
-const expressSession = require('express-session')
+const expressSession = require('express-session');
 const MySQLStore = require('express-mysql-session')(expressSession);
 
 const morgan = require('morgan')
