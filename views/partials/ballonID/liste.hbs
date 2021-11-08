@@ -27,15 +27,17 @@
                                 {{ this.date}} </h5>
 
 
-                            {{!-- CONDITION - Dans le cas contraire oû si (if) l'Utilisateur n'a pas de session alors le
+                            {{!-- CONDITION ifCond - Dans le cas contraire oû si (if) l'Utilisateur n'a pas de session alors le
                             Bouton Supprimer va disparaitre !. Sinon si l'Utilisateur à une session alors il pourra voir
-                            le Boutton Supprimer du Commentaire afin de Supprimer possiblement son Commentaire !.
+                            le Boutton Supprimer du Commentaire afin de Supprimer possiblement son Commentaire ! mais pas 
+                            le commentaire d'une autre session !!!.
                             ATTENTION !!! pour sortir de la bouche #each comments faire if ../user pour faire
                             fonctionner la condition --}}
 
                             {{!-- {{#if this.pseudo === ../user.pseudo}} --}}
 
                             {{!-- <p> session {{ ../user.pseudo }} author: {{ this.pseudo }} </p> --}}
+
 
                             {{#ifCond ../user.pseudo this.pseudo }}
                             <!-- Button modal -->
