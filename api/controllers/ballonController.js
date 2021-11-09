@@ -2,6 +2,9 @@
  * Controller Page ID (ballon)
  * *************************** */
 
+/* Module Gestion des dates */
+const moment = require('moment')
+
 /************************************************************* METHODE ASYNCHRONE *******************************************************************************************************************************************************************************************************************************************************/
 
 // ( READ/Lire = Method GET HTTP = MySQL: SELECT ) //
@@ -55,12 +58,6 @@ exports.getPageBallonID = async (req, res) => {
 // Exportation de la routes du router.js (getPageBallonID) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode POST - req = requête de Utilisateur faite au Server et res = response du Server //
 exports.addComment = async (req, res) => {
     // console.log('Ajout de Commentaire Ballon ID', req.body)
-
-    var d = new Date();
-    var date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-    var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-    var fullDate = date + ' ' + hours;
-    console.log(fullDate);
 
     // insert into est une requête SQL qui crée des données dans la Table Comment (Création de Commentaire) //
     let sql = `INSERT INTO Comment (author_id, content, date, ref_id) values (?)`;
