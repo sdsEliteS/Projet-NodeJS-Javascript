@@ -24,8 +24,10 @@
                         <div class="d-flex w-100 d-flex bd-highlight mb-3 d-flex justify-content-start">
                             <img src="/assets/images/{{ this.avatar }}" style="height: 50px; widht: 50px">
                             <h5 class="mb-1 align-self-center"> <u> {{ this.pseudo }} </u>
+
                                 {{!-- Date  --}}
-                                {{ moment format="DD MMMM - YYYY,  h:mm:ss a" }} </h5>
+                                {{moment this.date format="DD/MM/YYYY HH:mm:ss"}} </h5>
+                                {{!-- {{ moment format="DD MMMM - YYYY,  h:mm:ss a" }} </h5> --}}
 
                             {{!-- CONDITION ifCond - Dans le cas contraire oû si (if) l'Utilisateur n'a pas de session alors le
                             Bouton Supprimer va disparaitre !. Sinon si l'Utilisateur à une session alors il pourra voir
