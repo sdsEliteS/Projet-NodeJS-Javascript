@@ -56,6 +56,12 @@ exports.getPageBallonID = async (req, res) => {
 exports.addComment = async (req, res) => {
     // console.log('Ajout de Commentaire Ballon ID', req.body)
 
+    var d = new Date();
+    var date = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    var hours = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    var fullDate = date + ' ' + hours;
+    console.log(fullDate);
+
     // insert into est une requête SQL qui crée des données dans la Table Comment (Création de Commentaire) //
     let sql = `INSERT INTO Comment (author_id, content, date, ref_id) values (?)`;
     let values = [
@@ -89,7 +95,7 @@ exports.deleteComment = async (req, res) => {
     // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const deleteComment = await query(`SELECT ref_id FROM Comment WHERE id = ${ req.params.id }`)
     console.log('DELETE COMMENT', deleteComment)
-    
+
 
     // Exécution de la requête SQL rentrant dans le cadre de la suppression de Commentaire //
     await query(`DELETE FROM Comment WHERE id = ${ req.params.id};`)
@@ -100,4 +106,3 @@ exports.deleteComment = async (req, res) => {
 }
 
 // ref_id est en lien avec le numéro de l'Article (Article 1, Article 2) //
-

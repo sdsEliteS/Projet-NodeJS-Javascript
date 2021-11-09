@@ -14,6 +14,12 @@ const MySQLStore = require('express-mysql-session')(expressSession);
 
 const morgan = require('morgan')
 
+// Import de module 'Date Commentaire Article' //
+const Handlebars = require("handlebars");
+const MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
+
+
 /*
  * Configuration de nos modules
  * **************************** */
