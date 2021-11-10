@@ -5,14 +5,17 @@
 
 {{!-- Ouverture de la méthode Each qui permet d'exécuter une fonction sur chaque élément du tableau associé à this.
 ballonList est le tableau renvoyer par le controller get: ballonController --}}
- 
+
 <section>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="article-ballon text-center">
                     <img src="/assets/images/{{ ballon.image }}" height="420px" alt="ballon de football" />
-                    <p class="mt-5"> Crée le : {{ moment ballon.date format="DD/MM/YYYY - HH:mm:ss" }} </p>
+                    <p class="mt-5"> Crée le : {{ moment ballon.date format="DD/MM/YYYY - HH:mm:ss" }}
+                        <br>
+                        Editée le : {{ moment ballon.dateEdit format="DD/MM/YYYY - HH:mm:ss" }}
+                    </p>
                 </div>
             </div>
         </div>
