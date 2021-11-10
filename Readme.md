@@ -44,7 +44,58 @@ https://roytuts.com/nodejs-express-mysql-rest-api-crud-example/
 
 
 
+**************************************
+*     ATTENTION DB.SQL SCRIPT        *
+*                                    *
+**************************************
 
+*
+* Heure et Date dans le Commentaire d'un Article
+************************************************
+
+Vérifier le TIMESTAMP en tapant la commande suivante:  DESCRIBE COMMENT;
+
++-----------+--------------+------+-----+-------------------+-------------------+
+| Field     | Type         | Null | Key | Default           | Extra             |
++-----------+--------------+------+-----+-------------------+-------------------+
+| id        | int          | NO   | PRI | NULL              | auto_increment    |
+| author_id | int          | NO   | MUL | NULL              |                   |
+| content   | varchar(255) | NO   |     | NULL              |                   |
+| date      | timestamp    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| ref_id    | int          | NO   | MUL | NULL              |                   |
++-----------+--------------+------+-----+-------------------+-------------------+
+
+
++
+
+Procédure : Dans le cas ou mon modifie le script "db.sql" manuellement à la main sans passer par MySQL Workbench et afin d'avoir les modifications dans la db (Base de donnée) il faut faire un "DROP DATABASE mydb;" et "SOURCE db.sql;"
+
++
+
+Écrire un Commentaire dans un Article et ensuite afin de vérifier que le TIMESTAMP (heure précise) est dans la table Comment et surtout la colonne Date du projet !, taper la commande suivante : SELECT * FROM Comment;
+
+mysql> select * from Comment;
++----+-----------+-----------+---------------------+--------+
+| id | author_id | content   | date                | ref_id |
++----+-----------+-----------+---------------------+--------+
+|  1 |         1 | FFDSFDFSD | 2021-11-10 09:41:09 |      1 |
++----+-----------+-----------+---------------------+--------+
+
+*
+* Module de téléchargement pour les dates et heure (Penser au TIMESTAMP avec l'heure)
+*********************************************************************************************************
+https://www.npmjs.com/package/moment
+
+https://www.npmjs.com/package/handlebars.moment
+
+https://momentjs.com/
+
+
+Raccourci Projet Collègue en rapport avec la date :
+
+https://github.com/Tauruxhasgood/site-exam/blob/dev/views/partials/blog/cardId.hbs
+
+https://github.com/Tauruxhasgood/site-exam/blob/dev/database/backupEmb2.sql
 
 
 
