@@ -166,3 +166,12 @@ THEME BOOTSTRAP
 https://startbootstrap.com/themes
 
 
+
+
+*
+* Précision
+*************
+
+db.sql = la base de donnée est légèrement différente des 2 autres mais elle fonctionne bien avec le même résultat que les 2 autres db (base de donnée)
+
+db copy.sql = db copy2.sql
