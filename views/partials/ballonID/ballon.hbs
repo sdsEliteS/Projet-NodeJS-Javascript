@@ -12,6 +12,7 @@ ballonList est le tableau renvoyer par le controller get: ballonController --}}
             <div class="col-md-12">
                 <div class="article-ballon text-center">
                     <img src="/assets/images/{{ ballon.image }}" height="420px" alt="ballon de football" />
+                    <p class="mt-5"> Crée le : {{ moment ballon.date format="DD/MM/YYYY - HH:mm:ss" }} </p>
                 </div>
             </div>
         </div>
