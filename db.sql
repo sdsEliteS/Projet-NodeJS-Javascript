@@ -106,3 +106,8 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+/* Autogénérer un Utilisateur */
+insert into User (pseudo, email, password, address, telephone, birthday, isAdmin, isVerified)
+values ('Steven', 'dossantos.steven72190@gmail.com', '$2b$10$/rnslB/l8JC01uGtEuCc5.9LpLxzaru.68nB2z84ilvF4OqDJCpBu', '327 Route de Beauchêne La Bellangerie', '0661538718', '1989-06-28', 1, 1);
