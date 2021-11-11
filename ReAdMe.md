@@ -8,22 +8,3 @@ https://www.w3schools.com/jsref/met_win_settimeout.asp
 # toLowerCase (convertit une chaine de caractère en miniscule)
 
 https://www.w3schools.com/jsref/jsref_tolowercase.asp#:~:text=Definition%20and%20Usage,method%20to%20convert%20to%20uppercase.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date/now
-https://stackoom.com/en/question/317GB
