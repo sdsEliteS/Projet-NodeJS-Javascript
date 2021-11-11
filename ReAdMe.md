@@ -26,3 +26,4 @@ https://www.w3schools.com/jsref/jsref_tolowercase.asp#:~:text=Definition%20and%2
 
 
 https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Date/now
+https://stackoom.com/en/question/317GB

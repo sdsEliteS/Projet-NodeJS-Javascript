@@ -137,7 +137,7 @@ exports.editArticle = async (req, res) => {
 
     /* ************************************************************** CONDITION ******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
-    let DATEEDIT = new Date(Date.now())
+
     // Si req.file n'existe pas = S'il y a pas d'image, alors tu vas m'exécuter la requête SQL UPDATE sans l'image //
     if (!req.file) {
         console.log('il y a pas image')
@@ -146,7 +146,7 @@ exports.editArticle = async (req, res) => {
                 SET title = '${ req.body.title }',
                     description = '${ req.body.description }',
                     recommandation = '${ req.body.recommandation }',
-                    dateEdit = '${ moment().format('YYYY-MM-DD') }',
+                    dateEdit = '${ new Date(Date.now()) }',
                     subdescription = '${ req.body.subdescription }'
                 WHERE id = '${ req.params.id }';`
         // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
@@ -178,7 +178,7 @@ exports.editArticle = async (req, res) => {
                 SET title = '${ req.body.title }',
                     description = '${ req.body.description }',
                     recommandation = '${ req.body.recommandation }',
-                    dateEdit = '${ moment().format('YYYY-MM-DD') }',
+                    dateEdit = '${ new Date(Date.now()) }',
                     image = '${ req.file.nomComplet }',
                     subdescription = '${ req.body.subdescription }'
                 WHERE id = '${ req.params.id }';`
