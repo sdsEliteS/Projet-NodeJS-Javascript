@@ -11496,4 +11496,55 @@ cite img {
   background-color: #ffd000;
 }
 
+@media (min-width: 576px) {
+  body {
+    color: green;
+  }
+}
+@media (max-width: 576px) {
+  body {
+    color: blue;
+  }
+}
+@media (min-width: 768px) {
+  body {
+    color: red;
+  }
+}
+@media (min-width: 992px) {
+  body {
+    color: pink;
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    color: orange;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 375px) {
+  ul li {
+    margin: 0 0px;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 520px) {
+  ul li {
+    margin: 0 7px;
+  }
+}
+@media screen and (min-width: 520px) and (max-width: 720px) {
+  ul li {
+    margin: 0 20px;
+  }
+}
+@media screen and (min-width: 720px) and (max-width: 920px) {
+  ul li {
+    margin: 0 30px;
+  }
+}
+@media screen and (min-width: 920px) {
+  ul li {
+    margin: 0 40px;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
