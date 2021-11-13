@@ -21,29 +21,31 @@
 
 
                     <div href="#" class="mb-1 mt-1 list-group-item text-black bg-warning pl-5">
-                        <div class="d-flex w-100 d-flex bd-highlight mb-3 d-flex justify-content-start">
-                            <img src="/assets/images/{{ this.avatar }}" style="height: 50px; widht: 50px">
-                            <h5 class="mb-1 align-self-center"> <u> {{ this.pseudo }} </u>
+                        <div class="d-flex w-100 d-flex bd-highlight mb-3 d-flex justify-content-between">
+                            <img src="/assets/images/{{ this.avatar }}" style="height: 100px; widht: 100px">
+                            
+                            <h5 class="mb-1 align-self-center text-center"> <u>{{ this.pseudo }}</u> <br><br>
 
-                                {{!-- Date  --}}
-                                {{moment this.date format="DD/MM/YYYY - HH:mm:ss"}} 
+                                {{!-- Date --}}
+                                {{moment this.date format="DD/MM/YYYY - HH:mm:ss"}}
                             </h5>
-                                
-
-                            {{!-- CONDITION ifCond - Dans le cas contraire oû si (if) l'Utilisateur n'a pas de session alors le
-                            Bouton Supprimer va disparaitre !. Sinon si l'Utilisateur à une session alors il pourra voir
-                            le Boutton Supprimer du Commentaire afin de Supprimer possiblement son Commentaire ! mais pas 
-                            le commentaire d'une autre session !!!.
-                            ATTENTION !!! pour sortir de la bouche #each comments faire if ../user pour faire
-                            fonctionner la condition --}}
-
 
                             {{#ifCond ../user.pseudo this.pseudo }}
                             <!-- Button modal -->
+
                             <button type="button" class="btn btn-light" data-bs-toggle="modal"
                                 data-bs-target="#modalDeleteButton1">
                                 Supprimer
                             </button>
+
+                            {{!-- CONDITION ifCond - Dans le cas contraire oû si (if) l'Utilisateur n'a pas de session
+                            alors le
+                            Bouton Supprimer va disparaitre !. Sinon si l'Utilisateur à une session alors il pourra voir
+                            le Boutton Supprimer du Commentaire afin de Supprimer possiblement son Commentaire ! mais
+                            pas
+                            le commentaire d'une autre session !!!.
+                            ATTENTION !!! pour sortir de la bouche #each comments faire if ../user pour faire
+                            fonctionner la condition --}}
                             {{/ifCond }}
 
                             <!-- Modal Animation -->
@@ -87,3 +89,31 @@
         </div>
     </div>
 </section>
+
+<!-- Modal Animation -->
+<div class="modal fade" id="modalDeleteButton1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="modalDeleteButton1Label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDeleteButton1Label">
+                    Supprimer Commentaire </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Etes-vous sûr de vouloir supprimer ce commentaire ?
+            </div>
+            <div class="modal-footer">
+                {{!-- Methode DELETE : Ne pas oublier le type SUBMIT qui est un
+                bouton d'envoi qui soumet toutes les valeurs du formulaire
+                lors de l'envoi à un gestionnaire de formulaire (Server)
+                validant la balise ouvrante fermante "form" --}}
+                <form action="/delcomment/{{ this.id }}?_method=DELETE" method="POST">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Oui</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
