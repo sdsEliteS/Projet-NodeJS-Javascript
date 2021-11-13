@@ -11531,9 +11531,14 @@ cite img {
     height: 27vh;
   }
 }
-@media screen and (min-width: 750px) and (max-width: 1030px) {
+@media screen and (min-width: 750px) and (max-width: 1024px) {
   footer {
-    height: 27vh;
+    height: 17vh;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  footer {
+    height: 15vh;
   }
 }
 
