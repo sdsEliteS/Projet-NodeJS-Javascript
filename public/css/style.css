@@ -11552,5 +11552,10 @@ cite img {
     width: 3vh;
   }
 }
+@media screen and (min-width: 320px) and (max-width: 375px) {
+  .btn-light {
+    width: 112px;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
