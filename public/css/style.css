@@ -11531,14 +11531,14 @@ cite img {
     height: 27vh;
   }
 }
-@media screen and (min-width: 750px) and (max-width: 1024px) {
+@media screen and (min-width: 750px) and (max-width: 1030px) {
   footer {
-    height: 17vh;
+    height: 22vh;
   }
 }
-@media screen and (min-width: 1024px) and (max-width: 1366px) {
+@media screen and (min-width: 1030px) and (max-width: 1366px) {
   footer {
-    height: 15vh;
+    height: 17vh;
   }
 }
 
