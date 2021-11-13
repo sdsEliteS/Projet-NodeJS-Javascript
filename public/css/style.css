@@ -11541,5 +11541,16 @@ cite img {
     height: 17vh;
   }
 }
+.logo-comment {
+  height: 100px;
+  width: 100px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 375px) {
+  .logo-comment {
+    height: 3vh;
+    width: 3vh;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
