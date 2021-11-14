@@ -29,6 +29,7 @@
                                 {{!-- Date --}}
                                 {{moment this.date format="DD/MM/YYYY - HH:mm:ss"}}
                             </h5>
+                            
 
                             {{#ifCond ../user.pseudo this.pseudo }}
                             <!-- Button modal -->
@@ -46,7 +47,11 @@
                             le commentaire d'une autre session !!!.
                             ATTENTION !!! pour sortir de la bouche #each comments faire if ../user pour faire
                             fonctionner la condition --}}
+                            {{else}}
+                            <img src="/assets/images/{{ this.avatar }}" class="logo-comment">
+
                             {{/ifCond }}
+                            
 
                             <!-- Modal Animation -->
                             <div class="modal fade" id="modalDeleteButton1" data-bs-backdrop="static"
