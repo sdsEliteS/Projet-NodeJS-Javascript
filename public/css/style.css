@@ -11594,6 +11594,8 @@ cite img {
 }
 @media screen and (min-width: 318px) and (max-width: 413px) {
   .top-section {
+    position: relative;
+    bottom: 50px;
     width: 305px;
     height: 100%;
   }
@@ -11625,6 +11627,8 @@ cite img {
 }
 @media screen and (min-width: 413px) and (max-width: 520px) {
   .top-section {
+    position: relative;
+    bottom: 50px;
     width: 378px;
     height: 100%;
   }
