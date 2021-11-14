@@ -11592,7 +11592,7 @@ cite img {
     transition: 0.5;
   }
 }
-@media screen and (min-width: 318px) and (max-width: 420px) {
+@media screen and (min-width: 318px) and (max-width: 413px) {
   .top-section {
     width: 305px;
     height: 100%;
@@ -11623,7 +11623,7 @@ cite img {
     top: -20px;
   }
 }
-@media screen and (min-width: 420px) and (max-width: 520px) {
+@media screen and (min-width: 413px) and (max-width: 520px) {
   .top-section {
     width: 378px;
     height: 100%;
