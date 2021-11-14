@@ -11564,12 +11564,18 @@ cite img {
     font-size: 12px;
   }
 }
-@media screen and (min-width: 320px) and (max-width: 1366px) {
+@media screen and (min-width: 320px) and (max-width: 768px) {
   .card-group {
-    padding-top: 70px;
+    padding-top: 60px;
   }
 }
-@media screen and (min-width: 1366px) and (max-width: 2000px) {
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .card-group {
+    padding-top: 70px;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 2000px) {
   .card-group {
     padding-top: 40px;
   }
