@@ -11592,5 +11592,58 @@ cite img {
     transition: 0.5;
   }
 }
+@media screen and (min-width: 318px) and (max-width: 420px) {
+  .top-section {
+    width: 305px;
+    height: 100%;
+  }
+
+  .avatar {
+    width: 175px;
+    height: 175px;
+  }
+
+  .bottom-section {
+    width: 141.5%;
+    padding: 3px;
+    top: 45px;
+  }
+
+  .commentaire {
+    position: relative;
+    top: 70px;
+  }
+
+  .social-media a {
+    padding: 26.5px 26.5px;
+  }
+
+  .social-media {
+    position: absolute;
+    top: -20px;
+  }
+}
+@media screen and (min-width: 420px) and (max-width: 520px) {
+  .top-section {
+    width: 378px;
+    height: 100%;
+  }
+
+  .avatar {
+    width: 256px;
+    height: 256px;
+  }
+
+  .bottom-section {
+    width: 130%;
+    padding: 17.5px;
+    top: 45px;
+  }
+
+  .commentaire {
+    position: relative;
+    top: 70px;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
