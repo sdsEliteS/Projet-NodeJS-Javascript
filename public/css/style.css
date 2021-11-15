@@ -11699,7 +11699,7 @@ cite {
 
   h3, .h3 {
     position: relative;
-    right: 7px;
+    right: 20px;
   }
 }
 @media screen and (min-width: 375px) and (max-width: 414px) {
@@ -11835,7 +11835,6 @@ cite {
 
   .neon2 {
     position: relative;
-    right: 900px;
   }
 }
 @media screen and (min-width: 375px) and (max-width: 414px) {
