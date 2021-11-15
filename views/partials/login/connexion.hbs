@@ -24,8 +24,10 @@
                 <a href="#modalLostPassword" data-bs-toggle="modal" role="button">mot de passe oublié</a>
             </div>
 
-            {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les valeurs
-            du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante fermante
+            {{!-- Methode POST : Ne pas oublier le type SUBMIT qui est un bouton d'envoi qui soumet toutes les
+            valeurs
+            du formulaire lors de l'envoi à un gestionnaire de formulaire (Server) validant la balise ouvrante
+            fermante
             "form" --}}
             <button type="submit" class="neon">
                 <span></span>
@@ -37,6 +39,8 @@
         </form>
     </div>
 </div>
+
+
 
 <!-- Manipulation Modal Mot de Passe Oublié -->
 
@@ -76,7 +80,7 @@
 </div>
 
 {{!-- Script Javascript en rapport avec la page de connexion Login --}}
-{{!--  --}}
+{{!-- --}}
 <script>
     const inputPassword = document.getElementById('motdepasse')
     const btnViewPassword = document.getElementById('btnViewPassword')
