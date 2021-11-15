@@ -11187,7 +11187,6 @@ cite img {
 
 .login-box {
   position: relative;
-  bottom: 110px;
   top: -23px;
   padding: 80px;
   width: 747px;
@@ -11496,7 +11495,7 @@ cite img {
   background-color: #ffd000;
 }
 
-@media screen and (min-width: 320px) and (max-width: 375px) {
+@media screen and (min-width: 318px) and (max-width: 375px) {
   ul li {
     margin: 0 0px;
   }
@@ -11521,7 +11520,7 @@ cite img {
     margin: 0 40px;
   }
 }
-@media screen and (min-width: 320px) and (max-width: 450px) {
+@media screen and (min-width: 318px) and (max-width: 450px) {
   footer {
     height: 25vh;
   }
@@ -11541,7 +11540,7 @@ cite img {
     height: 17vh;
   }
 }
-@media screen and (min-width: 320px) and (max-width: 414px) {
+@media screen and (min-width: 318px) and (max-width: 414px) {
   .logo-steven {
     height: 20px;
     right: 3px;
@@ -11570,7 +11569,7 @@ cite img {
   width: 100px;
 }
 
-@media screen and (min-width: 320px) and (max-width: 375px) {
+@media screen and (min-width: 318px) and (max-width: 375px) {
   .logo-comment {
     height: 4vh;
     width: 4vh;
@@ -11588,7 +11587,7 @@ cite img {
     font-size: 12px;
   }
 }
-@media screen and (min-width: 320px) and (max-width: 768px) {
+@media screen and (min-width: 318px) and (max-width: 768px) {
   .card-group {
     padding-top: 60px;
   }
@@ -11604,7 +11603,7 @@ cite img {
     padding-top: 40px;
   }
 }
-@media screen and (min-width: 320px) and (max-width: 568px) {
+@media screen and (min-width: 318px) and (max-width: 568px) {
   .search-box:hover > .search-txt {
     width: 250px;
     transition: 0.5;
@@ -11671,6 +11670,122 @@ cite img {
   .commentaire {
     position: relative;
     top: 70px;
+  }
+}
+@media screen and (min-width: 318px) and (max-width: 375px) {
+  .jaune-or {
+    min-height: 140vh;
+  }
+
+  .login-box {
+    position: relative;
+    top: 30px;
+    width: 300px;
+    height: 690px;
+  }
+
+  .login-box form button {
+    font-size: 13px;
+    position: relative;
+    right: 41px;
+  }
+
+  #btnViewPassword {
+    position: relative;
+    top: -50px;
+    left: 3px;
+  }
+
+  h3, .h3 {
+    position: relative;
+    right: 7px;
+  }
+}
+@media screen and (min-width: 414px) and (max-width: 767px) {
+  .jaune-or {
+    min-height: 110vh;
+  }
+
+  .login-box {
+    position: relative;
+    top: 30px;
+    width: 400px;
+    height: 690px;
+  }
+
+  .login-box form button {
+    font-size: 13px;
+    position: relative;
+    right: 0px;
+  }
+
+  #btnViewPassword {
+    position: relative;
+    top: -50px;
+    left: 3px;
+  }
+
+  h3, .h3 {
+    position: relative;
+    right: 7px;
+  }
+}
+@media screen and (min-width: 767px) and (max-width: 1024px) {
+  .jaune-or {
+    min-height: 100vh;
+  }
+
+  .login-box {
+    position: relative;
+    top: 30px;
+    width: 550px;
+    height: 690px;
+  }
+
+  .login-box form button {
+    font-size: 17px;
+    position: relative;
+    right: 0px;
+  }
+
+  #btnViewPassword {
+    position: relative;
+    top: -50px;
+    left: 3px;
+  }
+
+  h3, .h3 {
+    position: relative;
+    right: 7px;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 2000px) {
+  .jaune-or {
+    min-height: 100vh;
+  }
+
+  .login-box {
+    position: relative;
+    top: 30px;
+    width: 747px;
+    height: 740px;
+  }
+
+  .login-box form button {
+    font-size: 17px;
+    position: relative;
+    right: 0px;
+  }
+
+  #btnViewPassword {
+    position: relative;
+    top: -50px;
+    left: 3px;
+  }
+
+  h3, .h3 {
+    position: relative;
+    right: 7px;
   }
 }
 
