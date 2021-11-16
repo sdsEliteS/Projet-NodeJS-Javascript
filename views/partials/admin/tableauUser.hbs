@@ -15,8 +15,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Avatar</th>
                         <th scope="col">Pseudo</th>
-                        <th scope="col">Verified</th>
-                        <th class="text-center" scope="col">Action</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,12 +29,11 @@
                         {{!-- Incrémentation Tableau Helpers --}}
                         <th scope="row">{{inc @index}} : {{ this.id }}</th>
                         <td class="pt-0 pb-0 text-left align-middle">
-                            <img class="rounded-circle" src="/assets/images/{{ this.avatar }}" style="height: 43px;" alt="">
+                            <img class="rounded-circle" style="height: 33px;" src="/assets/images/{{ this.avatar }}" alt="">
                         </td>
                         <td>{{ this.pseudo }}</td>
-                        <td>True</td>
                         <td>
-                            <div class="d-flex justify-content-evenly">
+                            <div>
                                 <!-- Bouton Edit Open Modal Edit Validation User -->
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal-2{{ this.id }}" data-bs-whatever="@mdo">

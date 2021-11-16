@@ -15,8 +15,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Avatar</th>
                         <th scope="col">Nom</th>
-                        <th scope="col">Verified</th>
-                        <th class="text-center" scope="col">Action</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,12 +28,11 @@
                         {{!-- Incrémentation Tableau Helpers --}}
                         <th scope="row">{{inc @index}} : {{ this.id }}</th>
                         <td class="pt-0 pb-0 text-left align-middle">
-                            <img class="rounded-circle" src="https://picsum.photos/35" alt="">
+                            <img class="rounded-circle" style="height: 33px;" src="https://picsum.photos/35" alt="">
                         </td>
                         <td>{{ this.nom }}</td>
-                        <td>true</td>
                         <td>
-                            <div class="d-flex justify-content-evenly">
+                            <div>
                                 <!-- Bouton Primary open modal vision message -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#modalVisionMessage{{ this.id }}">
