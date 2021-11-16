@@ -109,13 +109,33 @@
                                                         </div>
 
                                                         <div class="col-md-12">
-                                                            <label for="recipient-name" class="col-form-label"></label>
+                                                            <label for="recipient-name" class="col-form-label">Recommandation</label>
                                                             {{!-- Ne pas oublier d'écrire le "name" dans les input en
                                                             rapport avec la methode PUT --}}
                                                             <textarea id="message" name="recommandation" rows="5"
-                                                                placeholder="Recommandation"
+                                                                placeholder=""
                                                                 class="contact-message"> {{ this.recommandation }} </textarea>
                                                         </div>
+
+                                                         <div class="col-md-12">
+                                                            <label for="recipient-name" class="col-form-label">Address</label>
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                            rapport avec la methode PUT --}}
+                                                            <textarea id="message" name="address" rows="5"
+                                                                placeholder=""
+                                                                class="contact-message"> {{ this.address }} </textarea>
+                                                        </div>
+
+                                                         <div class="col-md-12">
+                                                            <label for="recipient-name"
+                                                                class="col-form-label d-flex justify-content-start">Phone</label>
+                                                            {{!-- Ne pas oublier d'écrire le "name" dans les input en
+                                                            rapport avec la methode PUT --}}
+                                                            <input type="text" name="phone"
+                                                                class="form-control" placeholder=""
+                                                                id="recipient-name" value='{{ this.phone }}' />
+                                                        </div>
+
                                                         <div class="col-md-12">
                                                             <div class="contact-form text-center mb-5">
                                                                 {{!-- Methode PUT : Ne pas oublier le type SUBMIT qui

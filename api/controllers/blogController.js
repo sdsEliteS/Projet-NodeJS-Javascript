@@ -53,7 +53,7 @@ exports.createArticle = async (req, res) => {
     // Le req.body du console.log se situant dans l'objet {} est importante afin de rendre visible la réponse du server dans le terminal de commande pour tester de la bonne fiabilité de l'application (Method POST = Remplissage des input en y mettant la valeur qui nous permet ensuite de ressortir les données des colonnes de la table Article dans un terminal de commande afin de constater du bon fonctionnement de l'applis lors du remplissage du modal de la création d'article visionnant les données de la page ADMIN au moment de la validation //
 
     // "insert into" (CREATION) est une requête SQL qui insert les données des colonnes dans une table (Exemple: Table Article) // ID s'auto_increment donc pas besoin de le mentionner dans la Requête SQL //
-    let sql = `INSERT INTO Article (title, description, recommandation, date, dateEdit, image, subdescription, author_id) values (?)`;
+    let sql = `INSERT INTO Article (title, description, recommandation, date, dateEdit, image, subdescription, address, phone, author_id) values (?)`;
     let values = [
         req.body.title,
         req.body.description,
@@ -62,6 +62,8 @@ exports.createArticle = async (req, res) => {
         new Date(Date.now()),
         req.file.nomComplet,
         req.body.subdescription,
+        req.body.address,
+        req.body.phone,
         req.body.author_id
     ];
 
@@ -147,6 +149,8 @@ exports.editArticle = async (req, res) => {
                     description = '${ req.body.description }',
                     recommandation = '${ req.body.recommandation }',
                     subdescription = '${ req.body.subdescription }'
+                    address = '${ req.body.address }',
+                    phone = '${ req.body.phone}'
                 WHERE id = '${ req.params.id }';`
         // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
@@ -178,7 +182,9 @@ exports.editArticle = async (req, res) => {
                     description = '${ req.body.description }',
                     recommandation = '${ req.body.recommandation }',
                     image = '${ req.file.nomComplet }',
-                    subdescription = '${ req.body.subdescription }'
+                    subdescription = '${ req.body.subdescription }',
+                    address = '${ req.body.address }',
+                    phone = '${ req.body.phone}'
                 WHERE id = '${ req.params.id }';`
         // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
