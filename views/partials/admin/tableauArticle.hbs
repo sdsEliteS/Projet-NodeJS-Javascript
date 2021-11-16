@@ -1,5 +1,5 @@
 <!-- Accordeon Liste Article -->
-<section class="pt-4">
+<section class="pt-5">
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -18,11 +18,11 @@
                 <table class="table table-dark table-hover">
                     <thead>
                         <tr>
-                            <th class="text-left" scope="col">#</th>
-                            <th class="text-left" scope="col">Avatar</th>
-                            <th scope="col">Article</th>
+                            <th class="text-left font-size" scope="col">#</th>
+                            <th class="text-left font-size" scope="col">Avatar</th>
+                            <th class="font-size" scope="col">Article</th>
                             {{!-- text-center --}}
-                            <th scope="col">Action</th>
+                            <th class="font-size" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,7 +40,7 @@
                                 <img class="rounded-circle" style="height: 33px;" src="/assets/images/{{ this.image }}"
                                     alt="">
                             </td>
-                            <td> {{ this.title }} </td>
+                            <td class="font-size2"> {{ this.title }} </td>
                             <td>
                                 {{!-- d-flex justify-content-evenly --}}
                                 <div>

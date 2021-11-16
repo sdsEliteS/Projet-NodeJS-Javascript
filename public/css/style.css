@@ -11912,5 +11912,15 @@ cite {
     top: -70px;
   }
 }
+@media screen and (min-width: 318px) and (max-width: 374px) {
+  .font-size {
+    font-size: 10px;
+  }
+}
+@media screen and (min-width: 318px) and (max-width: 374px) {
+  .font-size2 {
+    font-size: 14px;
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
