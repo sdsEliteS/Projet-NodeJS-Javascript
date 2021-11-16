@@ -11822,7 +11822,7 @@ cite {
     right: 7px;
   }
 }
-@media screen and (min-width: 318px) and (max-width: 375px) {
+@media screen and (min-width: 318px) and (max-width: 374px) {
   .jaune-or {
     min-height: 165vh;
   }
@@ -11835,6 +11835,7 @@ cite {
 
   .neon2 {
     position: relative;
+    left: -47.5px;
     top: -80px;
   }
 
@@ -11843,7 +11844,7 @@ cite {
     right: 40px;
   }
 }
-@media screen and (min-width: 375px) and (max-width: 414px) {
+@media screen and (min-width: 375px) and (max-width: 413px) {
   .jaune-or {
     min-height: 140vh;
   }
@@ -11856,6 +11857,7 @@ cite {
 
   .neon2 {
     position: relative;
+    left: -20.5px;
     top: -80px;
   }
 
@@ -11877,6 +11879,7 @@ cite {
 
   .neon2 {
     position: relative;
+    left: -0.5px;
     top: -82px;
   }
 
