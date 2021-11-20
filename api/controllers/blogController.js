@@ -5,9 +5,6 @@
 
 /* Import Module */
 
-/* Gestion des dates */
-const moment = require('moment')
-
 /* Le module Path fournit un moyen de travailler avec des répertoires et des chemins de fichiers */
 const path = require('path')
 
