@@ -139,6 +139,7 @@ exports.editArticle = async (req, res) => {
 
     // Si req.file n'existe pas = S'il y a pas d'image, alors tu vas m'exécuter la requête SQL UPDATE sans l'image //
     if (!req.file) {
+        
         console.log('il y a pas image')
         // Stockage de la Requête SQL - `` = Ctrl + (ALT GR + 7 È ,) //
         let sql = `UPDATE Article
@@ -194,7 +195,7 @@ exports.editArticle = async (req, res) => {
             if (err) console.log(err)
             
             // Interdiction de mettre 2 res.render //
-            // else res.redirect('/admin')
+            else res.redirect('/admin')
 
         })
 
