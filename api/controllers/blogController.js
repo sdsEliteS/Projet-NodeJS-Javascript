@@ -190,12 +190,12 @@ exports.editArticle = async (req, res) => {
         await query(sql)
 
 
-        // Dans manipulation fs unlink + la constante pathImg donnant le chemin de l'image supprimeant la 1er image avant l'Update modifiant l'image //
+        // Dans la manipulation fs unlink + la constante pathImg donnant le chemin de l'image supprimeant la 1er image avant l'Update modifiant l'image //
         fs.unlink(pathImg, (err) => {
             if (err) console.log(err)
             
             // Interdiction de mettre 2 res.render //
-            else res.redirect('/admin')
+            // else res.redirect('/admin')
 
         })
 
