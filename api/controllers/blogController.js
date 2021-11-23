@@ -193,8 +193,8 @@ exports.editArticle = async (req, res) => {
         fs.unlink(pathImg, (err) => {
             if (err) console.log(err)
             
-
-            else res.redirect('/admin')
+            // Interdiction de mettre 2 res.render //
+            // else res.redirect('/admin')
 
         })
 
