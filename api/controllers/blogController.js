@@ -100,7 +100,7 @@ exports.createArticle = async (req, res) => {
 // Code ERREUR = SyntaxError: await is only valid in async function (ATTENTION NE PAS OUBLIER "async" sur la ligne de code exports (Méthode Asynchrone)) //
 // Exportation de la routes du router.js (editArticle) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode PUT (Création) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.editArticle = async (req, res) => {
-    // console.log('Edition Article Page ID', req.body, req.file)
+    console.log('Edition Article Page ID', req.params, req.body, req.file)
 
     /********************************************************** METHODE ASYNCHRONE ***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 
@@ -117,8 +117,8 @@ exports.editArticle = async (req, res) => {
     // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner avec olus de précision nos différentes tables dans la base de donnée MySQL grâce à WHERE //
     // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`),
-        // Constante Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image dans le dossier "image" qui est dans le dossier public //
-        pathImg = path.resolve("public/images/" + article[0].image)
+    // Constante Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image dans le dossier "image" qui est dans le dossier public //
+    pathImg = path.resolve("public/images/" + article[0].image)
 
     console.log('Img', pathImg)
 
@@ -128,9 +128,6 @@ exports.editArticle = async (req, res) => {
     const dbUsers = await query('SELECT * FROM User')
     const dbArticle = await query('SELECT * FROM Article')
     const dbMessage = await query('SELECT * FROM Message')
-
-
-
 
     // .... 2 .... //
 
@@ -142,18 +139,23 @@ exports.editArticle = async (req, res) => {
         console.log('il y a pas image')
         // Stockage de la Requête SQL - `` = Ctrl + (ALT GR + 7 È ,) //
         let sql = `UPDATE Article
-                SET title = '${ req.body.title }',
-                    description = '${ req.body.description }',
-                    recommandation = '${ req.body.recommandation }',
-                    subdescription = '${ req.body.subdescription }',
-                    address = '${ req.body.address }',
-                    phone = '${ req.body.phone }'
-                WHERE id = '${ req.params.id }';`
+                   SET title = '${ req.body.title }',
+                     description = '${ req.body.description }',
+                     recommandation = "${ req.body.recommandation }",
+                     subdescription = "${ req.body.subdescription }",
+                     address = '${ req.body.address }',
+                     phone = '${ req.body.phone }'
+                   WHERE id = ${ req.params.id };`
         // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
-        // Execution de la Requête SQL UPDATE permettant le changement de l'article sans l'image "req.file.nomComplet" avec les écrits ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
-        await query(sql)
 
+        // Essaye avec Try SINON met un message d'erreur //
+        try {
+            // Execution de la Requête SQL UPDATE permettant le changement de l'article sans l'image "req.file.nomComplet" avec les écrits ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
+            await query(sql)
+        } catch (err) {
+            console.log(err)
+        }
 
 
         // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
@@ -170,48 +172,54 @@ exports.editArticle = async (req, res) => {
 
         })
 
-    // Sinon tu vas exécuter la requête SQL avec l'image avec les écrits //
+        // Sinon tu vas exécuter la requête SQL avec l'image avec les écrits //
     } else {
         console.log('il y a une image')
         // Stockage de la Requête SQL - `` = Ctrl + (ALT GR + 7 È ,) //
         let sql = `UPDATE Article
                 SET title = '${ req.body.title }',
                     description = '${ req.body.description }',
-                    recommandation = '${ req.body.recommandation }',
+                    recommandation = "${ req.body.recommandation }",
                     image = '${ req.file.nomComplet }',
-                    subdescription = '${ req.body.subdescription }',
+                    subdescription = "${ req.body.subdescription }",
                     address = '${ req.body.address }',
                     phone = '${ req.body.phone }'
-                WHERE id = '${ req.params.id }';`
+                WHERE id = ${ req.params.id };`
         // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
-        // Execution de la Requête SQL UPDATE permettant le changement de l'article avec l'image "req.file.nomComplet" ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
-        await query(sql)
+
+        // Essaye avec Try SINON met un message d'erreur //
+        try {
+            // Execution de la Requête SQL UPDATE permettant le changement de l'article sans l'image "req.file.nomComplet" avec les écrits ( await mot-clé ne peut être utilisé qu'à l'intérieur d'une methode async (Asynchrone)) //
+            await query(sql)
+        } catch (err) {
+            console.log(err)
+        }
 
 
         // Dans manipulation fs unlink + la constante pathImg donnant le chemin de l'image supprimeant la 1er image avant l'Update modifiant l'image //
         fs.unlink(pathImg, (err) => {
             if (err) console.log(err)
-            
 
-            else res.redirect('/admin')
+
+            // else res.redirect('/admin')
+
+            // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } ) //
+            // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
+            // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis //  Construire le diagramme de classe avec les colonnes grâce à MySQL WORKBENCH //
+            res.render('admin', {
+                articles: dbArticle,
+                message: dbMessage,
+                users: dbUsers,
+                // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+                noFooter: true,
+                // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
+                openArticle: 'show'
+
+            })
 
         })
 
-
-        // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } )
-        // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
-        // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis //  Construire le diagramme de classe avec les colonnes grâce à MySQL WORKBENCH //
-        res.render('admin', {
-            articles: dbArticle,
-            message: dbMessage,
-            users: dbUsers,
-            // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-            noFooter: true,
-            // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
-            openArticle: 'show'
-
-        })
     }
 
 
@@ -231,7 +239,7 @@ exports.editArticle = async (req, res) => {
 // Exportation de la routes du router.js (deleteArticle) dans le Controller avec => une Function opérant un retour d'information en rapport avec la methode DELETE (Suppression) - req = requête faite par l'Utilisateur interrogant le Server et res = response du Server //
 exports.deleteArticle = async (req, res) => {
     console.log('Suppression Article Page ID', req.body, req.params)
- 
+
 
     // La Requête SQL "SELECT * FROM" est mise dans une constante suivi de l'invocation de sa fonction "Méthode Asynchrone" permettant de visionner la table dans la base de donnée MySQL - Fichier db.sql grâce à MySQL WORKBENCH) //
     // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //

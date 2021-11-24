@@ -365,3 +365,7 @@ ReferenceError: hbs is not defined
 [nodemon] restarting due to changes...
 [nodemon] starting `node server.js`
 
+
+supprimer un repo avec git
+
+https://www.sebastien-gandossi.fr/blog/git-supprimer-une-branche-locale-ou-distante
