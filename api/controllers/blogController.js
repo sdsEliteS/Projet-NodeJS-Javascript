@@ -136,6 +136,7 @@ exports.editArticle = async (req, res) => {
 
     // Si req.file n'existe pas = S'il y a pas d'image, alors tu vas m'exécuter la requête SQL UPDATE sans l'image //
     if (!req.file) {
+        
         console.log('il y a pas image')
         // Stockage de la Requête SQL - `` = Ctrl + (ALT GR + 7 È ,) //
         let sql = `UPDATE Article
@@ -197,10 +198,9 @@ exports.editArticle = async (req, res) => {
         }
 
 
-        // Dans manipulation fs unlink + la constante pathImg donnant le chemin de l'image supprimeant la 1er image avant l'Update modifiant l'image //
+        // Dans la manipulation fs unlink + la constante pathImg donnant le chemin de l'image supprimeant la 1er image avant l'Update modifiant l'image //
         fs.unlink(pathImg, (err) => {
             if (err) console.log(err)
-
 
             // else res.redirect('/admin')
 
