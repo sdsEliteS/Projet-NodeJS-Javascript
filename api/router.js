@@ -108,24 +108,24 @@ router.route('/admin')
     .get(adminController.getPageAdmin)
 
 
-// URL Page Formulaire Article (Page Admin Formulaire de Création d'Article + Upload Dossier Image Article (btnCreateArticle))
+// URL Page Formulaire d'Article (Page Admin Formulaire Modal de Création d'Article + Upload Dossier Image Article (btnCreateArticle))
 router.route('/UploadArticle')
     .post(upload.single('imgArticle'),blogController.createArticle)
 
 
-// URL Page Formulaire Edition Article (Page Admin Formulaire Edition + Upload Image Dossier Image ET Suppression d'Article (tableauArticle))
+// URL Page Formulaire Edition et Suppression d'Article (Page Admin Formulaire Modal Edition + Upload Image Dossier Image ET Modal Suppression d'Article (tableauArticle))
 router.route('/UploadArticle2/:id')
     .put(upload.single('imgArticle'),blogController.editArticle)
     .delete(blogController.deleteArticle)
 
 
-// URL Page Formulaire Edition Utilisateur (Page Admin Formulaire Edition ET Suppression d'Utilisateur (tableauUser))
+// URL Page Formulaire Edition Utilisateur (Page Admin Formulaire Modal Edition ET Modal Suppression d'Utilisateur (tableauUser))
 router.route('/editer/:id')
     .put(adminController.editUser)
     .delete(adminController.deleteUser)
 
 
-// URL Page Formulaire Message d'Utilisateur (Page Admin Suppression du Message (tableauMessage))
+// URL Page Formulaire Message d'Utilisateur (Page Admin Modal Suppression du Message (tableauMessage))
 router.route('/message/:id')
     .delete(contactController.deleteMessage)
 
