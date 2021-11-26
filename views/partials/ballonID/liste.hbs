@@ -35,7 +35,7 @@
                             <!-- Button modal -->
 
                             <button type="button" class="btn btn-light" data-bs-toggle="modal"
-                                data-bs-target="#modalDeleteButton1">
+                                data-bs-target="#modalDeleteButton{{ ../this.id }}">
                                 Supprimer
                             </button>
 
@@ -54,7 +54,7 @@
                             
 
                             <!-- Modal Animation -->
-                            <div class="modal fade" id="modalDeleteButton1" data-bs-backdrop="static"
+                            <div class="modal fade" id="modalDeleteButton{{ this.id }}" data-bs-backdrop="static"
                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalDeleteButton1Label"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
@@ -67,6 +67,7 @@
                                         </div>
                                         <div class="modal-body">
                                             Etes-vous sûr de vouloir supprimer ce commentaire ?
+                                            {{!-- {{ this.content }} --}}
                                         </div>
                                         <div class="modal-footer">
                                             {{!-- Methode DELETE : Ne pas oublier le type SUBMIT qui est un
