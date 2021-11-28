@@ -116,8 +116,8 @@ exports.editArticle = async (req, res) => {
     // Les Requêtes SQL "SELECT * FROM" sont misent dans des constantes permettant de visionner avec olus de précision nos différentes tables dans la base de donnée MySQL grâce à WHERE //
     // Execution de la Requête SQL SELECT ( "await" est toujours utilisé dans le cadre d'une méthode asynchrome = async ) //
     const article = await query(`SELECT * FROM Article WHERE id = ${ req.params.id }`),
-    // Constante Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouve une image dans le dossier "image" qui est dans le dossier public //
-    pathImg = path.resolve("public/images/" + article[0].image)
+        // Constante Path.resolve = Méthode résout une séquence de chemins ou de segments de chemin en un chemin absolu pour retrouver une image dans le dossier "image" qui est dans le dossier public //
+        pathImg = path.resolve("public/images/" + article[0].image)
 
     console.log('Img', pathImg)
 
@@ -135,7 +135,7 @@ exports.editArticle = async (req, res) => {
 
     // Si req.file n'existe pas = S'il y a pas d'image, alors tu vas m'exécuter la requête SQL UPDATE sans l'image //
     if (!req.file) {
-        
+
         console.log('il y a pas image')
         // Stockage de la Requête SQL - `` = Ctrl + (ALT GR + 7 È ,) //
         let sql = `UPDATE Article
@@ -218,7 +218,7 @@ exports.editArticle = async (req, res) => {
             openArticle: 'show'
 
         })
-            
+
     }
 
 }
