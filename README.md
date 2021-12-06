@@ -296,3 +296,7 @@ https://github.com/hsukrd/architecture-nodejs-base/tree/image
 https://github.com/hsukrd/architecture-nodejs-base/blob/a0dd4d57b25a6c3a0d42c3c6594b7158c9e4435c/api/controllers/articleController.js#L93
 
 https://practicalprogramming.fr/how-to-use-node-fs
+
+
+"veb": "nodemon server.js" = npm run veb
+"sass": "sass --watch public/sass/index.sass:public/css/style.css" = npm run sass
