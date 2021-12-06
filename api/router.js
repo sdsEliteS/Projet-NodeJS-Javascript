@@ -24,8 +24,8 @@ const homeController = require('./controllers/homeController'),
 const upload = require('../config/multer')
 
 /*
- * Middleware - Sécurité Admin
- * *************************** */
+ * Middleware - Sécurité Panneatage Admin
+ * ************************************** */
 const isAdmin = require('./middleware/admin')
 
 
