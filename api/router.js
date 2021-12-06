@@ -176,7 +176,7 @@ router.route('/profil')
 
 // URL Image Profil (ATTENTION !!! : avec un .post on peut faire un methode PUT)
 router.route('/UploadAvatar/:id')
-    .post(upload.single('imgArticle'),profilController.createAvatar)
+    .post(upload.single('imgArticle'),profilController.editAvatar)
 
 // URL New Mot de Passe
 router.route('/NewPassword/:id')

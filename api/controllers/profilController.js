@@ -51,7 +51,7 @@ exports.getPageProfil = async (req, res) => {
 
 
 // Photo du compte Profil //
-exports.createAvatar = async (req, res) => {
+exports.editAvatar = async (req, res) => {
 
   console.log('Controller Create Avatar', req.body, req.file, req.params)
 
@@ -66,7 +66,7 @@ exports.createAvatar = async (req, res) => {
   // console.log('User Avatar', userAvatar)
 
   const pathImg2 = path.resolve("public/images/" + userAvatar[0].avatar)
-  
+
 
   /***************************************************************** CONDITION **********************************************************************************************************************************************************************************************************************************************************************/
   // Si userAvatar n'existe pas (Erreur) alors tu me renvoie l'URL '/profil' se situant dans le view. Sinon tu m'exécutes la function en rapport avec la changement d'image du compte profil //
@@ -78,9 +78,14 @@ exports.createAvatar = async (req, res) => {
     // Mettre en relation l'Image du compte profil avec la session de l'Utilisateur //
     req.session.user.avatar = req.file.nomComplet
 
-    fs.unlink(pathImg2, (err) => {
-      if (err) console.log(err)
-    })
+    console.log('image suppr', pathImg2)
+
+    if (userAvatar[0].avatar !== 'default-profile.png') {
+      fs.unlink(pathImg2, (err) => {
+        if (err) console.log(err)
+      })
+    }
+
 
     // Permet de rediriger l'Utilisateur vers l'URL '/profil' se situant dans le view //
     res.render('profil', {
@@ -113,7 +118,7 @@ exports.newPassword = async (req, res) => {
     res.render('profil', {
       error: 'Le mot de passe contient moins de 6 caractères'
     })
-    
+
   } else {
     /* Bcrypt - Hash afin de crypté protégeant le mot de passe de l'Utilisateur en rapport avec le modal remplissant le formulaire de la modification du mot de passe */
     const hash = await bcrypt.hash(req.body.nouveau_password, 10)
@@ -131,7 +136,7 @@ exports.newPassword = async (req, res) => {
       res.render('profil', {
 
         // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-        noFooter:true,
+        noFooter: true,
 
         // Message validant la manipulation //
         success: 'Votre mot de passe à bien été modifié !'
