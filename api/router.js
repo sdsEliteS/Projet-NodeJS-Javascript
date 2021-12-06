@@ -23,6 +23,11 @@ const homeController = require('./controllers/homeController'),
  * ********** */
 const upload = require('../config/multer')
 
+/*
+ * Middleware - Sécurité Admin
+ * *************************** */
+const isAdmin = require('./middleware/admin')
+
 
 /*
  * Déclaration des routes 
@@ -105,29 +110,29 @@ router.route('/delcomment/:id')
 
 // URL Page Admin
 router.route('/admin')
-    .get(adminController.getPageAdmin)
+    .get(isAdmin, adminController.getPageAdmin)
 
 
 // URL Page Formulaire d'Article (Page Admin Formulaire Modal de Création d'Article + Upload Dossier Image Article (btnCreateArticle))
 router.route('/UploadArticle')
-    .post(upload.single('imgArticle'),blogController.createArticle)
+    .post(isAdmin, upload.single('imgArticle'),blogController.createArticle)
 
 
 // URL Page Formulaire Edition et Suppression d'Article (Page Admin Formulaire Modal Edition + Upload Image Dossier Image ET Modal Suppression d'Article (tableauArticle))
 router.route('/UploadArticle2/:id')
-    .put(upload.single('imgArticle'),blogController.editArticle)
-    .delete(blogController.deleteArticle)
+    .put(isAdmin, upload.single('imgArticle'),blogController.editArticle)
+    .delete(isAdmin, blogController.deleteArticle)
 
 
 // URL Page Formulaire Edition Utilisateur (Page Admin Formulaire Modal Edition ET Modal Suppression d'Utilisateur (tableauUser))
 router.route('/editer/:id')
-    .put(adminController.editUser)
-    .delete(adminController.deleteUser)
+    .put(isAdmin, adminController.editUser)
+    .delete(isAdmin, adminController.deleteUser)
 
 
 // URL Page Formulaire Message d'Utilisateur (Page Admin Modal Suppression du Message (tableauMessage))
 router.route('/message/:id')
-    .delete(contactController.deleteMessage)
+    .delete(isAdmin, contactController.deleteMessage)
 
 
 
