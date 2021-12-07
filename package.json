@@ -8,7 +8,7 @@
     "start": "node server.js",
     "veb": "nodemon server.js",
     "sass": "sass --watch public/sass/index.sass:public/css/style.css",
-    "mocha_async":"nodemon --exec 'mocha ./test/async_mocha_starter.js'"
+    "mocha":"nodemon --exec 'mocha ./test/mocha.js'"
   },
   "author": "hsuk",
   "license": "ISC",

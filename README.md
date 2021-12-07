@@ -298,5 +298,26 @@ https://github.com/hsukrd/architecture-nodejs-base/blob/a0dd4d57b25a6c3a0d42c3c6
 https://practicalprogramming.fr/how-to-use-node-fs
 
 
+
+
+
+
+
+
+
 "veb": "nodemon server.js" = npm run veb
+
 "sass": "sass --watch public/sass/index.sass:public/css/style.css" = npm run sass
+
+"mocha":"nodemon --exec 'mocha ./test/mocha.js'" = npm run mocha
+
+
+# TEST UNITAIRE 
+
+https://nodejs.org/api/assert.html
+
+https://latavernedutesteur.fr/2017/11/03/tdd-test-driven-development/#:~:text=TDD%20tests%20unitaires,afin%20de%20valider%20ces%20tests.
+
+https://unitjs.com/guide/assert-node-js.html
+
+https://github.com/hsukrd/api-node-mysql/blob/module-async/store-sql/delete.js
