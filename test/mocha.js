@@ -40,7 +40,7 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
         })
     });
 
-    // MÉTHODE POST utilisant l'article crée par le before each et STOCKER PAR ...  //
+    // MÉTHODE POST utilisant l'article crée par le before each et STOCKER par le code ci-dessous (Au dessus du Each) ...  //
     // it prend en compte une méthode !! //
     // Req.body regroupant toute les données que je veux dans mon article (TEST) //
     it("POST // Article", async () => {
@@ -97,25 +97,26 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
     // METHODE GET //
     it("Get By ID // Article", async () => {
 
-        // Suppresssion
+       
         let sql = `SELECT * FROM Article WHERE id = ${ article.id }`;
         const articleID = await query(sql)
 
-        // Check que la suppression c'est bien passer
+        // Check mentionnant que le rechargement des données c'est bien passer //
         assert.deepStrictEqual(articleID[0].id, article.id)
-        // assert.deepStrictEqual([], NewTableau)
     });
 
     // METHODE DELETE //
     it("DELETE ALL // Article", async () => {
 
-        // Suppresssion
+        // Suppression
         let sql = `DELETE FROM Article`;
         await query(sql)
 
-        // Check que la suppression c'est bien passer
+        // Check mentionnant que la suppression c'est bien passer
         const NewTableau = await query(`SELECT * FROM Article`)
-        console.log('check articles', NewTableau)
+        // console.log('check articles', NewTableau)
+
+        // L'un ou l'autre  //
         assert.deepStrictEqual(0, NewTableau.length)
         // assert.deepStrictEqual([], NewTableau)
     });
@@ -132,9 +133,22 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
 
         await query (sql)
 
-        const NewTableau = await query(`SELECT * FROM Article WHERE id`)
+        const NewTableau2 = await query(`SELECT * FROM Article WHERE id`)
 
-        assert.deepStrictEqual(0, NewTableau.length)
+        assert.deepStrictEqual(0, NewTableau2.length)
+        // assert.deepStrictEqual([], NewTableau)
+    });
+
+     // METHODE DELETE //
+     it("DELETE By ID // Article", async () => {
+
+        // Suppresssion
+        let sql = `DELETE FROM Article WHERE id`;
+        await query(sql)
+
+        // Check que la suppression c'est bien passer
+        const NewTableau3 = await query(`SELECT * FROM Article WHERE id`)
+        assert.deepStrictEqual(0, NewTableau3.length)
         // assert.deepStrictEqual([], NewTableau)
     });
 
