@@ -9,6 +9,7 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
 
     const key = [],
         val = [];
+
     const now = new Date(Date.now())
     const body = {
         title: "Steven",
@@ -22,6 +23,7 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
         phone: '0632353634',
         author_id: 1,
     }
+
     Object.entries(body).forEach(kv => {
         // console.log('kv', kv)
         key.push(kv[0]) // L'index du tableau commence par 0 et surtout découpant chaque key value dans un nouveau tableau donc 0 restera 0 //
@@ -124,7 +126,23 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
     // METHOD UPDATE //
     it ("UPDATE By ID // Article", async() => {
 
-        const set = []
+        const now = new Date(Date.now())
+        const body = {
+            title: "Steven",
+            description: "Ma super description",
+            recommandation: "je recommande",
+            date: now,
+            dateEdit: now,
+            image: "/path/to/image.png",
+            subdescription: "ma sous description",
+            address: "11 rue de olivette",
+            phone: '0632353634',
+            author_id: 1,
+        }
+
+        const set = [],
+            key = [],
+            val = []
         Object.entries(body).forEach(kv => { key.push(kv[0]) = val.push(kv[1]) })
 
         let sql = `UPDATE Article
@@ -138,6 +156,9 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
         assert.deepStrictEqual(0, NewTableau2.length)
         // assert.deepStrictEqual([], NewTableau)
     });
+
+
+
 
      // METHODE DELETE //
      it("DELETE By ID // Article", async () => {

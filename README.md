@@ -320,4 +320,6 @@ https://latavernedutesteur.fr/2017/11/03/tdd-test-driven-development/#:~:text=TD
 
 https://unitjs.com/guide/assert-node-js.html
 
+https://github.com/hsukrd/api-node-mysql/tree/module-async/store-sql
+
 https://github.com/hsukrd/api-node-mysql/blob/module-async/store-sql/delete.js
