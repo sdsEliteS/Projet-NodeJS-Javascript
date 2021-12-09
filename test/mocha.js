@@ -109,71 +109,65 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
         assert.deepStrictEqual(articleID[0].id, article.id)
     });
 
-    // METHODE DELETE //
-    it("DELETE ALL // Article", async () => {
-
-        // Suppression
-        let sql = `DELETE FROM Article`;
-        await query(sql)
-
-        // Check mentionnant que la suppression c'est bien passer
-        const NewTableau = await query(`SELECT * FROM Article`)
-        // console.log('check articles', NewTableau)
-
-        // L'un ou l'autre  //
-        assert.deepStrictEqual(0, NewTableau.length)
-        // assert.deepStrictEqual([], NewTableau)
-    });
-
     // METHOD UPDATE //
     it ("UPDATE By ID // Article", async() => {
 
-        const now = new Date(Date.now())
         const body = {
-            title: "Steven",
-            description: "Ma super description",
-            recommandation: "je recommande",
-            date: now,
-            dateEdit: now,
-            image: "/path/to/image.png",
-            subdescription: "ma sous description",
-            address: "11 rue de olivette",
-            phone: '0632353634',
+            title: "Steven edit",
+            description: "Ma super description edit",
+            recommandation: "je recommande edit",
+            image: "/path/to/image.png edit",
+            subdescription: "ma sous description edit",
+            address: "11 rue de olivette edit",
+            phone: '0632353634 edit',
             author_id: 1,
         }
 
-        const set = [],
-            key = [],
-            val = []
-        Object.entries(body).forEach(kv => { key.push(kv[0]) = val.push(kv[1]) })
+        const set = []
+
+        Object.entries(body).forEach(kv => set.push(` ${kv[0]} = '${kv[1]}' `))
 
         let sql = `UPDATE Article
                     SET ${ set.toString() }
-                   WHERE = '${ id }';`;
+                   WHERE id = '${ article.id }';`;
 
         await query (sql)
 
-        const NewTableau2 = await query(`SELECT * FROM Article WHERE id`)
+        const checkArticle = await query(`SELECT * FROM Article WHERE id = ${ article.id }`)
 
-        assert.deepStrictEqual(0, NewTableau2.length)
-        // assert.deepStrictEqual([], NewTableau)
+        assert.deepStrictEqual(body.title, checkArticle[0].title)
     });
-
-
-
 
      // METHODE DELETE //
      it("DELETE By ID // Article", async () => {
 
         // Suppresssion
-        let sql = `DELETE FROM Article WHERE id`;
+        let sql = `DELETE FROM Article WHERE id = ${ article.id }`;
         await query(sql)
 
         // Check mentionnant que la suppression c'est bien passer
-        const NewTableau3 = await query(`SELECT * FROM Article WHERE id`)
-        assert.deepStrictEqual(0, NewTableau3.length)
+        const checkDeleteArticle = await query(`SELECT * FROM Article WHERE id = ${ article.id }`)
+        assert.deepStrictEqual(0, checkDeleteArticle.length)
         // assert.deepStrictEqual([], NewTableau)
     });
+
+
+    // // METHODE DELETE //
+    // it("DELETE ALL // Article", async () => {
+
+    //     // Suppression
+    //     let sql = `DELETE FROM Article`;
+    //     await query(sql)
+
+    //     // Check mentionnant que la suppression c'est bien passer
+    //     const NewTableau = await query(`SELECT * FROM Article`)
+    //     // console.log('check articles', NewTableau)
+
+    //     // L'un ou l'autre  //
+    //     assert.deepStrictEqual(0, NewTableau.length)
+    //     // assert.deepStrictEqual([], NewTableau)
+    // });
+
 
 
 });

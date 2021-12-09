@@ -8,3 +8,8 @@ https://www.w3schools.com/jsref/met_win_settimeout.asp
 # toLowerCase (convertit une chaine de caractère en miniscule)
 
 https://www.w3schools.com/jsref/jsref_tolowercase.asp#:~:text=Definition%20and%20Usage,method%20to%20convert%20to%20uppercase.
+
+
+# Générer date automatique :
+
+`dateEdit` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
