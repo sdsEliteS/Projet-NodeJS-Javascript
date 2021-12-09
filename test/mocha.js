@@ -79,7 +79,7 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
         const newArticle = await query(sql, [val])
         // console.log('newArticle', newArticle);
 
-        // Découpage de chaque donnée point par point : VALISATION //
+        // Découpage de chaque donnée point par point : VALIDATION //
         const ArticleID = await query(`SELECT * FROM Article WHERE id = ${ newArticle.insertId }`)
         // console.log('ArticleID', ArticleID[0])
 
@@ -168,7 +168,7 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
         let sql = `DELETE FROM Article WHERE id`;
         await query(sql)
 
-        // Check que la suppression c'est bien passer
+        // Check mentionnant que la suppression c'est bien passer
         const NewTableau3 = await query(`SELECT * FROM Article WHERE id`)
         assert.deepStrictEqual(0, NewTableau3.length)
         // assert.deepStrictEqual([], NewTableau)
