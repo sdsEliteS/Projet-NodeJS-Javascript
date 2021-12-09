@@ -302,14 +302,15 @@ https://practicalprogramming.fr/how-to-use-node-fs
 
 
 
-
-
+# Commande de lancement du projet :
 
 "veb": "nodemon server.js" = npm run veb
 
 "sass": "sass --watch public/sass/index.sass:public/css/style.css" = npm run sass
 
 "mocha":"nodemon --exec 'mocha ./test/mocha.js'" = npm run mocha
+
+
 
 
 # TEST UNITAIRE 
