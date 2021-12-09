@@ -27,10 +27,11 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
     Object.entries(body).forEach(kv => {
         // console.log('kv', kv)
         key.push(kv[0]) // L'index du tableau commence par 0 et surtout découpant chaque key value dans un nouveau tableau donc 0 restera 0 //
-        val.push(kv[1]) // Pareillement pour le 1 de la valeur //
+        val.push(kv[1]) // Pareillement pour l'index 1 de la valeur //
     })
 
     // Créer les articles pour le stocker dans le code ci-dessus //
+    // Key.toString reprend les éléments du tableau dans le constante key //
     beforeEach((done) => {
         let sql = `INSERT INTO Article ( ${key.toString() } ) values(?)`;
         query(sql, [val], function (err, data, fields) {
