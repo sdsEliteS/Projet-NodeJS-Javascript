@@ -205,7 +205,7 @@ mysql> select * from Article left outer join Comment on Article.id = Comment.ref
 
 
 
-Autre Manipulation : Par exemple : Dans mon projet comment récupérer que les Articles de l'Utilisateur 1 ou 2 :
+Autre Manipulation : Par exemple : Dans mon projet comment récupére que les Articles de l'Utilisateur 1 ou 2 :
 
 mysql> select * from Article where author_id = 1;
 

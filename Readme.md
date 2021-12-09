@@ -53,7 +53,7 @@ https://roytuts.com/nodejs-express-mysql-rest-api-crud-example/
 * Heure et Date dans le Commentaire d'un Article
 ************************************************
 
-Vérifier le TIMESTAMP en tapant la commande suivante:  DESCRIBE COMMENT;
+Vérifier le TIMESTAMP en tapant la commande suivante:  DESCRIBE Comment;
 
 +-----------+--------------+------+-----+-------------------+-------------------+
 | Field     | Type         | Null | Key | Default           | Extra             |
