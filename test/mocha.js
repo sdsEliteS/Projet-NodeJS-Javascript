@@ -72,7 +72,7 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
         })
 
         // console.log('key', key, val)
-        // Permet la récupération des tableaux key value dans la requête SQL //
+        // Permet la récupération du tableau key value dans la requête SQL //
         let sql = `INSERT INTO Article ( ${key.toString() } ) values(?)`;
 
         // Récupération des données de la requête SQL permettant la création du nouvel article //
