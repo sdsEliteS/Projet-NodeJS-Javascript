@@ -24,6 +24,7 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
         author_id: 1,
     }
 
+    // J'utilise un systême de tableau key value //
     Object.entries(body).forEach(kv => {
         // console.log('kv', kv)
         key.push(kv[0]) // L'index du tableau commence par 0 et surtout découpant chaque key value dans un nouveau tableau donc 0 restera 0 //
