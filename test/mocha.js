@@ -152,21 +152,21 @@ describe("MOCHA_ASYNC // CRUD // Article", async () => {
     });
 
 
-    // // METHODE DELETE //
-    // it("DELETE ALL // Article", async () => {
+    // METHODE DELETE //
+    it("DELETE ALL // Article", async () => {
 
-    //     // Suppression
-    //     let sql = `DELETE FROM Article`;
-    //     await query(sql)
+        // Suppression
+        let sql = `DELETE FROM Article`;
+        await query(sql)
 
-    //     // Check mentionnant que la suppression c'est bien passer
-    //     const NewTableau = await query(`SELECT * FROM Article`)
-    //     // console.log('check articles', NewTableau)
+        // Check mentionnant que la suppression c'est bien passer
+        const NewTableau = await query(`SELECT * FROM Article`)
+        // console.log('check articles', NewTableau)
 
-    //     // L'un ou l'autre  //
-    //     assert.deepStrictEqual(0, NewTableau.length)
-    //     // assert.deepStrictEqual([], NewTableau)
-    // });
+        // L'un ou l'autre  //
+        assert.deepStrictEqual(0, NewTableau.length)
+        // assert.deepStrictEqual([], NewTableau)
+    });
 
 
 
