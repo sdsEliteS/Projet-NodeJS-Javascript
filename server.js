@@ -34,12 +34,14 @@ app.use(morgan('dev'))
 app.use(methodOverride('_method'));
 
 
+// dotenv - Sécurisation d'accès à ma base de donnée //
+require('dotenv').config()
 // Configuration MySQL - (Nom de la base de données = mydb)
 const options = {
-    host: 'localhost',
-    user: 'steven',
-    password: 'LionelMessi30*',
-    database: 'mydb'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
 };
 
 db = mysql.createConnection(options);

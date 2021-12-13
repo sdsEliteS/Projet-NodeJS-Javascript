@@ -8,13 +8,14 @@
     "start": "node server.js",
     "veb": "nodemon server.js",
     "sass": "sass --watch public/sass/index.sass:public/css/style.css",
-    "mocha":"nodemon --exec 'mocha ./test/mocha.js'"
+    "mocha": "nodemon --exec 'mocha ./test/mocha.js'"
   },
   "author": "hsuk",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.2",
     "express-mysql-session": "^2.1.7",
