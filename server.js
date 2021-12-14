@@ -11,6 +11,7 @@ const mysql = require('mysql');
 const util = require('util');
 const expressSession = require('express-session');
 const MySQLStore = require('express-mysql-session')(expressSession);
+// Méthode de chiffrement pour protéger le Password de ma DB //
 
 const morgan = require('morgan')
 
@@ -43,6 +44,7 @@ const options = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE
 };
+console.log(options, 'OPTIONS')
 
 db = mysql.createConnection(options);
 
@@ -51,7 +53,7 @@ db.connect(function (err) {
     console.log('connected as id ' + db.threadId);
 });
 
-// Rendre la variable db = base de donnée asynchrone par un systeme de promesse  (util.promisify)
+// Rendre la variable db = base de donnée asynchrone par un systeme de promesse (util.promisify)
 const query = util.promisify(db.query).bind(db);
 global.query = query;
 
