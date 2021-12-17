@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`User` (
   `telephone` VARCHAR(255) NOT NULL,
   `birthday` DATE NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `pseudo_UNIQUE` (`pseudo` ASC) VISIBLE)
-ENGINE = InnoDB;
+  UNIQUE INDEX `pseudo_UNIQUE` (`pseudo` ASC) VISIBLE
+) ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
