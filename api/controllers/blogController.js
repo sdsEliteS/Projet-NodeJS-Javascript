@@ -140,12 +140,12 @@ exports.editArticle = async (req, res) => {
         // Stockage de la Requête SQL - `` = Ctrl + (ALT GR + 7 È ,) //
         let sql = `UPDATE Article
                    SET title = '${ req.body.title }',
-                     description = '${ req.body.description }',
-                     recommandation = "${ req.body.recommandation }",
-                     subdescription = "${ req.body.subdescription }",
-                     address = '${ req.body.address }',
-                     phone = '${ req.body.phone }'
-                   WHERE id = ${ req.params.id };`
+                        description = '${ req.body.description }',
+                        recommandation = "${ req.body.recommandation }",
+                        subdescription = "${ req.body.subdescription }",
+                        address = '${ req.body.address }',
+                        phone = '${ req.body.phone }'
+                    WHERE id = ${ req.params.id };`
         // req.params est l'id donner en paramètre de l'URL (/Article/:id exemple: /Article/1) permettant d'édit l'id de l'Article qu'on souhaite (1,2,3 ou 4 etc....) s'il y en plusieurs également - Information sur l'édition de l'id mentionner également dans le terminal de commande (Chaque Article à un numero d'id précis //
 
 
@@ -196,26 +196,27 @@ exports.editArticle = async (req, res) => {
             console.log(err)
         }
 
+        // Récupération des nouvelles données après l'execution de la fonction callback en rapport avec le requête SQL UPDATE //
+        const dbUsers = await query('SELECT * FROM User')
+        const dbArticle = await query('SELECT * FROM Article')
+        const dbMessage = await query('SELECT * FROM Message')
 
         // Dans la manipulation fs unlink + la constante pathImg donnant le chemin de l'image supprimeant la 1er image avant l'Update modifiant l'image //
-        fs.unlink(pathImg, (err) => {
+        fs.unlink(pathImg, async (err) => {
             if (err) console.log(err)
 
-            // else res.redirect('/admin')
-
-        })
-
-        // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } ) //
-        // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
-        // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis //  Construire le diagramme de classe avec les colonnes grâce à MySQL WORKBENCH //
-        res.render('admin', {
-            articles: dbArticle,
-            message: dbMessage,
-            users: dbUsers,
-            // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
-            noFooter: true,
-            // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
-            openArticle: 'show'
+            // res.render renvoi à l'Utilisateur le fichier handlebars 'admin' HTML Handlebars se situant dans le DOSSIER views et un Object JSON {} au format { KEY (articles): VALUE (dbArticle) } = (Exemple: { article: dbArticle } ) //
+            // MEMO: la clef (key) sera utiliser dans notre front-end (view - partials handlebars (exemple: {{#each KEY }} {{/each}} )) //
+            // Le fichier Handlebars tableauArticle est dans le DOSSIER Admin. Cette manipulation permet de faire fonctionner le FRONT-END en exportant les données des colonnes du tableau dans le terminal de commande afin de constater du bon fonctionnement de l'applis //  Construire le diagramme de classe avec les colonnes grâce à MySQL WORKBENCH //
+            else res.render('admin', {
+                articles: dbArticle,
+                message: dbMessage,
+                users: dbUsers,
+                // BOOLEAN pouvant être mis dans le cadre d'une condition VOIR PAGE MAIN DANS LE LAYOUT (Un boolean c'est soit TRUE OU FALSE) //
+                noFooter: true,
+                // Faisant partie de l'Objet "openArticle: 'show'" permettant lors de l'édition de rester sur la page Admin Section Liste Article en mettant un "openArticle" dans la div <div id="collapseOne" class="accordion-collapse collapse {{ openArticle }}" aria-labelledby="headingOne" du fichier Handlebars tableauArticle //
+                openArticle: 'show'
+            })
 
         })
 
