@@ -11,10 +11,5 @@ module.exports = {
             return options.fn(this);
         }
         return options.inverse(this);
-    },
-    // Dates Commentaire //
-    formatDate: function (date, format) {
-        return moment(date).utc().format(format)
     }
-
 }
