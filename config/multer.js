@@ -1,4 +1,5 @@
-const multer = require('multer'); // Import de Multer //
+// Import de Multer //
+const multer = require('multer'); 
 
 // Configuration de stockage de Multer
 const storage = multer.diskStorage({
@@ -17,6 +18,7 @@ const storage = multer.diskStorage({
     }
 
 })
+
 // Initialisation des paramètres de la configuration Multer //
 const upload = multer({
 
@@ -44,4 +46,6 @@ const upload = multer({
         }
     }
 })
-module.exports = upload // Exportation de upload afin de pouvoir l'appeler dans notre router.js //
+
+// Exportation de upload afin de pouvoir l'appeler dans notre router.js //
+module.exports = upload 
