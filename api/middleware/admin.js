@@ -5,4 +5,4 @@ module.exports = (req, res, next) => {
     if (req.session.isAdmin === true) next()
     else res.redirect('/')
 }
-// Un middleware est un tampon bloquant les accès empêchant l'exécution d'une fonction callback d'un controller dans l'URL du navigateur //
+// Un middleware est un tampon bloquant les accès empêchant l'exécution d'une fonction callback d'un controller en tapant l'adresse dans l'URL du navigateur //
