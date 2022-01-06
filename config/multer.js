@@ -18,7 +18,6 @@ const storage = multer.diskStorage({
     }
 
 })
-
 // Initialisation des paramètres de la configuration Multer //
 const upload = multer({
 
@@ -46,6 +45,4 @@ const upload = multer({
         }
     }
 })
-
-// Exportation de upload afin de pouvoir l'appeler dans notre router.js //
-module.exports = upload
+module.exports = upload // Exportation de upload afin de pouvoir l'appeler dans notre router.js //
