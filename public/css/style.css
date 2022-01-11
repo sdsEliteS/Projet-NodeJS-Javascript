@@ -74,7 +74,7 @@ body {
 /* MANIPULATION Bordure 
  * * ******************** */
 .bdr-b-dark {
-  border-bottom: solid black 2px;
+  border-bottom: solid black 1px;
   margin-bottom: 30px;
 }
 
@@ -1195,6 +1195,39 @@ cite {
   .font-size2 {
     font-size: 14px;
   }
+}
+.seperator {
+  width: 1950px;
+  height: 60px;
+  animation: rotate 3s infinite linear;
+  -webkit-animation: rotate 3s infinite linear;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    background-position: -1950px;
+  }
+  to {
+    background-position: 0px;
+  }
+}
+@keyframes rotate {
+  from {
+    background-position: -1950px;
+  }
+  to {
+    background-position: 0px;
+  }
+}
+.gradient {
+  background: #30ff90;
+  background: -moz-linear-gradient(left, #30ff90 0%, #ed2ded 25%, #c99826 50%, #30ffe6 75%, #30ff90 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #30ff90), color-stop(25%, #ed2ded), color-stop(50%, #c99826), color-stop(75%, #30ffe6), color-stop(100%, #30ff90));
+  background: -webkit-linear-gradient(left, #30ff90 0%, #ed2ded 25%, #c99826 50%, #30ffe6 75%, #30ff90 100%);
+  background: -o-linear-gradient(left, #30ff90 0%, #ed2ded 25%, #c99826 50%, #30ffe6 75%, #30ff90 100%);
+  background: -ms-linear-gradient(left, #30ff90 0%, #ed2ded 25%, #c99826 50%, #30ffe6 75%, #30ff90 100%);
+  background: linear-gradient(to right, #30ff90 0%, #ed2ded 25%, #c99826 50%, #30ffe6 75%, #30ff90 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#30ff90", endColorstr="#30ff90",GradientType=1 );
 }
 
 /*# sourceMappingURL=style.css.map */
