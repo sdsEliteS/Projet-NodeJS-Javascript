@@ -78,6 +78,10 @@ body {
   margin-bottom: 30px;
 }
 
+.bdr-t-dark {
+  border-top: solid black 1px;
+}
+
 .bdr-r-dark {
   border-right: solid #00d9ff 0.1em;
   height: 75%;
