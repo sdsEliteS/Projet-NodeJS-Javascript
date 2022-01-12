@@ -55,11 +55,11 @@ body {
 /* MANIPULATION du Bouton Navbar
  * * ***************************** */
 .navbar-toggler {
-  border: 2px solid;
+  border: 1.25px solid;
 }
 
 #monMenu a:hover {
-  color: #00d9ff;
+  color: #ffd000;
   text-shadow: 1px 2px 2px #262626, 2px 2px 1px #262626, 2px 1px 2px #262626, -1px 1px;
 }
 
@@ -1198,14 +1198,14 @@ cite {
 }
 .seperator {
   width: 1950px;
-  height: 60px;
+  height: 42px;
   animation: rotate 3s infinite linear;
   -webkit-animation: rotate 3s infinite linear;
 }
 
 @-webkit-keyframes rotate {
   from {
-    background-position: -1950px;
+    background-position: -1900px;
   }
   to {
     background-position: 0px;
@@ -1213,7 +1213,7 @@ cite {
 }
 @keyframes rotate {
   from {
-    background-position: -1950px;
+    background-position: -1900px;
   }
   to {
     background-position: 0px;
