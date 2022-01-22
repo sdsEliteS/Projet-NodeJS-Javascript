@@ -24,8 +24,8 @@ const homeController = require('./controllers/homeController'),
 const upload = require('../config/multer')
 
 /*
- * Middleware - Sécurité Panneatage Admin
- * ************************************** */
+ * Middleware - Sécurité Panneatage Admin "Seulement les Utilisateurs ADMIN autorisé par le créateur on le droit d'y accèder"
+ * ************************************************************************************************************************* */
 const isAdmin = require('./middleware/admin')
 
 
