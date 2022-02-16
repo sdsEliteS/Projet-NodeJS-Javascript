@@ -28,6 +28,9 @@ const upload = require('../config/multer')
  * ************************************************************************************************************************* */
 const isAdmin = require('./middleware/admin')
 
+const isAuth = require('./middleware/auth')
+
+
 
 /*
  * Déclaration des routes 
@@ -172,11 +175,11 @@ router.route('/connexion')
 
 // URL Page Profil
 router.route('/profil')
-    .get(profilController.getPageProfil)
+    .get(isAuth, profilController.getPageProfil)
 
 // URL Image Profil (ATTENTION !!! : avec un .post on peut faire un methode PUT)
 router.route('/UploadAvatar/:id')
-    .post(upload.single('imgArticle'),profilController.editAvatar)
+    .post(isAuth, upload.single('imgArticle'),profilController.editAvatar)
 
 // URL New Mot de Passe
 router.route('/NewPassword/:id')
